@@ -747,7 +747,7 @@ void StorageTime_17014_Taraneh_edit_ver2(){
   int counts_785 = 0;
   int counts_786 = 0;
   
-
+  // BECAUSE THE ERROR BARS FOR TGRAPHERRORS ARE DOUBLED I HAVE TO DIVIDE THE ERRORS IN HALF
   
   ULong64_t events780;
   events780 = (Double_t)outputTree780 -> GetEntries();
@@ -766,12 +766,12 @@ void StorageTime_17014_Taraneh_edit_ver2(){
     maxts12ValveOpenArray780[counts_780] = maxts12ValveOpen780;
     mints12IrradArray780[counts_780] = mints12Irrad780; 
     mints12ValveOpenArray780[counts_780] = mints12ValveOpen780;
-    ts12IrradErr780[counts_780] = maxts12Irrad780 - mints12Irrad780;
-    ts12ValveOpenErr780[counts_780] = maxts12ValveOpen780 - mints12ValveOpen780;
+    ts12IrradErr780[counts_780] = (maxts12Irrad780 - mints12Irrad780)/2;
+    ts12ValveOpenErr780[counts_780] = (maxts12ValveOpen780 - mints12ValveOpen780)/2;
     avecurArray780[counts_780] = avecur780;
     maxcurArray780[counts_780] = maxcur780;
     mincurArray780[counts_780] = mincur780;
-    ErrcurArray780[counts_780] = maxcur780 - mincur780;
+    ErrcurArray780[counts_780] = (maxcur780 - mincur780)/2;
     delaytimeArray780[counts_780] = cycleDelayTime780;
     cycleNumberArray780[counts_780] = cycleNumber780;
     BaselineArray780[counts_780] = Baseline780;
@@ -789,7 +789,7 @@ void StorageTime_17014_Taraneh_edit_ver2(){
   aveAllts12Irrad780 = aveAllts12Irrad780/counts_780;
   maxAllts12Irrad780 = maxAllts12Irrad780/counts_780;
   minAllts12Irrad780 = minAllts12Irrad780/counts_780;
-  aveAllErrts12Irrad780 = maxAllts12Irrad780 - minAllts12Irrad780;
+  aveAllErrts12Irrad780 = (maxAllts12Irrad780 - minAllts12Irrad780)/2;
 
   ULong64_t events781;
   events781 = (Double_t)outputTree781 -> GetEntries();
@@ -806,12 +806,12 @@ void StorageTime_17014_Taraneh_edit_ver2(){
     maxts12ValveOpenArray781[j] = maxts12ValveOpen781;
     mints12IrradArray781[j] = mints12Irrad781; 
     mints12ValveOpenArray781[j] = mints12ValveOpen781;
-    ts12IrradErr781[j] = maxts12Irrad781 - mints12Irrad781;
-    ts12ValveOpenErr781[j] = maxts12ValveOpen781 - mints12ValveOpen781;
+    ts12IrradErr781[j] = (maxts12Irrad781 - mints12Irrad781)/2;
+    ts12ValveOpenErr781[j] = (maxts12ValveOpen781 - mints12ValveOpen781)/2;
     avecurArray781[j] = avecur781;
     maxcurArray781[j] = maxcur781;
     mincurArray781[j] = mincur781;
-    ErrcurArray781[j] = maxcur781 - mincur781;
+    ErrcurArray781[j] = (maxcur781 - mincur781)/2;
     delaytimeArray781[j] = cycleDelayTime781;
     cycleNumberArray781[j] = cycleNumber781;
     BaselineArray781[j] = Baseline781;
@@ -830,7 +830,7 @@ void StorageTime_17014_Taraneh_edit_ver2(){
   aveAllts12Irrad781 = aveAllts12Irrad781/counts_781;
   maxAllts12Irrad781 = maxAllts12Irrad781/counts_781;
   minAllts12Irrad781 = minAllts12Irrad781/counts_781;
-  aveAllErrts12Irrad781 = maxAllts12Irrad781 - minAllts12Irrad781;
+  aveAllErrts12Irrad781 = (maxAllts12Irrad781 - minAllts12Irrad781)/2;
 
   ULong64_t events782;
   events782 = (Double_t)outputTree782 -> GetEntries();
@@ -849,12 +849,12 @@ void StorageTime_17014_Taraneh_edit_ver2(){
     maxts12ValveOpenArray782[counts_782] = maxts12ValveOpen782;
     mints12IrradArray782[counts_782] = mints12Irrad782; 
     mints12ValveOpenArray782[counts_782] = mints12ValveOpen782;
-    ts12IrradErr782[counts_782] = maxts12Irrad782 - mints12Irrad782;
-    ts12ValveOpenErr782[counts_782] = maxts12ValveOpen782 - mints12ValveOpen782;
+    ts12IrradErr782[counts_782] = (maxts12Irrad782 - mints12Irrad782)/2;
+    ts12ValveOpenErr782[counts_782] = (maxts12ValveOpen782 - mints12ValveOpen782)/2;
     avecurArray782[counts_782] = avecur782;
     maxcurArray782[counts_782] = maxcur782;
     mincurArray782[counts_782] = mincur782;
-    ErrcurArray782[counts_782] = maxcur782 - mincur782;
+    ErrcurArray782[counts_782] = (maxcur782 - mincur782)/2;
     delaytimeArray782[counts_782] = cycleDelayTime782;
     cycleNumberArray782[counts_782] = cycleNumber782;
     BaselineArray782[counts_782] = Baseline782;
@@ -872,7 +872,7 @@ void StorageTime_17014_Taraneh_edit_ver2(){
   aveAllts12Irrad782 = aveAllts12Irrad782/counts_782;
   maxAllts12Irrad782 = maxAllts12Irrad782/counts_782;
   minAllts12Irrad782 = minAllts12Irrad782/counts_782;
-  aveAllErrts12Irrad782 = maxAllts12Irrad782 - minAllts12Irrad782;
+  aveAllErrts12Irrad782 = (maxAllts12Irrad782 - minAllts12Irrad782)/2;
   
   ULong64_t events783;
   events783 = (Double_t)outputTree783 -> GetEntries();
@@ -889,12 +889,12 @@ void StorageTime_17014_Taraneh_edit_ver2(){
     maxts12ValveOpenArray783[j] = maxts12ValveOpen783;
     mints12IrradArray783[j] = mints12Irrad783; 
     mints12ValveOpenArray783[j] = mints12ValveOpen783;
-    ts12IrradErr783[j] = maxts12Irrad783 - mints12Irrad783;
-    ts12ValveOpenErr783[j] = maxts12ValveOpen783 - mints12ValveOpen783;
+    ts12IrradErr783[j] = (maxts12Irrad783 - mints12Irrad783)/2;
+    ts12ValveOpenErr783[j] = (maxts12ValveOpen783 - mints12ValveOpen783)/2;
     avecurArray783[j] = avecur783;
     maxcurArray783[j] = maxcur783;
     mincurArray783[j] = mincur783;
-    ErrcurArray783[j] = maxcur783 - mincur783;
+    ErrcurArray783[j] = (maxcur783 - mincur783)/2;
     delaytimeArray783[j] = cycleDelayTime783;
     cycleNumberArray783[j] = cycleNumber783;
     BaselineArray783[j] = Baseline783;
@@ -912,7 +912,7 @@ void StorageTime_17014_Taraneh_edit_ver2(){
   aveAllts12Irrad783 = aveAllts12Irrad783/counts_783;
   maxAllts12Irrad783 = maxAllts12Irrad783/counts_783;
   minAllts12Irrad783 = minAllts12Irrad783/counts_783;
-  aveAllErrts12Irrad783 = maxAllts12Irrad783 - minAllts12Irrad783;
+  aveAllErrts12Irrad783 = (maxAllts12Irrad783 - minAllts12Irrad783)/2;
   
   ULong64_t events784;
   events784 = (Double_t)outputTree784 -> GetEntries();
@@ -929,12 +929,12 @@ void StorageTime_17014_Taraneh_edit_ver2(){
     maxts12ValveOpenArray784[counts_784] = maxts12ValveOpen784;
     mints12IrradArray784[counts_784] = mints12Irrad784; 
     mints12ValveOpenArray784[counts_784] = mints12ValveOpen784;
-    ts12IrradErr784[counts_784] = maxts12Irrad784 - mints12Irrad784;
-    ts12ValveOpenErr784[counts_784] = maxts12ValveOpen784 - mints12ValveOpen784;
+    ts12IrradErr784[counts_784] = (maxts12Irrad784 - mints12Irrad784)/2;
+    ts12ValveOpenErr784[counts_784] = (maxts12ValveOpen784 - mints12ValveOpen784)/2;
     avecurArray784[counts_784] = avecur784;
     maxcurArray784[counts_784] = maxcur784;
     mincurArray784[counts_784] = mincur784;
-    ErrcurArray784[counts_784] = maxcur784 - mincur784;
+    ErrcurArray784[counts_784] = (maxcur784 - mincur784)/2;
     delaytimeArray784[counts_784] = cycleDelayTime784;
     cycleNumberArray784[counts_784] = cycleNumber784;
     BaselineArray784[counts_784] = Baseline784;
@@ -952,7 +952,7 @@ void StorageTime_17014_Taraneh_edit_ver2(){
   aveAllts12Irrad784 = aveAllts12Irrad784/counts_784;
   maxAllts12Irrad784 = maxAllts12Irrad784/counts_784;
   minAllts12Irrad784 = minAllts12Irrad784/counts_784;
-  aveAllErrts12Irrad784 = maxAllts12Irrad784 - minAllts12Irrad784;
+  aveAllErrts12Irrad784 = (maxAllts12Irrad784 - minAllts12Irrad784)/2;
 
   ULong64_t events785;
   events785 = (Double_t)outputTree785 -> GetEntries();
@@ -969,12 +969,12 @@ void StorageTime_17014_Taraneh_edit_ver2(){
     maxts12ValveOpenArray785[counts_785] = maxts12ValveOpen785;
     mints12IrradArray785[counts_785] = mints12Irrad785; 
     mints12ValveOpenArray785[counts_785] = mints12ValveOpen785;
-    ts12IrradErr785[counts_785] = maxts12Irrad785 - mints12Irrad785;
-    ts12ValveOpenErr785[counts_785] = maxts12ValveOpen785 - mints12ValveOpen785;
+    ts12IrradErr785[counts_785] = (maxts12Irrad785 - mints12Irrad785)/2;
+    ts12ValveOpenErr785[counts_785] = (maxts12ValveOpen785 - mints12ValveOpen785)/2;
     avecurArray785[counts_785] = avecur785;
     maxcurArray785[counts_785] = maxcur785;
     mincurArray785[counts_785] = mincur785;
-    ErrcurArray785[counts_785] = maxcur785 - mincur785;
+    ErrcurArray785[counts_785] = (maxcur785 - mincur785)/2;
     delaytimeArray785[counts_785] = cycleDelayTime785;
     cycleNumberArray785[counts_785] = cycleNumber785;
     BaselineArray785[counts_785] = Baseline785;
@@ -992,7 +992,7 @@ void StorageTime_17014_Taraneh_edit_ver2(){
   aveAllts12Irrad785 = aveAllts12Irrad785/counts_785;
   maxAllts12Irrad785 = maxAllts12Irrad785/counts_785;
   minAllts12Irrad785 = minAllts12Irrad785/counts_785;
-  aveAllErrts12Irrad785 = maxAllts12Irrad785 - minAllts12Irrad785;
+  aveAllErrts12Irrad785 = (maxAllts12Irrad785 - minAllts12Irrad785)/2;
 
   ULong64_t events786;
   events786 = (Double_t)outputTree786 -> GetEntries();
@@ -1010,12 +1010,12 @@ void StorageTime_17014_Taraneh_edit_ver2(){
     maxts12ValveOpenArray786[j] = maxts12ValveOpen786;
     mints12IrradArray786[j] = mints12Irrad786; 
     mints12ValveOpenArray786[j] = mints12ValveOpen786;
-    ts12IrradErr786[j] = maxts12Irrad786 - mints12Irrad786;
-    ts12ValveOpenErr786[j] = maxts12ValveOpen786 - mints12ValveOpen786;
+    ts12IrradErr786[j] = (maxts12Irrad786 - mints12Irrad786)/2;
+    ts12ValveOpenErr786[j] = (maxts12ValveOpen786 - mints12ValveOpen786)/2;
     avecurArray786[j] = avecur786;
     maxcurArray786[j] = maxcur786;
     mincurArray786[j] = mincur786;
-    ErrcurArray786[j] = maxcur786 - mincur786;
+    ErrcurArray786[j] = (maxcur786 - mincur786)/2;
     delaytimeArray786[j] = cycleDelayTime786;
     cycleNumberArray786[j] = cycleNumber786;
     BaselineArray786[j] = Baseline786;
@@ -1033,7 +1033,7 @@ void StorageTime_17014_Taraneh_edit_ver2(){
   aveAllts12Irrad786 = aveAllts12Irrad786/counts_786;
   maxAllts12Irrad786 = maxAllts12Irrad786/counts_786;
   minAllts12Irrad786 = minAllts12Irrad786/counts_786;
-  aveAllErrts12Irrad786 = maxAllts12Irrad786 - minAllts12Irrad786;
+  aveAllErrts12Irrad786 = (maxAllts12Irrad786 - minAllts12Irrad786)/2;
 
   // ONE EXPONENTIAL FIT
   TF1 *fit = new TF1 ("fit" , "[0]*exp(-x/[1]) ", 0, 120);
