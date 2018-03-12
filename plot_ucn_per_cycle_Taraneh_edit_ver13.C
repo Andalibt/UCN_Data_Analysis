@@ -71,7 +71,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("outputTree_StorageTime_673.root", "RECREATE");
+  TFile hfile ("outputTree_StorageTime_698.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -274,7 +274,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // *************************************************************
   
   // Int_t StorageTimeFiles[173] = {780, 781, 782, 783, 784, 785, 786};
-  Int_t StorageTimeFiles[10] ={673};
+  Int_t StorageTimeFiles[10] ={698};
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;
@@ -287,7 +287,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
     runNumber = midasrun;
     runs++;
     cout << midasrun << endl;
-    sprintf (filename , "/data/ucn/root_files/ucn_tree_00000%d.root",midasrun);
+    sprintf (filename , "~/raw_Data/ucn_tree_00000%d.root",midasrun);
  
     if (StorageTimeFiles[StorageTimeFileCounter] != midasrun)
       continue;
