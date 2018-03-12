@@ -29,7 +29,7 @@ void StorageTime_17009_Taraneh_edit_ver2(){
 
 
     
-    sprintf (filename , "~/ucn-tree-analyzer/outputTree_StorageTime_%d.root",midasrun);
+    sprintf (filename , "./outputTree_StorageTime_%d.root",midasrun);
     TFile* fin = new TFile(Form(filename),"READ");
     //TFile *finmidasrun = new TFile("outputTree_StorageTime_midasrun.root","READ");
     
