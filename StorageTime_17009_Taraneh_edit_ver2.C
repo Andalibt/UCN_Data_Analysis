@@ -25,7 +25,7 @@ void StorageTime_17009_Taraneh_edit_ver2(){
 
 
 
-  for (midasrun = 681 ; midasrun <688; midasrun++){
+  for (midasrun = 691 ; midasrun <697; midasrun++){
 
 
     
@@ -354,7 +354,10 @@ void StorageTime_17009_Taraneh_edit_ver2(){
     outputTreemidasrun -> GetEvent(j);
     if (midasrun == 674 && j==1)
       continue;
-
+    if (midasrun == 691 && j==1)
+      continue;
+    if (midasrun == 694 && j==1)
+      continue;
     irradiationTime = cycleStartTimes - irradiationStartTimes;
     cout << "For midas run "  << midasrun  << " the irradiation time is " << irradiationTime << endl;
     UCNIntegralArraymidasrun[counts_midasrun] = UCNIntegralmidasrun;
@@ -724,8 +727,8 @@ HistIntegralErrAll[counts_old + counts_midasrun] = sqrt (HistIntegralmidasrun)/2
   grmidasrun_cyclerise -> Draw("Ap");
 
   cmidasrun_cycleNumFit-> Update(); 
+  
   */
-
 
   }
   for (int k = 0; k < counts_old ; k++){
