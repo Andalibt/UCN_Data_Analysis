@@ -23,7 +23,7 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
   int file_counter = 0;
 
 
-  for (midasrun = 708 ; midasrun <709; midasrun++){
+  for (midasrun = 707 ; midasrun <713; midasrun++){
 
 
     
@@ -255,12 +255,14 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
 	continue;
       if (midasrun == 694 && j==1)
 	continue;
+      if (midasrun == 700)
+	continue;
       irradiationTime = cycleStartTimes - irradiationStartTimes;
       cout << "For midas run "  << midasrun  << " the irradiation time is " << irradiationTime << endl;
       UCNIntegralArraymidasrun[counts_midasrun] = UCNIntegralmidasrun;
-      UCNIntegralErrArraymidasrun[counts_midasrun] = UCNIntegralErrmidasrun/2;
+      UCNIntegralErrArraymidasrun[counts_midasrun] = UCNIntegralErrmidasrun;
       HistIntegralArraymidasrun[counts_midasrun] = HistIntegralmidasrun;
-      HistIntegralErrArraymidasrun[counts_midasrun] = sqrt (HistIntegralmidasrun)/2;
+      HistIntegralErrArraymidasrun[counts_midasrun] = sqrt (HistIntegralmidasrun);
       avets12IrradArraymidasrun[counts_midasrun] = avets12Irradmidasrun;
       avets12ValveOpenArraymidasrun[counts_midasrun] = avets12ValveOpenmidasrun;
       maxts12IrradArraymidasrun[counts_midasrun] = maxts12Irradmidasrun;
@@ -277,27 +279,30 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
       cycleNumberArraymidasrun[counts_midasrun] = cycleNumbermidasrun;
       BaselineArraymidasrun[counts_midasrun] = Baselinemidasrun;
       BaselineIrradArraymidasrun[counts_midasrun] = BaselineIrradmidasrun;
-      BaselineIrradErrArraymidasrun[counts_midasrun] = BaselineIrradErrmidasrun/2;
+      BaselineIrradErrArraymidasrun[counts_midasrun] = BaselineIrradErrmidasrun;
       FallTimeArraymidasrun[counts_midasrun] = FallTimemidasrun;
-      FallTimeErrArraymidasrun[counts_midasrun] = FallTimeErrmidasrun/2;
+      FallTimeErrArraymidasrun[counts_midasrun] = FallTimeErrmidasrun;
       RiseTimeArraymidasrun[counts_midasrun] = RiseTimemidasrun;
-      RiseTimeErrArraymidasrun[counts_midasrun] = RiseTimeErrmidasrun/2;
+      RiseTimeErrArraymidasrun[counts_midasrun] = RiseTimeErrmidasrun;
       aveAllts12Irradmidasrun += avets12Irradmidasrun;
       maxAllts12Irradmidasrun += maxts12Irradmidasrun;
       minAllts12Irradmidasrun += mints12Irradmidasrun;
       UCNIntegralArrayAll[counts_midasrun] = UCNIntegralmidasrun;
-      UCNIntegralErrArrayAll[counts_midasrun] = UCNIntegralErrmidasrun/2;
+      UCNIntegralErrArrayAll[counts_midasrun] = UCNIntegralErrmidasrun;
       //delayTimeAll[counts_midasrun] = cycleDelayTimemidasrun;
       //HistIntegralArrayAll[counts_midasrun] = HistIntegralmidasrun;
       //HistIntegralErrArrayAll[counts_midasrun] = sqrt (HistIntegralmidasrun)/2;
       delaytimeAll[counts_old + counts_midasrun] = cycleDelayTimemidasrun;
       UCNIntegralAll[counts_old + counts_midasrun] = UCNIntegralmidasrun;
-      UCNIntegralErrAll[counts_old + counts_midasrun] = UCNIntegralErrmidasrun/2;
+      UCNIntegralErrAll[counts_old + counts_midasrun] = UCNIntegralErrmidasrun;
       HistIntegralAll[counts_old + counts_midasrun] = HistIntegralmidasrun;
-      HistIntegralErrAll[counts_old + counts_midasrun] = sqrt (HistIntegralmidasrun)/2;
+      HistIntegralErrAll[counts_old + counts_midasrun] = sqrt (HistIntegralmidasrun);
       cout <<counts_old+ counts_midasrun << " "<<delayTimeAll[counts_old+counts_midasrun] << endl;
+      cout << counts_midasrun << endl;
       counts_midasrun++;
     }
+    if (counts_midasrun == 0)
+      counts_midasrun =1;
     aveAllts12Irradmidasrun = aveAllts12Irradmidasrun/counts_midasrun;
     maxAllts12Irradmidasrun = maxAllts12Irradmidasrun/counts_midasrun;
     minAllts12Irradmidasrun = minAllts12Irradmidasrun/counts_midasrun;
@@ -317,7 +322,7 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
     //               GRAPHS
     // **************************************************************************
     
-    
+    /*
     //*********************************
     //*********************************
     //              midasrun
@@ -639,7 +644,7 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
     grmidasrun_cyclerise -> Draw("Ap");
 
     canvas_cycleNumFit[file_counter]-> Update(); 
-  
+    */
     file_counter++;
   }
   for (int k = 0; k < counts_old ; k++){
