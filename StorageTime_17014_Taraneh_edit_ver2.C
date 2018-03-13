@@ -2895,7 +2895,9 @@ void StorageTime_17014_Taraneh_edit_ver2(){
   double runNum[100] = {780, 781, 782, 784, 785, 786};
   double tempIrradAll[100] = {aveAllts12Irrad780, aveAllts12Irrad781, aveAllts12Irrad782, aveAllts12Irrad784, aveAllts12Irrad785, aveAllts12Irrad786};
   double tempErrIrradAll[100] = {aveAllErrts12Irrad780,  aveAllErrts12Irrad781,  aveAllErrts12Irrad782,  aveAllErrts12Irrad784,  aveAllErrts12Irrad785,  aveAllErrts12Irrad786};
-
+  double StorageOnline[100] = {35.8, 32.4, 28.2, 16.1, 22.7, 18.5};
+  double tempOnline[100] = {0.85 , 0.98, 1.03, 1.27, 1.1, 1.21};
+  
   TCanvas *cStorage = new TCanvas ("cStorage" , "cStorage" , 800, 400);
 
   TGraphErrors *grAll = new TGraphErrors (7, tempIrradAll, StorageAll , tempErrIrradAll, StorageErrAll);
@@ -2909,10 +2911,20 @@ void StorageTime_17014_Taraneh_edit_ver2(){
   grAll -> GetXaxis() -> SetTitleOffset(1.0);
   grAll -> GetYaxis() -> SetTitleSize(0.05); 
   grAll -> GetYaxis() -> SetTitleOffset(0.9);
-
   grAll -> SetMarkerStyle(7);
-  grAll -> Draw("Ap");
 
+  TGraphErrors *grAllOnline = new TGraphErrors (7, tempOnline, StorageOnline , 0, 0);
+  grAllOnline -> SetMarkerStyle(7);
+  grAllOnline -> SetMarkerColor(2);
+  
+  TLegend *leg3 = new TLegend(0.4,0.7, 0.9, 0.9);
+  leg3 -> AddEntry(grAll , "Taraneh's Analysis" , "p") ;
+  leg3 -> AddEntry(grAllOnline , "Online Analysis" , "p") ;
+  leg3 -> SetTextSize(0.05);
+
+  grAll -> Draw("Ap");
+  grAllOnline -> Draw("p");
+  leg3 -> Draw();
 
 
 
