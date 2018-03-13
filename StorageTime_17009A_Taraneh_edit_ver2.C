@@ -23,9 +23,7 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
 
 
 
-
-
-  for (midasrun = 698 ; midasrun <699; midasrun++){
+  for (midasrun = 707 ; midasrun <708; midasrun++){
 
 
     
