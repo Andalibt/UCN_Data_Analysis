@@ -8,7 +8,7 @@
 #define max 100
 
 void StorageTime_17014_Taraneh_edit_ver2(){
-  gStyle->SetOptFit(0000);
+  gStyle->SetOptFit(1111);
   gStyle->SetTitleFontSize(.07);
   gStyle->SetLabelSize(.05, "XY");
   
