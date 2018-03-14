@@ -23,7 +23,7 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
   int file_counter = 0;
 
 
-  for (midasrun = 732 ; midasrun <733; midasrun++){
+  for (midasrun = 731 ; midasrun <737; midasrun++){
 
 
     
@@ -321,7 +321,7 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
     // **************************************************************************
     //               GRAPHS
     // **************************************************************************
-    
+   
     
     //*********************************
     //*********************************
@@ -684,7 +684,7 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
   grhist -> SetMarkerColor(2);
   grhist -> SetMarkerStyle(20);
 
-  TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
+  TLegend *leg2 = new TLegend(0.2,0.7, 0.6, 0.9);
   leg2 -> AddEntry(gr , "Without Background" , "p") ;
   leg2 -> AddEntry(grhist , "With Background" , "p") ;
   leg2 -> SetTextSize(0.05);
