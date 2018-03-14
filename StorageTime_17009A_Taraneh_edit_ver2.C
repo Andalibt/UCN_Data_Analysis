@@ -23,7 +23,7 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
   int file_counter = 0;
 
 
-  for (midasrun = 707 ; midasrun <713; midasrun++){
+  for (midasrun = 722 ; midasrun <730; midasrun++){
 
 
     
@@ -666,7 +666,7 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
   gr -> GetYaxis() -> SetTitleSize(0.05); 
   gr -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr -> SetMarkerStyle(7);
+  gr -> SetMarkerStyle(20);
   gr -> Fit(fit);
   storagemidasrun = fit -> GetParameter(1);
   storageErrmidasrun = fit -> GetParError(1);
@@ -682,7 +682,7 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
   grhist -> GetYaxis() -> SetTitleSize(0.05); 
   grhist -> GetYaxis() -> SetTitleOffset(0.9);
   grhist -> SetMarkerColor(2);
-  grhist -> SetMarkerStyle(7);
+  grhist -> SetMarkerStyle(20);
 
   TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
   leg2 -> AddEntry(gr , "Without Background" , "p") ;
