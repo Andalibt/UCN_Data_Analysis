@@ -25,7 +25,7 @@ void StorageTime_17009_Taraneh_edit_ver2(){
 
 
 
-  for (midasrun = 662 ; midasrun <669; midasrun++){
+  for (midasrun = 691 ; midasrun <697; midasrun++){
 
 
     
@@ -401,6 +401,8 @@ HistIntegralErrAll[counts_old + counts_midasrun] = sqrt (HistIntegralmidasrun);
     cout <<counts_old+ counts_midasrun << " "<<delayTimeAll[counts_old+counts_midasrun] << endl;
     counts_midasrun++;
   }
+  if (counts_midasrun == 0)
+    counts_midasrun =1;
   aveAllts12Irradmidasrun = aveAllts12Irradmidasrun/counts_midasrun;
   maxAllts12Irradmidasrun = maxAllts12Irradmidasrun/counts_midasrun;
   minAllts12Irradmidasrun = minAllts12Irradmidasrun/counts_midasrun;
@@ -768,7 +770,7 @@ HistIntegralErrAll[counts_old + counts_midasrun] = sqrt (HistIntegralmidasrun);
   grhist -> SetMarkerColor(2);
   grhist -> SetMarkerStyle(20);
 
-  TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
+  TLegend *leg2 = new TLegend(0.2,0.7, 0.6, 0.9);
   leg2 -> AddEntry(gr , "Without Background" , "p") ;
   leg2 -> AddEntry(grhist , "With Background" , "p") ;
   leg2 -> SetTextSize(0.05);
