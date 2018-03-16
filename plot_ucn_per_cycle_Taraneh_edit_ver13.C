@@ -71,7 +71,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("outputTree_StorageTime_767.root", "RECREATE");
+  TFile hfile ("outputTree_StorageTime_532.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -280,7 +280,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // *************************************************************
   
 
-  Int_t StorageTimeFiles[10] ={767};
+  Int_t StorageTimeFiles[10] ={532};
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;
@@ -970,7 +970,26 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	UCN_per_cycle_Li6_All->SetMarkerStyle(20);
 	UCN_per_cycle_Li6_valveOpen->SetMarkerStyle(20);
       }
-     
+
+      // To get the integral before the start of irradiation and during the irradiation
+      double BaselineInt[100000];
+      double BaselineIrradInt[100000];
+
+      for(ULong64_t j=0;j<eventTot;j++) {
+	uinli6->GetEvent(j);
+	for ( int i = 0; i < cycleStartTimes.size(); i++){
+	  if (tUnixTimePrecise_li6 < irradiationStartTime[i]){
+	    BaselineInt[i]++;
+	  }
+	  if(tUnixTimePrecise_li6 > irradiationStartTime && tUnixTimePrecise_li6 < cyclevalveopen[i]){
+	    BaselineIrradInt[i]++;
+	  }
+	}
+      }
+      
+
+
+      
       //-----------------------------
       // He3 detector stuff
 
@@ -1264,6 +1283,8 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	UCNIntegralErr = IntegralErr[i];
 	HistIntegral = Li6_integral[i];
 	cycleNumber = cycleNumberArray[i] ;
+	BaselineIntegral = BaselineInt[i];
+	BaselineIrradIntegral = BaselineIrradInt[i];
 	outputTree->Fill();
       }
       
