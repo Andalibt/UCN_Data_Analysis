@@ -24,7 +24,7 @@ void storage_17009_and_17009A(){
   double b1muA_60s = 34.3 , b1muA_60sErr = 0.7;
   double b10muA_30s = 27.6 , b10muA_30sErr = 0.2;
 
-
+  // FOR STORAGE TIME VS IRRADIATION TIME
   double storage_b5muA[20] = {b5muA_10s, b5muA_30s, b5muA_60s};
   double storageErr_b5muA[20] = {b5muA_10sErr, b5muA_30sErr, b5muA_60sErr};
   double irrad_b5muA[20] = {10. , 30. , 60. };
@@ -44,6 +44,24 @@ void storage_17009_and_17009A(){
   double storage_b1muA[20] = {b1muA_60s};
   double storageErr_b1muA[20] = {b1muA_60sErr};
   double irrad_b1muA[20] = {60.};
+
+  // FOR STORAGE TIME VS BEAM CURRENT
+  double storage_10s[20] = {b2muA_10s, b5muA_10s, b7muA_10s, b10muA_10s};
+  double storageErr_10s [20] = {b2muA_10sErr, b5muA_10sErr, b7muA_10sErr, b10muA_10sErr};
+  double beam_10s[20] = {2.5, 5, 7.1, 10};
+
+  double storage_30s[20] = {b2muA_30s , b5muA_30s, b7muA_30s, b10muA_30s};
+  double storageErr_30s[20] = {b2muA_30sErr, b5muA_30sErr, b7muA_30sErr, b10muA_30sErr};
+  double beam_30s[20] = {2.5, 5, 7.1, 10};
+
+  double storage_60s[20] = {b1muA_60s, b2muA_60s, b5muA_60s, b7muA_60s};
+  double storageErr_60s[20] = {b1muA_60sErr, b2muA_60sErr, b5muA_60sErr, b7muA_60sErr};
+  double beam_60s[20] = {1, 2.5, 5, 7.1};
+
+  double storage_120s[20] = {b2muA_120s};
+  double storageErr_120s[20] = {b2muA_120sErr};
+  double beam_120s[20] = {2.5};
+
   
 
   TCanvas *c = new TCanvas("c" , "c" , 1200, 800);
@@ -54,14 +72,13 @@ void storage_17009_and_17009A(){
   
   gr_b5muA -> SetTitle("Storage Lifetime vs Irradiation Time");
   gr_b5muA -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
-  gr_b5muA -> GetXaxis()-> SetTitle("Irradiation Time");
+  gr_b5muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
   gr_b5muA -> GetYaxis()-> SetRangeUser(25, 38);
   gr_b5muA -> GetXaxis() -> SetLimits(0,130);
   gr_b5muA -> GetXaxis() -> SetTitleSize(0.05);
   gr_b5muA -> GetXaxis() -> SetTitleOffset(1.0);
   gr_b5muA -> GetYaxis() -> SetTitleSize(0.05); 
   gr_b5muA -> GetYaxis() -> SetTitleOffset(0.9);
-
   gr_b5muA -> SetMarkerStyle(20);
 
   TGraphErrors *gr_b2muA = new TGraphErrors(4, irrad_b2muA,  storage_b2muA , 0, storageErr_b2muA);
@@ -74,7 +91,6 @@ void storage_17009_and_17009A(){
   gr_b2muA -> GetXaxis() -> SetTitleOffset(1.0);
   gr_b2muA -> GetYaxis() -> SetTitleSize(0.05); 
   gr_b2muA -> GetYaxis() -> SetTitleOffset(0.9);
-
   gr_b2muA -> SetMarkerStyle(24);
 
 
@@ -88,7 +104,6 @@ void storage_17009_and_17009A(){
   gr_b7muA -> GetXaxis() -> SetTitleOffset(1.0);
   gr_b7muA -> GetYaxis() -> SetTitleSize(0.05); 
   gr_b7muA -> GetYaxis() -> SetTitleOffset(0.9);
-
   gr_b7muA -> SetMarkerStyle(21);
 
   TGraphErrors *gr_b10muA = new TGraphErrors(2, irrad_b10muA,  storage_b10muA , 0, storageErr_b10muA);
@@ -109,54 +124,93 @@ void storage_17009_and_17009A(){
   gr_b1muA -> SetTitle("Storage Lifetime vs Irradiation Time");
   gr_b1muA -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
   gr_b1muA -> GetXaxis()-> SetTitle("Irradiation Time");
-  // gr -> GetYaxis()-> SetRangeUser(100, 500000);
+  gr_b1muA -> GetYaxis()-> SetRangeUser(25, 38);
+  gr_b1muA -> GetXaxis() -> SetLimits(0,130);
   gr_b1muA -> GetXaxis() -> SetTitleSize(0.05);
   gr_b1muA -> GetXaxis() -> SetTitleOffset(1.0);
   gr_b1muA -> GetYaxis() -> SetTitleSize(0.05); 
   gr_b1muA -> GetYaxis() -> SetTitleOffset(0.9);
-
   gr_b1muA -> SetMarkerStyle(27);
 
 
   TLegend *leg = new TLegend(0.5,0.7, 0.9, 0.9);
+  leg -> AddEntry(gr_b1muA, "1 #muA Beam Current" , "p");
+  leg -> AddEntry(gr_b2muA, "2.5 #muA Beam Current" , "p");
   leg -> AddEntry(gr_b5muA, "5 #muA Beam Current" , "p");
   leg -> AddEntry(gr_b7muA, "7.1 #muA Beam Current" , "p");
   leg -> AddEntry(gr_b10muA, "10 #muA Beam Current" , "p");
-  leg -> AddEntry(gr_b1muA, "1 #muA Beam Current" , "p");
-  leg -> AddEntry(gr_b2muA, "2.5 #muA Beam Current" , "p");
-  
-  gr_b5muA -> Draw("Ap");
+
+  gr_b1muA -> Draw("Ap");
   gr_b2muA  -> Draw("p");
+  gr_b5muA -> Draw("p");
   gr_b7muA -> Draw("p");
   gr_b10muA -> Draw("p");
-  gr_b1muA -> Draw("p");
   leg -> Draw();
 
 
+  TCanvas *c1 = new TCanvas("c1", "c1" , 1200, 800);
+
+  TGraphErrors *gr_10s = new TGraphErrors(4, beam_10s, storage_10s, 0 , storageErr_10s);
+  
+  gr_10s -> SetTitle("Storage Lifetime vs Beam Current");
+  gr_10s -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
+  gr_10s -> GetXaxis()-> SetTitle("Beam Current (#muA)");
+  gr_10s -> GetYaxis()-> SetRangeUser(25, 38);
+  // gr_10s -> GetXaxis() -> SetLimits(0,130);
+  gr_10s -> GetXaxis() -> SetTitleSize(0.05);
+  gr_10s -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_10s -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_10s -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_10s -> SetMarkerStyle(20);
+
+  TGraphErrors *gr_30s = new TGraphErrors(4, beam_30s, storage_30s, 0 , storageErr_30s);
+
+  gr_30s -> SetTitle("Storage Lifetime vs Beam Current");
+  gr_30s -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
+  gr_30s -> GetXaxis()-> SetTitle("Beam Current (#muA)");
+  // gr -> GetYaxis()-> SetRangeUser(100, 500000);
+  gr_30s -> GetXaxis() -> SetTitleSize(0.05);
+  gr_30s -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_30s -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_30s -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_30s -> SetMarkerStyle(24);
+
+  TGraphErrors *gr_60s = new TGraphErrors(4, beam_60s, storage_60s, 0 , storageErr_60s);
+
+  gr_60s -> SetTitle("Storage Lifetime vs Beam Current");
+  gr_60s -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
+  gr_60s -> GetXaxis()-> SetTitle("Beam Current (#muA)");
+  // gr -> GetYaxis()-> SetRangeUser(100, 500000);
+  gr_60s -> GetXaxis() -> SetTitleSize(0.05);
+  gr_60s -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_60s -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_60s -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_60s -> SetMarkerStyle(21);
+
+  TGraphErrors *gr_120s = new TGraphErrors(1, beam_120s, storage_120s, 0 , storageErr_120s);
+
+  gr_120s -> SetTitle("Storage Lifetime vs Beam Current");
+  gr_120s -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
+  gr_120s -> GetXaxis()-> SetTitle("Beam Current (#muA)");
+  // gr -> GetYaxis()-> SetRangeUser(100, 500000);
+  gr_120s -> GetXaxis() -> SetTitleSize(0.05);
+  gr_120s -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_120s -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_120s -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_120s -> SetMarkerStyle(27);
 
 
+  TLegend *leg1 = new TLegend(0.5,0.7, 0.9, 0.9);
+  leg1 -> AddEntry(gr_10s, "10 s Irradiation Time" , "p");
+  leg1 -> AddEntry(gr_30s, "30 s Irradiation Time" , "p");
+  leg1 -> AddEntry(gr_60s, "60 s Irradiation Time" , "p");
+  leg1 -> AddEntry(gr_120s, "120 s Irradiation Time" , "p");
 
-  /*
-  c -> cd(2);
-  TGraphErrors *gr2 = new TGraphErrors(13, irradTime,  storage, 0, storageErr);
-
-  gr2 -> SetTitle("Storage Lifetime vs Irradiation Time");
-  gr2 -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
-  gr2 -> GetXaxis()-> SetTitle("Irradiation Time (s)");
-  //  gr2 -> GetYaxis()-> SetRangeUser(1000, 500000);
-  gr2 -> GetXaxis() -> SetTitleSize(0.05);
-  gr2 -> GetXaxis() -> SetTitleOffset(1.0);
-  gr2 -> GetYaxis() -> SetTitleSize(0.05); 
-  gr2 -> GetYaxis() -> SetTitleOffset(0.9);
-  gr2 -> SetMarkerColor(2);
-  gr2 -> SetMarkerStyle(20);
-
-  gr2 -> Draw("Ap");
-    
-  */	
-
-
-
-
-
+  gr_10s -> Draw("Ap");
+  gr_30s  -> Draw("p");
+  gr_60s -> Draw("p");
+  gr_120s -> Draw("p");
+  leg1 -> Draw();
+  
+  
 }
