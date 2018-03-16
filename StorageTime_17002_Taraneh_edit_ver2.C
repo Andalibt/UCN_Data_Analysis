@@ -896,6 +896,49 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   double storageErr540;
 
 
+  // BASELINE INTEGRAL NOT FROM THE FIT
+  double BaselineIntegral532;
+  double BaselineIntegral533;
+  double BaselineIntegral534;
+  double BaselineIntegral535;
+  double BaselineIntegral536;
+  double BaselineIntegral537;
+  double BaselineIntegral538;
+  double BaselineIntegral539;
+  double BaselineIntegral540;
+
+  outputTree532 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral532);
+  outputTree533 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral533);
+  outputTree534 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral534);
+  outputTree535 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral535);
+  outputTree536 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral536);
+  outputTree537 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral537);
+  outputTree538 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral538);
+  outputTree539 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral539);
+  outputTree540 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral540);
+
+
+  // BASELINE INTEGRAL DURING IRRADIATION TIME NOT FROM THE FIT
+  double BaselineIrradIntegral532;
+  double BaselineIrradIntegral533;
+  double BaselineIrradIntegral534;
+  double BaselineIrradIntegral535;
+  double BaselineIrradIntegral536;
+  double BaselineIrradIntegral537;
+  double BaselineIrradIntegral538;
+  double BaselineIrradIntegral539;
+  double BaselineIrradIntegral540;
+
+  outputTree532 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral532);
+  outputTree533 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral533);
+  outputTree534 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral534);
+  outputTree535 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral535);
+  outputTree536 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral536);
+  outputTree537 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral537);
+  outputTree538 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral538);
+  outputTree539 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral539);
+  outputTree540 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral540);
+
   // NUMBER OF COUNTS IN EACH LOOP
   int counts_532 = 0;
   int counts_533 = 0;
