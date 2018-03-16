@@ -926,12 +926,12 @@ void StorageTime_17002_Taraneh_edit_ver2(){
     maxts12ValveOpenArray532[counts_532] = maxts12ValveOpen532;
     mints12IrradArray532[counts_532] = mints12Irrad532; 
     mints12ValveOpenArray532[counts_532] = mints12ValveOpen532;
-    ts12IrradErr532[counts_532] = maxts12Irrad532 - mints12Irrad532;
-    ts12ValveOpenErr532[counts_532] = maxts12ValveOpen532 - mints12ValveOpen532;
+    ts12IrradErr532[counts_532] = (maxts12Irrad532 - mints12Irrad532)/2;
+    ts12ValveOpenErr532[counts_532] = (maxts12ValveOpen532 - mints12ValveOpen532)/2;
     avecurArray532[counts_532] = avecur532;
     maxcurArray532[counts_532] = maxcur532;
     mincurArray532[counts_532] = mincur532;
-    ErrcurArray532[counts_532] = maxcur532 - mincur532;
+    ErrcurArray532[counts_532] = (maxcur532 - mincur532)/2;
     delaytimeArray532[counts_532] = cycleDelayTime532;
     cycleNumberArray532[counts_532] = cycleNumber532;
     BaselineArray532[counts_532] = Baseline532;
@@ -952,7 +952,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   aveAllts12Irrad532 = aveAllts12Irrad532/counts_532;
   maxAllts12Irrad532 = maxAllts12Irrad532/counts_532;
   minAllts12Irrad532 = minAllts12Irrad532/counts_532;
-  aveAllErrts12Irrad532 = maxAllts12Irrad532 - minAllts12Irrad532;
+  aveAllErrts12Irrad532 = (maxAllts12Irrad532 - minAllts12Irrad532)/2;
 
   ULong64_t events533;
   events533 = (Double_t)outputTree533 -> GetEntries();
@@ -969,12 +969,12 @@ void StorageTime_17002_Taraneh_edit_ver2(){
     maxts12ValveOpenArray533[j] = maxts12ValveOpen533;
     mints12IrradArray533[j] = mints12Irrad533; 
     mints12ValveOpenArray533[j] = mints12ValveOpen533;
-    ts12IrradErr533[j] = maxts12Irrad533 - mints12Irrad533;
-    ts12ValveOpenErr533[j] = maxts12ValveOpen533 - mints12ValveOpen533;
+    ts12IrradErr533[j] = (maxts12Irrad533 - mints12Irrad533)/2;
+    ts12ValveOpenErr533[j] = (maxts12ValveOpen533 - mints12ValveOpen533)/2;
     avecurArray533[j] = avecur533;
     maxcurArray533[j] = maxcur533;
     mincurArray533[j] = mincur533;
-    ErrcurArray533[j] = maxcur533 - mincur533;
+    ErrcurArray533[j] = (maxcur533 - mincur533)/2;
     delaytimeArray533[j] = cycleDelayTime533;
     cycleNumberArray533[j] = cycleNumber533;
     BaselineArray533[j] = Baseline533;
@@ -996,7 +996,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   aveAllts12Irrad533 = aveAllts12Irrad533/counts_533;
   maxAllts12Irrad533 = maxAllts12Irrad533/counts_533;
   minAllts12Irrad533 = minAllts12Irrad533/counts_533;
-  aveAllErrts12Irrad533 = maxAllts12Irrad533 - minAllts12Irrad533;
+  aveAllErrts12Irrad533 = (maxAllts12Irrad533 - minAllts12Irrad533)/2;
 
   ULong64_t events534;
   events534 = (Double_t)outputTree534 -> GetEntries();
@@ -1013,12 +1013,12 @@ void StorageTime_17002_Taraneh_edit_ver2(){
     maxts12ValveOpenArray534[counts_534] = maxts12ValveOpen534;
     mints12IrradArray534[counts_534] = mints12Irrad534; 
     mints12ValveOpenArray534[counts_534] = mints12ValveOpen534;
-    ts12IrradErr534[counts_534] = maxts12Irrad534 - mints12Irrad534;
-    ts12ValveOpenErr534[counts_534] = maxts12ValveOpen534 - mints12ValveOpen534;
+    ts12IrradErr534[counts_534] = (maxts12Irrad534 - mints12Irrad534)/2;
+    ts12ValveOpenErr534[counts_534] = (maxts12ValveOpen534 - mints12ValveOpen534)/2;
     avecurArray534[counts_534] = avecur534;
     maxcurArray534[counts_534] = maxcur534;
     mincurArray534[counts_534] = mincur534;
-    ErrcurArray534[counts_534] = maxcur534 - mincur534;
+    ErrcurArray534[counts_534] = (maxcur534 - mincur534)/2;
     delaytimeArray534[counts_534] = cycleDelayTime534;
     cycleNumberArray534[counts_534] = cycleNumber534;
     BaselineArray534[counts_534] = Baseline534;
@@ -1039,7 +1039,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   aveAllts12Irrad534 = aveAllts12Irrad534/counts_534;
   maxAllts12Irrad534 = maxAllts12Irrad534/counts_534;
   minAllts12Irrad534 = minAllts12Irrad534/counts_534;
-  aveAllErrts12Irrad534 = maxAllts12Irrad534 - minAllts12Irrad534;
+  aveAllErrts12Irrad534 = (maxAllts12Irrad534 - minAllts12Irrad534)/2;
   
   ULong64_t events535;
   events535 = (Double_t)outputTree535 -> GetEntries();
@@ -1056,12 +1056,12 @@ void StorageTime_17002_Taraneh_edit_ver2(){
     maxts12ValveOpenArray535[j] = maxts12ValveOpen535;
     mints12IrradArray535[j] = mints12Irrad535; 
     mints12ValveOpenArray535[j] = mints12ValveOpen535;
-    ts12IrradErr535[j] = maxts12Irrad535 - mints12Irrad535;
-    ts12ValveOpenErr535[j] = maxts12ValveOpen535 - mints12ValveOpen535;
+    ts12IrradErr535[j] = (maxts12Irrad535 - mints12Irrad535)/2;
+    ts12ValveOpenErr535[j] = (maxts12ValveOpen535 - mints12ValveOpen535)/2;
     avecurArray535[j] = avecur535;
     maxcurArray535[j] = maxcur535;
     mincurArray535[j] = mincur535;
-    ErrcurArray535[j] = maxcur535 - mincur535;
+    ErrcurArray535[j] = (maxcur535 - mincur535)/2;
     delaytimeArray535[j] = cycleDelayTime535;
     cycleNumberArray535[j] = cycleNumber535;
     BaselineArray535[j] = Baseline535;
@@ -1082,7 +1082,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   aveAllts12Irrad535 = aveAllts12Irrad535/counts_535;
   maxAllts12Irrad535 = maxAllts12Irrad535/counts_535;
   minAllts12Irrad535 = minAllts12Irrad535/counts_535;
-  aveAllErrts12Irrad535 = maxAllts12Irrad535 - minAllts12Irrad535;
+  aveAllErrts12Irrad535 = (maxAllts12Irrad535 - minAllts12Irrad535)/2;
   
   ULong64_t events536;
   events536 = (Double_t)outputTree536 -> GetEntries();
@@ -1101,12 +1101,12 @@ void StorageTime_17002_Taraneh_edit_ver2(){
     maxts12ValveOpenArray536[counts_536] = maxts12ValveOpen536;
     mints12IrradArray536[counts_536] = mints12Irrad536; 
     mints12ValveOpenArray536[counts_536] = mints12ValveOpen536;
-    ts12IrradErr536[counts_536] = maxts12Irrad536 - mints12Irrad536;
-    ts12ValveOpenErr536[counts_536] = maxts12ValveOpen536 - mints12ValveOpen536;
+    ts12IrradErr536[counts_536] = (maxts12Irrad536 - mints12Irrad536)/2;
+    ts12ValveOpenErr536[counts_536] = (maxts12ValveOpen536 - mints12ValveOpen536)/2;
     avecurArray536[counts_536] = avecur536;
     maxcurArray536[counts_536] = maxcur536;
     mincurArray536[counts_536] = mincur536;
-    ErrcurArray536[counts_536] = maxcur536 - mincur536;
+    ErrcurArray536[counts_536] = (maxcur536 - mincur536)/2;
     delaytimeArray536[counts_536] = cycleDelayTime536;
     cycleNumberArray536[counts_536] = cycleNumber536;
     BaselineArray536[counts_536] = Baseline536;
@@ -1127,7 +1127,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   aveAllts12Irrad536 = aveAllts12Irrad536/counts_536;
   maxAllts12Irrad536 = maxAllts12Irrad536/counts_536;
   minAllts12Irrad536 = minAllts12Irrad536/counts_536;
-  aveAllErrts12Irrad536 = maxAllts12Irrad536 - minAllts12Irrad536;
+  aveAllErrts12Irrad536 = (maxAllts12Irrad536 - minAllts12Irrad536)/2;
 
   ULong64_t events537;
   events537 = (Double_t)outputTree537 -> GetEntries();
@@ -1144,12 +1144,12 @@ void StorageTime_17002_Taraneh_edit_ver2(){
     maxts12ValveOpenArray537[counts_537] = maxts12ValveOpen537;
     mints12IrradArray537[counts_537] = mints12Irrad537; 
     mints12ValveOpenArray537[counts_537] = mints12ValveOpen537;
-    ts12IrradErr537[counts_537] = maxts12Irrad537 - mints12Irrad537;
-    ts12ValveOpenErr537[counts_537] = maxts12ValveOpen537 - mints12ValveOpen537;
+    ts12IrradErr537[counts_537] = (maxts12Irrad537 - mints12Irrad537)/2;
+    ts12ValveOpenErr537[counts_537] = (maxts12ValveOpen537 - mints12ValveOpen537)/2;
     avecurArray537[counts_537] = avecur537;
     maxcurArray537[counts_537] = maxcur537;
     mincurArray537[counts_537] = mincur537;
-    ErrcurArray537[counts_537] = maxcur537 - mincur537;
+    ErrcurArray537[counts_537] = (maxcur537 - mincur5370)/2;
     delaytimeArray537[counts_537] = cycleDelayTime537;
     cycleNumberArray537[counts_537] = cycleNumber537;
     BaselineArray537[counts_537] = Baseline537;
@@ -1170,7 +1170,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   aveAllts12Irrad537 = aveAllts12Irrad537/counts_537;
   maxAllts12Irrad537 = maxAllts12Irrad537/counts_537;
   minAllts12Irrad537 = minAllts12Irrad537/counts_537;
-  aveAllErrts12Irrad537 = maxAllts12Irrad537 - minAllts12Irrad537;
+  aveAllErrts12Irrad537 = (maxAllts12Irrad537 - minAllts12Irrad537)/2;
 
   ULong64_t events538;
   events538 = (Double_t)outputTree538 -> GetEntries();
@@ -1188,12 +1188,12 @@ void StorageTime_17002_Taraneh_edit_ver2(){
     maxts12ValveOpenArray538[j] = maxts12ValveOpen538;
     mints12IrradArray538[j] = mints12Irrad538; 
     mints12ValveOpenArray538[j] = mints12ValveOpen538;
-    ts12IrradErr538[j] = maxts12Irrad538 - mints12Irrad538;
-    ts12ValveOpenErr538[j] = maxts12ValveOpen538 - mints12ValveOpen538;
+    ts12IrradErr538[j] = (maxts12Irrad538 - mints12Irrad538)/2;
+    ts12ValveOpenErr538[j] = (maxts12ValveOpen538 - mints12ValveOpen538)/2;
     avecurArray538[j] = avecur538;
     maxcurArray538[j] = maxcur538;
     mincurArray538[j] = mincur538;
-    ErrcurArray538[j] = maxcur538 - mincur538;
+    ErrcurArray538[j] = (maxcur538 - mincur538)/2;
     delaytimeArray538[j] = cycleDelayTime538;
     cycleNumberArray538[j] = cycleNumber538;
     BaselineArray538[j] = Baseline538;
@@ -1214,7 +1214,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   aveAllts12Irrad538 = aveAllts12Irrad538/counts_538;
   maxAllts12Irrad538 = maxAllts12Irrad538/counts_538;
   minAllts12Irrad538 = minAllts12Irrad538/counts_538;
-  aveAllErrts12Irrad538 = maxAllts12Irrad538 - minAllts12Irrad538;
+  aveAllErrts12Irrad538 = (maxAllts12Irrad538 - minAllts12Irrad538)/2;
 
   ULong64_t events539;
   events539 = (Double_t)outputTree539 -> GetEntries();
@@ -1233,12 +1233,12 @@ void StorageTime_17002_Taraneh_edit_ver2(){
     maxts12ValveOpenArray539[counts_539] = maxts12ValveOpen539;
     mints12IrradArray539[counts_539] = mints12Irrad539; 
     mints12ValveOpenArray539[counts_539] = mints12ValveOpen539;
-    ts12IrradErr539[counts_539] = maxts12Irrad539 - mints12Irrad539;
-    ts12ValveOpenErr539[counts_539] = maxts12ValveOpen539 - mints12ValveOpen539;
+    ts12IrradErr539[counts_539] = (maxts12Irrad539 - mints12Irrad539)/2;
+    ts12ValveOpenErr539[counts_539] = (maxts12ValveOpen539 - mints12ValveOpen539)/2;
     avecurArray539[counts_539] = avecur539;
     maxcurArray539[counts_539] = maxcur539;
     mincurArray539[counts_539] = mincur539;
-    ErrcurArray539[counts_539] = maxcur539 - mincur539;
+    ErrcurArray539[counts_539] = (maxcur539 - mincur539)/2;
     delaytimeArray539[counts_539] = cycleDelayTime539;
     cycleNumberArray539[counts_539] = cycleNumber539;
     BaselineArray539[counts_539] = Baseline539;
@@ -1260,7 +1260,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   aveAllts12Irrad539 = aveAllts12Irrad539/counts_539;
   maxAllts12Irrad539 = maxAllts12Irrad539/counts_539;
   minAllts12Irrad539 = minAllts12Irrad539/counts_539;
-  aveAllErrts12Irrad539 = maxAllts12Irrad539 - minAllts12Irrad539;
+  aveAllErrts12Irrad539 = (maxAllts12Irrad539 - minAllts12Irrad539)/2;
 
   ULong64_t events540;
   events540 = (Double_t)outputTree540 -> GetEntries();
@@ -1280,12 +1280,12 @@ void StorageTime_17002_Taraneh_edit_ver2(){
     maxts12ValveOpenArray540[counts_540] = maxts12ValveOpen540;
     mints12IrradArray540[counts_540] = mints12Irrad540; 
     mints12ValveOpenArray540[counts_540] = mints12ValveOpen540;
-    ts12IrradErr540[counts_540] = maxts12Irrad540 - mints12Irrad540;
-    ts12ValveOpenErr540[counts_540] = maxts12ValveOpen540 - mints12ValveOpen540;
+    ts12IrradErr540[counts_540] = (maxts12Irrad540 - mints12Irrad540)/2;
+    ts12ValveOpenErr540[counts_540] = (maxts12ValveOpen540 - mints12ValveOpen540)/2;
     avecurArray540[counts_540] = avecur540;
     maxcurArray540[counts_540] = maxcur540;
     mincurArray540[counts_540] = mincur540;
-    ErrcurArray540[counts_540] = maxcur540 - mincur540;
+    ErrcurArray540[counts_540] = (maxcur540 - mincur540)/2;
     delaytimeArray540[counts_540] = cycleDelayTime540;
     cycleNumberArray540[counts_540] = cycleNumber540;
     BaselineArray540[counts_540] = Baseline540;
@@ -1306,7 +1306,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   aveAllts12Irrad540 = aveAllts12Irrad540/counts_540;
   maxAllts12Irrad540 = maxAllts12Irrad540/counts_540;
   minAllts12Irrad540 = minAllts12Irrad540/counts_540;
-  aveAllErrts12Irrad540 = maxAllts12Irrad540 - minAllts12Irrad540;
+  aveAllErrts12Irrad540 = (maxAllts12Irrad540 - minAllts12Irrad540)/2;
 
 
   // ONE EXPONENTIAL FIT
