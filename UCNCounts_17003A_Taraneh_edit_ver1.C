@@ -107,11 +107,43 @@ void UCNCounts_17003A_Taraneh_edit_ver1(){
   outputTree548 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral548);
   double BaselineIrradIntegralArray548[100];
 
-
+  double UCNIntegralManualArray548 [100];
+  double UCNIntegralManualErrArray548[100];
 
 
   int counts_548 = 0;
   
-  
+  ULong64_t events548;
+  events548 = (Double_t) outputTree548 -> GetEntries();
+
+  for (ULong64_t j = 0 ; j < events548 ; j++){
+    outputTree548 -> GetEvent(j);
+    UCNIntegralArray548[counts_548] = UCNIntegral548;
+    UCNIntegralErrArray548[counts_548] = UCNIntegralErr548;
+    HistIntegralArray548[counts_548] = HistIntegral548;
+    HistIntegralErrArray548[counts_548] = sqrt (HistIntegral548);
+    avets12IrradArray548[counts_548] = avets12Irrad548;
+    avets12ValveOpenArray548[counts_548] = avets12ValveOpen548;
+    maxts12IrradArray548[counts_548] = maxts12Irrad548;
+    maxts12ValveOpenArray548[counts_548] = maxts12ValveOpen548;
+    mints12IrradArray548[counts_548] = mints12Irrad548; 
+    mints12ValveOpenArray548[counts_548] = mints12ValveOpen548;
+    ts12IrradErr548[counts_548] = (maxts12Irrad548 - mints12Irrad548)/2;
+    ts12ValveOpenErr548[counts_548] = (maxts12ValveOpen548 - mints12ValveOpen548)/2;
+    avecurArray548[counts_548] = avecur548;
+    maxcurArray548[counts_548] = maxcur548;
+    mincurArray548[counts_548] = mincur548;
+    ErrcurArray548[counts_548] = (maxcur548 - mincur548)/2;
+    delaytimeArray548[counts_548] = cycleDelayTime548;
+    cycleNumberArray548[counts_548] = cycleNumber548;
+    BaselineArray548[counts_548] = Baseline548;
+    BaselineIrradArray548[counts_548] = BaselineIrrad548;
+    BaselineIrradErrArray548[counts_548] = BaselineIrradErr548;
+    BaselineIntegralArray548[counts_548] = BaselineIntegral548;
+    BaselineIrradIntegralArray[counts_548] = BaselineIrradIntegral548;
+    UCNIntegralManualArray548[counts_548] = HistIntegral548 - BaselineIntegral548;
+    UCNIntegralManualErrArray548[counts_548] = sqrt(HistIntegral548 - BaselineIntegral548);
+    counts_548++;
+  }
 
 }
