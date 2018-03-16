@@ -71,7 +71,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("outputTree_StorageTime_698.root", "RECREATE");
+  TFile hfile ("outputTree_StorageTime_767.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -170,24 +170,28 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   THStack *UCN_rate_Li6_all = new THStack("UCN_rate_Li6_all" , " ");
 
 
-  double Baseline;
-  double BaselineDuringIrrad;
-  double Amplitude;
-  double RiseTime;
-  double FallTime;
-  double DELAY;
-  double BaselineErr;
+  double Baseline; // BASELINE THAT COMES FROM THE FIT
+  double BaselineDuringIrrad; // BASELINE DURING IRRADIATION THAT COMES FROM THE FIT
+  double Amplitude; // AMPLITUDE THAT COMES FROM THE FIT 
+  double RiseTime; // RISETIME THAT COMES FROM THE FIT
+  double FallTime; // FALLTIME THAT COMES FROM THE FIT
+  double DELAY; // DELAY TIME THAT COMES FROM THE FIT
+  double BaselineErr; // BASELINE ERROR THAT COMES FROM THE FIT
 
-  double BaselineDuringIrradErr;
-  double AmplitudeErr;
-  double RiseTimeErr;
-  double FallTimeErr;
-  double DELAYErr;
+  double BaselineDuringIrradErr; // BASELINE ERROR DURING IRRADIATION THAT COMES FROM THE FIT
+  double AmplitudeErr; // AMPLITUDE ERROR THAT COMES FROM THE FIT
+  double RiseTimeErr; // RISETIME ERROR THAT COMES FROM THE FIT
+  double FallTimeErr; // FALLTIME ERROR THAT COMES FROM THE FIT
+  double DELAYErr; // DELAY TIME ERROR THAT COMES FROM THE FIT
   
-  double UCNIntegral;
-  double UCNIntegralErr;
+  double UCNIntegral; // UCN INTEGRAL THAT COMES FROM THE FIT
+  double UCNIntegralErr; // UCN INTEGRAL ERROR THAT COMES FROM THE FIT
 
-  double HistIntegral;
+  double HistIntegral; // HISTOGRAM INTEGRAL
+
+
+  double BaselineIntegral;
+  double BaselineIrradIntegral;
 
   // Create branches. 
   outputTree -> Branch ("runNumber" , &runNumber);
@@ -268,13 +272,15 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   outputTree -> Branch ("UCNIntegral" , &UCNIntegral);
   outputTree -> Branch ("UCNIntegralErr" , &UCNIntegralErr);
   outputTree -> Branch ("HistIntegral" , &HistIntegral);
+  outputTree -> Branch ("BaselineIntegral" , &BaselineIntegral);
+  outputTree -> Branch ("BaselineIrradIntegral" , &BaselineIrradIntegral);
   
   // *************************************************************
   // STARTING THE LOOP OVER THE FILES.
   // *************************************************************
   
-  // Int_t StorageTimeFiles[173] = {780, 781, 782, 783, 784, 785, 786};
-  Int_t StorageTimeFiles[10] ={698};
+
+  Int_t StorageTimeFiles[10] ={767};
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;
@@ -929,6 +935,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
       Int_t Bin_high[100000];
       Double_t min_range[100000];
       Double_t max_range[100000];
+      Double_t middle_range[100000];
    
 
       // Here I find for each cycle, which bin is the start of the cycle and which is the end.
@@ -937,9 +944,9 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
       for(ULong64_t j=0;j<eventTot;j++) {
 	uinli6->GetEvent(j);
 	for ( int i = 0; i < cycleStartTimes.size(); i++){
-	  min_range[i] = irradiationStartTime[i];
+	  min_range[i] = cyclevalveopen[i];
 	  max_range[i] = cyclevalveclose[i];
-	  Bin_low[i] = UCN_rate_li6 -> GetXaxis() -> FindBin(irradiationStartTime[i]);
+	  Bin_low[i] = UCN_rate_li6 -> GetXaxis() -> FindBin(cyclevalveopen[i]);
 	  Bin_high[i] = UCN_rate_li6 ->  GetXaxis() -> FindBin(cyclevalveclose[i]);
 	}
       }
