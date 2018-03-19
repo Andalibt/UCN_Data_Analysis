@@ -21,26 +21,24 @@ void UCNCounts_17003A_Taraneh_edit_ver1(){
 
   double cycleDelayTime548;
   outputTree548 -> SetBranchAddress("cycleDelayTime" , &cycleDelayTime548);
+  double delaytimeArray548[100];
 
-  double cycleNumber548;
-  ouputTree548 -> SetBranchAddress("cycleNumber", &cycleNumber548);
+  int cycleNumber548;
+  outputTree548 -> SetBranchAddress("cycleNumber", &cycleNumber548);
   double cycleNumberArray548 [100];
   
   double UCNIntegral548;
   outputTree548 -> SetBranchAddress ("UCNIntegral" , &UCNIntegral548);
   double UCNIntegralArray548 [100];
 
-  UCNIntegralErr548;
+  double UCNIntegralErr548;
   outputTree548 -> SetBranchAddress ("UCNIntegralErr" , &UCNIntegralErr548);
   double UCNIntegralErrArray548 [100];
 
   double HistIntegral548;
   outputTree548 -> SetBranchAddress ("HistIntegral" , &HistIntegral548); 
-  double HistIntegralArray [100];
-
-  double HistIntegralErr548;
-  outputTree548 -> SetBranchAddress ("HistIntegralErr", &HistIntegralErr548);
-  double HistIntegralErrArray[100];
+  double HistIntegralArray548 [100];
+  double HistIntegralErrArray548[100];
 
   double avets12Irrad548;
   outputTree548 -> SetBranchAddress ("AVE_TS12_IRRAD" , &avets12Irrad548);
@@ -140,10 +138,120 @@ void UCNCounts_17003A_Taraneh_edit_ver1(){
     BaselineIrradArray548[counts_548] = BaselineIrrad548;
     BaselineIrradErrArray548[counts_548] = BaselineIrradErr548;
     BaselineIntegralArray548[counts_548] = BaselineIntegral548;
-    BaselineIrradIntegralArray[counts_548] = BaselineIrradIntegral548;
+    BaselineIrradIntegralArray548[counts_548] = BaselineIrradIntegral548;
     UCNIntegralManualArray548[counts_548] = HistIntegral548 - BaselineIntegral548;
     UCNIntegralManualErrArray548[counts_548] = sqrt(HistIntegral548 - BaselineIntegral548);
     counts_548++;
   }
+
+  // *******************
+  //     GRAPHS
+  // ******************
+
+  TCanvas *canvas_cylceNum =  new TCanvas("canvas_cycleNum" , " " , 1200, 900);
+  canvas_cycleNum-> Divide(2,2);
+
+  TPad *p5 = canvas_cycleNum->cd(1);
+  p5->SetLogy(); 
+  TGraphErrors *gr548_cyclecounts = new TGraphErrors (counts_548 , cycleNumberArray548, UCNIntegralArray548, 0 , UCNIntegralErrArray548);
+  gr548_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
+  gr548_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
+  gr548_cyclecounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
+  gr548_cyclecounts -> GetYaxis()-> SetRangeUser(100, 500000);
+  gr548_cyclecounts -> GetXaxis() -> SetTitleSize(0.05);
+  gr548_cyclecounts -> GetXaxis() -> SetTitleOffset(1.0);
+  gr548_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
+  gr548_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
+  
+  gr548_cyclecounts -> SetMarkerStyle(20);
+  
+  
+  TGraphErrors *gr548_cyclehist = new TGraphErrors(counts_548, cycleNumberArray548 , HistIntegralArray548, 0, HistIntegralErrArray548);
+  
+  gr548_cyclehist -> SetTitle("UCN Counts vs Cycle Delay Time");
+  gr548_cyclehist -> GetXaxis()-> SetTitle("Cycle Delay Time (s)" );
+  gr548_cyclehist -> GetYaxis()-> SetTitle("Cycle UCN Counts");
+  gr548_cyclehist -> GetYaxis()-> SetRangeUser(1000, 500000);
+  gr548_cyclehist -> GetXaxis() -> SetTitleSize(0.05);
+  gr548_cyclehist -> GetXaxis() -> SetTitleOffset(1.0);
+  gr548_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
+  gr548_cyclehist -> GetYaxis() -> SetTitleOffset(0.9);
+  gr548_cyclehist -> SetMarkerColor(2);
+  gr548_cyclehist -> SetMarkerStyle(20);
+
+  TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
+  leg2 -> AddEntry(gr548_cyclecounts , "Without Background" , "p") ;
+  leg2 -> AddEntry(gr548_cyclehist , "With Background" , "p") ;
+  leg2 -> SetTextSize(0.05);
+  
+  gr548_cyclecounts -> Draw("Ap");
+  gr548_cyclehist -> Draw("p");
+  
+  leg2-> Draw();
+  
+  canvas_cycleNum -> cd(2);
+  TGraphErrors *gr548_cycledelay = new TGraphErrors (counts_548 , cycleNumberArray548, delaytimeArray548, 0 , 0);
+  gr548_cycledelay -> SetTitle("Delay Time vs Cycle Number");
+  gr548_cycledelay -> GetXaxis()-> SetTitle("Cycle Number" );
+  gr548_cycledelay -> GetYaxis()-> SetTitle("Cycle Delay Time (s)");
+  gr548_cycledelay -> GetXaxis() -> SetTitleSize(0.05);
+  gr548_cycledelay -> GetXaxis() -> SetTitleOffset(1.0);
+  gr548_cycledelay -> GetYaxis() -> SetTitleSize(0.05); 
+  gr548_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
+  
+  gr548_cycledelay -> SetMarkerStyle(20);
+  
+  gr548_cycledelay -> Draw("Ap");
+  
+  
+  canvas_cycleNum -> cd(3);
+  TGraphErrors *gr548_cycletempIrrad = new TGraphErrors (counts_548 , cycleNumberArray548, avets12IrradArray548, 0 , ts12IrradErr548);
+  
+  gr548_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr548_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr548_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
+  gr548_cycletempIrrad -> SetMarkerStyle(20);
+  gr548_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 2.3);
+  gr548_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
+  gr548_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
+  gr548_cycletempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
+  gr548_cycletempIrrad -> GetYaxis() -> SetTitleOffset(0.9);
+  
+  TGraphErrors *gr548_cycletempValveOpen = new TGraphErrors (counts_548 , cycleNumberArray548, avets12ValveOpenArray548, 0 , ts12ValveOpenErr548);
+  
+  gr548_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr548_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr548_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Number");
+  gr548_cycletempValveOpen -> SetMarkerStyle(20);
+  gr548_cycletempValveOpen -> SetMarkerColor(2);
+  gr548_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
+  gr548_cycletempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
+  gr548_cycletempValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
+  gr548_cycletempValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
+
+  TLegend *leg = new TLegend(0.4,0.7, 0.9, 0.9);
+  leg -> AddEntry(gr548_cycletempIrrad , "Irradiation time + delay time" , "p") ;
+  leg -> AddEntry(gr548_cycletempValveOpen , "Valve open" , "p") ;
+  leg -> SetTextSize(0.05);
+  
+  gr548_cycletempIrrad -> Draw("AP");
+  gr548_cycletempValveOpen -> Draw("p");
+  leg -> Draw();
+  
+  canvas_cycleNum -> cd(4);
+  TGraphErrors *gr548_cyclecur = new TGraphErrors (counts_548 , cycleNumberArray548 , avecurArray548, 0, ErrcurArray548 );
+  gr548_cyclecur -> SetTitle(" Average Beam Current vs Cycle Number");
+  gr548_cyclecur -> GetYaxis()-> SetTitle("Average Beam Current (#muA)" );
+  gr548_cyclecur -> GetXaxis()-> SetTitle("Cycle Number");
+  //gr548_cyclecur -> GetYaxis()-> SetRangeUser(1, 500000);
+  //  gr548_cyclecur -> GetXaxis()-> SetLimits(0.82 ,0.90);
+  gr548_cyclecur -> GetXaxis() -> SetTitleSize(0.05);
+  gr548_cyclecur -> GetXaxis() -> SetTitleOffset(1.0);
+  gr548_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
+  gr548_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
+  
+  gr548_cyclecur -> SetMarkerStyle(20);
+  gr548_cyclecur -> Draw("Ap");
+  canvas_cycleNum -> Update();
 
 }
