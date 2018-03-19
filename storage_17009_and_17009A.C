@@ -123,7 +123,7 @@ void storage_17009_and_17009A(){
   
   gr_b1muA -> SetTitle("Storage Lifetime vs Irradiation Time");
   gr_b1muA -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
-  gr_b1muA -> GetXaxis()-> SetTitle("Irradiation Time");
+  gr_b1muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
   gr_b1muA -> GetYaxis()-> SetRangeUser(25, 38);
   gr_b1muA -> GetXaxis() -> SetLimits(0,130);
   gr_b1muA -> GetXaxis() -> SetTitleSize(0.05);
@@ -156,7 +156,7 @@ void storage_17009_and_17009A(){
   gr_10s -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
   gr_10s -> GetXaxis()-> SetTitle("Beam Current (#muA)");
   gr_10s -> GetYaxis()-> SetRangeUser(25, 38);
-  // gr_10s -> GetXaxis() -> SetLimits(0,130);
+   gr_10s -> GetXaxis() -> SetLimits(0,11);
   gr_10s -> GetXaxis() -> SetTitleSize(0.05);
   gr_10s -> GetXaxis() -> SetTitleOffset(1.0);
   gr_10s -> GetYaxis() -> SetTitleSize(0.05); 
