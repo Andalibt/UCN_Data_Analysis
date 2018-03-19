@@ -71,7 +71,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("outputTree_StorageTime_532.root", "RECREATE");
+  TFile hfile ("outputTree_552.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -280,7 +280,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // *************************************************************
   
 
-  Int_t StorageTimeFiles[10] ={532};
+  Int_t StorageTimeFiles[10] ={552};
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;
@@ -936,7 +936,10 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
       Double_t min_range[100000];
       Double_t max_range[100000];
       Double_t middle_range[100000];
-   
+      int bmin[1000000];
+      int bmax[1000000];
+
+      
 
       // Here I find for each cycle, which bin is the start of the cycle and which is the end.
       // This is important because when I want to do the fit, I have to provide a range of values.
@@ -975,17 +978,19 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
       double BaselineInt[100000];
       double BaselineIrradInt[100000];
 
-      for(ULong64_t j=0;j<eventTot;j++) {
-	uinli6->GetEvent(j);
-	for ( int i = 0; i < cycleStartTimes.size(); i++){
-	  if (tUnixTimePrecise_li6 < irradiationStartTime[i]){
-	    BaselineInt[i]++;
-	  }
-	  if(tUnixTimePrecise_li6 > irradiationStartTime && tUnixTimePrecise_li6 < cyclevalveopen[i]){
-	    BaselineIrradInt[i]++;
-	  }
-	}
-      }
+      //for(ULong64_t j=0;j<eventTot;j++) {
+      //	uinli6->GetEvent(j);
+      //for ( int i = 0; i < cycleStartTimes.size(); i++){
+      //bmin[i] = UCN_rate_li6 -> GetXaxis() -> FindBin(cyclevalveclose[i-1]);
+      //bmax[i] = UCN_rate_li6 -> GetXaxis() -> FindBin(irradiationStartTime[i]);
+	  //if (tUnixTimePrecise_li6 < irradiationStartTime[i]){
+	  // BaselineInt[i]++;
+	  //}
+	  // if(tUnixTimePrecise_li6 > irradiationStartTime && tUnixTimePrecise_li6 < cyclevalveopen[i]){
+	  // BaselineIrradInt[i]++;
+	  //}
+      //	}
+      // }
       
 
 
