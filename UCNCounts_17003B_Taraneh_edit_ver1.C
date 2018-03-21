@@ -181,9 +181,18 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   double ts12ValveOpenErr551 [100];
   double ts12ValveOpenErr552 [100];
 
-  double avecur548;
-  outputTree548 -> SetBranchAddress ("AVE_PRDCUR" , &avecur548);
-  double avecurArray548 [100];
+  double avecur549;
+  double avecur550;
+  double avecur551;
+  double avecur552;
+  outputTree549 -> SetBranchAddress ("AVE_PRDCUR" , &avecur549);
+  outputTree550 -> SetBranchAddress ("AVE_PRDCUR" , &avecur550);
+  outputTree551 -> SetBranchAddress ("AVE_PRDCUR" , &avecur551);
+  outputTree552 -> SetBranchAddress ("AVE_PRDCUR" , &avecur552);
+  double avecurArray549 [100];
+  double avecurArray550 [100];
+  double avecurArray551 [100];
+  double avecurArray552 [100];
 
   double maxcur549;
   double maxcur550;
@@ -257,8 +266,8 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   
   double BaselineIrradErr549;
   double BaselineIrradErr550;
-  double BaselineIrradErr550;
-  double BaselineIrradErr550;
+  double BaselineIrradErr551;
+  double BaselineIrradErr552;
   outputTree549 -> SetBranchAddress ("BaselineDuringIrradErr" , &BaselineIrradErr549);
   outputTree550 -> SetBranchAddress ("BaselineDuringIrradErr" , &BaselineIrradErr550);
   outputTree551 -> SetBranchAddress ("BaselineDuringIrradErr" , &BaselineIrradErr551);
@@ -482,11 +491,11 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   // ******
   
 
-  TCanvas *canvas_cylceNum =  new TCanvas("canvas_cycleNum" , " " , 1200, 900);
-  canvas_cycleNum-> Divide(2,2);
+  TCanvas *c549_cylceNum =  new TCanvas("c549_cycleNum" , "c549_cycleNum " , 1200, 900);
+  c549_cycleNum-> Divide(2,2);
 
-  TPad *p5 = canvas_cycleNum->cd(1);
-  p5->SetLogy(); 
+  TPad *p549_1 = c549_cycleNum->cd(1);
+  p549_1->SetLogy(); 
   TGraphErrors *gr549_cyclecounts = new TGraphErrors (counts_549 , cycleNumberArray549, UCNIntegralArray549, 0 , UCNIntegralErrArray549);
   gr549_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
   gr549_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
@@ -530,15 +539,15 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
   leg2 -> AddEntry(gr549_cyclecounts , "Without Background (fit)" , "p") ;
   leg2 -> AddEntry(gr549_cyclehist , "With Background" , "p") ;
-  leg2 -> AddEntry(gr549_cyclecountmanual, "Without Background" , "p"); 
+  //leg2 -> AddEntry(gr549_cyclecountmanual, "Without Background" , "p"); 
   leg2 -> SetTextSize(0.05);
   
   gr549_cyclecounts -> Draw("Ap");
   gr549_cyclehist -> Draw("p");
-  gr549_cyclecountmanual -> Draw("p");
+  //gr549_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
-  canvas_cycleNum -> cd(2);
+  c549_cycleNum -> cd(2);
   TGraphErrors *gr549_cycledelay = new TGraphErrors (counts_549 , cycleNumberArray549, delaytimeArray549, 0 , 0);
   gr549_cycledelay -> SetTitle("Delay Time vs Cycle Number");
   gr549_cycledelay -> GetXaxis()-> SetTitle("Cycle Number" );
@@ -553,7 +562,7 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   gr549_cycledelay -> Draw("Ap");
   
   
-  canvas_cycleNum -> cd(3);
+  c549_cycleNum -> cd(3);
   TGraphErrors *gr549_cycletempIrrad = new TGraphErrors (counts_549 , cycleNumberArray549, avets12IrradArray549, 0 , ts12IrradErr549);
   
   gr549_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
@@ -587,7 +596,7 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   gr549_cycletempValveOpen -> Draw("p");
   leg -> Draw();
   
-  canvas_cycleNum -> cd(4);
+  c549_cycleNum -> cd(4);
   TGraphErrors *gr549_cyclecur = new TGraphErrors (counts_549 , cycleNumberArray549 , avecurArray549, 0, ErrcurArray549 );
   gr549_cyclecur -> SetTitle(" Average Beam Current vs Cycle Number");
   gr549_cyclecur -> GetYaxis()-> SetTitle("Average Beam Current (#muA)" );
@@ -601,7 +610,7 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   
   gr549_cyclecur -> SetMarkerStyle(20);
   gr549_cyclecur -> Draw("Ap");
-  canvas_cycleNum -> Update();
+  c549_cycleNum -> Update();
 
 
 
@@ -609,8 +618,8 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   // TEMPERATURE AND COUNTS
   // ************************
 
-  TCanvas *c_counttemp = new TCanvas ("c_counttemp" , " " , 1200, 900);
-  c_counttemp -> SetLogy();
+  TCanvas *c549_counttemp = new TCanvas ("c549_counttemp" , "c549_counttemp " , 1200, 900);
+  c549_counttemp -> SetLogy();
 
   TGraphErrors *gr549_countIrrad = new TGraphErrors (counts_549, avets12IrradArray549, UCNIntegralArray549, ts12IrradErr549, UCNIntegralErrArray549);
   gr549_countIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
@@ -685,11 +694,11 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   // ******
   
 
-  TCanvas *canvas_cylceNum =  new TCanvas("canvas_cycleNum" , " " , 1200, 900);
-  canvas_cycleNum-> Divide(2,2);
+  TCanvas *c550_cylceNum =  new TCanvas("c550_cycleNum" , "c550_cycleNum " , 1200, 900);
+  c550_cycleNum-> Divide(2,2);
 
-  TPad *p5 = canvas_cycleNum->cd(1);
-  p5->SetLogy(); 
+  TPad *p550_1 = c550_cycleNum->cd(1);
+  p550_1->SetLogy(); 
   TGraphErrors *gr550_cyclecounts = new TGraphErrors (counts_550 , cycleNumberArray550, UCNIntegralArray550, 0 , UCNIntegralErrArray550);
   gr550_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
   gr550_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
@@ -732,10 +741,10 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   
   gr550_cyclecounts -> Draw("Ap");
   gr550_cyclehist -> Draw("p");
-  gr550_cyclecountmanual -> Draw("p");
+  //gr550_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
-  canvas_cycleNum -> cd(2);
+  c550_cycleNum -> cd(2);
   TGraphErrors *gr550_cycledelay = new TGraphErrors (counts_550 , cycleNumberArray550, delaytimeArray550, 0 , 0);
   gr550_cycledelay -> SetTitle("Delay Time vs Cycle Number");
   gr550_cycledelay -> GetXaxis()-> SetTitle("Cycle Number" );
@@ -750,7 +759,7 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   gr550_cycledelay -> Draw("Ap");
   
   
-  canvas_cycleNum -> cd(3);
+  c550_cycleNum -> cd(3);
   TGraphErrors *gr550_cycletempIrrad = new TGraphErrors (counts_550 , cycleNumberArray550, avets12IrradArray550, 0 , ts12IrradErr550);
   
   gr550_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
@@ -780,7 +789,7 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   gr550_cycletempValveOpen -> Draw("p");
   leg -> Draw();
   
-  canvas_cycleNum -> cd(4);
+  c550_cycleNum -> cd(4);
   TGraphErrors *gr550_cyclecur = new TGraphErrors (counts_550 , cycleNumberArray550 , avecurArray550, 0, ErrcurArray550 );
   gr550_cyclecur -> SetTitle(" Average Beam Current vs Cycle Number");
   gr550_cyclecur -> GetYaxis()-> SetTitle("Average Beam Current (#muA)" );
@@ -794,7 +803,7 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   
   gr550_cyclecur -> SetMarkerStyle(20);
   gr550_cyclecur -> Draw("Ap");
-  canvas_cycleNum -> Update();
+  c550_cycleNum -> Update();
 
 
 
@@ -802,8 +811,8 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   // TEMPERATURE AND COUNTS
   // ************************
 
-  TCanvas *c_counttemp = new TCanvas ("c_counttemp" , " " , 1200, 900);
-  c_counttemp -> SetLogy();
+  TCanvas *c550_counttemp = new TCanvas ("c550_counttemp" , "c550_counttemp " , 1200, 900);
+  c550_counttemp -> SetLogy();
 
   TGraphErrors *gr550_countIrrad = new TGraphErrors (counts_550, avets12IrradArray550, UCNIntegralArray550, ts12IrradErr550, UCNIntegralErrArray550);
   gr550_countIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
@@ -872,11 +881,11 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   // ******
   
 
-  TCanvas *canvas_cylceNum =  new TCanvas("canvas_cycleNum" , " " , 1200, 900);
-  canvas_cycleNum-> Divide(2,2);
+  TCanvas *c551_cylceNum =  new TCanvas("c551_cycleNum" , "c551_cycleNum " , 1200, 900);
+  c551_cycleNum-> Divide(2,2);
 
-  TPad *p5 = canvas_cycleNum->cd(1);
-  p5->SetLogy(); 
+  TPad *p551_1 = c551_cycleNum->cd(1);
+  p551_1->SetLogy(); 
   TGraphErrors *gr551_cyclecounts = new TGraphErrors (counts_551 , cycleNumberArray551, UCNIntegralArray551, 0 , UCNIntegralErrArray551);
   gr551_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
   gr551_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
@@ -919,10 +928,10 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   
   gr551_cyclecounts -> Draw("Ap");
   gr551_cyclehist -> Draw("p");
-  gr551_cyclecountmanual -> Draw("p");
+  // gr551_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
-  canvas_cycleNum -> cd(2);
+  c551_cycleNum -> cd(2);
   TGraphErrors *gr551_cycledelay = new TGraphErrors (counts_551 , cycleNumberArray551, delaytimeArray551, 0 , 0);
   gr551_cycledelay -> SetTitle("Delay Time vs Cycle Number");
   gr551_cycledelay -> GetXaxis()-> SetTitle("Cycle Number" );
@@ -933,11 +942,10 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   gr551_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
   
   gr551_cycledelay -> SetMarkerStyle(20);
-  
   gr551_cycledelay -> Draw("Ap");
   
   
-  canvas_cycleNum -> cd(3);
+  c551_cycleNum -> cd(3);
   TGraphErrors *gr551_cycletempIrrad = new TGraphErrors (counts_551 , cycleNumberArray551, avets12IrradArray551, 0 , ts12IrradErr551);
   
   gr551_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
@@ -967,7 +975,7 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   gr551_cycletempValveOpen -> Draw("p");
   leg -> Draw();
   
-  canvas_cycleNum -> cd(4);
+  c551_cycleNum -> cd(4);
   TGraphErrors *gr551_cyclecur = new TGraphErrors (counts_551 , cycleNumberArray551 , avecurArray551, 0, ErrcurArray551 );
   gr551_cyclecur -> SetTitle(" Average Beam Current vs Cycle Number");
   gr551_cyclecur -> GetYaxis()-> SetTitle("Average Beam Current (#muA)" );
@@ -981,7 +989,7 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   
   gr551_cyclecur -> SetMarkerStyle(20);
   gr551_cyclecur -> Draw("Ap");
-  canvas_cycleNum -> Update();
+  c551_cycleNum -> Update();
 
 
 
@@ -989,8 +997,8 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   // TEMPERATURE AND COUNTS
   // ************************
 
-  TCanvas *c_counttemp = new TCanvas ("c_counttemp" , " " , 1200, 900);
-  c_counttemp -> SetLogy();
+  TCanvas *c551_counttemp = new TCanvas ("c551_counttemp" , "c551_counttemp " , 1200, 900);
+  c551_counttemp -> SetLogy();
 
   TGraphErrors *gr551_countIrrad = new TGraphErrors (counts_551, avets12IrradArray551, UCNIntegralArray551, ts12IrradErr551, UCNIntegralErrArray551);
   gr551_countIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
@@ -1060,11 +1068,11 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   // ******
   
 
-  TCanvas *canvas_cylceNum =  new TCanvas("canvas_cycleNum" , " " , 1200, 900);
-  canvas_cycleNum-> Divide(2,2);
+  TCanvas *c552_cylceNum =  new TCanvas("c552_cycleNum" , "c552_cycleNum " , 1200, 900);
+  c552_cycleNum-> Divide(2,2);
 
-  TPad *p5 = canvas_cycleNum->cd(1);
-  p5->SetLogy(); 
+  TPad *p552_1 = c552_cycleNum->cd(1);
+  p552_1->SetLogy(); 
   TGraphErrors *gr552_cyclecounts = new TGraphErrors (counts_552 , cycleNumberArray552, UCNIntegralArray552, 0 , UCNIntegralErrArray552);
   gr552_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
   gr552_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
@@ -1107,10 +1115,10 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   
   gr552_cyclecounts -> Draw("Ap");
   gr552_cyclehist -> Draw("p");
-  gr552_cyclecountmanual -> Draw("p");
+  //gr552_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
-  canvas_cycleNum -> cd(2);
+  c552_cycleNum -> cd(2);
   TGraphErrors *gr552_cycledelay = new TGraphErrors (counts_552 , cycleNumberArray552, delaytimeArray552, 0 , 0);
   gr552_cycledelay -> SetTitle("Delay Time vs Cycle Number");
   gr552_cycledelay -> GetXaxis()-> SetTitle("Cycle Number" );
@@ -1125,7 +1133,7 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   gr552_cycledelay -> Draw("Ap");
   
   
-  canvas_cycleNum -> cd(3);
+  c552_cycleNum -> cd(3);
   TGraphErrors *gr552_cycletempIrrad = new TGraphErrors (counts_552 , cycleNumberArray552, avets12IrradArray552, 0 , ts12IrradErr552);
   
   gr552_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
@@ -1155,7 +1163,7 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   gr552_cycletempValveOpen -> Draw("p");
   leg -> Draw();
   
-  canvas_cycleNum -> cd(4);
+  c552_cycleNum -> cd(4);
   TGraphErrors *gr552_cyclecur = new TGraphErrors (counts_552 , cycleNumberArray552 , avecurArray552, 0, ErrcurArray552 );
   gr552_cyclecur -> SetTitle(" Average Beam Current vs Cycle Number");
   gr552_cyclecur -> GetYaxis()-> SetTitle("Average Beam Current (#muA)" );
@@ -1169,7 +1177,7 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   
   gr552_cyclecur -> SetMarkerStyle(20);
   gr552_cyclecur -> Draw("Ap");
-  canvas_cycleNum -> Update();
+  c552_cycleNum -> Update();
 
 
 
@@ -1177,8 +1185,8 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   // TEMPERATURE AND COUNTS
   // ************************
 
-  TCanvas *c_counttemp = new TCanvas ("c_counttemp" , " " , 1200, 900);
-  c_counttemp -> SetLogy();
+  TCanvas *c552_counttemp = new TCanvas ("c552_counttemp" , "c552_counttemp " , 1200, 900);
+  c552_counttemp -> SetLogy();
 
   TGraphErrors *gr552_countIrrad = new TGraphErrors (counts_552, avets12IrradArray552, UCNIntegralArray552, ts12IrradErr552, UCNIntegralErrArray552);
   gr552_countIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
