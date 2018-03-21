@@ -328,6 +328,8 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
 
   for (ULong64_t j = 0 ; j < events549 ; j++){
     outputTree549 -> GetEvent(j);
+    if (j==0 && j==2)
+      continue;
     UCNIntegralArray549[counts_549] = UCNIntegral549;
     UCNIntegralErrArray549[counts_549] = UCNIntegralErr549;
     HistIntegralArray549[counts_549] = HistIntegral549;
