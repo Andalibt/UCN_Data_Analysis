@@ -24,6 +24,30 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
 
   // ADD THE IMPORTANT VARIABLES AND READ OFF THE TREE
 
+  double irradStartTimes549;
+  double irradStartTimes550;
+  double irradStartTimes551;
+  double irradStartTimes552;
+
+  outputTree549 -> SetBranchAddress("irradStartTimes" , &irradStartTimes549);
+  outputTree550 -> SetBranchAddress("irradStartTimes" , &irradStartTimes550);
+  outputTree551 -> SetBranchAddress("irradStartTimes" , &irradStartTimes551);
+  outputTree552 -> SetBranchAddress("irradStartTimes" , &irradStartTimes552);
+
+  double cycleStartTimes549;
+  double cycleStartTimes550;
+  double cycleStartTimes551;
+  double cycleStartTimes552;
+
+  outputTree549 -> SetBranchAddress("cycleStartTimes" , &cycleStartTimes549);
+  outputTree550 -> SetBranchAddress("cycleStartTimes" , &cycleStartTimes550);
+  outputTree551 -> SetBranchAddress("cycleStartTimes" , &cycleStartTimes551);
+  outputTree552 -> SetBranchAddress("cycleStartTimes" , &cycleStartTimes552);
+  
+
+
+
+  
   double cycleDelayTime549;
   double cycleDelayTime550;
   double cycleDelayTime551;
@@ -354,8 +378,9 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
     BaselineIntegralArray549[counts_549] = BaselineIntegral549;
     BaselineIrradIntegralArray549[counts_549] = BaselineIrradIntegral549;
     UCNIntegralManualArray549[counts_549] = HistIntegral549 - BaselineIntegral549;
-    cout << UCNIntegralManualArray549[counts_549] << endl;
+    // cout << UCNIntegralManualArray549[counts_549] << endl;
     UCNIntegralManualErrArray549[counts_549] = sqrt(HistIntegral549 - BaselineIntegral549);
+    cout << " The irradiation time for run 549 for cycle "<< counts_549 << " is "<< cycleStartTimes549 - irradStartTimes549 << endl; 
     counts_549++;
   }
 
@@ -394,8 +419,9 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
     BaselineIntegralArray550[counts_550] = BaselineIntegral550;
     BaselineIrradIntegralArray550[counts_550] = BaselineIrradIntegral550;
     UCNIntegralManualArray550[counts_550] = HistIntegral550 - BaselineIntegral550;
-    cout << UCNIntegralManualArray550[counts_550] << endl;
+    // cout << UCNIntegralManualArray550[counts_550] << endl;
     UCNIntegralManualErrArray550[counts_550] = sqrt(HistIntegral550 - BaselineIntegral550);
+    cout << " The irradiation time for run 550  for cycle "<< counts_550 << " is "<< cycleStartTimes550 - irradStartTimes550 << endl; 
     counts_550++;
   }
 
@@ -434,8 +460,9 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
     BaselineIntegralArray551[counts_551] = BaselineIntegral551;
     BaselineIrradIntegralArray551[counts_551] = BaselineIrradIntegral551;
     UCNIntegralManualArray551[counts_551] = HistIntegral551 - BaselineIntegral551;
-    cout << UCNIntegralManualArray551[counts_551] << endl;
+    // cout << UCNIntegralManualArray551[counts_551] << endl;
     UCNIntegralManualErrArray551[counts_551] = sqrt(HistIntegral551 - BaselineIntegral551);
+    cout << " The irradiation time for run 551 for cycle " << counts_551 << " is "<< cycleStartTimes551 - irradStartTimes551 << endl; 
     counts_551++;
   }
 
@@ -475,8 +502,9 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
     BaselineIntegralArray552[counts_552] = BaselineIntegral552;
     BaselineIrradIntegralArray552[counts_552] = BaselineIrradIntegral552;
     UCNIntegralManualArray552[counts_552] = HistIntegral552 - BaselineIntegral552;
-    cout << UCNIntegralManualArray552[counts_552] << endl;
+    // cout << UCNIntegralManualArray552[counts_552] << endl;
     UCNIntegralManualErrArray552[counts_552] = sqrt(HistIntegral552 - BaselineIntegral552);
+    cout << " The irradiation time for run 552 for cycle "<< counts_552<< " is "<< cycleStartTimes552 - irradStartTimes552 << endl; 
     counts_552++;
   }
 
