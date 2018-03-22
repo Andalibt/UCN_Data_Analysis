@@ -352,7 +352,7 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
 
   for (ULong64_t j = 0 ; j < events549 ; j++){
     outputTree549 -> GetEvent(j);
-    if (j==0 && j==2)
+    if (j==0 || j==2)
       continue;
     UCNIntegralArray549[counts_549] = UCNIntegral549;
     UCNIntegralErrArray549[counts_549] = UCNIntegralErr549;
@@ -478,6 +478,8 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
 
   for (ULong64_t j = 0 ; j < events552 ; j++){
     outputTree552 -> GetEvent(j);
+    if ( j==3)
+      continue;
     UCNIntegralArray552[counts_552] = UCNIntegral552;
     UCNIntegralErrArray552[counts_552] = UCNIntegralErr552;
     HistIntegralArray552[counts_552] = HistIntegral552;
@@ -1224,7 +1226,7 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   gr552_countIrrad -> GetYaxis()-> SetTitle("UCN Counts");
   gr552_countIrrad -> SetMarkerStyle(20);
   gr552_countIrrad -> GetYaxis() -> SetRangeUser(10,500000);
-  gr552_countIrrad -> GetXaxis()-> SetLimits(1.4, 1.8);
+  gr552_countIrrad -> GetXaxis()-> SetLimits(0.85, 1.1);
   gr552_countIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr552_countIrrad -> GetXaxis() -> SetTitleOffset(1.0);
   gr552_countIrrad -> GetYaxis() -> SetTitleSize(0.05); 
@@ -1237,7 +1239,7 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   gr552_HistIrrad -> GetYaxis()-> SetTitle("UCN Counts");
   gr552_HistIrrad -> SetMarkerStyle(25);
   gr552_HistIrrad -> GetYaxis() -> SetRangeUser(100,500000);
-  gr552_HistIrrad -> GetXaxis()-> SetLimits(1.4, 1.8);
+  gr552_HistIrrad -> GetXaxis()-> SetLimits(1, 1.4);
   gr552_HistIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr552_HistIrrad -> GetXaxis() -> SetTitleOffset(1.0);
   gr552_HistIrrad -> GetYaxis() -> SetTitleSize(0.05); 
@@ -1278,12 +1280,42 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   //gr552_HistValveOpen -> Draw("p");
   leg3 -> Draw();
 
+  // *******************************************
+  // OVERALL
+  // ******************************************
 
+  TCanvas *cAll = new TCanvas ("cAll" , "cAll" , 1200, 900);
+  cAll -> SetLogy();
 
+  gr549_countIrrad -> GetYaxis()-> SetRangeUser(1, 1200000);
+  gr549_countIrrad -> GetXaxis() -> SetLimits(0.8, 1.8);
+  gr549_countIrrad -> SetMarkerStyle(20);
+  gr549_HistIrrad -> SetMarkerStyle(25);
+  gr550_countIrrad -> SetMarkerColor(2);
+  gr550_HistIrrad -> SetMarkerColor(2);
+  gr551_countIrrad -> SetMarkerColor(9);
+  gr551_HistIrrad -> SetMarkerColor(9);
 
+  TLegend *legAll = new TLegend (0.2, 0.7, 0.9, 0.9);
+  legAll -> SetTextSize(0.02);
+  legAll -> AddEntry(gr549_countIrrad , "Temp during rradiation time + delay time, counts without backgroun (fit) , 0 s delay time", "p");
+  legAll -> AddEntry(gr549_HistIrrad , "Temp during rradiation time + delay time, counts with backgroun , 0 s delay time", "p");
+  legAll -> AddEntry(gr550_countIrrad , "Temp during rradiation time + delay time, counts without backgroun (fit) , 20 s delay time", "p");
+  legAll -> AddEntry(gr550_HistIrrad , "Temp during rradiation time + delay time, counts with backgroun , 20 s delay time", "p");
+  legAll -> AddEntry(gr551_countIrrad , "Temp during rradiation time + delay time, counts without backgroun (fit) , 50 s delay time", "p");
+  legAll -> AddEntry(gr551_HistIrrad , "Temp during rradiation time + delay time, counts with backgroun , 50 s delay time", "p");
 
+  
 
-
+  gr549_countIrrad -> Draw("ap");
+  gr549_HistIrrad -> Draw("p");
+  gr550_countIrrad -> Draw("p");
+  gr550_HistIrrad -> Draw("p");
+  gr551_countIrrad -> Draw("p");
+   gr551_HistIrrad -> Draw("p");
+  gr552_countIrrad -> Draw("p");
+  gr552_HistIrrad -> Draw("p");
+  legAll -> Draw();
 
 
 
