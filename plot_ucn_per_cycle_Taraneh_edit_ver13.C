@@ -35,13 +35,13 @@ double safe_exp(double x) {
 Double_t Li6FitFunc (Double_t *x, Double_t *par){
   Double_t Li6_Fit;
   
-  Li6_Fit = par[3] + (x[0] > par[0] && x[0] < par[2]) * par[1]*par[4] + (x[0] > par[2] + par[9]+ par[11]) * par[6]*(1 - exp(-(x[0] - par[2] - par[11]- par[9])/par[7]))*exp(-(x[0] - par[2] - par[11] - par[9])/par[8]);
+  Li6_Fit = par[3]* (x[0] < par[0]) + (x[0] > par[0] && x[0] < par[2]) * par[1]*par[4] + (x[0] > par[2] + par[9]+ par[11]) * par[6]*(1 - exp(-(x[0] - par[2] - par[11]- par[9])/par[7]))*exp(-(x[0] - par[2] - par[11] - par[9])/par[8]);
  
 
   // par[0] : irradiation start time
-  // par[1] : BaselineIrrad
+  // par[1] : Baseline during irradiation
   // par[2] : cycle start time
-  // par[3] : Baseline after irradiation
+  // par[3] : Baseline before  irradiation
   // par[4] : average predicted current during the cycle
   // par[5] : cycle valve open time
   // par[6] : amplitude
@@ -940,14 +940,16 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
       int bmax[1000000];
       double minmin_range[1000000];
       double firstTS; // first time stamp
-      
+      int bin1[1000000];
+      int bin2[1000000];
+      int bin3[1000000];
 
       // Here I find for each cycle, which bin is the start of the cycle and which is the end.
       // This is important because when I want to do the fit, I have to provide a range of values.
       
       for(ULong64_t j=0;j<eventTot;j++) {
 	uinli6->GetEvent(j);
-	if( j==0) {
+	if( j==11) {
 	  firstTS = tUnixTimePrecise_li6;
 	}
 	for ( int i = 0; i < cycleStartTimes.size(); i++){
@@ -961,9 +963,12 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	  max_range[i] = cyclevalveclose[i];
 	  Bin_low[i] = UCN_rate_li6 -> GetXaxis() -> FindBin(cyclevalveopen[i]);
 	  Bin_high[i] = UCN_rate_li6 ->  GetXaxis() -> FindBin(cyclevalveclose[i]);
+	  bin1[i] = UCN_rate_li6 -> GetXaxis() -> FindBin(minmin_range[i]);
+	  bin2[i] = UCN_rate_li6 -> GetXaxis() -> FindBin(irradiationStartTime[i]);
+	  bin3[i] = UCN_rate_li6 -> GetXaxis() -> FindBin(cycleStartTimes[i]);
 	}
       }
-      
+ 
       for ( int i = 0; i < cycleStartTimes.size(); i++){
 	UCN_rate_li6 -> GetXaxis()-> SetRange(min_range[i] , max_range[i]);
 
@@ -988,23 +993,15 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
       double BaselineInt[100000];
       double BaselineIrradInt[100000];
 
-      //for(ULong64_t j=0;j<eventTot;j++) {
-      //	uinli6->GetEvent(j);
-      //for ( int i = 0; i < cycleStartTimes.size(); i++){
-      //bmin[i] = UCN_rate_li6 -> GetXaxis() -> FindBin(cyclevalveclose[i-1]);
-      //bmax[i] = UCN_rate_li6 -> GetXaxis() -> FindBin(irradiationStartTime[i]);
-	  //if (tUnixTimePrecise_li6 < irradiationStartTime[i]){
-	  // BaselineInt[i]++;
-	  //}
-	  // if(tUnixTimePrecise_li6 > irradiationStartTime && tUnixTimePrecise_li6 < cyclevalveopen[i]){
-	  // BaselineIrradInt[i]++;
-	  //}
-      //	}
-      // }
-      
 
 
-      
+	for ( int i = 0; i < cycleStartTimes.size(); i++){
+	  //UCN_rate_li6 -> GetXaxis()-> SetRange(minmin_range[i] , irradiationStartTime[i]);
+	  BaselineInt[i] = UCN_rate_li6 -> Integral(bin1[i] , bin2[i]);
+	  BaselineIrradInt[i] = UCN_rate_li6 -> Integral(bin2[i] , bin3[i]);
+	}
+
+	
       //-----------------------------
       // He3 detector stuff
 
@@ -1102,7 +1099,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 
       gStyle -> SetOptFit(0000);
       for (int i=0 ; i < cycleStartTimes.size(); i++){
-
+   
 	//UCN_rate_li6 -> Scale(scale[i]);
 	//cout << "min_range: " << min_range[i] << endl;
 	//cout << "max_range: " << max_range[i] << endl;
@@ -1115,15 +1112,15 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	TF1 *Li6_Fit_Func = new TF1("Li6FitFunc", Li6FitFunc ,minmin_range[i] , max_range[i] , 12);
 
 	// par[0] : irradiation start time
-	// par[1] : BackgroundIrrad
+	// par[1] : Background during irradiation
 	// par[2] : cycle start time
-	// par[3] : Background after irradiation
+	// par[3] : Background before  irradiation
 	// par[4] : average predicted current during the cycle
 	// par[5] : cycle valve open time
 	// par[6] : amplitude
 	// par[7] : rise time
 	// par[8] : fall time
-	// par[9]: delay
+	// par[9] : delay
 	// par[10]: cycle valve close time
 
 	Li6_Fit_Func -> SetParName(0, "Irradiation Start Time");
@@ -1178,9 +1175,13 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	tauRiseErr[i] = Li6_Fit_Func -> GetParError(7);
 	tauFallErr[i] = Li6_Fit_Func -> GetParError(8);
 	delayErr[i] = Li6_Fit_Func -> GetParError(9);
-	Integral[i] = Li6_Fit_Func -> Integral(cyclevalveopen[i] , cyclevalveclose[i])/BinWidth;
-	IntegralErr[i] = Li6_Fit_Func -> IntegralError(cyclevalveopen[i] , cyclevalveclose[i]);
+	//Integral[i] = Li6_Fit_Func -> Integral(cyclevalveopen[i] , cyclevalveclose[i])/BinWidth;
+	//IntegralErr[i] = Li6_Fit_Func -> IntegralError(cyclevalveopen[i] , cyclevalveclose[i]);
 	//Li6_Fit_Func-> Draw("");
+	//cout <<  (irradiationStartTime[i] - minmin_range[i]) << " "<< baseline[i]<< endl;
+	//cout << BaselineInt[i] << endl;
+	//cout << baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]) << endl;
+	//cout << ( baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]))/BaselineInt[i] << endl;
 	hfile.cd();
       }
       
@@ -1198,6 +1199,9 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
       
       UCN_rate_li6 -> SetBins(NBins, minXrange , maxXrange);
       UCN_rate_Li6_all -> Add (UCN_rate_li6);
+
+
+
 
       //**********************************************************************
       // CHECK THE DETECTOR CUTS FOR Li6 DETECTOR
@@ -1282,20 +1286,20 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	MIN_LND = LND_min[i];
 	Li6CountsCycleStart = numberEventsPerCycle[i];
 	Li6CountsValveOpen = numberEventsPerCycleValveOpen[i];
-	BaselineDuringIrrad = baseline_during_irrad[i]*BinWidth*prdcur_ave[i];
-	Baseline = baseline[i]*BinWidth;
-	Amplitude = amp[i];
+	BaselineDuringIrrad = baseline_during_irrad[i]*prdcur_ave[i]/BinWidth;
+	Baseline = baseline[i]/BinWidth;
+	Amplitude = amp[i]/BinWidth;
 	RiseTime = tauRise[i];
 	FallTime = tauFall[i];
 	DELAY = delay[i];
-	BaselineDuringIrradErr = baseline_during_irrad_Err[i]*BinWidth*prdcur_ave[i];
-	BaselineErr = baselineErr[i]*BinWidth;
-	AmplitudeErr = ampErr[i];
+	BaselineDuringIrradErr = baseline_during_irrad_Err[i]*prdcur_ave[i]/BinWidth;
+	BaselineErr = baselineErr[i]/BinWidth;
+	AmplitudeErr = ampErr[i]/BinWidth;
 	RiseTimeErr = tauRiseErr[i];
 	FallTimeErr = tauFallErr[i];
 	DELAYErr = delayErr[i];
 	UCNIntegral = Integral[i];
-	UCNIntegralErr = IntegralErr[i];
+	UCNIntegralErr = IntegralErr[i]/BinWidth;
 	HistIntegral = Li6_integral[i];
 	cycleNumber = cycleNumberArray[i] ;
 	BaselineIntegral = BaselineInt[i];
