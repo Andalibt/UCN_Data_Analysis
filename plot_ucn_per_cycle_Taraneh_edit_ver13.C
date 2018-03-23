@@ -939,7 +939,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
       int bmin[1000000];
       int bmax[1000000];
       double minmin_range[1000000];
-
+      double firstTS; // first time stamp
       
 
       // Here I find for each cycle, which bin is the start of the cycle and which is the end.
@@ -947,8 +947,16 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
       
       for(ULong64_t j=0;j<eventTot;j++) {
 	uinli6->GetEvent(j);
+	if( j==0) {
+	  firstTS = tUnixTimePrecise_li6;
+	}
 	for ( int i = 0; i < cycleStartTimes.size(); i++){
-	  minmin_range[i] = irradStartTimes[i];
+	  if (i == 0) {
+	    minmin_range[i] = firstTS;
+	  }
+	  if (i > 0){
+	    minmin_range[i] = cyclevalveclose[i-1];
+	  }
 	  min_range[i] = cyclevalveopen[i];
 	  max_range[i] = cyclevalveclose[i];
 	  Bin_low[i] = UCN_rate_li6 -> GetXaxis() -> FindBin(cyclevalveopen[i]);
