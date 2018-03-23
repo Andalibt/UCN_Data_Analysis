@@ -71,7 +71,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("outputTree_552.root", "RECREATE");
+  TFile hfile ("outputTree_524.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -280,7 +280,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // *************************************************************
   
 
-  Int_t StorageTimeFiles[10] ={552};
+  Int_t StorageTimeFiles[10] ={524};
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;
@@ -938,6 +938,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
       Double_t middle_range[100000];
       int bmin[1000000];
       int bmax[1000000];
+      double minmin_range[1000000];
 
       
 
@@ -947,6 +948,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
       for(ULong64_t j=0;j<eventTot;j++) {
 	uinli6->GetEvent(j);
 	for ( int i = 0; i < cycleStartTimes.size(); i++){
+	  minmin_range[i] = irradStartTimes[i];
 	  min_range[i] = cyclevalveopen[i];
 	  max_range[i] = cyclevalveclose[i];
 	  Bin_low[i] = UCN_rate_li6 -> GetXaxis() -> FindBin(cyclevalveopen[i]);
@@ -1102,7 +1104,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	//cout << "delay duration: "<< delayTimeArray[i] << endl;
 	//cout << "Li6Max: " << Li6Max[i] << endl; 
 	//cout << "Li6_integral: " << Li6_integral[i] << endl;
-	TF1 *Li6_Fit_Func = new TF1("Li6FitFunc", Li6FitFunc ,min_range[i] , max_range[i] , 12);
+	TF1 *Li6_Fit_Func = new TF1("Li6FitFunc", Li6FitFunc ,minmin_range[i] , max_range[i] , 12);
 
 	// par[0] : irradiation start time
 	// par[1] : BackgroundIrrad
