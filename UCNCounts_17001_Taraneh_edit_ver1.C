@@ -598,7 +598,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
     counts_524++;
   }
 
-  break;
+
   // *****
   // 525
   // *****
@@ -903,12 +903,12 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
   leg2 -> AddEntry(gr524_cyclecounts , "Without Background (fit)" , "p") ;
   leg2 -> AddEntry(gr524_cyclehist , "With Background" , "p") ;
-  //leg2 -> AddEntry(gr524_cyclecountmanual, "Without Background" , "p"); 
+  leg2 -> AddEntry(gr524_cyclecountmanual, "Without Background" , "p"); 
   leg2 -> SetTextSize(0.05);
   
   gr524_cyclecounts -> Draw("Ap");
   gr524_cyclehist -> Draw("p");
-  //gr524_cyclecountmanual -> Draw("p");
+  gr524_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
   c524_cycleNum -> cd(2);
@@ -933,7 +933,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   gr524_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr524_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
   gr524_cycletempIrrad -> SetMarkerStyle(20);
-  gr524_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 2.3);
+  gr524_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.8, 1.3);
   gr524_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr524_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
   gr524_cycletempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
@@ -991,7 +991,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   gr524_countIrrad -> GetYaxis()-> SetTitle("UCN Counts");
   gr524_countIrrad -> SetMarkerStyle(20);
   gr524_countIrrad -> GetYaxis() -> SetRangeUser(10,500000);
-  gr524_countIrrad -> GetXaxis()-> SetLimits(1.4, 1.8);
+  gr524_countIrrad -> GetXaxis()-> SetLimits(0.8, 0.9);
   gr524_countIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr524_countIrrad -> GetXaxis() -> SetTitleOffset(1.0);
   gr524_countIrrad -> GetYaxis() -> SetTitleSize(0.05); 
@@ -1004,7 +1004,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   gr524_HistIrrad -> GetYaxis()-> SetTitle("UCN Counts");
   gr524_HistIrrad -> SetMarkerStyle(25);
   gr524_HistIrrad -> GetYaxis() -> SetRangeUser(100,500000);
-  gr524_HistIrrad -> GetXaxis()-> SetLimits(1.4, 1.8);
+  gr524_HistIrrad -> GetXaxis()-> SetLimits(0.8, 0.9);
   gr524_HistIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr524_HistIrrad -> GetXaxis() -> SetTitleOffset(1.0);
   gr524_HistIrrad -> GetYaxis() -> SetTitleSize(0.05); 
@@ -1017,7 +1017,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   gr524_countValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr524_countValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
   gr524_countValveOpen -> SetMarkerStyle(20);
-  gr524_countValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
+  gr524_countValveOpen -> GetXaxis()-> SetLimits(0.8, 0.9);
   gr524_countValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr524_countValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
   gr524_countValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
@@ -1025,12 +1025,12 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   gr524_countValveOpen -> SetMarkerColor(2);
 
 
-   TGraphErrors *gr524_HistValveOpen = new TGraphErrors (counts_524, avets12ValveOpenArray524, HistIntegralArray524, ts12ValveOpenErr524, HistIntegralErrArray524);
+  TGraphErrors *gr524_HistValveOpen = new TGraphErrors (counts_524, avets12ValveOpenArray524, HistIntegralArray524, ts12ValveOpenErr524, HistIntegralErrArray524);
   gr524_HistValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
   gr524_HistValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr524_HistValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
   gr524_HistValveOpen -> SetMarkerStyle(25);
-  gr524_HistValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
+  gr524_HistValveOpen -> GetXaxis()-> SetLimits(0.8, 0.9);
   gr524_HistValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr524_HistValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
   gr524_HistValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
@@ -1105,7 +1105,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   
   gr525_cyclecounts -> Draw("Ap");
   gr525_cyclehist -> Draw("p");
-  //gr525_cyclecountmanual -> Draw("p");
+  gr525_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
   c525_cycleNum -> cd(2);
@@ -1292,7 +1292,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   
   gr526_cyclecounts -> Draw("Ap");
   gr526_cyclehist -> Draw("p");
-  // gr526_cyclecountmanual -> Draw("p");
+  gr526_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
   c526_cycleNum -> cd(2);
@@ -1479,7 +1479,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   
   gr527_cyclecounts -> Draw("Ap");
   gr527_cyclehist -> Draw("p");
-  //gr527_cyclecountmanual -> Draw("p");
+  gr527_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
   c527_cycleNum -> cd(2);
@@ -1670,7 +1670,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   
   gr528_cyclecounts -> Draw("Ap");
   gr528_cyclehist -> Draw("p");
-  //gr528_cyclecountmanual -> Draw("p");
+  gr528_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
   c528_cycleNum -> cd(2);
@@ -1858,7 +1858,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   
   gr529_cyclecounts -> Draw("Ap");
   gr529_cyclehist -> Draw("p");
-  //gr529_cyclecountmanual -> Draw("p");
+  gr529_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
   c529_cycleNum -> cd(2);
@@ -2046,7 +2046,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   
   gr530_cyclecounts -> Draw("Ap");
   gr530_cyclehist -> Draw("p");
-  //gr530_cyclecountmanual -> Draw("p");
+  gr530_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
   c530_cycleNum -> cd(2);
@@ -2183,52 +2183,214 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   // *******************************************
   // OVERALL
   // ******************************************
-  break;
+
   TCanvas *cAll = new TCanvas ("cAll" , "cAll" , 1200, 900);
   cAll -> SetLogy();
 
-  gr524_countIrrad -> GetYaxis()-> SetRangeUser(1, 1200000);
-  gr524_countIrrad -> GetXaxis() -> SetLimits(0.8, 1.8);
+  gr524_countIrrad -> SetTitle("UCN Count vs Average Isopure Temperature and Beam Current");
+  gr524_countIrrad -> GetYaxis()-> SetRangeUser(100, 1600000);
+  gr524_countIrrad -> GetXaxis() -> SetLimits(0.8, 0.92);
   gr524_countIrrad -> SetMarkerStyle(20);
   gr524_HistIrrad -> SetMarkerStyle(25);
   gr525_countIrrad -> SetMarkerColor(2);
   gr525_HistIrrad -> SetMarkerColor(2);
-  gr526_countIrrad -> SetMarkerColor(9);
-  gr526_HistIrrad -> SetMarkerColor(9);
+  gr527_countIrrad -> SetMarkerColor(9);
+  gr527_HistIrrad -> SetMarkerColor(9);
+  gr528_countIrrad -> SetMarkerColor(8);
+  gr528_HistIrrad -> SetMarkerColor(8);
+  gr529_countIrrad -> SetMarkerColor(6);
+  gr529_HistIrrad -> SetMarkerColor(6);
 
   TLegend *legAll = new TLegend (0.2, 0.7, 0.9, 0.9);
   legAll -> SetTextSize(0.02);
-  legAll -> AddEntry(gr524_countIrrad , "Temp during rradiation time + delay time, counts without backgroun (fit) , 0 s delay time", "p");
-  legAll -> AddEntry(gr524_HistIrrad , "Temp during rradiation time + delay time, counts with backgroun , 0 s delay time", "p");
-  legAll -> AddEntry(gr525_countIrrad , "Temp during rradiation time + delay time, counts without backgroun (fit) , 20 s delay time", "p");
-  legAll -> AddEntry(gr525_HistIrrad , "Temp during rradiation time + delay time, counts with backgroun , 20 s delay time", "p");
-  legAll -> AddEntry(gr526_countIrrad , "Temp during rradiation time + delay time, counts without backgroun (fit) , 50 s delay time", "p");
-  legAll -> AddEntry(gr526_HistIrrad , "Temp during rradiation time + delay time, counts with backgroun , 50 s delay time", "p");
-
+  legAll -> AddEntry(gr524_countIrrad , "Counts without backgroun (fit) , 0.05 #muA", "p");
+  legAll -> AddEntry(gr524_HistIrrad , "Counts with backgroun ,  0.05 #muA", "p");
+  legAll -> AddEntry(gr525_countIrrad , "Counts without backgroun (fit) ,0.5 #muA", "p");
+  legAll -> AddEntry(gr525_HistIrrad , "Counts with backgroun , 0.5 #muA", "p");
+  legAll -> AddEntry(gr527_countIrrad , "Counts without backgroun (fit) , 0.25 #muA", "p");
+  legAll -> AddEntry(gr527_HistIrrad , "Counts with backgroun , 0.25 #muA", "p");
+  legAll -> AddEntry(gr528_countIrrad , "Counts without backgroun (fit) , 0.75 #muA", "p");
+  legAll -> AddEntry(gr528_HistIrrad , "Counts with backgroun , 0.75 #muA", "p");
+  legAll -> AddEntry(gr529_countIrrad , "Counts without backgroun (fit) , 1 #muA", "p");
+  legAll -> AddEntry(gr529_HistIrrad , "Counts with backgroun , 1 #muA", "p");
   
 
   gr524_countIrrad -> Draw("ap");
   gr524_HistIrrad -> Draw("p");
   gr525_countIrrad -> Draw("p");
   gr525_HistIrrad -> Draw("p");
-  gr526_countIrrad -> Draw("p");
-  gr526_HistIrrad -> Draw("p");
   gr527_countIrrad -> Draw("p");
   gr527_HistIrrad -> Draw("p");
+  gr528_countIrrad -> Draw("p");
+  gr528_HistIrrad -> Draw("p");
+  gr529_countIrrad -> Draw("p");
+  gr529_HistIrrad -> Draw("p");
   legAll -> Draw();
 
 
 
+  // UCN COUNT VS BEAM CURRENT
+
+  TCanvas *c_countcur = new TCanvas("c_countcur" , "c_countcur" , 1200, 900);
+  c_countcur -> SetLogy();
+
+  TGraphErrors *gr524_countcur = new TGraphErrors (counts_524, avecurArray524, UCNIntegralArray524, ErrcurArray524,  UCNIntegralErrArray524);
+  gr524_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
+  gr524_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
+  gr524_countcur -> GetYaxis()-> SetTitle("UCN Counts");
+  gr524_countcur -> SetMarkerStyle(20);
+  gr524_countcur -> GetYaxis() -> SetRangeUser(10,1000000);
+  gr524_countcur -> GetXaxis()-> SetLimits(0., 2.5);
+  gr524_countcur -> GetXaxis() -> SetTitleSize(0.05);
+  gr524_countcur -> GetXaxis() -> SetTitleOffset(1.0);
+  gr524_countcur -> GetYaxis() -> SetTitleSize(0.05); 
+  gr524_countcur -> GetYaxis() -> SetTitleOffset(0.9);
+  gr524_countcur -> SetMarkerColor(1);
 
 
 
+  TGraphErrors *gr524_histcur = new  TGraphErrors (counts_524,  avecurArray524, HistIntegralArray524, ErrcurArray524, HistIntegralErrArray524);
+  gr524_histcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
+  gr524_histcur -> GetXaxis() -> SetTitle("Average Predicted Beam Current" );
+  gr524_histcur -> GetYaxis() -> SetTitle("UCN Counts");
+  gr524_histcur -> SetMarkerStyle(25);
+  gr524_histcur -> GetYaxis() -> SetRangeUser(10,500000);
+  gr524_histcur -> GetXaxis() -> SetLimits(0., 1.2);
+  gr524_histcur -> GetXaxis() -> SetTitleSize(0.05);
+  gr524_histcur -> GetXaxis() -> SetTitleOffset(1.0);
+  gr524_histcur -> GetYaxis() -> SetTitleSize(0.05); 
+  gr524_histcur -> GetYaxis() -> SetTitleOffset(0.9);
+  gr524_histcur -> SetMarkerColor(1);
+
+  TGraphErrors *gr525_countcur = new TGraphErrors (counts_525,  avecurArray525, UCNIntegralArray525, ErrcurArray525, UCNIntegralErrArray525);
+  gr525_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
+  gr525_countcur -> GetXaxis() -> SetTitle("Average Predicted Beam Current" );
+  gr525_countcur -> GetYaxis() -> SetTitle("UCN Counts");
+  gr525_countcur -> SetMarkerStyle(20);
+  gr525_countcur -> GetYaxis() -> SetRangeUser(10,500000);
+  gr525_countcur -> GetXaxis() -> SetLimits(0., 1.2);
+  gr525_countcur -> GetXaxis() -> SetTitleSize(0.05);
+  gr525_countcur -> GetXaxis() -> SetTitleOffset(1.0);
+  gr525_countcur -> GetYaxis() -> SetTitleSize(0.05); 
+  gr525_countcur -> GetYaxis() -> SetTitleOffset(0.9);
+  gr525_countcur -> SetMarkerColor(2);
+
+  TGraphErrors *gr525_histcur = new TGraphErrors (counts_525,  avecurArray525, HistIntegralArray525, ErrcurArray525, HistIntegralErrArray525);
+  gr525_histcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
+  gr525_histcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
+  gr525_histcur -> GetYaxis()-> SetTitle("UCN Counts");
+  gr525_histcur -> SetMarkerStyle(25);
+  gr525_histcur -> GetYaxis() -> SetRangeUser(10,500000);
+  gr525_histcur -> GetXaxis()-> SetLimits(0., 1.2);
+  gr525_histcur -> GetXaxis() -> SetTitleSize(0.05);
+  gr525_histcur -> GetXaxis() -> SetTitleOffset(1.0);
+  gr525_histcur -> GetYaxis() -> SetTitleSize(0.05); 
+  gr525_histcur -> GetYaxis() -> SetTitleOffset(0.9);
+  gr525_histcur -> SetMarkerColor(2);
+
+  TGraphErrors *gr527_countcur = new TGraphErrors (counts_527, avecurArray527,  UCNIntegralArray527, ErrcurArray527 , UCNIntegralErrArray527);
+  gr527_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
+  gr527_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
+  gr527_countcur -> GetYaxis()-> SetTitle("UCN Counts");
+  gr527_countcur -> SetMarkerStyle(20);
+  gr527_countcur -> GetYaxis() -> SetRangeUser(10,500000);
+  gr527_countcur -> GetXaxis()-> SetLimits(0., 1.3);
+  gr527_countcur -> GetXaxis() -> SetTitleSize(0.05);
+  gr527_countcur -> GetXaxis() -> SetTitleOffset(1.0);
+  gr527_countcur -> GetYaxis() -> SetTitleSize(0.05); 
+  gr527_countcur -> GetYaxis() -> SetTitleOffset(0.9);
+  gr527_countcur -> SetMarkerColor(4);
+
+  TGraphErrors *gr527_histcur = new TGraphErrors (counts_527 ,avecurArray527, HistIntegralArray527,  ErrcurArray527, HistIntegralErrArray527);
+  gr527_histcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
+  gr527_histcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
+  gr527_histcur -> GetYaxis()-> SetTitle("UCN Counts");
+  gr527_histcur -> SetMarkerStyle(25);
+  gr527_histcur -> GetYaxis() -> SetRangeUser(10,500000);
+  gr527_histcur -> GetXaxis()-> SetLimits(0., 1.2);
+  gr527_histcur -> GetXaxis() -> SetTitleSize(0.05);
+  gr527_histcur -> GetXaxis() -> SetTitleOffset(1.0);
+  gr527_histcur -> GetYaxis() -> SetTitleSize(0.05); 
+  gr527_histcur -> GetYaxis() -> SetTitleOffset(0.9);
+  gr527_histcur -> SetMarkerColor(4);
+  
+  TGraphErrors *gr528_countcur = new TGraphErrors (counts_528,  avecurArray528, UCNIntegralArray528, ErrcurArray528 ,UCNIntegralErrArray528);
+  gr528_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
+  gr528_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
+  gr528_countcur -> GetYaxis()-> SetTitle("UCN Counts");
+  gr528_countcur -> SetMarkerStyle(20);
+  gr528_countcur -> GetYaxis() -> SetRangeUser(10,500000);
+  gr528_countcur -> GetXaxis()-> SetLimits(0., 1.2);
+  gr528_countcur -> GetXaxis() -> SetTitleSize(0.05);
+  gr528_countcur -> GetXaxis() -> SetTitleOffset(1.0);
+  gr528_countcur -> GetYaxis() -> SetTitleSize(0.05); 
+  gr528_countcur -> GetYaxis() -> SetTitleOffset(0.9);
+  gr528_countcur -> SetMarkerColor(8);
+
+  TGraphErrors *gr528_histcur = new TGraphErrors (counts_528, avecurArray528, HistIntegralArray528 , ErrcurArray528 ,  HistIntegralErrArray528);
+  gr528_histcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
+  gr528_histcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
+  gr528_histcur -> GetYaxis()-> SetTitle("UCN Counts");
+  gr528_histcur -> SetMarkerStyle(25);
+  gr528_histcur -> GetYaxis() -> SetRangeUser(10,500000);
+  gr528_histcur -> GetXaxis()-> SetLimits(0., 1.2);
+  gr528_histcur -> GetXaxis() -> SetTitleSize(0.05);
+  gr528_histcur -> GetXaxis() -> SetTitleOffset(1.0);
+  gr528_histcur -> GetYaxis() -> SetTitleSize(0.05); 
+  gr528_histcur -> GetYaxis() -> SetTitleOffset(0.9);
+  gr528_histcur -> SetMarkerColor(8);
+
+  TGraphErrors *gr529_countcur = new TGraphErrors (counts_529 , avecurArray529 ,  UCNIntegralArray529, ErrcurArray529, UCNIntegralErrArray529);
+  gr529_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
+  gr529_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
+  gr529_countcur -> GetYaxis()-> SetTitle("UCN Counts");
+  gr529_countcur -> SetMarkerStyle(20);
+  gr529_countcur -> GetYaxis() -> SetRangeUser(10,500000);
+  gr529_countcur -> GetXaxis()-> SetLimits(0., 1.2);
+  gr529_countcur -> GetXaxis() -> SetTitleSize(0.05);
+  gr529_countcur -> GetXaxis() -> SetTitleOffset(1.0);
+  gr529_countcur -> GetYaxis() -> SetTitleSize(0.05); 
+  gr529_countcur -> GetYaxis() -> SetTitleOffset(0.9);
+  gr529_countcur -> SetMarkerColor(6);
 
 
+  TGraphErrors *gr529_histcur = new TGraphErrors (counts_529, avecurArray529,  HistIntegralArray529, ErrcurArray529  , HistIntegralErrArray529);
+  gr529_histcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
+  gr529_histcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
+  gr529_histcur -> GetYaxis()-> SetTitle("UCN Counts");
+  gr529_histcur -> SetMarkerStyle(25);
+  gr529_histcur -> GetYaxis() -> SetRangeUser(10,500000);
+  gr529_histcur -> GetXaxis()-> SetLimits(0., 1.2);
+  gr529_histcur -> GetXaxis() -> SetTitleSize(0.05);
+  gr529_histcur -> GetXaxis() -> SetTitleOffset(1.0);
+  gr529_histcur -> GetYaxis() -> SetTitleSize(0.05); 
+  gr529_histcur -> GetYaxis() -> SetTitleOffset(0.9);
+  gr529_histcur -> SetMarkerColor(6);
+
+  TLegend *legcur = new TLegend (0.7, 0.5, 0.9, 0.9);
+
+  legcur -> AddEntry (gr524_countcur , "Without background (fit), 0.05 #muA", "p");
+  legcur -> AddEntry (gr524_histcur , "With background , 0.05 #muA" , "p");
+  legcur -> AddEntry (gr525_countcur , "Without background (fit), 0.5 #muA", "p");
+  legcur -> AddEntry (gr525_histcur , "With background , 0.5 #muA" , "p");
+  legcur -> AddEntry (gr527_countcur , "Without background (fit), 0.25 #muA", "p");
+  legcur -> AddEntry (gr527_histcur , "With background , 0.25 #muA" , "p");
+  legcur -> AddEntry (gr528_countcur , "Without background (fit), 0.75 #muA", "p");
+  legcur -> AddEntry (gr528_histcur , "With background , 0.75 #muA" , "p");
+  legcur -> AddEntry (gr529_countcur , "Without background (fit), 1 #muA", "p");
+  legcur -> AddEntry (gr529_histcur , "With background , 1 #muA" , "p");
 
 
-
-
-
-
+  gr524_countcur -> Draw("ap");
+  gr524_histcur -> Draw("p");
+  gr525_countcur -> Draw("p");
+  gr525_histcur -> Draw("p");
+  gr527_countcur -> Draw("p");
+  gr527_histcur -> Draw("p");
+  gr528_countcur -> Draw("p");
+  gr528_histcur -> Draw("p");
+  gr529_countcur -> Draw("p");
+  gr529_histcur -> Draw("p");
+  legcur -> Draw();
   
 }
