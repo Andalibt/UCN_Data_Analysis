@@ -140,10 +140,13 @@ void UCNCounts_17003A_Taraneh_edit_ver1(){
     BaselineIntegralArray548[counts_548] = BaselineIntegral548;
     BaselineIrradIntegralArray548[counts_548] = BaselineIrradIntegral548;
     UCNIntegralManualArray548[counts_548] = HistIntegral548 - BaselineIntegral548;
+    cout << UCNIntegralManualArray548[counts_548] << endl;
     UCNIntegralManualErrArray548[counts_548] = sqrt(HistIntegral548 - BaselineIntegral548);
     counts_548++;
   }
 
+
+  
   // *******************
   //     GRAPHS
   // ******************
@@ -179,14 +182,29 @@ void UCNCounts_17003A_Taraneh_edit_ver1(){
   gr548_cyclehist -> SetMarkerColor(2);
   gr548_cyclehist -> SetMarkerStyle(20);
 
+  TGraphErrors *gr548_cyclecountmanual = new TGraphErrors(counts_548, cycleNumberArray548 , UCNIntegralManualArray548, 0, UCNIntegralManualErrArray548);
+  
+  gr548_cyclecountmanual -> SetTitle("UCN Counts vs Cycle Delay Time");
+  gr548_cyclecountmanual -> GetXaxis()-> SetTitle("Cycle Delay Time (s)" );
+  gr548_cyclecountmanual -> GetYaxis()-> SetTitle("Cycle UCN Counts");
+  gr548_cyclecountmanual -> GetYaxis()-> SetRangeUser(1000, 500000);
+  gr548_cyclecountmanual -> GetXaxis() -> SetTitleSize(0.05);
+  gr548_cyclecountmanual -> GetXaxis() -> SetTitleOffset(1.0);
+  gr548_cyclecountmanual -> GetYaxis() -> SetTitleSize(0.05); 
+  gr548_cyclecountmanual -> GetYaxis() -> SetTitleOffset(0.9);
+  gr548_cyclecountmanual -> SetMarkerColor(1);
+  gr548_cyclecountmanual -> SetMarkerStyle(25);
+  
+
   TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
-  leg2 -> AddEntry(gr548_cyclecounts , "Without Background" , "p") ;
+  leg2 -> AddEntry(gr548_cyclecounts , "Without Background (fit)" , "p") ;
   leg2 -> AddEntry(gr548_cyclehist , "With Background" , "p") ;
+  leg2 -> AddEntry(gr548_cyclecountmanual, "Without Background" , "p"); 
   leg2 -> SetTextSize(0.05);
   
   gr548_cyclecounts -> Draw("Ap");
   gr548_cyclehist -> Draw("p");
-  
+  gr548_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
   canvas_cycleNum -> cd(2);
@@ -254,4 +272,92 @@ void UCNCounts_17003A_Taraneh_edit_ver1(){
   gr548_cyclecur -> Draw("Ap");
   canvas_cycleNum -> Update();
 
+
+
+  // ************************
+  // TEMPERATURE AND COUNTS
+  // ************************
+ 
+  // ONLINE DATA FROM THE FOLLOWING LINK
+  //https://docs.google.com/document/d/1IG8Yiy4DBPqcEO57lyALb7G1jq1tUQIsCV0pJxl_5CA/edit?usp=sharing
+
+  double countsOnline[100] = {4100, 2400, 1860, 1500, 1250, 1000, 38950};
+  double tempOnline[100] = {1.54, 1.63, 1.66, 1.69, 1.73, 1.76, 0.86};
+  
+  
+  TCanvas *c_counttemp = new TCanvas ("c_counttemp" , " " , 1200, 900);
+  c_counttemp -> SetLogy();
+
+  TGraphErrors *gr548_countIrrad = new TGraphErrors (counts_548, avets12IrradArray548, UCNIntegralArray548, ts12IrradErr548, UCNIntegralErrArray548);
+  gr548_countIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
+  gr548_countIrrad -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr548_countIrrad -> GetYaxis()-> SetTitle("UCN Counts");
+  gr548_countIrrad -> SetMarkerStyle(20);
+  gr548_countIrrad -> GetYaxis() -> SetRangeUser(10,500000);
+  gr548_countIrrad -> GetXaxis()-> SetLimits(1.4, 1.8);
+  gr548_countIrrad -> GetXaxis() -> SetTitleSize(0.05);
+  gr548_countIrrad -> GetXaxis() -> SetTitleOffset(1.0);
+  gr548_countIrrad -> GetYaxis() -> SetTitleSize(0.05); 
+  gr548_countIrrad -> GetYaxis() -> SetTitleOffset(0.9);
+
+
+  TGraphErrors *gr548_HistIrrad = new TGraphErrors (counts_548, avets12IrradArray548, HistIntegralArray548, ts12IrradErr548, HistIntegralErrArray548);
+  gr548_HistIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
+  gr548_HistIrrad -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr548_HistIrrad -> GetYaxis()-> SetTitle("UCN Counts");
+  gr548_HistIrrad -> SetMarkerStyle(25);
+  gr548_HistIrrad -> GetYaxis() -> SetRangeUser(100,500000);
+  gr548_HistIrrad -> GetXaxis()-> SetLimits(1.4, 1.8);
+  gr548_HistIrrad -> GetXaxis() -> SetTitleSize(0.05);
+  gr548_HistIrrad -> GetXaxis() -> SetTitleOffset(1.0);
+  gr548_HistIrrad -> GetYaxis() -> SetTitleSize(0.05); 
+  gr548_HistIrrad -> GetYaxis() -> SetTitleOffset(0.9);
+
+  
+
+ TGraphErrors *gr548_countValveOpen = new TGraphErrors (counts_548, avets12ValveOpenArray548, UCNIntegralArray548, ts12ValveOpenErr548, UCNIntegralErrArray548);
+  gr548_countValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
+  gr548_countValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr548_countValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
+  gr548_countValveOpen -> SetMarkerStyle(20);
+  gr548_countValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
+  gr548_countValveOpen -> GetXaxis() -> SetTitleSize(0.05);
+  gr548_countValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
+  gr548_countValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
+  gr548_countValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
+  gr548_countValveOpen -> SetMarkerColor(2);
+
+
+   TGraphErrors *gr548_HistValveOpen = new TGraphErrors (counts_548, avets12ValveOpenArray548, HistIntegralArray548, ts12ValveOpenErr548, HistIntegralErrArray548);
+  gr548_HistValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
+  gr548_HistValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr548_HistValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
+  gr548_HistValveOpen -> SetMarkerStyle(25);
+  gr548_HistValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
+  gr548_HistValveOpen -> GetXaxis() -> SetTitleSize(0.05);
+  gr548_HistValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
+  gr548_HistValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
+  gr548_HistValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
+  gr548_HistValveOpen -> SetMarkerColor(2);
+
+
+  TGraphErrors *gr_online = new TGraphErrors (7, tempOnline, countsOnline, 0, 0);
+  gr_online -> SetMarkerStyle(25);
+  gr_online -> SetMarkerColor(2);
+
+  TLegend *leg3 = new TLegend(0.25,0.7, 0.9, 0.9);
+  leg3 -> AddEntry(gr548_countIrrad , "Irradiation time + delay time, without background" , "p") ;
+  //leg3 -> AddEntry(gr548_countValveOpen , "Valve open, without background" , "p") ;
+  leg3 -> AddEntry(gr548_HistIrrad , "Irradiation time + delay time, with background" , "p") ;
+  //leg3 -> AddEntry(gr548_HistValveOpen , "Valve open, with background" , "p") ;
+  leg3 -> AddEntry(gr_online, "Online Analysis" , "p");
+  leg3 -> SetTextSize(0.04);
+
+  gr548_countIrrad -> Draw("AP");
+  //gr548_countValveOpen -> Draw("p");
+   gr548_HistIrrad -> Draw("p");
+  //gr548_HistValveOpen -> Draw("p");
+  gr_online -> Draw("p");
+  leg3 -> Draw();
+  
 }
