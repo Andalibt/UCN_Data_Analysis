@@ -1284,11 +1284,20 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   // OVERALL
   // ******************************************
 
+
+  // ONLINE ANALYSIS
+  // LINK https://docs.google.com/spreadsheets/d/1dVk8jACsofFsVq2L7RbZy4GRv6nbXOlfKgE7IOmn1FI/edit?usp=sharing
+
+  double countsOnline[50] = {5800, 1770, 1600, 36600, 42900, 44900};
+  double tempOnline[50] = {1.51, 1.44, 1.25, 1.04, 0.93, 0.9};
+
+  
+  
   TCanvas *cAll = new TCanvas ("cAll" , "cAll" , 1200, 900);
   cAll -> SetLogy();
 
-  gr549_countIrrad -> GetYaxis()-> SetRangeUser(1, 1200000);
-  gr549_countIrrad -> GetXaxis() -> SetLimits(0.8, 1.8);
+  gr549_countIrrad -> GetYaxis()-> SetRangeUser(100, 1200000);
+  gr549_countIrrad -> GetXaxis() -> SetLimits(0.8, 1.6);
   gr549_countIrrad -> SetMarkerStyle(20);
   gr549_HistIrrad -> SetMarkerStyle(25);
   gr550_countIrrad -> SetMarkerColor(2);
@@ -1296,14 +1305,20 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
   gr551_countIrrad -> SetMarkerColor(9);
   gr551_HistIrrad -> SetMarkerColor(9);
 
+  TGraphErrors *gr_online = new TGraphErrors (7, tempOnline, countsOnline, 0, 0);
+  gr_online -> SetMarkerStyle(3);
+  gr_online -> SetMarkerColor(8);
+
+
   TLegend *legAll = new TLegend (0.2, 0.7, 0.9, 0.9);
   legAll -> SetTextSize(0.02);
-  legAll -> AddEntry(gr549_countIrrad , "Temp during rradiation time + delay time, counts without backgroun (fit) , 0 s delay time", "p");
-  legAll -> AddEntry(gr549_HistIrrad , "Temp during rradiation time + delay time, counts with backgroun , 0 s delay time", "p");
-  legAll -> AddEntry(gr550_countIrrad , "Temp during rradiation time + delay time, counts without backgroun (fit) , 20 s delay time", "p");
-  legAll -> AddEntry(gr550_HistIrrad , "Temp during rradiation time + delay time, counts with backgroun , 20 s delay time", "p");
-  legAll -> AddEntry(gr551_countIrrad , "Temp during rradiation time + delay time, counts without backgroun (fit) , 50 s delay time", "p");
-  legAll -> AddEntry(gr551_HistIrrad , "Temp during rradiation time + delay time, counts with backgroun , 50 s delay time", "p");
+  legAll -> AddEntry(gr549_countIrrad , "Counts without backgroun (fit) , 0 s delay time", "p");
+  legAll -> AddEntry(gr550_countIrrad , "Counts without backgroun (fit) , 20 s delay time", "p");
+  legAll -> AddEntry(gr551_countIrrad , "Counts without backgroun (fit) , 50 s delay time", "p");
+  legAll -> AddEntry(gr549_HistIrrad , "Counts with backgroun , 0 s delay time", "p");
+  legAll -> AddEntry(gr550_HistIrrad , "Counts with backgroun , 20 s delay time", "p");
+  legAll -> AddEntry(gr551_HistIrrad , "Counts with backgroun , 50 s delay time", "p");
+  legAll -> AddEntry(gr_online , "Online analysis", "p");
 
   
 
@@ -1315,6 +1330,7 @@ void UCNCounts_17003B_Taraneh_edit_ver1(){
    gr551_HistIrrad -> Draw("p");
   gr552_countIrrad -> Draw("p");
   gr552_HistIrrad -> Draw("p");
+  gr_online -> Draw("p");
   legAll -> Draw();
 
 
