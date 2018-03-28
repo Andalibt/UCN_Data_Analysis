@@ -342,10 +342,10 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
   double maxts12Irrad566;
   double maxts12Irrad567;
   double maxts12Irrad568;
-  double maxts12Irrad565;
-  double maxts12Irrad566;
-  double maxts12Irrad567;
-  double maxts12Irrad568;
+  double maxts12Irrad569;
+  double maxts12Irrad570;
+  double maxts12Irrad571;
+  double maxts12Irrad572;
   outputTree562 -> SetBranchAddress ("MAX_TS12_IRRAD" , &maxts12Irrad562);
   outputTree563 -> SetBranchAddress ("MAX_TS12_IRRAD" , &maxts12Irrad563);
   outputTree564 -> SetBranchAddress ("MAX_TS12_IRRAD" , &maxts12Irrad564);
@@ -849,6 +849,12 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
   int counts_571 = 0;
   int counts_572 = 0;
 
+  double UCNIntegralAll[100];
+  double UCNIntegralErrAll[100];
+  double HistIntegralAll[100];
+  double HistIntegralErrAll[100];
+  double UCNIntegralManualAll[100];
+  double UCNIntegralManualErrAll[100];
 
   // *****
   // 562
@@ -886,7 +892,16 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     UCNIntegralManualArray562[counts_562] = HistIntegral562 - BaselineIntegral562;
     // cout << UCNIntegralManualArray562[counts_562] << endl;
     UCNIntegralManualErrArray562[counts_562] = sqrt(HistIntegral562 - BaselineIntegral562);
-    cout << " The irradiation time for run 562 for cycle "<< counts_562 << " is "<< cycleStartTimes562 - irradStartTimes562 << endl; 
+    cout << " The irradiation time for run 562 for cycle "<< counts_562 << " is "<< cycleStartTimes562 - irradStartTimes562 << endl;
+    // *******************
+    // FOR THE FINAL GRAPH
+    // ********************
+    UCNIntegralAll[counts_562] = UCNIntegral562;
+    UCNIntegralErrAll[counts_562] = UCNIntegralErr562;
+    HistIntegralAll[counts_562] = HistIntegral562;
+    HistIntegralErrAll[counts_562] = sqrt (HistIntegral562);
+    UCNIntegralManualAll[counts_562] = HistIntegral562 - BaselineIntegral562;
+    UCNIntegralManualErrAll[counts_562] = sqrt(HistIntegral562 - BaselineIntegral562);
     counts_562++;
   }
 
@@ -927,7 +942,16 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     UCNIntegralManualArray563[counts_563] = HistIntegral563 - BaselineIntegral563;
     // cout << UCNIntegralManualArray563[counts_563] << endl;
     UCNIntegralManualErrArray563[counts_563] = sqrt(HistIntegral563 - BaselineIntegral563);
-    cout << " The irradiation time for run 563  for cycle "<< counts_563 << " is "<< cycleStartTimes563 - irradStartTimes563 << endl; 
+    cout << " The irradiation time for run 563  for cycle "<< counts_563 << " is "<< cycleStartTimes563 - irradStartTimes563 << endl;
+    // *******************
+    // FOR THE FINAL GRAPH
+    // ********************
+    UCNIntegralAll[counts_562+counts_563] = UCNIntegral563;
+    UCNIntegralErrAll[counts_562+counts_563] = UCNIntegralErr563;
+    HistIntegralAll[counts_562+counts_563] = HistIntegral563;
+    HistIntegralErrAll[counts_562+counts_563] = sqrt (HistIntegral563);
+    UCNIntegralManualAll[counts_562+counts_563] = HistIntegral563 - BaselineIntegral563;
+    UCNIntegralManualErrAll[counts_562+counts_563] = sqrt(HistIntegral563 - BaselineIntegral563);
     counts_563++;
   }
 
@@ -968,7 +992,16 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     UCNIntegralManualArray564[counts_564] = HistIntegral564 - BaselineIntegral564;
     // cout << UCNIntegralManualArray564[counts_564] << endl;
     UCNIntegralManualErrArray564[counts_564] = sqrt(HistIntegral564 - BaselineIntegral564);
-    cout << " The irradiation time for run 564 for cycle " << counts_564 << " is "<< cycleStartTimes564 - irradStartTimes564 << endl; 
+    cout << " The irradiation time for run 564 for cycle " << counts_564 << " is "<< cycleStartTimes564 - irradStartTimes564 << endl;
+    // *******************
+    // FOR THE FINAL GRAPH
+    // ********************
+    UCNIntegralAll[counts_562+counts_563+counts_564] = UCNIntegral564;
+    UCNIntegralErrAll[counts_562+counts_563+counts_564] = UCNIntegralErr564;
+    HistIntegralAll[counts_562+counts_563+counts_564] = HistIntegral564;
+    HistIntegralErrAll[counts_562+counts_563+counts_564] = sqrt (HistIntegral564);
+    UCNIntegralManualAll[counts_562+counts_563+counts_564] = HistIntegral564 - BaselineIntegral564;
+    UCNIntegralManualErrAll[counts_562+counts_563+counts_564] = sqrt(HistIntegral564 - BaselineIntegral564);
     counts_564++;
   }
 
@@ -1010,7 +1043,16 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     UCNIntegralManualArray565[counts_565] = HistIntegral565 - BaselineIntegral565;
     // cout << UCNIntegralManualArray565[counts_565] << endl;
     UCNIntegralManualErrArray565[counts_565] = sqrt(HistIntegral565 - BaselineIntegral565);
-    cout << " The irradiation time for run 565 for cycle "<< counts_565<< " is "<< cycleStartTimes565 - irradStartTimes565 << endl; 
+    cout << " The irradiation time for run 565 for cycle "<< counts_565<< " is "<< cycleStartTimes565 - irradStartTimes565 << endl;
+    // *******************
+    // FOR THE FINAL GRAPH
+    // ********************
+    UCNIntegralAll[counts_562+counts_563+counts_564+counts_565] = UCNIntegral565;
+    UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565] = UCNIntegralErr565;
+    HistIntegralAll[counts_562+counts_563+counts_564+counts_565] = HistIntegral565;
+    HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565] = sqrt (HistIntegral565);
+    UCNIntegralManualAll[counts_562+counts_563+counts_564+counts_565] = HistIntegral565 - BaselineIntegral565;
+    UCNIntegralManualErrAll[counts_562+counts_563+counts_564+counts_565] = sqrt(HistIntegral565 - BaselineIntegral565);
     counts_565++;
   }
 
@@ -1051,7 +1093,16 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     UCNIntegralManualArray566[counts_566] = HistIntegral566 - BaselineIntegral566;
     // cout << UCNIntegralManualArray566[counts_566] << endl;
     UCNIntegralManualErrArray566[counts_566] = sqrt(HistIntegral566 - BaselineIntegral566);
-    cout << " The irradiation time for run 566 for cycle "<< counts_566<< " is "<< cycleStartTimes566 - irradStartTimes566 << endl; 
+    cout << " The irradiation time for run 566 for cycle "<< counts_566<< " is "<< cycleStartTimes566 - irradStartTimes566 << endl;
+    // *******************
+    // FOR THE FINAL GRAPH
+    // ********************
+    UCNIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566] = UCNIntegral566;
+    UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566] = UCNIntegralErr566;
+    HistIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566] = HistIntegral566;
+    HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566] = sqrt (HistIntegral566);
+    UCNIntegralManualAll[counts_562+counts_563+counts_564+counts_565+counts_566] = HistIntegral566 - BaselineIntegral566;
+    UCNIntegralManualErrAll[counts_562+counts_563+counts_564+counts_565+counts_566] = sqrt(HistIntegral566 - BaselineIntegral566);
     counts_566++;
   }
 
@@ -1092,7 +1143,16 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     UCNIntegralManualArray567[counts_567] = HistIntegral567 - BaselineIntegral567;
     // cout << UCNIntegralManualArray567[counts_567] << endl;
     UCNIntegralManualErrArray567[counts_567] = sqrt(HistIntegral567 - BaselineIntegral567);
-    cout << " The irradiation time for run 567 for cycle "<< counts_567<< " is "<< cycleStartTimes567 - irradStartTimes567 << endl; 
+    cout << " The irradiation time for run 567 for cycle "<< counts_567<< " is "<< cycleStartTimes567 - irradStartTimes567 << endl;
+    // *******************
+    // FOR THE FINAL GRAPH
+    // ********************
+    UCNIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567] = UCNIntegral567;
+    UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567] = UCNIntegralErr567;
+    HistIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567] = HistIntegral567;
+    HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567] = sqrt (HistIntegral567);
+    UCNIntegralManualAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567] = HistIntegral567 - BaselineIntegral567;
+    UCNIntegralManualErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567] = sqrt(HistIntegral567 - BaselineIntegral567);
     counts_567++;
   }
 
@@ -1132,7 +1192,16 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     UCNIntegralManualArray568[counts_568] = HistIntegral568 - BaselineIntegral568;
     // cout << UCNIntegralManualArray568[counts_568] << endl;
     UCNIntegralManualErrArray568[counts_568] = sqrt(HistIntegral568 - BaselineIntegral568);
-    cout << " The irradiation time for run 568 for cycle "<< counts_568<< " is "<< cycleStartTimes568 - irradStartTimes568 << endl; 
+    cout << " The irradiation time for run 568 for cycle "<< counts_568<< " is "<< cycleStartTimes568 - irradStartTimes568 << endl;
+    // *******************
+    // FOR THE FINAL GRAPH
+    // ********************
+    UCNIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568] = UCNIntegral568;
+    UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568] = UCNIntegralErr568;
+    HistIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568] = HistIntegral568;
+    HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568] = sqrt (HistIntegral568);
+    UCNIntegralManualAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568] = HistIntegral568 - BaselineIntegral568;
+    UCNIntegralManualErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568] = sqrt(HistIntegral568 - BaselineIntegral568);
     counts_568++;
   }
 
@@ -1172,7 +1241,16 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     UCNIntegralManualArray569[counts_569] = HistIntegral569 - BaselineIntegral569;
     // cout << UCNIntegralManualArray569[counts_569] << endl;
     UCNIntegralManualErrArray569[counts_569] = sqrt(HistIntegral569 - BaselineIntegral569);
-    cout << " The irradiation time for run 569 for cycle "<< counts_569<< " is "<< cycleStartTimes569 - irradStartTimes569 << endl; 
+    cout << " The irradiation time for run 569 for cycle "<< counts_569<< " is "<< cycleStartTimes569 - irradStartTimes569 << endl;
+    // *******************
+    // FOR THE FINAL GRAPH
+    // ********************
+    UCNIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569] = UCNIntegral569;
+    UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569] = UCNIntegralErr569;
+    HistIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569] = HistIntegral569;
+    HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569] = sqrt (HistIntegral569);
+    UCNIntegralManualAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569] = HistIntegral569 - BaselineIntegral569;
+    UCNIntegralManualErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569] = sqrt(HistIntegral569 - BaselineIntegral569);
     counts_569++;
   }
 
@@ -1214,7 +1292,16 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     UCNIntegralManualArray570[counts_570] = HistIntegral570 - BaselineIntegral570;
     // cout << UCNIntegralManualArray570[counts_570] << endl;
     UCNIntegralManualErrArray570[counts_570] = sqrt(HistIntegral570 - BaselineIntegral570);
-    cout << " The irradiation time for run 570 for cycle "<< counts_570<< " is "<< cycleStartTimes570 - irradStartTimes570 << endl; 
+    cout << " The irradiation time for run 570 for cycle "<< counts_570<< " is "<< cycleStartTimes570 - irradStartTimes570 << endl;
+    // *******************
+    // FOR THE FINAL GRAPH
+    // ********************
+    UCNIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570] = UCNIntegral570;
+    UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570] = UCNIntegralErr570;
+    HistIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570] = HistIntegral570;
+    HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570] = sqrt (HistIntegral570);
+    UCNIntegralManualAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570] = HistIntegral570 - BaselineIntegral570;
+    UCNIntegralManualErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570] = sqrt(HistIntegral570 - BaselineIntegral570);
     counts_570++;
   }
 
@@ -1255,7 +1342,16 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     UCNIntegralManualArray571[counts_571] = HistIntegral571 - BaselineIntegral571;
     // cout << UCNIntegralManualArray571[counts_571] << endl;
     UCNIntegralManualErrArray571[counts_571] = sqrt(HistIntegral571 - BaselineIntegral571);
-    cout << " The irradiation time for run 571 for cycle "<< counts_571<< " is "<< cycleStartTimes571 - irradStartTimes571 << endl; 
+    cout << " The irradiation time for run 571 for cycle "<< counts_571<< " is "<< cycleStartTimes571 - irradStartTimes571 << endl;
+    // *******************
+    // FOR THE FINAL GRAPH
+    // ********************
+    UCNIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571] = UCNIntegral571;
+    UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571] = UCNIntegralErr571;
+    HistIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571] = HistIntegral571;
+    HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571] = sqrt (HistIntegral571);
+    UCNIntegralManualAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571] = HistIntegral571 - BaselineIntegral571;
+    UCNIntegralManualErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571] = sqrt(HistIntegral571 - BaselineIntegral571);
     counts_571++;
   }
 
@@ -1296,7 +1392,16 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     UCNIntegralManualArray572[counts_572] = HistIntegral572 - BaselineIntegral572;
     // cout << UCNIntegralManualArray572[counts_572] << endl;
     UCNIntegralManualErrArray572[counts_572] = sqrt(HistIntegral572 - BaselineIntegral572);
-    cout << " The irradiation time for run 572 for cycle "<< counts_572<< " is "<< cycleStartTimes572 - irradStartTimes572 << endl; 
+    cout << " The irradiation time for run 572 for cycle "<< counts_572<< " is "<< cycleStartTimes572 - irradStartTimes572 << endl;
+    // *******************
+    // FOR THE FINAL GRAPH
+    // ********************
+    UCNIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571+counts_572] = UCNIntegral572;
+    UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571+counts_572] = UCNIntegralErr572;
+    HistIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571+counts_572] = HistIntegral572;
+    HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571+counts_572] = sqrt (HistIntegral572);
+    UCNIntegralManualAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571+counts_572] = HistIntegral572 - BaselineIntegral572;
+    UCNIntegralManualErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571+counts_572] = sqrt(HistIntegral572 - BaselineIntegral572);
     counts_572++;
   }
 
@@ -3334,7 +3439,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
   gr572_countIrrad -> GetYaxis()-> SetTitle("UCN Counts");
   gr572_countIrrad -> SetMarkerStyle(20);
   gr572_countIrrad -> GetYaxis() -> SetRangeUser(10,500000);
-  gr572_countIrrad -> GetXaxis()-> SetLimits(0.85, 1.1);
+  gr572_countIrrad -> GetXaxis() -> SetLimits(0.85, 1.1);
   gr572_countIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr572_countIrrad -> GetXaxis() -> SetTitleOffset(1.0);
   gr572_countIrrad -> GetYaxis() -> SetTitleSize(0.05); 
@@ -3347,7 +3452,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
   gr572_HistIrrad -> GetYaxis()-> SetTitle("UCN Counts");
   gr572_HistIrrad -> SetMarkerStyle(25);
   gr572_HistIrrad -> GetYaxis() -> SetRangeUser(100,500000);
-  gr572_HistIrrad -> GetXaxis()-> SetLimits(1, 1.4);
+  gr572_HistIrrad -> GetXaxis() -> SetLimits(1, 1.4);
   gr572_HistIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr572_HistIrrad -> GetXaxis() -> SetTitleOffset(1.0);
   gr572_HistIrrad -> GetYaxis() -> SetTitleSize(0.05); 
@@ -3360,7 +3465,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
   gr572_countValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr572_countValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
   gr572_countValveOpen -> SetMarkerStyle(20);
-  gr572_countValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
+  gr572_countValveOpen -> GetXaxis() -> SetLimits(0.84, 2.3);
   gr572_countValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr572_countValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
   gr572_countValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
@@ -3370,10 +3475,10 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
 
    TGraphErrors *gr572_HistValveOpen = new TGraphErrors (counts_572, avets12ValveOpenArray572, HistIntegralArray572, ts12ValveOpenErr572, HistIntegralErrArray572);
   gr572_HistValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
-  gr572_HistValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr572_HistValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
+  gr572_HistValveOpen -> GetXaxis() -> SetTitle("Average Isopure Temperature (K)" );
+  gr572_HistValveOpen -> GetYaxis() -> SetTitle("UCN Counts");
   gr572_HistValveOpen -> SetMarkerStyle(25);
-  gr572_HistValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
+  gr572_HistValveOpen -> GetXaxis() -> SetLimits(0.84, 2.3);
   gr572_HistValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr572_HistValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
   gr572_HistValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
@@ -3389,219 +3494,63 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
   leg3 -> Draw();
 
 
-  /*
+  
   
   // *******************************************
   // OVERALL
   // ******************************************
 
+  double irradAll[40] = {10, 20, 30, 40 , 50, 100 , 60, 120 , 80, 150};
+
   TCanvas *cAll = new TCanvas ("cAll" , "cAll" , 1200, 900);
   cAll -> SetLogy();
 
-  gr562_countIrrad -> SetTitle("UCN Count vs Average Isopure Temperature and Beam Current");
-  gr562_countIrrad -> GetYaxis()-> SetRangeUser(100, 1600000);
-  gr562_countIrrad -> GetXaxis() -> SetLimits(0.8, 0.92);
-  gr562_countIrrad -> SetMarkerStyle(20);
-  gr562_HistIrrad -> SetMarkerStyle(25);
-  gr563_countIrrad -> SetMarkerColor(2);
-  gr563_HistIrrad -> SetMarkerColor(2);
-  gr565_countIrrad -> SetMarkerColor(9);
-  gr565_HistIrrad -> SetMarkerColor(9);
-  gr566_countIrrad -> SetMarkerColor(8);
-  gr566_HistIrrad -> SetMarkerColor(8);
-  gr567_countIrrad -> SetMarkerColor(6);
-  gr567_HistIrrad -> SetMarkerColor(6);
-
-  TLegend *legAll = new TLegend (0.2, 0.7, 0.9, 0.9);
-  legAll -> SetTextSize(0.02);
-  legAll -> AddEntry(gr562_countIrrad , "Counts without backgroun (fit) , 0.05 #muA", "p");
-  legAll -> AddEntry(gr562_HistIrrad , "Counts with backgroun ,  0.05 #muA", "p");
-  legAll -> AddEntry(gr563_countIrrad , "Counts without backgroun (fit) ,0.5 #muA", "p");
-  legAll -> AddEntry(gr563_HistIrrad , "Counts with backgroun , 0.5 #muA", "p");
-  legAll -> AddEntry(gr565_countIrrad , "Counts without backgroun (fit) , 0.25 #muA", "p");
-  legAll -> AddEntry(gr565_HistIrrad , "Counts with backgroun , 0.25 #muA", "p");
-  legAll -> AddEntry(gr566_countIrrad , "Counts without backgroun (fit) , 0.75 #muA", "p");
-  legAll -> AddEntry(gr566_HistIrrad , "Counts with backgroun , 0.75 #muA", "p");
-  legAll -> AddEntry(gr567_countIrrad , "Counts without backgroun (fit) , 1 #muA", "p");
-  legAll -> AddEntry(gr567_HistIrrad , "Counts with backgroun , 1 #muA", "p");
+  TGraphErrors *gr_counts = new TGraphErrors (10, irradAll, UCNIntegralAll, 0 , UCNIntegralErrAll);
+  gr_counts -> SetTitle( "UCN Counts vs irradiation time");
+  gr_counts -> GetXaxis() -> SetTitle("Irradiation Time (s)" );
+  gr_counts -> GetYaxis() -> SetTitle("UCN Counts");
+  gr_counts -> GetYaxis() -> SetRangeUser (10, 500000);
+  gr_counts -> SetMarkerStyle(20);
+  gr_counts -> GetXaxis() -> SetLimits(0, 170);
+  gr_counts -> GetXaxis() -> SetTitleSize(0.05);
+  gr_counts -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_counts -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_counts -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_counts -> SetMarkerColor(1);
   
+  TGraphErrors *gr_countsmanual = new TGraphErrors (10, irradAll, UCNIntegralManualAll, 0 , UCNIntegralManualErrAll);
+  gr_countsmanual -> SetTitle( "UCN Counts vs irradiation time");
+  gr_countsmanual -> GetXaxis() -> SetTitle("Irradiation Time (s)" );
+  gr_countsmanual -> GetYaxis() -> SetTitle("UCN Counts");
+  gr_countsmanual -> SetMarkerStyle(20);
+  gr_countsmanual -> GetXaxis() -> SetLimits(0, 170);
+  gr_countsmanual -> GetXaxis() -> SetTitleSize(0.05);
+  gr_countsmanual -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_countsmanual -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_countsmanual -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_countsmanual -> SetMarkerColor(2);
 
-  gr562_countIrrad -> Draw("ap");
-  gr562_HistIrrad -> Draw("p");
-  gr563_countIrrad -> Draw("p");
-  gr563_HistIrrad -> Draw("p");
-  gr565_countIrrad -> Draw("p");
-  gr565_HistIrrad -> Draw("p");
-  gr566_countIrrad -> Draw("p");
-  gr566_HistIrrad -> Draw("p");
-  gr567_countIrrad -> Draw("p");
-  gr567_HistIrrad -> Draw("p");
+
+  TGraphErrors *gr_hist = new TGraphErrors (10, irradAll, HistIntegralAll, 0 , HistIntegralErrAll);
+  gr_hist -> SetTitle( "UCN Counts vs irradiation time");
+  gr_hist -> GetXaxis() -> SetTitle("Irradiation Time (s)" );
+  gr_hist -> GetYaxis() -> SetTitle("UCN Counts");
+  gr_hist -> SetMarkerStyle(25);
+  gr_hist -> GetXaxis() -> SetLimits(0, 170);
+  gr_hist -> GetXaxis() -> SetTitleSize(0.05);
+  gr_hist -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_hist -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_hist -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_hist -> SetMarkerColor(1);
+
+  TLegend *legAll = new TLegend(0.7, 0.7, 0.9, 0.9);
+  legAll -> AddEntry(gr_counts, "Counts without background (fit)" , "p");
+  legAll -> AddEntry(gr_countsmanual, "Counts without background" , "p");
+  legAll -> AddEntry(gr_hist , "Counts with background" , "p");
+
+  gr_counts -> Draw("ap");
+  gr_countsmanual -> Draw("p");
+  gr_hist -> Draw("p");
   legAll -> Draw();
-
-
-
-  // UCN COUNT VS BEAM CURRENT
-
-  TCanvas *c_countcur = new TCanvas("c_countcur" , "c_countcur" , 1200, 900);
-  // c_countcur -> SetLogy();
-
-  TGraphErrors *gr562_countcur = new TGraphErrors (counts_562, avecurArray562, UCNIntegralArray562, 0,  UCNIntegralErrArray562);
-  gr562_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
-  gr562_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
-  gr562_countcur -> GetYaxis()-> SetTitle("UCN Counts");
-  gr562_countcur -> SetMarkerStyle(20);
-  gr562_countcur -> GetYaxis() -> SetRangeUser(10,70000);
-  gr562_countcur -> GetXaxis()-> SetLimits(0., 2.5);
-  gr562_countcur -> GetXaxis() -> SetTitleSize(0.05);
-  gr562_countcur -> GetXaxis() -> SetTitleOffset(1.0);
-  gr562_countcur -> GetYaxis() -> SetTitleSize(0.05); 
-  gr562_countcur -> GetYaxis() -> SetTitleOffset(0.9);
-  gr562_countcur -> SetMarkerColor(1);
-
-
-
-  TGraphErrors *gr562_histcur = new  TGraphErrors (counts_562,  avecurArray562, HistIntegralArray562, 0, HistIntegralErrArray562);
-  gr562_histcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
-  gr562_histcur -> GetXaxis() -> SetTitle("Average Predicted Beam Current" );
-  gr562_histcur -> GetYaxis() -> SetTitle("UCN Counts");
-  gr562_histcur -> SetMarkerStyle(25);
-  gr562_histcur -> GetYaxis() -> SetRangeUser(10,500000);
-  gr562_histcur -> GetXaxis() -> SetLimits(0., 1.2);
-  gr562_histcur -> GetXaxis() -> SetTitleSize(0.05);
-  gr562_histcur -> GetXaxis() -> SetTitleOffset(1.0);
-  gr562_histcur -> GetYaxis() -> SetTitleSize(0.05); 
-  gr562_histcur -> GetYaxis() -> SetTitleOffset(0.9);
-  gr562_histcur -> SetMarkerColor(1);
-
-  TGraphErrors *gr563_countcur = new TGraphErrors (counts_563,  avecurArray563, UCNIntegralArray563,0 , UCNIntegralErrArray563);
-  gr563_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
-  gr563_countcur -> GetXaxis() -> SetTitle("Average Predicted Beam Current" );
-  gr563_countcur -> GetYaxis() -> SetTitle("UCN Counts");
-  gr563_countcur -> SetMarkerStyle(20);
-  gr563_countcur -> GetYaxis() -> SetRangeUser(10,500000);
-  gr563_countcur -> GetXaxis() -> SetLimits(0., 1.2);
-  gr563_countcur -> GetXaxis() -> SetTitleSize(0.05);
-  gr563_countcur -> GetXaxis() -> SetTitleOffset(1.0);
-  gr563_countcur -> GetYaxis() -> SetTitleSize(0.05); 
-  gr563_countcur -> GetYaxis() -> SetTitleOffset(0.9);
-  gr563_countcur -> SetMarkerColor(2);
-
-  TGraphErrors *gr563_histcur = new TGraphErrors (counts_563,  avecurArray563, HistIntegralArray563, 0, HistIntegralErrArray563);
-  gr563_histcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
-  gr563_histcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
-  gr563_histcur -> GetYaxis()-> SetTitle("UCN Counts");
-  gr563_histcur -> SetMarkerStyle(25);
-  gr563_histcur -> GetYaxis() -> SetRangeUser(10,500000);
-  gr563_histcur -> GetXaxis()-> SetLimits(0., 1.2);
-  gr563_histcur -> GetXaxis() -> SetTitleSize(0.05);
-  gr563_histcur -> GetXaxis() -> SetTitleOffset(1.0);
-  gr563_histcur -> GetYaxis() -> SetTitleSize(0.05); 
-  gr563_histcur -> GetYaxis() -> SetTitleOffset(0.9);
-  gr563_histcur -> SetMarkerColor(2);
-
-  TGraphErrors *gr565_countcur = new TGraphErrors (counts_565, avecurArray565,  UCNIntegralArray565, 0 , UCNIntegralErrArray565);
-  gr565_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
-  gr565_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
-  gr565_countcur -> GetYaxis()-> SetTitle("UCN Counts");
-  gr565_countcur -> SetMarkerStyle(20);
-  gr565_countcur -> GetYaxis() -> SetRangeUser(10,500000);
-  gr565_countcur -> GetXaxis()-> SetLimits(0., 1.3);
-  gr565_countcur -> GetXaxis() -> SetTitleSize(0.05);
-  gr565_countcur -> GetXaxis() -> SetTitleOffset(1.0);
-  gr565_countcur -> GetYaxis() -> SetTitleSize(0.05); 
-  gr565_countcur -> GetYaxis() -> SetTitleOffset(0.9);
-  gr565_countcur -> SetMarkerColor(4);
-
-  TGraphErrors *gr565_histcur = new TGraphErrors (counts_565 ,avecurArray565, HistIntegralArray565, 0, HistIntegralErrArray565);
-  gr565_histcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
-  gr565_histcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
-  gr565_histcur -> GetYaxis()-> SetTitle("UCN Counts");
-  gr565_histcur -> SetMarkerStyle(25);
-  gr565_histcur -> GetYaxis() -> SetRangeUser(10,500000);
-  gr565_histcur -> GetXaxis()-> SetLimits(0., 1.2);
-  gr565_histcur -> GetXaxis() -> SetTitleSize(0.05);
-  gr565_histcur -> GetXaxis() -> SetTitleOffset(1.0);
-  gr565_histcur -> GetYaxis() -> SetTitleSize(0.05); 
-  gr565_histcur -> GetYaxis() -> SetTitleOffset(0.9);
-  gr565_histcur -> SetMarkerColor(4);
   
-  TGraphErrors *gr566_countcur = new TGraphErrors (counts_566,  avecurArray566, UCNIntegralArray566,0 ,UCNIntegralErrArray566);
-  gr566_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
-  gr566_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
-  gr566_countcur -> GetYaxis()-> SetTitle("UCN Counts");
-  gr566_countcur -> SetMarkerStyle(20);
-  gr566_countcur -> GetYaxis() -> SetRangeUser(10,500000);
-  gr566_countcur -> GetXaxis()-> SetLimits(0., 1.2);
-  gr566_countcur -> GetXaxis() -> SetTitleSize(0.05);
-  gr566_countcur -> GetXaxis() -> SetTitleOffset(1.0);
-  gr566_countcur -> GetYaxis() -> SetTitleSize(0.05); 
-  gr566_countcur -> GetYaxis() -> SetTitleOffset(0.9);
-  gr566_countcur -> SetMarkerColor(8);
-
-  TGraphErrors *gr566_histcur = new TGraphErrors (counts_566, avecurArray566, HistIntegralArray566 ,0,  HistIntegralErrArray566);
-  gr566_histcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
-  gr566_histcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
-  gr566_histcur -> GetYaxis()-> SetTitle("UCN Counts");
-  gr566_histcur -> SetMarkerStyle(25);
-  gr566_histcur -> GetYaxis() -> SetRangeUser(10,500000);
-  gr566_histcur -> GetXaxis()-> SetLimits(0., 1.2);
-  gr566_histcur -> GetXaxis() -> SetTitleSize(0.05);
-  gr566_histcur -> GetXaxis() -> SetTitleOffset(1.0);
-  gr566_histcur -> GetYaxis() -> SetTitleSize(0.05); 
-  gr566_histcur -> GetYaxis() -> SetTitleOffset(0.9);
-  gr566_histcur -> SetMarkerColor(8);
-
-  TGraphErrors *gr567_countcur = new TGraphErrors (counts_567 , avecurArray567 ,  UCNIntegralArray567, 0, UCNIntegralErrArray567);
-  gr567_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
-  gr567_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
-  gr567_countcur -> GetYaxis()-> SetTitle("UCN Counts");
-  gr567_countcur -> SetMarkerStyle(20);
-  gr567_countcur -> GetYaxis() -> SetRangeUser(10,500000);
-  gr567_countcur -> GetXaxis()-> SetLimits(0., 1.2);
-  gr567_countcur -> GetXaxis() -> SetTitleSize(0.05);
-  gr567_countcur -> GetXaxis() -> SetTitleOffset(1.0);
-  gr567_countcur -> GetYaxis() -> SetTitleSize(0.05); 
-  gr567_countcur -> GetYaxis() -> SetTitleOffset(0.9);
-  gr567_countcur -> SetMarkerColor(6);
-
-
-  TGraphErrors *gr567_histcur = new TGraphErrors (counts_567, avecurArray567,  HistIntegralArray567, 0, HistIntegralErrArray567);
-  gr567_histcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
-  gr567_histcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
-  gr567_histcur -> GetYaxis()-> SetTitle("UCN Counts");
-  gr567_histcur -> SetMarkerStyle(25);
-  gr567_histcur -> GetYaxis() -> SetRangeUser(10,500000);
-  gr567_histcur -> GetXaxis()-> SetLimits(0., 1.2);
-  gr567_histcur -> GetXaxis() -> SetTitleSize(0.05);
-  gr567_histcur -> GetXaxis() -> SetTitleOffset(1.0);
-  gr567_histcur -> GetYaxis() -> SetTitleSize(0.05); 
-  gr567_histcur -> GetYaxis() -> SetTitleOffset(0.9);
-  gr567_histcur -> SetMarkerColor(6);
-
-  TLegend *legcur = new TLegend (0.7, 0.5, 0.9, 0.9);
-
-  legcur -> AddEntry (gr562_countcur , "Without background (fit), 0.05 #muA", "p");
-  legcur -> AddEntry (gr562_histcur , "With background , 0.05 #muA" , "p");
-  legcur -> AddEntry (gr563_countcur , "Without background (fit), 0.5 #muA", "p");
-  legcur -> AddEntry (gr563_histcur , "With background , 0.5 #muA" , "p");
-  legcur -> AddEntry (gr565_countcur , "Without background (fit), 0.25 #muA", "p");
-  legcur -> AddEntry (gr565_histcur , "With background , 0.25 #muA" , "p");
-  legcur -> AddEntry (gr566_countcur , "Without background (fit), 0.75 #muA", "p");
-  legcur -> AddEntry (gr566_histcur , "With background , 0.75 #muA" , "p");
-  legcur -> AddEntry (gr567_countcur , "Without background (fit), 1 #muA", "p");
-  legcur -> AddEntry (gr567_histcur , "With background , 1 #muA" , "p");
-
-
-  gr562_countcur -> Draw("ap");
-  gr562_histcur -> Draw("p");
-  gr563_countcur -> Draw("p");
-  gr563_histcur -> Draw("p");
-  gr565_countcur -> Draw("p");
-  gr565_histcur -> Draw("p");
-  gr566_countcur -> Draw("p");
-  gr566_histcur -> Draw("p");
-  gr567_countcur -> Draw("p");
-  gr567_histcur -> Draw("p");
-  legcur -> Draw();
-  */
 }
