@@ -65,15 +65,53 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
   double UCNIntegralManualArray [100];
   double UCNIntegralManualErrArray[100];
   int counts = 0;
-  double UCNIntegralAll[100];
-  double UCNIntegralErrAll[100];
-  double HistIntegralAll[100];
-  double HistIntegralErrAll[100];
-  double UCNIntegralManualAll[100];
-  double UCNIntegralManualErrAll[100];
 
-  // root files are created up to 645
-  for (midasrun = 620; midasrun < 621 ; midasrun++){
+  double UCNIntegeralArray_1muA[100];
+  double UCNIntegralErrArray_1muA[100];
+  double HistIntegralArray_1muA[100];
+  double HistIntegralErrArray_1muA[100];
+  double UCNIntegralManualArray_1muA[100];
+  double UCNIntegralManualErrArray_1muA[100];
+  double irradtimeArray_1muA[100];
+  int counts_1muA = 0;
+
+  double UCNIntegeralArray_3muA[100];
+  double UCNIntegralErrArray_3muA[100];
+  double HistIntegralArray_3muA[100];
+  double HistIntegralErrArray_3muA[100];
+  double UCNIntegralManualArray_3muA[100];
+  double UCNIntegralManualErrArray_3muA[100];
+  double irradtimeArray_3muA[100];
+  int counts_3muA = 0;
+
+  double UCNIntegeralArray_5muA[100];
+  double UCNIntegralErrArray_5muA[100];
+  double HistIntegralArray_5muA[100];
+  double HistIntegralErrArray_5muA[100];
+  double UCNIntegralManualArray_5muA[100];
+  double UCNIntegralManualErrArray_5muA[100];
+  double irradtimeArray_5muA[100];
+  int counts_5muA = 0;
+
+  double UCNIntegeralArray_7muA[100];
+  double UCNIntegralErrArray_7muA[100];
+  double HistIntegralArray_7muA[100];
+  double HistIntegralErrArray_7muA[100];
+  double UCNIntegralManualArray_7muA[100];
+  double UCNIntegralManualErrArray_7muA[100];
+  double irradtimeArray_7muA[100];
+  int counts_7muA = 0;
+
+  double UCNIntegeralArray_10muA[100];
+  double UCNIntegralErrArray_10muA[100];
+  double HistIntegralArray_10muA[100];
+  double HistIntegralErrArray_10muA[100];
+  double UCNIntegralManualArray_10muA[100];
+  double UCNIntegralManualErrArray_10muA[100];
+  double irradtimeArray_10muA[100];
+  int counts_10muA = 0;
+  
+  for (midasrun = 661; midasrun < 662 ; midasrun++){
 
     sprintf (filename , "./outputTree_%d.root",midasrun);
     TFile* fin = new TFile(Form(filename),"READ");
@@ -115,6 +153,24 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
 
   for (ULong64_t j = 0 ; j < events ; j++){
     outputTree -> GetEvent(j);
+    if (midasrun == 618 || midasrun == 623 || midasrun == 624)
+      continue;
+    if (midasrun == 632 || midasrun == 635 || midasrun == 636)
+      continue;
+    if (midasrun == 637 || midasrun == 638 )
+      continue;
+    if (midasrun == 639 && counts == 0)
+      continue;
+    if (midasrun == 640 || midasrun == 642 || midasrun == 643)
+      continue;
+    if (midasrun == 647 || midasrun == 648 || midasrun == 649)
+      continue;
+    if (midasrun == 651 || midasrun == 652 || midasrun == 653)
+      continue;
+    if (midasrun == 654 || midasrun == 655 || midasrun == 656)
+      continue;
+    if (midasrun == 657 || midasrun == 658 || midasrun == 659)
+      continue;
     UCNIntegralArray[counts] = UCNIntegral;
     UCNIntegralErrArray[counts] = UCNIntegralErr;
     HistIntegralArray[counts] = HistIntegral;
@@ -141,16 +197,71 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
     UCNIntegralManualArray[counts] = HistIntegral - BaselineIntegral;
     // cout << UCNIntegralManualArray[counts] << endl;
     UCNIntegralManualErrArray[counts] = sqrt(HistIntegral - BaselineIntegral);
-    cout << " The irradiation time for run  for cycle "<< counts << " is "<< cycleStartTimes - irradStartTimes << endl;
+    cout << " The irradiation time for run " <<midasrun << " for cycle "<< counts << " is "<< cycleStartTimes - irradStartTimes << endl;
     // *******************
     // FOR THE FINAL GRAPH
     // ********************
-    UCNIntegralAll[counts] = UCNIntegral;
-    UCNIntegralErrAll[counts] = UCNIntegralErr;
-    HistIntegralAll[counts] = HistIntegral;
-    HistIntegralErrAll[counts] = sqrt (HistIntegral);
-    UCNIntegralManualAll[counts] = HistIntegral - BaselineIntegral;
-    UCNIntegralManualErrAll[counts] = sqrt(HistIntegral - BaselineIntegral);
+
+    // 1.5 muA
+    if (avecur > 1.4 && avecur < 1.6){
+      UCNIntegralArray_1muA[counts_1muA] = UCNIntegral;
+      UCNIntegralErrArray_1muA[counts_1muA] = UCNIntegralErr;
+      HistIntegralArray_1muA[counts_1muA] = HistIntegral;
+      HistIntegralErrArray_1muA[counts_1muA] = sqrt(HistIntegral);
+      UCNIntegralManualArray_1muA[counts_1muA] =  HistIntegral - BaselineIntegral;
+      UCNIntegralManualErrArray_1muA[counts_1muA] = sqrt(HistIntegral - BaselineIntegral);
+      irradtimeArray_1muA[counts_1muA] = cycleStartTimes - irradStartTimes;
+      counts_1muA++;
+    }
+
+    // 3 muA
+    if (avecur > 2.8 && avecur < 3.2){
+      UCNIntegralArray_3muA[counts_3muA] = UCNIntegral;
+      UCNIntegralErrArray_3muA[counts_3muA] = UCNIntegralErr;
+      HistIntegralArray_3muA[counts_3muA] = HistIntegral;
+      HistIntegralErrArray_3muA[counts_3muA] = sqrt(HistIntegral);
+      UCNIntegralManualArray_3muA[counts_3muA] =  HistIntegral - BaselineIntegral;
+      UCNIntegralManualErrArray_3muA[counts_3muA] = sqrt(HistIntegral - BaselineIntegral);
+      irradtimeArray_3muA[counts_3muA] = cycleStartTimes - irradStartTimes;
+      counts_3muA++;
+    }
+
+    // 5 muA
+    if (avecur > 4.8 && avecur < 5.2){
+      UCNIntegralArray_5muA[counts_5muA] = UCNIntegral;
+      UCNIntegralErrArray_5muA[counts_5muA] = UCNIntegralErr;
+      HistIntegralArray_5muA[counts_5muA] = HistIntegral;
+      HistIntegralErrArray_5muA[counts_5muA] = sqrt(HistIntegral);
+      UCNIntegralManualArray_5muA[counts_5muA] =  HistIntegral - BaselineIntegral;
+      UCNIntegralManualErrArray_5muA[counts_5muA] = sqrt(HistIntegral - BaselineIntegral);
+      irradtimeArray_5muA[counts_5muA] = cycleStartTimes - irradStartTimes;
+      counts_5muA++;
+    }
+
+    // 7 muA
+    if (avecur > 6.8 && avecur < 7.3){
+      UCNIntegralArray_7muA[counts_7muA] = UCNIntegral;
+      UCNIntegralErrArray_7muA[counts_7muA] = UCNIntegralErr;
+      HistIntegralArray_7muA[counts_7muA] = HistIntegral;
+      HistIntegralErrArray_7muA[counts_7muA] = sqrt(HistIntegral);
+      UCNIntegralManualArray_7muA[counts_7muA] =  HistIntegral - BaselineIntegral;
+      UCNIntegralManualErrArray_7muA[counts_7muA] = sqrt(HistIntegral - BaselineIntegral);
+      irradtimeArray_7muA[counts_7muA] = cycleStartTimes - irradStartTimes;
+      counts_7muA++;
+    }
+
+    // 10 muA
+    if (avecur > 9.8 && avecur < 10.2){
+      UCNIntegralArray_10muA[counts_10muA] = UCNIntegral;
+      UCNIntegralErrArray_10muA[counts_10muA] = UCNIntegralErr;
+      HistIntegralArray_10muA[counts_10muA] = HistIntegral;
+      HistIntegralErrArray_10muA[counts_10muA] = sqrt(HistIntegral);
+      UCNIntegralManualArray_10muA[counts_10muA] =  HistIntegral - BaselineIntegral;
+      UCNIntegralManualErrArray_10muA[counts_10muA] = sqrt(HistIntegral - BaselineIntegral);
+      irradtimeArray_10muA[counts_10muA] = cycleStartTimes - irradStartTimes;
+      counts_10muA++;
+    }
+    
     counts++;
   }
 
@@ -173,7 +284,7 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
   gr_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
   gr_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
   gr_cyclecounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr_cyclecounts -> GetYaxis()-> SetRangeUser(100, 500000);
+  gr_cyclecounts -> GetYaxis()-> SetRangeUser(100, 1000000);
   gr_cyclecounts -> GetXaxis() -> SetTitleSize(0.05);
   gr_cyclecounts -> GetXaxis() -> SetTitleOffset(1.0);
   gr_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
