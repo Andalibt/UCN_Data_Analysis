@@ -71,7 +71,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("outputTree_524.root", "RECREATE");
+  TFile hfile ("outputTree_587.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -280,7 +280,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // *************************************************************
   
 
-  Int_t StorageTimeFiles[10] ={524};
+  Int_t StorageTimeFiles[10] ={587};
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;
@@ -298,68 +298,6 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
     if (StorageTimeFiles[StorageTimeFileCounter] != midasrun)
       continue;
     
-    /*    if (midasrun == 539)
-      continue;
- 
-    if (midasrun == 549)
-      continue;
-    if (midasrun == 560)
-      continue;
-    if (midasrun == 595) //AFTER ADDING FIT FAILS
-      continue;
-    if (midasrun == 596) // IT SAYS THERE ARE 4 CYCLES BUT THE UCN RATE SHOWS ONLY ONE!
-      continue;
-    if (midasrun == 615) //AFTER ADDING FIT FAILS
-      continue;
-    if (midasrun == 616) //AFTER ADDING FIT FAILS
-      continue;
-    if (midasrun == 617) //AFTER ADDING FIT FAILS
-      continue;
-    if (midasrun == 618) // I HAVE NO IDEA WHAT THIS RUN IS
-      continue;
-    if (midasrun == 619) // ROOT CRASHES
-      continue;
-    if (midasrun == 636) //AFTER ADDING FIT FAILS
-      continue;
-    if (midasrun == 638) // THERE ARE 0 CYCLES IN THIS FILE. IT IS CRAP.
-      continue;
-    if (midasrun == 639) //AFTER ADDING FIT FAILS
-      continue;
-    if (midasrun == 640) // ROOT CRASHES.
-      continue;
-    if (midasrun == 641) // AFTER ADDING FIT FAILS
-      continue;
-    if (midasrun == 642) // ROOT CRASHES
-      continue;
-    if (midasrun == 674)
-      continue;
-    if (midasrun == 691)
-      continue;
-    if (midasrun == 694)
-      continue;
-    if (midasrun == 775)
-      continue;
-    if (midasrun == 787) 
-      continue;
-    if (midasrun == 792){ // THE UCN RATE HISTOGRAM LOOKS STRANGE A LITTLE.
-                          // THE LAST CYCLE LOOKS STRANGE. OTHER THAN THAT, I THINK THE REASON THAT
-                          // THE FIT FAILS IS BECAUSE THE RATES HAVE DIFFERENT INTENSITIES AND IT
-                          // IS NOT CONSISTENT WITH THE INITIAL VALUES THAT I PROVIDE.
-      continue;}
-    if (midasrun == 793)
-      continue;
-    if (midasrun == 794)  // THE RATE HISTOGRAM IS STRANGE, VERY LOW INTENSITY AND THE FIT FAILS.  
-      continue;
-    if (midasrun == 795)  // GIVES AN ERROR
-      continue;
-    if (midasrun == 796)  // AFTER ADDING FIT FAILS
-      continue;
-    if (midasrun == 797)
-      continue;
-    if (midasrun == 810)
-      continue;
-    if (midasrun == 831)
-      continue;*/
 
     TFile* fin = new TFile(Form(filename),"READ");
     
@@ -1095,7 +1033,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
       Double_t tauFall[max] , tauFallErr[max];
       Double_t delay[max] , delayErr[max];
       Double_t Integral[max] , IntegralErr[max];
-
+      /*
 
       gStyle -> SetOptFit(0000);
       for (int i=0 ; i < cycleStartTimes.size(); i++){
@@ -1175,8 +1113,8 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	tauRiseErr[i] = Li6_Fit_Func -> GetParError(7);
 	tauFallErr[i] = Li6_Fit_Func -> GetParError(8);
 	delayErr[i] = Li6_Fit_Func -> GetParError(9);
-	//Integral[i] = Li6_Fit_Func -> Integral(cyclevalveopen[i] , cyclevalveclose[i])/BinWidth;
-	//IntegralErr[i] = Li6_Fit_Func -> IntegralError(cyclevalveopen[i] , cyclevalveclose[i]);
+	Integral[i] = Li6_Fit_Func -> Integral(cyclevalveopen[i] , cyclevalveclose[i])/BinWidth;
+	IntegralErr[i] = Li6_Fit_Func -> IntegralError(cyclevalveopen[i] , cyclevalveclose[i]);
 	//Li6_Fit_Func-> Draw("");
 	//cout <<  (irradiationStartTime[i] - minmin_range[i]) << " "<< baseline[i]<< endl;
 	//cout << BaselineInt[i] << endl;
@@ -1199,8 +1137,8 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
       
       UCN_rate_li6 -> SetBins(NBins, minXrange , maxXrange);
       UCN_rate_Li6_all -> Add (UCN_rate_li6);
-
-
+      */
+   
 
 
       //**********************************************************************
