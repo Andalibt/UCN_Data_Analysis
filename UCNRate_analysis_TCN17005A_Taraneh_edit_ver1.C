@@ -70,6 +70,15 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   double cur592;
   double cur593;
 
+  double curArray587 [1000000];
+  double curArray588 [1000000];
+  double curArray589 [1000000];
+  double curArray590 [1000000];
+  double curArray591 [1000000];
+  double curArray592 [1000000];
+  double curArray593 [1000000];
+  
+
 
   int timestamp_bl587;
   int timestamp_bl588;
@@ -78,6 +87,15 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   int timestamp_bl591;
   int timestamp_bl592;
   int timestamp_bl593;
+
+  double TSArray587 [1000000];
+  double TSArray588 [1000000];
+  double TSArray589 [1000000];
+  double TSArray590 [1000000];
+  double TSArray591 [1000000];
+  double TSArray592 [1000000];
+  double TSArray593 [1000000];
+  
 
   Double_t min587 = 15400000000;
   Double_t min588 = 15400000000;
@@ -152,18 +170,37 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   // FOR RUN 587
   // ************
 
+  int counts587 = 0;
+  double bOnTS587[1000000];
+  int boCounts587;
   
   double beamlineEvent587 = (Double_t) bl587-> GetEntries();
-  
+  cout << "*******************************************" << endl;
+  cout << "For midas run 587 " << endl;
   for(ULong64_t j=0 ; j < beamlineEvent587 ;j++) {
     bl587 -> GetEvent(j);
-    //cout << timestamp_bl587 << endl;
+    TSArray587[counts587] = timestamp_bl587;
+    curArray587[counts587] = cur587*2000;
+    if (counts587 > 1){
+      if (curArray587[counts587 - 1] < 0.08 && curArray587[counts587] > 0.08){
+
+	cout << "Beam goes on" << " "<<  timestamp_bl587 << endl;
+	//bOnTS587[boCounts587] = timestamp_bl587;
+      }
+      if (curArray587[counts587-1] > 0.08 && curArray587[counts587] < 0.08){
+	cout << "beam goes off" << " "<< timestamp_bl587 << endl;
+      }
+    }
+    // MIN TIME STAMP
     if (timestamp_bl587 < min587 ){
       min587 = timestamp_bl587;
     }
+    // MAX TIME STAMP
     if (timestamp_bl587 > max587){
       max587 = timestamp_bl587;
     }
+
+    counts587++;
   }
 
 
@@ -171,25 +208,71 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
 
   TH1* UCNrate_li6587 = new TH1F ("UCNrate_li6587" , "UCN_rate Histogram" , NBins587, min587, max587);
   
-  //TH1* UCNrate_li6587= new TH1F("UCNrate_li6587", "UCN-rate Histogram",NBins587 , min587, max587);
-  
-  int points;
+  int points587;
+  int rate1587;
+  int rate2587;
+  int rate3587;
+  int rate4587;
+
+  double interval1587;
+  double interval2587;
+  double interval3587;
+  double interval4587;
+ 
+
   ULong64_t eventTot587 = (Double_t) uinli6587 -> GetEntries();
   for (ULong64_t j = 0 ; j < eventTot587 ; j++) {
-    uinli6587 -> GetEvent(j);    
+    uinli6587 -> GetEvent(j);
+      
     if (tIsUCN587 > 0 && tUnixTime587 > 20e6){
       UCNrate_li6587 -> Fill(tUnixTimePrecise587);
-      points++;
+      if (tUnixTimePrecise587 > 1510853491 + 20 && tUnixTimePrecise587 < 1510853592 - 20)
+	rate1587++;
+      if (tUnixTimePrecise587 > 1510853794 + 20 && tUnixTimePrecise587 < 1510854087 - 20)
+	rate2587++;
+      if (tUnixTimePrecise587 > 1510854390 + 20 && tUnixTimePrecise587 < 1510854990 - 20)
+	rate3587++;
+      if (tUnixTimePrecise587 > 1510855287 + 20 && tUnixTimePrecise587 <1510855887 - 20)
+	rate4587++;
     }
+    points587++;
+    
   }
 
+  interval1587 = -( 1510853491 + 20) + (1510853592 - 20);
+  interval2587 = -(1510853794 + 20) +( 1510854087 - 20);
+  interval3587 = -(1510854390 + 20) + (1510854990 - 20);
+  interval4587 = -(1510855287 + 20) + (1510855887 - 20);
+
+  cout << rate1587/interval1587 << " "<< rate2587/interval2587 << " " << rate3587/interval3587 << " " << rate4587/interval4587 << endl;
+
+  cout << "*******************************************" << endl;
+
+  
   TCanvas *c1 = new TCanvas ("c1", "c1", 1200, 900);
   UCNrate_li6587 -> Draw();
-  cout << points<< endl;
 
 
 
+  TCanvas *c2 = new TCanvas ("c2" , "c2", 1200, 900);
 
+  TGraphErrors *gr_b587 = new TGraphErrors (counts587 , TSArray587 , curArray587, 0 , 0);
+
+  gr_b587 -> SetTitle(" Predicted Beam Current vs Unix Time ");
+  gr_b587 -> GetXaxis() -> SetTitle("Unix Time" );
+  gr_b587 -> GetYaxis() -> SetTitle("Predicted Beam Current (#muA)");
+  gr_b587 -> SetMarkerStyle(20);
+  
+  gr_b587 -> GetXaxis() -> SetTitleSize(0.05);
+  gr_b587 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_b587 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_b587 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_b587 -> SetMarkerColor(1);
+
+  
+
+  gr_b587 -> Draw("Ap");
+  UCNrate_li6587 -> Draw("same");
   
 
   
