@@ -597,5 +597,111 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   UCNrate_li6590 -> Draw("same");
 
 
+
+  
+  // *************
+  // FOR RUN 591
+  // ************
+
+  int counts591 = 0;
+  double bOnTS591[1000000];
+  int boCounts591;
+  
+  double beamlineEvent591 = (Double_t) bl591-> GetEntries();
+  cout << "*******************************************" << endl;
+  cout << "For midas run 591 " << endl;
+  for(ULong64_t j=0 ; j < beamlineEvent591 ;j++) {
+    bl591 -> GetEvent(j);
+    TSArray591[counts591] = timestamp_bl591;
+    curArray591[counts591] = cur591*2000;
+    if (counts591 > 1){
+      if (curArray591[counts591 - 1] < 0.08 && curArray591[counts591] > 0.08){
+
+	cout << "Beam goes on" << " "<<  timestamp_bl591 << endl;
+	//bOnTS591[boCounts591] = timestamp_bl591;
+      }
+      if (curArray591[counts591-1] > 0.08 && curArray591[counts591] < 0.08){
+	cout << "beam goes off" << " "<< timestamp_bl591 << endl;
+      }
+    }
+    // MIN TIME STAMP
+    if (timestamp_bl591 < min591 ){
+      min591 = timestamp_bl591;
+    }
+    // MAX TIME STAMP
+    if (timestamp_bl591 > max591){
+      max591 = timestamp_bl591;
+    }
+
+    counts591++;
+  }
+
+
+  NBins591 = max591 - min591;
+
+  TH1* UCNrate_li6591 = new TH1F ("UCNrate_li6591" , "UCN_rate Histogram" , NBins591, min591, max591);
+  
+  int points591;
+  int rate1591;
+  int rate2591;
+  int rate3591;
+
+
+  double interval1591;
+  double interval2591;
+  double interval3591;
+
+ 
+
+  ULong64_t eventTot591 = (Double_t) uinli6591 -> GetEntries();
+  for (ULong64_t j = 0 ; j < eventTot591 ; j++) {
+    uinli6591 -> GetEvent(j);
+      
+    if (tIsUCN591 > 0 && tUnixTime591 > 20e6){
+      UCNrate_li6591 -> Fill(tUnixTimePrecise591);
+      if (tUnixTimePrecise591 > 1510864992 + 20 && tUnixTimePrecise591 < 1510865595 - 20)
+	rate1591++;
+      if (tUnixTimePrecise591 > 1510865893 + 20 && tUnixTimePrecise591 < 1510866498 - 20)
+	rate2591++;
+      if (tUnixTimePrecise591 > 1510866796 + 60 && tUnixTimePrecise591 < 1510867394 - 20)
+	rate3591++;
+    }
+    points591++;
+    
+  }
+
+  interval1591 = -( 1510864992 + 20) + (1510865595 - 20);
+  interval2591 = -(1510865893 + 20) +( 1510866498 - 20);
+  interval3591 = -(1510866796 + 60) + (1510867394 - 20);
+
+  cout << rate1591/interval1591 << " "<< rate2591/interval2591 << " " << rate3591/interval3591 << endl;
+
+  cout << "*******************************************" << endl;
+
+  
+  TCanvas *c1591 = new TCanvas ("c1591", "c1591", 1200, 900);
+  UCNrate_li6591 -> Draw();
+
+
+
+  TCanvas *c2591 = new TCanvas ("c2591" , "c2591", 1200, 900);
+
+  TGraphErrors *gr_b591 = new TGraphErrors (counts591 , TSArray591 , curArray591, 0 , 0);
+
+  gr_b591 -> SetTitle(" Predicted Beam Current vs Unix Time ");
+  gr_b591 -> GetXaxis() -> SetTitle("Unix Time" );
+  gr_b591 -> GetYaxis() -> SetTitle("Predicted Beam Current (#muA)");
+  gr_b591 -> SetMarkerStyle(20);
+  
+  gr_b591 -> GetXaxis() -> SetTitleSize(0.05);
+  gr_b591 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_b591 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_b591 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_b591 -> SetMarkerColor(1);
+
+  
+
+  gr_b591 -> Draw("Ap");
+  UCNrate_li6591 -> Draw("same");
   
 }
