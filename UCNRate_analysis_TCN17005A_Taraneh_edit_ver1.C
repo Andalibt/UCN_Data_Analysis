@@ -35,6 +35,15 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   TTree *bl591 = (TTree*) fin591 -> Get("BeamlineEpicsTree");
   TTree *bl592 = (TTree*) fin592 -> Get("BeamlineEpicsTree");
   TTree *bl593 = (TTree*) fin593 -> Get("BeamlineEpicsTree");
+
+  TTree *sourceEpics587 = (TTree*) fin587 -> Get("SourceEpicsTree");
+  TTree *sourceEpics588 = (TTree*) fin588 -> Get("SourceEpicsTree");
+  TTree *sourceEpics589 = (TTree*) fin589 -> Get("SourceEpicsTree");
+  TTree *sourceEpics590 = (TTree*) fin590 -> Get("SourceEpicsTree");
+  TTree *sourceEpics591 = (TTree*) fin591 -> Get("SourceEpicsTree");
+  TTree *sourceEpics592 = (TTree*) fin592 -> Get("SourceEpicsTree");
+  TTree *sourceEpics593 = (TTree*) fin593 -> Get("SourceEpicsTree");
+  
   
 
   double tUnixTimePrecise587;
@@ -70,6 +79,15 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   double cur592;
   double cur593;
 
+  double ts12587;
+  double ts12588;
+  double ts12589;
+  double ts12590;
+  double ts12591;
+  double ts12592;
+  double ts12593;
+  
+
   double curArray587 [1000000];
   double curArray588 [1000000];
   double curArray589 [1000000];
@@ -85,6 +103,15 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   double curAve591;
   double curAve592;
   double curAve593;
+
+  double ts12Ave587;
+  double ts12Ave588;
+  double ts12Ave589;
+  double ts12Ave590;
+  double ts12Ave591;
+  double ts12Ave592;
+  double ts12Ave593;
+  
   
 
   int timestamp_bl587;
@@ -95,6 +122,16 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   int timestamp_bl592;
   int timestamp_bl593;
 
+
+  int timestamp_se587;
+  int timestamp_se588;
+  int timestamp_se589;
+  int timestamp_se590;
+  int timestamp_se591;
+  int timestamp_se592;
+  int timestamp_se593;
+  
+
   double TSArray587 [1000000];
   double TSArray588 [1000000];
   double TSArray589 [1000000];
@@ -102,8 +139,24 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   double TSArray591 [1000000];
   double TSArray592 [1000000];
   double TSArray593 [1000000];
-  
 
+  double TSArrayse587 [1000000];
+  double TSArrayse588 [1000000];
+  double TSArrayse589 [1000000];
+  double TSArrayse590 [1000000];
+  double TSArrayse591 [1000000];
+  double TSArrayse592 [1000000];
+  double TSArrayse593 [1000000];
+
+  double tempArray587 [1000000];
+  double tempArray588 [1000000];
+  double tempArray589 [1000000];
+  double tempArray590 [1000000];
+  double tempArray591 [1000000];
+  double tempArray592 [1000000];
+  double tempArray593 [1000000];
+  
+  
   Double_t min587 = 15400000000;
   Double_t min588 = 15400000000;
   Double_t min589 = 15400000000;
@@ -173,6 +226,26 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   bl593 -> SetBranchAddress ("timestamp", &timestamp_bl593);
 
 
+  sourceEpics587 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12587);
+  sourceEpics588 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12588);
+  sourceEpics589 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12589);
+  sourceEpics590 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12590);
+  sourceEpics591 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12591);
+  sourceEpics592 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12592);
+  sourceEpics593 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12593);
+
+
+  sourceEpics587 -> SetBranchAddress ("timestamp", &timestamp_se587);
+  sourceEpics588 -> SetBranchAddress ("timestamp", &timestamp_se588);
+  sourceEpics589 -> SetBranchAddress ("timestamp", &timestamp_se589);
+  sourceEpics590 -> SetBranchAddress ("timestamp", &timestamp_se590);
+  sourceEpics591 -> SetBranchAddress ("timestamp", &timestamp_se591);
+  sourceEpics592 -> SetBranchAddress ("timestamp", &timestamp_se592);
+  sourceEpics593 -> SetBranchAddress ("timestamp", &timestamp_se593);
+  
+  
+
+
   // *************
   // FOR RUN 587
   // ************
@@ -188,6 +261,7 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
     bl587 -> GetEvent(j);
     TSArray587[counts587] = timestamp_bl587;
     curArray587[counts587] = cur587*2000;
+
     if (counts587 > 1){
       if (curArray587[counts587 - 1] < 0.08 && curArray587[counts587] > 0.08){
 
@@ -211,7 +285,19 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
     counts587++;
   }
 
+  int SEcounts587;
+  double sourceEpicsEvents587 = (double) sourceEpics587 -> GetEntries();
+  for (ULong64_t j = 0 ; j < sourceEpicsEvents587 ; j++){
+    sourceEpics587 -> GetEvent(j);
+    TSArrayse587[j] = timestamp_se587;
+    tempArray587[j] = ts12587;
+    ts12Ave587 += ts12587;
+    SEcounts587++;
+  }
+
+  
   curAve587 = curAve587 / boCounts587;
+  ts12Ave587 = ts12Ave587/SEcounts587;
   NBins587 = max587 - min587;
 
   TH1* UCNrate_li6587 = new TH1F ("UCNrate_li6587" , "UCN_rate Histogram" , NBins587, min587, max587);
@@ -254,6 +340,47 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
 
   cout << rate1587/interval1587 << " "<< rate2587/interval2587 << " " << rate3587/interval3587 << " " << rate4587/interval4587 << endl;
   cout << "The average current for this run was " << curAve587 << endl;
+  cout << "The average isopure temperature for this run was " << ts12Ave587 << endl;
+
+
+  double tave1587;
+  double tave2587;
+  double tave3587;
+  double tave4587;
+
+  int cts1587 = 0;
+  int cts2587 = 0;
+  int cts3587 = 0;
+  int cts4587 = 0;
+  
+  
+  for (ULong64_t j = 0 ; j < sourceEpicsEvents587 ; j++){
+    sourceEpics587 -> GetEvent(j);
+    if (timestamp_se587 > 1510853491  && timestamp_se587 < 1510853592 ){
+      tave1587 += ts12587;
+      cts1587++;
+    }
+    if (timestamp_se587 > 1510853794  && timestamp_se587 < 1510854087 ){
+      tave2587 += ts12587;
+      cts2587++;
+    }
+    if (timestamp_se587 > 1510854390  && timestamp_se587 < 1510854990 ){
+      tave3587 += ts12587;
+      cts3587++;
+    }
+    if (timestamp_se587 > 1510855287 && timestamp_se587 <1510855887 ){
+      tave4587 += ts12587;
+      cts4587++;
+    }
+  }
+
+  tave1587 = tave1587/ cts1587;
+  tave2587 = tave2587/ cts2587;
+  tave3587 = tave3587/ cts3587;
+  tave4587 = tave4587/ cts4587;
+
+  cout << tave1587 << " " << tave2587 << " " << tave3587 << " " << tave4587 << endl;
+
   cout << "*******************************************" << endl;
 
   
@@ -281,11 +408,26 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
 
   gr_b587 -> Draw("Ap");
   UCNrate_li6587 -> Draw("same");
+
+  TF1 *f587 = new TF1("f587","140", min587 ,max587 );
+  TCanvas *c3587 = new TCanvas ("c3587" , "c3587" , 1200, 900);
+
+  TGraph *gr_s587 = new TGraph (SEcounts587 , TSArrayse587, tempArray587);
+  gr_s587 -> SetTitle(" Isopure Temperature vs Unix Time ");
+  gr_s587 -> GetXaxis() -> SetTitle("Unix Time" );
+  gr_s587 -> GetYaxis() -> SetTitle("Isopure Temperature (K)");
+  //gr_s587 -> GetYaxis() -> SetRangeUser (0, 200);
+  gr_s587 -> SetMarkerStyle(20);
   
+  gr_s587 -> GetXaxis() -> SetTitleSize(0.05);
+  gr_s587 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_s587 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_s587 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_s587 -> SetMarkerColor(1);
 
-
-
-
+  gr_s587 -> Draw("ap");
+  UCNrate_li6587 -> Divide(f587);
+  //UCNrate_li6587 -> Draw("same");
 
    // *************
   // FOR RUN 588
@@ -301,6 +443,7 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
     bl588 -> GetEvent(j);
     TSArray588[counts588] = timestamp_bl588;
     curArray588[counts588] = cur588*2000;
+    
     if (counts588 > 1){
       if (curArray588[counts588 - 1] < 0.08 && curArray588[counts588] > 0.08){
 
@@ -324,7 +467,20 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
     counts588++;
   }
 
+
+  int SEcounts588;
+  double sourceEpicsEvents588 = (double) sourceEpics588 -> GetEntries();
+  for (ULong64_t j = 0 ; j < sourceEpicsEvents588 ; j++){
+    sourceEpics588 -> GetEvent(j);
+    TSArrayse588[j] = timestamp_se588;
+    tempArray588[j] = ts12588;
+    ts12Ave588 += ts12588;
+    SEcounts588++;
+  }
+
+
   curAve588 = curAve588 / boCounts588;
+  ts12Ave588 = ts12Ave588/ SEcounts588;
   NBins588 = max588 - min588;
 
   TH1* UCNrate_li6588 = new TH1F ("UCNrate_li6588" , "UCN_rate Histogram" , NBins588, min588, max588);
@@ -362,6 +518,40 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
 
   cout << rate1588/interval1588 << " "<< rate2588/interval2588 << " " << rate3588/interval3588  << endl;
   cout << "The average current for this run was " << curAve588 << endl;
+  cout << "The average isopure temperature for this run was " << ts12Ave588 << endl;
+
+
+  double tave1588;
+  double tave2588;
+  double tave3588;
+
+  int cts1588 = 0;
+  int cts2588 = 0;
+  int cts3588 = 0;
+  
+  
+  for (ULong64_t j = 0 ; j < sourceEpicsEvents588 ; j++){
+    sourceEpics588 -> GetEvent(j);
+    if (timestamp_se588 > 1510856459  && timestamp_se588 < 1510857059 ){
+      tave1588 += ts12588;
+      cts1588++;
+    }
+    if (timestamp_se588 > 1510857361  && timestamp_se588 < 1510857960  ){
+      tave2588 += ts12588;
+      cts2588++;
+    }
+    if (timestamp_se588 > 1510858262  && timestamp_se588 < 1510858861 ){
+      tave3588 += ts12588;
+      cts3588++;
+    }
+  }
+
+  tave1588 = tave1588/ cts1588;
+  tave2588 = tave2588/ cts2588;
+  tave3588 = tave3588/ cts3588;
+
+  cout << tave1588 << " " << tave2588 << " " << tave3588 <<  endl;
+
   
   cout << "*******************************************" << endl;
 
@@ -391,7 +581,25 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   gr_b588 -> Draw("Ap");
   UCNrate_li6588 -> Draw("same");
   
+  TF1 *f588 = new TF1("f588","160", min588 ,max588 );
+  TCanvas *c3588 = new TCanvas ("c3588" , "c3588" , 1200, 900);
 
+  TGraph *gr_s588 = new TGraph (SEcounts588 , TSArrayse588, tempArray588);
+  gr_s588 -> SetTitle(" Isopure Temperature vs Unix Time ");
+  gr_s588 -> GetXaxis() -> SetTitle("Unix Time" );
+  gr_s588 -> GetYaxis() -> SetTitle("Isopure Temperature (K)");
+  //gr_s588 -> GetYaxis() -> SetRangeUser (0, 200);
+  gr_s588 -> SetMarkerStyle(20);
+  
+  gr_s588 -> GetXaxis() -> SetTitleSize(0.05);
+  gr_s588 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_s588 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_s588 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_s588 -> SetMarkerColor(1);
+
+  gr_s588 -> Draw("ap");
+  UCNrate_li6588 -> Divide(f588);
+  UCNrate_li6588 -> Draw("same");
 
   // *************
   // FOR RUN 589
@@ -407,6 +615,7 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
     bl589 -> GetEvent(j);
     TSArray589[counts589] = timestamp_bl589;
     curArray589[counts589] = cur589*2000;
+    ts12Ave589 += ts12589;
     if (counts589 > 1){
       if (curArray589[counts589 - 1] < 0.08 && curArray589[counts589] > 0.08){
 
@@ -430,7 +639,19 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
     counts589++;
   }
 
+  int SEcounts589;
+  double sourceEpicsEvents589 = (double) sourceEpics589 -> GetEntries();
+  for (ULong64_t j = 0 ; j < sourceEpicsEvents589 ; j++){
+    sourceEpics589 -> GetEvent(j);
+    TSArrayse589[j] = timestamp_se589;
+    tempArray589[j] = ts12589;
+    ts12Ave589 += ts12589;
+    SEcounts589++;
+  }
+
+  
   curAve589 = curAve589 / boCounts589;
+  ts12Ave589 = ts12Ave589/SEcounts589;
   NBins589 = max589 - min589;
 
   TH1* UCNrate_li6589 = new TH1F ("UCNrate_li6589" , "UCN_rate Histogram" , NBins589, min589, max589);
@@ -470,7 +691,40 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
 
   cout << rate1589/interval1589 << " "<< rate2589/interval2589 << " " << rate3589/interval3589 << endl;
   cout << "The average current for this run was " << curAve589 << endl;
+  cout << "The average isopure temperature for this run was " << ts12Ave589 << endl;
 
+  double tave1589;
+  double tave2589;
+  double tave3589;
+
+  int cts1589 = 0;
+  int cts2589 = 0;
+  int cts3589 = 0;
+  
+  
+  for (ULong64_t j = 0 ; j < sourceEpicsEvents589 ; j++){
+    sourceEpics589 -> GetEvent(j);
+    if (timestamp_se589 > 1510859274  && timestamp_se589 < 1510859873 ){
+      tave1589 += ts12589;
+      cts1589++;
+    }
+    if (timestamp_se589 > 1510860176  && timestamp_se589 < 1510860775  ){
+      tave2589 += ts12589;
+      cts2589++;
+    }
+    if (timestamp_se589 > 1510861077  && timestamp_se589 < 1510861698 ){
+      tave3589 += ts12589;
+      cts3589++;
+    }
+  }
+
+  tave1589 = tave1589/ cts1589;
+  tave2589 = tave2589/ cts2589;
+  tave3589 = tave3589/ cts3589;
+
+  cout << tave1589 << " " << tave2589 << " " << tave3589 <<  endl;
+
+  
   cout << "*******************************************" << endl;
 
   
@@ -499,7 +753,25 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   gr_b589 -> Draw("Ap");
   UCNrate_li6589 -> Draw("same");
   
+  TF1 *f589 = new TF1("f589","160", min589 ,max589 );
+  TCanvas *c3589 = new TCanvas ("c3589" , "c3589" , 1200, 900);
 
+  TGraph *gr_s589 = new TGraph (SEcounts589 , TSArrayse589, tempArray589);
+  gr_s589 -> SetTitle(" Isopure Temperature vs Unix Time ");
+  gr_s589 -> GetXaxis() -> SetTitle("Unix Time" );
+  gr_s589 -> GetYaxis() -> SetTitle("Isopure Temperature (K)");
+  //gr_s589 -> GetYaxis() -> SetRangeUser (0, 200);
+  gr_s589 -> SetMarkerStyle(20);
+  
+  gr_s589 -> GetXaxis() -> SetTitleSize(0.05);
+  gr_s589 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_s589 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_s589 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_s589 -> SetMarkerColor(1);
+
+  gr_s589 -> Draw("ap");
+  UCNrate_li6589 -> Divide(f589);
+  UCNrate_li6589 -> Draw("same");
 
   // *************
   // FOR RUN 590
@@ -515,6 +787,7 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
     bl590 -> GetEvent(j);
     TSArray590[counts590] = timestamp_bl590;
     curArray590[counts590] = cur590*2000;
+    ts12Ave590 += ts12590;
     if (counts590 > 1){
       if (curArray590[counts590 - 1] < 0.08 && curArray590[counts590] > 0.08){
 
@@ -538,7 +811,20 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
     counts590++;
   }
 
+
+  int SEcounts590;
+  double sourceEpicsEvents590 = (double) sourceEpics590 -> GetEntries();
+  for (ULong64_t j = 0 ; j < sourceEpicsEvents590 ; j++){
+    sourceEpics590 -> GetEvent(j);
+    TSArrayse590[j] = timestamp_se590;
+    tempArray590[j] = ts12590;
+    ts12Ave590 += ts12590;
+    SEcounts590++;
+  }
+
+  
   curAve590 = curAve590 / boCounts590 ;
+  ts12Ave590 = ts12Ave590 / SEcounts590;
   NBins590 = max590 - min590;
 
   TH1* UCNrate_li6590 = new TH1F ("UCNrate_li6590" , "UCN_rate Histogram" , NBins590, min590, max590);
@@ -578,7 +864,40 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
 
   cout << rate1590/interval1590 << " "<< rate2590/interval2590 << " " << rate3590/interval3590 << endl;
   cout << "The average current for this run was " << curAve590 << endl;
+  cout << "The average isopure temperature for this run was " << ts12Ave590 << endl;
 
+
+  double tave1590;
+  double tave2590;
+  double tave3590;
+
+  int cts1590 = 0;
+  int cts2590 = 0;
+  int cts3590 = 0;
+  
+  
+  for (ULong64_t j = 0 ; j < sourceEpicsEvents590 ; j++){
+    sourceEpics590 -> GetEvent(j);
+    if (timestamp_se590 > 1510862192  && timestamp_se590 < 1510862791 ){
+      tave1590 += ts12590;
+      cts1590++;
+    }
+    if (timestamp_se590 > 1510863088  && timestamp_se590 < 1510863692  ){
+      tave2590 += ts12590;
+      cts2590++;
+    }
+    if (timestamp_se590 > 1510863990  && timestamp_se590 < 1510864589 ){
+      tave3590 += ts12590;
+      cts3590++;
+    }
+  }
+
+  tave1590 = tave1590/ cts1590;
+  tave2590 = tave2590/ cts2590;
+  tave3590 = tave3590/ cts3590;
+
+  cout << tave1590 << " " << tave2590 << " " << tave3590 <<  endl;
+  
   cout << "*******************************************" << endl;
 
   
@@ -608,7 +927,27 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   UCNrate_li6590 -> Draw("same");
 
 
+  TF1 *f590 = new TF1("f590","160", min590 ,max590 );
+  TCanvas *c3590 = new TCanvas ("c3590" , "c3590" , 1200, 900);
 
+  TGraph *gr_s590 = new TGraph (SEcounts590 , TSArrayse590, tempArray590);
+  gr_s590 -> SetTitle(" Isopure Temperature vs Unix Time ");
+  gr_s590 -> GetXaxis() -> SetTitle("Unix Time" );
+  gr_s590 -> GetYaxis() -> SetTitle("Isopure Temperature (K)");
+  //gr_s590 -> GetYaxis() -> SetRangeUser (0, 200);
+  gr_s590 -> SetMarkerStyle(20);
+  
+  gr_s590 -> GetXaxis() -> SetTitleSize(0.05);
+  gr_s590 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_s590 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_s590 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_s590 -> SetMarkerColor(1);
+
+  gr_s590 -> Draw("ap");
+  UCNrate_li6590 -> Divide(f590);
+  UCNrate_li6590 -> Draw("same");
+
+  
   
   // *************
   // FOR RUN 591
@@ -624,6 +963,7 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
     bl591 -> GetEvent(j);
     TSArray591[counts591] = timestamp_bl591;
     curArray591[counts591] = cur591*2000;
+    ts12Ave591 += ts12591;
     if (counts591 > 1){
       if (curArray591[counts591 - 1] < 0.08 && curArray591[counts591] > 0.08){
 
@@ -647,7 +987,18 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
     counts591++;
   }
 
+  int SEcounts591;
+  double sourceEpicsEvents591 = (double) sourceEpics591 -> GetEntries();
+  for (ULong64_t j = 0 ; j < sourceEpicsEvents591 ; j++){
+    sourceEpics591 -> GetEvent(j);
+    TSArrayse591[j] = timestamp_se591;
+    tempArray591[j] = ts12591;
+    ts12Ave591 += ts12591;
+    SEcounts591++;
+  }
+
   curAve591 = curAve591 / boCounts591;
+  ts12Ave591 = ts12Ave591 / SEcounts591;
   NBins591 = max591 - min591;
 
   TH1* UCNrate_li6591 = new TH1F ("UCNrate_li6591" , "UCN_rate Histogram" , NBins591, min591, max591);
@@ -687,7 +1038,40 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
 
   cout << rate1591/interval1591 << " "<< rate2591/interval2591 << " " << rate3591/interval3591 << endl;
   cout << "The average current for this run was " << curAve591 << endl;
+  cout << "The average isopure temperature for this run was " << ts12Ave591 << endl;
 
+
+  double tave1591;
+  double tave2591;
+  double tave3591;
+
+  int cts1591 = 0;
+  int cts2591 = 0;
+  int cts3591 = 0;
+  
+  
+  for (ULong64_t j = 0 ; j < sourceEpicsEvents591 ; j++){
+    sourceEpics591 -> GetEvent(j);
+    if (timestamp_se591 > 1510864992  && timestamp_se591 < 1510865595 ){
+      tave1591 += ts12591;
+      cts1591++;
+    }
+    if (timestamp_se591 > 1510865893  && timestamp_se591 < 1510866498  ){
+      tave2591 += ts12591;
+      cts2591++;
+    }
+    if (timestamp_se591 > 1510866796  && timestamp_se591 < 1510867394 ){
+      tave3591 += ts12591;
+      cts3591++;
+    }
+  }
+
+  tave1591 = tave1591/ cts1591;
+  tave2591 = tave2591/ cts2591;
+  tave3591 = tave3591/ cts3591;
+
+  cout << tave1591 << " " << tave2591 << " " << tave3591 <<  endl;
+  
   cout << "*******************************************" << endl;
 
   
@@ -717,6 +1101,27 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   UCNrate_li6591 -> Draw("same");
 
 
+  TF1 *f591 = new TF1("f591","160", min591 ,max591 );
+  TCanvas *c3591 = new TCanvas ("c3591" , "c3591" , 1200, 900);
+
+  TGraph *gr_s591 = new TGraph (SEcounts591 , TSArrayse591, tempArray591);
+  gr_s591 -> SetTitle(" Isopure Temperature vs Unix Time ");
+  gr_s591 -> GetXaxis() -> SetTitle("Unix Time" );
+  gr_s591 -> GetYaxis() -> SetTitle("Isopure Temperature (K)");
+  //gr_s591 -> GetYaxis() -> SetRangeUser (0, 200);
+  gr_s591 -> SetMarkerStyle(20);
+  
+  gr_s591 -> GetXaxis() -> SetTitleSize(0.05);
+  gr_s591 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_s591 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_s591 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_s591 -> SetMarkerColor(1);
+
+  gr_s591 -> Draw("ap");
+  UCNrate_li6591 -> Divide(f591);
+  UCNrate_li6591 -> Draw("same");
+
+  
   // *************
   // FOR RUN 592
   // ************
@@ -731,6 +1136,7 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
     bl592 -> GetEvent(j);
     TSArray592[counts592] = timestamp_bl592;
     curArray592[counts592] = cur592*2000;
+    ts12Ave592 += ts12592;
     if (counts592 > 1){
       if (curArray592[counts592 - 1] < 0.08 && curArray592[counts592] > 0.08){
 
@@ -754,7 +1160,19 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
     counts592++;
   }
 
+  int SEcounts592;
+  double sourceEpicsEvents592 = (double) sourceEpics592 -> GetEntries();
+  for (ULong64_t j = 0 ; j < sourceEpicsEvents592 ; j++){
+    sourceEpics592 -> GetEvent(j);
+    TSArrayse592[j] = timestamp_se592;
+    tempArray592[j] = ts12592;
+    ts12Ave592 += ts12592;
+    SEcounts592++;
+  }
+
+  
   curAve592 = curAve592 / boCounts592;
+  ts12Ave592 = ts12Ave592 / SEcounts592;
   NBins592 = max592 - min592;
 
   TH1* UCNrate_li6592 = new TH1F ("UCNrate_li6592" , "UCN_rate Histogram" , NBins592, min592, max592);
@@ -789,7 +1207,32 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
 
   cout << rate1592/interval1592 << " "<< rate2592/interval2592  << endl;
   cout << "The average current for this run was " << curAve592 << endl;
+  cout << "The average isopure temperature for this run was " << ts12Ave592 << endl;
 
+  double tave1592;
+  double tave2592;
+
+  int cts1592 = 0;
+  int cts2592 = 0;
+  
+  
+  for (ULong64_t j = 0 ; j < sourceEpicsEvents592 ; j++){
+    sourceEpics592 -> GetEvent(j);
+    if (timestamp_se592 > 1510867930  && timestamp_se592 < 1510868518 ){
+      tave1592 += ts12592;
+      cts1592++;
+    }
+    if (timestamp_se592 > 1510868828  && timestamp_se592 < 1510869447  ){
+      tave2592 += ts12592;
+      cts2592++;
+    }
+  }
+
+  tave1592 = tave1592/ cts1592;
+  tave2592 = tave2592/ cts2592;
+
+  cout << tave1592 << " " << tave2592 <<  endl;
+  
   cout << "*******************************************" << endl;
 
   
@@ -818,7 +1261,28 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   gr_b592 -> Draw("Ap");
   UCNrate_li6592 -> Draw("same");
 
+  TF1 *f592 = new TF1("f592","160", min592 ,max592 );
+  TCanvas *c3592 = new TCanvas ("c3592" , "c3592" , 1200, 900);
 
+  TGraph *gr_s592 = new TGraph (SEcounts592 , TSArrayse592, tempArray592);
+  gr_s592 -> SetTitle(" Isopure Temperature vs Unix Time ");
+  gr_s592 -> GetXaxis() -> SetTitle("Unix Time" );
+  gr_s592 -> GetYaxis() -> SetTitle("Isopure Temperature (K)");
+  //gr_s592 -> GetYaxis() -> SetRangeUser (0, 200);
+  gr_s592 -> SetMarkerStyle(20);
+  
+  gr_s592 -> GetXaxis() -> SetTitleSize(0.05);
+  gr_s592 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_s592 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_s592 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_s592 -> SetMarkerColor(1);
+
+  gr_s592 -> Draw("ap");
+  UCNrate_li6592 -> Divide(f592);
+  UCNrate_li6592 -> Draw("same");
+
+
+  
   // *************
   // FOR RUN 593
   // ************
@@ -834,6 +1298,7 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
     bl593 -> GetEvent(j);
     TSArray593[counts593] = timestamp_bl593;
     curArray593[counts593] = cur593*2000;
+    ts12Ave593 += ts12593 ;
     if (counts593 > 1){
       if (curArray593[counts593 - 1] < 0.08 && curArray593[counts593] > 0.08){
 
@@ -857,7 +1322,20 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
     counts593++;
   }
 
+
+  int SEcounts593;
+  double sourceEpicsEvents593 = (double) sourceEpics593 -> GetEntries();
+  for (ULong64_t j = 0 ; j < sourceEpicsEvents593 ; j++){
+    sourceEpics593 -> GetEvent(j);
+    TSArrayse593[j] = timestamp_se593;
+    tempArray593[j] = ts12593;
+    ts12Ave593 += ts12593;
+    SEcounts593++;
+  }
+
+  
   curAve593 = curAve593/ boCounts593;
+  ts12Ave593 = ts12Ave593 /SEcounts593;
   NBins593 = max593 - min593;
 
   TH1* UCNrate_li6593 = new TH1F ("UCNrate_li6593" , "UCN_rate Histogram" , NBins593, min593, max593);
@@ -887,7 +1365,26 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
 
   cout << rate1593/interval1593  << endl;
   cout << "The average current for this run was " << curAve593 << endl;
+  cout << "The average isopure temperature for this run was " << ts12Ave593 << endl;
 
+
+  double tave1593;
+
+  int cts1593 = 0;
+  
+  
+  for (ULong64_t j = 0 ; j < sourceEpicsEvents593 ; j++){
+    sourceEpics593 -> GetEvent(j);
+    if (timestamp_se593 > 1510869732 && timestamp_se593 < 1510870324 ){
+      tave1593 += ts12593;
+      cts1593++;
+    }
+  }
+
+  tave1593 = tave1593/ cts1593;
+
+  cout << tave1593 <<  endl;
+  
   cout << "*******************************************" << endl;
 
   
@@ -917,28 +1414,91 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   UCNrate_li6593 -> Draw("same");
 
 
+  TF1 *f593 = new TF1("f593","160", min593 ,max593 );
+  TCanvas *c3593 = new TCanvas ("c3593" , "c3593" , 1200, 900);
+
+  TGraph *gr_s593 = new TGraph (SEcounts593 , TSArrayse593, tempArray593);
+  gr_s593 -> SetTitle(" Isopure Temperature vs Unix Time ");
+  gr_s593 -> GetXaxis() -> SetTitle("Unix Time" );
+  gr_s593 -> GetYaxis() -> SetTitle("Isopure Temperature (K)");
+  //gr_s593 -> GetYaxis() -> SetRangeUser (0, 200);
+  gr_s593 -> SetMarkerStyle(20);
+  
+  gr_s593 -> GetXaxis() -> SetTitleSize(0.05);
+  gr_s593 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_s593 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_s593 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_s593 -> SetMarkerColor(1);
+
+  gr_s593 -> Draw("ap");
+  UCNrate_li6593 -> Divide(f593);
+  UCNrate_li6593 -> Draw("same");
+  
 
   // *********************
   // THE OVERALL RESULT
   //**********************
 
-  double curAll[19] = {0.1, 0.1, 0.1, 0.1, 0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.7, 0.7, 0.7, 0.9,  0.9, 1, 1, 1};
-  double rateAll[19] = {141.7, 146.3, 156.9, 155.7, 461.1, 461.0, 460.7, 761.3, 765.0, 710.2, 1065.4, 1058.7, 1069.8, 1347.3, 1354.5, 1500.7, 1435.0, 1489.8}; 
-    
-  TCanvas *cAll = new TCanvas ("cAll" , "cAll" , 1200, 900);
+  double curAll[19] = { 0.1, 0.1, 0.3, 0.3, 0.3, 0.5, 0.5, 0.7, 0.7, 0.7, 0.9,  0.9, 1, 1};
+  double tempAll[19] = { 0.88, 0.88, 0.9, 0.91, 0.92, 0.93, 0.91, 0.91, 0.92, 0.92, 0.93, 0.94, 0.94, 0.95};
+  double rateAll[19] = { 156.9, 155.7, 461.1, 461.0, 460.7, 761.3, 765.0,  1065.4, 1058.7, 1069.8, 1347.3, 1354.5, 1500.7,  1489.8};
 
-  TGraph *grAll = new TGraph (19, curAll, rateAll);
-  grAll -> SetTitle("UCN Rate vs Predicted Beam Current");
-  grAll -> GetXaxis() -> SetTitle("Predicted Beam Current (#muA) " );
-  grAll -> GetYaxis() -> SetTitle("UCN Counts/s");
-  grAll -> SetMarkerStyle(20);
+  // ONLINE ANALYSIS
+  double curOnline[19] = {0.1, 0.1, 0.1, 0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.7, 0.7, 0.7, 0.9, 0.9, 0.9, 1, 1, 1};
+  double rateOnline[19] = {155, 155, 155, 460, 460, 460, 770, 770, 770, 1080, 1070, 1070, 1350, 1350, 1350, 1500, 1500, 1500};
+  double tempOnline[19] = {0.87, 0.88, 0.88, 0.92, 0.92, 0.92, 0.93, 0.91, 0.91, 0.92, 0.92, 0.92, 0.93, 0.94, 0.94, 0.95, 0.95, 0.95};
   
-  grAll -> GetXaxis() -> SetTitleSize(0.05);
-  grAll -> GetXaxis() -> SetTitleOffset(1.0);
-  grAll -> GetYaxis() -> SetTitleSize(0.05); 
-  grAll -> GetYaxis() -> SetTitleOffset(0.9);
-  grAll -> SetMarkerColor(1);
-  grAll -> Draw("ap");
-  //grAll -> Fit("pol1");
+  TCanvas *c1All = new TCanvas ("c1All" , "c1All" , 1200, 900);
+  c1All -> Divide(2,1);
+
+  c1All -> cd(1);
+  TGraph *gr1All = new TGraph (14, curAll, rateAll);
+
+  gr1All -> SetTitle("UCN Rate vs Predicted Beam Current");
+  gr1All -> GetXaxis() -> SetTitle("Predicted Beam Current (#muA) " );
+  gr1All -> GetYaxis() -> SetTitle("UCN Counts/s");
+  gr1All -> SetMarkerStyle(20);
+  
+  gr1All -> GetXaxis() -> SetTitleSize(0.05);
+  gr1All -> GetXaxis() -> SetTitleOffset(1.0);
+  gr1All -> GetYaxis() -> SetTitleSize(0.05); 
+  gr1All -> GetYaxis() -> SetTitleOffset(1.4);
+  gr1All -> SetMarkerColor(1);
+  
+  TGraph *gr1Online = new TGraph (18, curOnline, rateOnline);
+  gr1Online -> SetMarkerStyle(3);
+  gr1Online -> SetMarkerColor(8);
+
+  TLegend *leg1 = new TLegend (0.5226449, 0.854893, 0.9598662, 0.9419833);
+  leg1 -> AddEntry(gr1All, "Taraneh's Analysis", "p");
+  leg1 -> AddEntry(gr1Online, "Online Analysis" , "p");
+  
+  gr1All -> Draw("ap");
+  gr1Online -> Draw("p");
+  leg1 -> Draw();
+
+  //TCanvas *c2All = new TCanvas ("c2All" , "c2All" , 1200, 900);
+  c1All -> cd(2);
+  TGraph *gr2All = new TGraph (14, tempAll, rateAll);
+  gr2All -> SetTitle("UCN Rate vs Average Isopure Helium Temperature");
+  gr2All -> GetXaxis() -> SetTitle("Average Isopure Helium Temperature (K) " );
+  gr2All -> GetYaxis() -> SetTitle("UCN Counts/s");
+  gr2All -> SetMarkerStyle(20);
+  
+  gr2All -> GetXaxis() -> SetTitleSize(0.05);
+  gr2All -> GetXaxis() -> SetTitleOffset(1.0);
+  gr2All -> GetYaxis() -> SetTitleSize(0.05); 
+  gr2All -> GetYaxis() -> SetTitleOffset(1.4);
+  gr2All -> SetMarkerColor(1);
+
+  TGraph *gr2Online = new TGraph (18, tempOnline, rateOnline);
+  gr2Online -> SetMarkerStyle(3);
+  gr2Online -> SetMarkerColor(8);
+
+  
+  gr2All -> Draw("ap");  
+  gr2Online -> Draw("p");
+  leg1 -> Draw();
+
   
 }
