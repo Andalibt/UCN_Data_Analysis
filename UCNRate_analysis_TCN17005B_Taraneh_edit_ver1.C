@@ -216,6 +216,37 @@ void UCNRate_analysis_TCN17005B_Taraneh_edit_ver1(){
   //UCNrate_li6594 -> Draw("same");
 
 
+  // THE OVERAL RESULT
 
+
+  double rateAll[3] = {2139, 2152, 2152};
+  double tempAll[3] = {0.94, 0.94, 0.94};
+  double rateOnline[3] = {2100, 2100, 2100};
+  double tempOnline[3] = {0.95, 0.95, 0.95};
+
+  TCanvas *c1 = new TCanvas ("c1", "c1", 1200, 900);
+  TGraph *grAll = new TGraph (3, tempAll, rateAll);
+  grAll -> SetTitle(" UCN rate vs Average Isopure Helium Temperature");
+  grAll -> GetXaxis() -> SetTitle("Average Isopure Helium Temperature (K)" );
+  grAll -> GetYaxis() -> SetTitle("UCN rate (counts/s)");
+  grAll -> GetYaxis() -> SetRangeUser (2100, 2160);
+  grAll -> SetMarkerStyle(20);
   
+  grAll -> GetXaxis() -> SetTitleSize(0.05);
+  grAll -> GetXaxis() -> SetTitleOffset(1.0);
+  grAll -> GetYaxis() -> SetTitleSize(0.05); 
+  grAll -> GetYaxis() -> SetTitleOffset(0.9);
+  grAll -> SetMarkerColor(1);
+
+  TGraph *grOnline = new TGraph (3, tempOnline, rateOnline);
+  grOnline -> SetMarkerColor(8);
+  grOnline -> SetMarkerStyle(3);
+
+  grAll -> Draw("Ap");
+  grOnline -> Draw("p");
+
+
+  // THE GRAPH WITH ONLY 3 DATA POINTS DOES NOT LOOK GREAT
+  // AND YOU CANNOT LEARN ANYTHING OUT OF IT. SO I WILL NOT
+  // CONSIDER IT.
 }
