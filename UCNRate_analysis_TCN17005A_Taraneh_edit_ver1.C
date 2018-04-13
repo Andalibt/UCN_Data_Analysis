@@ -598,8 +598,8 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   gr_s588 -> SetMarkerColor(1);
 
   gr_s588 -> Draw("ap");
-  UCNrate_li6588 -> Divide(f588);
-  UCNrate_li6588 -> Draw("same");
+  //UCNrate_li6588 -> Divide(f588);
+  //UCNrate_li6588 -> Draw("same");
 
   // *************
   // FOR RUN 589
@@ -770,8 +770,8 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   gr_s589 -> SetMarkerColor(1);
 
   gr_s589 -> Draw("ap");
-  UCNrate_li6589 -> Divide(f589);
-  UCNrate_li6589 -> Draw("same");
+  //UCNrate_li6589 -> Divide(f589);
+  //UCNrate_li6589 -> Draw("same");
 
   // *************
   // FOR RUN 590
@@ -944,8 +944,8 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   gr_s590 -> SetMarkerColor(1);
 
   gr_s590 -> Draw("ap");
-  UCNrate_li6590 -> Divide(f590);
-  UCNrate_li6590 -> Draw("same");
+  //UCNrate_li6590 -> Divide(f590);
+  //UCNrate_li6590 -> Draw("same");
 
   
   
@@ -1118,8 +1118,8 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   gr_s591 -> SetMarkerColor(1);
 
   gr_s591 -> Draw("ap");
-  UCNrate_li6591 -> Divide(f591);
-  UCNrate_li6591 -> Draw("same");
+  //UCNrate_li6591 -> Divide(f591);
+  //UCNrate_li6591 -> Draw("same");
 
   
   // *************
@@ -1278,8 +1278,8 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   gr_s592 -> SetMarkerColor(1);
 
   gr_s592 -> Draw("ap");
-  UCNrate_li6592 -> Divide(f592);
-  UCNrate_li6592 -> Draw("same");
+  //UCNrate_li6592 -> Divide(f592);
+  //UCNrate_li6592 -> Draw("same");
 
 
   
@@ -1431,8 +1431,8 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   gr_s593 -> SetMarkerColor(1);
 
   gr_s593 -> Draw("ap");
-  UCNrate_li6593 -> Divide(f593);
-  UCNrate_li6593 -> Draw("same");
+  //UCNrate_li6593 -> Divide(f593);
+  //UCNrate_li6593 -> Draw("same");
   
 
   // *********************
@@ -1442,11 +1442,23 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   double curAll[19] = { 0.1, 0.1, 0.3, 0.3, 0.3, 0.5, 0.5, 0.7, 0.7, 0.7, 0.9,  0.9, 1, 1};
   double tempAll[19] = { 0.88, 0.88, 0.9, 0.91, 0.92, 0.93, 0.91, 0.91, 0.92, 0.92, 0.93, 0.94, 0.94, 0.95};
   double rateAll[19] = { 156.9, 155.7, 461.1, 461.0, 460.7, 761.3, 765.0,  1065.4, 1058.7, 1069.8, 1347.3, 1354.5, 1500.7,  1489.8};
+  double ratecurAll[19] ;
 
+  for (int k = 0 ; k < 14 ; k++){
+    ratecurAll[k] = rateAll[k]/curAll[k];
+  }
+
+  
+  
   // ONLINE ANALYSIS
   double curOnline[19] = {0.1, 0.1, 0.1, 0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.7, 0.7, 0.7, 0.9, 0.9, 0.9, 1, 1, 1};
   double rateOnline[19] = {155, 155, 155, 460, 460, 460, 770, 770, 770, 1080, 1070, 1070, 1350, 1350, 1350, 1500, 1500, 1500};
   double tempOnline[19] = {0.87, 0.88, 0.88, 0.92, 0.92, 0.92, 0.93, 0.91, 0.91, 0.92, 0.92, 0.92, 0.93, 0.94, 0.94, 0.95, 0.95, 0.95};
+  double ratecurOnline[18];
+
+  for (int k = 0 ; k < 18 ; k++){
+    ratecurOnline [k] = rateOnline[k] / curOnline[k] ;
+  } 
   
   TCanvas *c1All = new TCanvas ("c1All" , "c1All" , 1200, 900);
   c1All -> Divide(2,1);
@@ -1477,7 +1489,7 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   gr1Online -> Draw("p");
   leg1 -> Draw();
 
-  //TCanvas *c2All = new TCanvas ("c2All" , "c2All" , 1200, 900);
+
   c1All -> cd(2);
   TGraph *gr2All = new TGraph (14, tempAll, rateAll);
   gr2All -> SetTitle("UCN Rate vs Average Isopure Helium Temperature");
@@ -1500,5 +1512,54 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   gr2Online -> Draw("p");
   leg1 -> Draw();
 
+  TCanvas *c2All = new TCanvas ("c2All" , "c2All" , 1200, 900);
+
+  TGraph *gr1Overall = new TGraph (14, tempAll, ratecurAll);
+
+  gr1Overall -> SetTitle("UCN Rate/Beam Current vs Average Isopure Helium Temperature");
+  gr1Overall -> GetXaxis() -> SetTitle("Average Isopure Helium Temperature (K) " );
+  gr1Overall -> GetYaxis() -> SetTitle("UCN Counts/(s*#muA)");
+  gr1Overall -> SetMarkerStyle(20);
   
+  gr1Overall -> GetXaxis() -> SetTitleSize(0.05);
+  gr1Overall -> GetXaxis() -> SetTitleOffset(1.0);
+  gr1Overall -> GetYaxis() -> SetTitleSize(0.05); 
+  gr1Overall -> GetYaxis() -> SetTitleOffset(0.9);
+  gr1Overall -> SetMarkerColor(1);
+
+
+  TGraph *gr2Overall = new TGraph (18, tempOnline, ratecurOnline);
+
+  gr2Overall -> SetMarkerStyle(3);
+  gr2Overall -> SetMarkerColor(8);
+
+  gr1Overall -> Draw("AP");
+  gr2Overall -> Draw("p");
+  leg1 -> Draw();
+
+
+
+  TCanvas *c3All = new TCanvas ("c3All" , "c3All", 1200, 900);
+
+  TGraph *grcurtempAll = new TGraph (14, tempAll, curAll);
+  grcurtempAll -> SetTitle("Beam Current vs Average Isopure Helium Temperature");
+  grcurtempAll -> GetXaxis() -> SetTitle("Average Isopure Helium Temperature (K) " );
+  grcurtempAll -> GetYaxis() -> SetTitle("Beam Current(#muA)");
+  grcurtempAll -> SetMarkerStyle(20);
+  
+  grcurtempAll -> GetXaxis() -> SetTitleSize(0.05);
+  grcurtempAll -> GetXaxis() -> SetTitleOffset(1.0);
+  grcurtempAll -> GetYaxis() -> SetTitleSize(0.05); 
+  grcurtempAll -> GetYaxis() -> SetTitleOffset(0.9);
+  grcurtempAll -> SetMarkerColor(1);
+
+  TGraph *grcurtempOnline = new TGraph (18, tempOnline, curOnline);
+  grcurtempOnline -> SetMarkerStyle (3);
+  grcurtempOnline -> SetMarkerColor (8);
+
+  grcurtempAll -> Draw("Ap");
+  grcurtempOnline -> Draw("P");
+  leg1 -> Draw();
+
+    
 }
