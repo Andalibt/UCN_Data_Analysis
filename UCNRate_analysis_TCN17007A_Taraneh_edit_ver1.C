@@ -105,6 +105,7 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   double beamlineEvent654 = (Double_t) bl654-> GetEntries();
   cout << "*******************************************" << endl;
   cout << "For midas run 654 " << endl;
+  // beamline epics tree readings
   for(ULong64_t j=0 ; j < beamlineEvent654 ;j++) {
     bl654 -> GetEvent(j);
     TSArray654[counts654] = timestamp_bl654;
@@ -137,10 +138,10 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   double sourceEpicsEvents654 = (double) sourceEpics654 -> GetEntries();
   for (ULong64_t j = 0 ; j < sourceEpicsEvents654 ; j++){
     sourceEpics654 -> GetEvent(j);
-    TSArrayse654[j] = timestamp_se654;
-    tempArray654[j] = ts12654;
+    TSArrayse654[j] = timestamp_se654; // source epics timestamp array
+    tempArray654[j] = ts12654; // temperature array
     ts12Ave654 += ts12654;
-    SEcounts654++;
+    SEcounts654++; // total counts for the source epics tree
   }
 
   
@@ -191,8 +192,10 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
 
   tave1654 = tave1654/ cts1654;
   cout << tave1654 <<  endl;
-  cout << "*******************************************" << endl;
 
+
+  
+  cout << "*******************************************" << endl;
 
 
   // *************
@@ -348,6 +351,53 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   //UCNrate_li6654 -> Draw("same");
 
 
+
+  // *************************************************
+  // I want to graph the ucn rate vs temperature but
+  // they have different number of points. As a result,
+  // I have to find a way to make it work.
+
+  int aveRate654 = 0;
+  double aveRateArray654[10000];
+  
+  for (int k = 0 ; k < SEcounts654 ; k++ ){
+    for (ULong64_t j = 0 ; j < eventTot654 ; j++) {
+      uinli6654 -> GetEvent(j);
+      if (tUnixTime654 > TSArray654[k] && tUnixTime654 < TSArray654[k+1]){
+	if (tIsUCN654 > 0 && tUnixTime654 > 20e6){
+	  //cout << TSArray654[k+1] - TSArray654[k] << endl;
+	  aveRate654++;
+	}
+      }
+      
+    }
+    if (k == SEcounts654 - 1){
+      TSArray654[k+1]=5;
+      TSArray654[k] = 0;
+      }
+    aveRateArray654[k] = aveRate654/ (TSArray654[k+1] - TSArray654[k] ); // the time difference betweek timestamp k and k+1 is 5 seconds.
+    //cout << aveRateArray654[k] << endl;
+    aveRate654 = 0;
+  }
+  //*********************************************************
+  
+  TCanvas *c654ratetemp = new TCanvas ("c654ratetemp", "c654ratetemp", 1200, 900);
+
+  TGraph *gr654ratetemp = new TGraph (SEcounts654, tempArray654, aveRateArray654 );
+  gr654ratetemp -> SetTitle(" UCN Rate Average vs Isopure Helium Temperature ");
+  gr654ratetemp -> GetXaxis() -> SetTitle("Isopure Helium Temperature (K)");
+  gr654ratetemp -> GetYaxis() -> SetTitle("UCN Rate Average (average counts/s)");
+  gr654ratetemp -> SetMarkerStyle(20);
+  
+  gr654ratetemp -> GetXaxis() -> SetTitleSize(0.05);
+  gr654ratetemp -> GetXaxis() -> SetTitleOffset(1.0);
+  gr654ratetemp -> GetYaxis() -> SetTitleSize(0.05); 
+  gr654ratetemp -> GetYaxis() -> SetTitleOffset(0.9);
+  gr654ratetemp -> SetMarkerColor(1);
+
+  gr654ratetemp -> Draw("ap");
+  
+
   // ******
   //  659
   // *****
@@ -397,6 +447,50 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   //UCNrate_li6659 -> Draw("same");
 
 
+  // *************************************************
+  // I want to graph the ucn rate vs temperature but
+  // they have different number of points. As a result,
+  // I have to find a way to make it work.
+
+  int aveRate659 = 0;
+  double aveRateArray659[10000];
+  
+  for (int k = 0 ; k < SEcounts659 ; k++ ){
+    for (ULong64_t j = 0 ; j < eventTot659 ; j++) {
+      uinli6659 -> GetEvent(j);
+      if (tUnixTime659 > TSArray659[k] && tUnixTime659 < TSArray659[k+1]){
+	if (tIsUCN659 > 0 && tUnixTime659 > 20e6){
+	  //cout << TSArray659[k+1] - TSArray659[k] << endl;
+	  aveRate659++;
+	}
+      }
+      
+    }
+    if (k == SEcounts659 - 1){
+      TSArray659[k+1]=5;
+      TSArray659[k] = 0;
+      }
+    aveRateArray659[k] = aveRate659/ (TSArray659[k+1] - TSArray659[k] ); // the time difference betweek timestamp k and k+1 is 5 seconds.
+    //cout << aveRateArray659[k] << endl;
+    aveRate659 = 0;
+  }
+  //*********************************************************
+  
+  TCanvas *c659ratetemp = new TCanvas ("c659ratetemp", "c659ratetemp", 1200, 900);
+
+  TGraph *gr659ratetemp = new TGraph (SEcounts659, tempArray659, aveRateArray659 );
+  gr659ratetemp -> SetTitle(" UCN Rate Average vs Isopure Helium Temperature ");
+  gr659ratetemp -> GetXaxis() -> SetTitle("Isopure Helium Temperature (K)");
+  gr659ratetemp -> GetYaxis() -> SetTitle("UCN Rate Average (average counts/s)");
+  gr659ratetemp -> SetMarkerStyle(20);
+  
+  gr659ratetemp -> GetXaxis() -> SetTitleSize(0.05);
+  gr659ratetemp -> GetXaxis() -> SetTitleOffset(1.0);
+  gr659ratetemp -> GetYaxis() -> SetTitleSize(0.05); 
+  gr659ratetemp -> GetYaxis() -> SetTitleOffset(0.9);
+  gr659ratetemp -> SetMarkerColor(1);
+
+  gr659ratetemp -> Draw("ap");
   
   // ********************************************
   // THE OVERAL RESULT
