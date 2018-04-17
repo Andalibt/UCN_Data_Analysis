@@ -375,7 +375,7 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
       TSArray654[k+1]=5;
       TSArray654[k] = 0;
       }
-    aveRateArray654[k] = aveRate654/ (TSArray654[k+1] - TSArray654[k] ); // the time difference betweek timestamp k and k+1 is 5 seconds.
+    aveRateArray654[k] = aveRate654/ (TSArray654[k+1] - TSArray654[k] )/3; // the time difference betweek timestamp k and k+1 is 5 seconds.
     //cout << aveRateArray654[k] << endl;
     aveRate654 = 0;
   }
@@ -386,7 +386,7 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   TGraph *gr654ratetemp = new TGraph (SEcounts654, tempArray654, aveRateArray654 );
   gr654ratetemp -> SetTitle(" UCN Rate Average vs Isopure Helium Temperature ");
   gr654ratetemp -> GetXaxis() -> SetTitle("Isopure Helium Temperature (K)");
-  gr654ratetemp -> GetYaxis() -> SetTitle("UCN Rate Average (average counts/s)");
+  gr654ratetemp -> GetYaxis() -> SetTitle("UCN Rate Average (average counts/s*#muA)");
   gr654ratetemp -> SetMarkerStyle(20);
   
   gr654ratetemp -> GetXaxis() -> SetTitleSize(0.05);
@@ -470,7 +470,7 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
       TSArray659[k+1]=5;
       TSArray659[k] = 0;
       }
-    aveRateArray659[k] = aveRate659/ (TSArray659[k+1] - TSArray659[k] ); // the time difference betweek timestamp k and k+1 is 5 seconds.
+    aveRateArray659[k] = aveRate659/ (TSArray659[k+1] - TSArray659[k] )/2; // the time difference between timestamp k and k+1 is 5 seconds. And divided by 2 muA
     //cout << aveRateArray659[k] << endl;
     aveRate659 = 0;
   }
@@ -481,7 +481,7 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   TGraph *gr659ratetemp = new TGraph (SEcounts659, tempArray659, aveRateArray659 );
   gr659ratetemp -> SetTitle(" UCN Rate Average vs Isopure Helium Temperature ");
   gr659ratetemp -> GetXaxis() -> SetTitle("Isopure Helium Temperature (K)");
-  gr659ratetemp -> GetYaxis() -> SetTitle("UCN Rate Average (average counts/s)");
+  gr659ratetemp -> GetYaxis() -> SetTitle("UCN Rate Average (average counts/s*#muA)");
   gr659ratetemp -> SetMarkerStyle(20);
   
   gr659ratetemp -> GetXaxis() -> SetTitleSize(0.05);
