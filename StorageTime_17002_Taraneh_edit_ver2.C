@@ -1192,7 +1192,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
     avecurArray537[counts_537] = avecur537;
     maxcurArray537[counts_537] = maxcur537;
     mincurArray537[counts_537] = mincur537;
-    ErrcurArray537[counts_537] = (maxcur537 - mincur5370)/2;
+    ErrcurArray537[counts_537] = (maxcur537 - mincur537)/2;
     delaytimeArray537[counts_537] = cycleDelayTime537;
     cycleNumberArray537[counts_537] = cycleNumber537;
     BaselineArray537[counts_537] = Baseline537;
@@ -1385,7 +1385,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_delaycounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr532_delaycounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr532_delaycounts -> SetMarkerStyle(7);
+  gr532_delaycounts -> SetMarkerStyle(20);
   gr532_delaycounts -> Fit(fit);
   storage532 = fit -> GetParameter(1);
   storageErr532 = fit -> GetParError(1);
@@ -1401,7 +1401,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_delayhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr532_delayhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr532_delayhist -> SetMarkerColor(2);
-  gr532_delayhist -> SetMarkerStyle(7);
+  gr532_delayhist -> SetMarkerStyle(20);
 
   TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
   leg2 -> AddEntry(gr532_delaycounts , "Without Background" , "p") ;
@@ -1427,10 +1427,10 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_tempIrradcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr532_tempIrradcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr532_tempIrradcounts -> SetMarkerStyle(7);
+  gr532_tempIrradcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr532_tempValveOpencounts = new TGraphErrors (counts_532 , avets12ValveOpenArray532, UCNIntegralArray532 , ts12ValveOpenErr532 , UCNIntegralErrArray532);
-  gr532_tempValveOpencounts -> SetMarkerStyle(7);
+  gr532_tempValveOpencounts -> SetMarkerStyle(20);
   gr532_tempValveOpencounts -> SetMarkerColor(2);
 
   TLegend *leg = new TLegend(0.4,0.7, 0.9, 0.9);
@@ -1447,7 +1447,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_delaytempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr532_delaytempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr532_delaytempIrrad -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr532_delaytempIrrad -> SetMarkerStyle(7);
+  gr532_delaytempIrrad -> SetMarkerStyle(20);
   gr532_delaytempIrrad -> GetYaxis()-> SetRangeUser(0.82, 0.9);
   gr532_delaytempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr532_delaytempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -1460,7 +1460,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_delaytempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr532_delaytempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr532_delaytempValveOpen -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr532_delaytempValveOpen -> SetMarkerStyle(7);
+  gr532_delaytempValveOpen -> SetMarkerStyle(20);
   gr532_delaytempValveOpen -> SetMarkerColor(2);
   gr532_delaytempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr532_delaytempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -1486,7 +1486,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_curcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr532_curcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr532_curcounts -> SetMarkerStyle(7);
+  gr532_curcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr532_curhist = new TGraphErrors (counts_532 , avecurArray532, UCNIntegralArray532 , ErrcurArray532 , UCNIntegralErrArray532);
   gr532_curhist -> SetTitle("UCN Counts vs Avqerage Beam Current");
@@ -1499,7 +1499,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_curhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr532_curhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr532_curhist -> SetMarkerColor(2);
-  gr532_curhist -> SetMarkerStyle(7);
+  gr532_curhist -> SetMarkerStyle(20);
 
   gr532_curcounts -> Draw("Ap");
   gr532_curhist -> Draw("p");
@@ -1519,7 +1519,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr532_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr532_cyclecounts -> SetMarkerStyle(7);
+  gr532_cyclecounts -> SetMarkerStyle(20);
 
 
   TGraphErrors *gr532_cyclehist = new TGraphErrors(counts_532, cycleNumberArray532 , HistIntegralArray532, 0, HistIntegralErrArray532);
@@ -1533,7 +1533,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
   gr532_cyclehist -> GetYaxis() -> SetTitleOffset(0.9);
   gr532_cyclehist -> SetMarkerColor(2);
-  gr532_cyclehist -> SetMarkerStyle(7);
+  gr532_cyclehist -> SetMarkerStyle(20);
 
   gr532_cyclecounts -> Draw("Ap");
   gr532_cyclehist -> Draw("p");
@@ -1550,7 +1550,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_cycledelay -> GetYaxis() -> SetTitleSize(0.05); 
   gr532_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr532_cycledelay -> SetMarkerStyle(7);
+  gr532_cycledelay -> SetMarkerStyle(20);
 
   gr532_cycledelay -> Draw("Ap");
 
@@ -1561,7 +1561,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr532_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr532_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
-  gr532_cycletempIrrad -> SetMarkerStyle(7);
+  gr532_cycletempIrrad -> SetMarkerStyle(20);
   gr532_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.82, 0.9);
   gr532_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr532_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -1573,7 +1573,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr532_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr532_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Number");
-  gr532_cycletempValveOpen -> SetMarkerStyle(7);
+  gr532_cycletempValveOpen -> SetMarkerStyle(20);
   gr532_cycletempValveOpen -> SetMarkerColor(2);
   gr532_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr532_cycletempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -1597,7 +1597,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
   gr532_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr532_cyclecur -> SetMarkerStyle(7);
+  gr532_cyclecur -> SetMarkerStyle(20);
   gr532_cyclecur -> Draw("Ap");
 
 
@@ -1617,7 +1617,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_cyclefall -> GetYaxis() -> SetTitleSize(0.05); 
   gr532_cyclefall -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr532_cyclefall -> SetMarkerStyle(7);
+  gr532_cyclefall -> SetMarkerStyle(20);
   gr532_cyclefall -> Draw("Ap");
 
 
@@ -1634,7 +1634,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_cyclebaseline -> GetYaxis() -> SetTitleSize(0.05); 
   gr532_cyclebaseline -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr532_cyclebaseline -> SetMarkerStyle(7);
+  gr532_cyclebaseline -> SetMarkerStyle(20);
   gr532_cyclebaseline -> Draw("Ap");
 
   c532_cycleNumFit -> cd(3);
@@ -1650,7 +1650,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_cyclebaselineirrad -> GetYaxis() -> SetTitleSize(0.05); 
   gr532_cyclebaselineirrad -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr532_cyclebaselineirrad -> SetMarkerStyle(7);
+  gr532_cyclebaselineirrad -> SetMarkerStyle(20);
   gr532_cyclebaselineirrad -> Draw("Ap");
 
   c532_cycleNumFit -> cd(4);
@@ -1666,7 +1666,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr532_cyclerise -> GetYaxis() -> SetTitleSize(0.05); 
   gr532_cyclerise -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr532_cyclerise -> SetMarkerStyle(7);
+  gr532_cyclerise -> SetMarkerStyle(20);
   gr532_cyclerise -> Draw("Ap");
 
 
@@ -1692,7 +1692,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_delaycounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr533_delaycounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr533_delaycounts -> SetMarkerStyle(7);
+  gr533_delaycounts -> SetMarkerStyle(20);
   gr533_delaycounts -> Fit(fit);
   storage533 = fit -> GetParameter(1);
   storageErr533 = fit -> GetParError(1);
@@ -1708,7 +1708,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_delayhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr533_delayhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr533_delayhist -> SetMarkerColor(2);
-  gr533_delayhist -> SetMarkerStyle(7);
+  gr533_delayhist -> SetMarkerStyle(20);
 
   TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
   leg2 -> AddEntry(gr533_delaycounts , "Without Background" , "p") ;
@@ -1734,10 +1734,10 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_tempIrradcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr533_tempIrradcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr533_tempIrradcounts -> SetMarkerStyle(7);
+  gr533_tempIrradcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr533_tempValveOpencounts = new TGraphErrors (counts_533 , avets12ValveOpenArray533, UCNIntegralArray533 , ts12ValveOpenErr533 , UCNIntegralErrArray533);
-  gr533_tempValveOpencounts -> SetMarkerStyle(7);
+  gr533_tempValveOpencounts -> SetMarkerStyle(20);
   gr533_tempValveOpencounts -> SetMarkerColor(2);
 
   TLegend *leg = new TLegend(0.4,0.7, 0.9, 0.9);
@@ -1754,7 +1754,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_delaytempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr533_delaytempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr533_delaytempIrrad -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr533_delaytempIrrad -> SetMarkerStyle(7);
+  gr533_delaytempIrrad -> SetMarkerStyle(20);
   gr533_delaytempIrrad -> GetYaxis() -> SetRangeUser(0.82, 1.);
   gr533_delaytempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr533_delaytempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -1767,7 +1767,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_delaytempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr533_delaytempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr533_delaytempValveOpen -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr533_delaytempValveOpen -> SetMarkerStyle(7);
+  gr533_delaytempValveOpen -> SetMarkerStyle(20);
   gr533_delaytempValveOpen -> SetMarkerColor(2);
   gr533_delaytempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr533_delaytempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -1793,7 +1793,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_curcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr533_curcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr533_curcounts -> SetMarkerStyle(7);
+  gr533_curcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr533_curhist = new TGraphErrors (counts_533 , avecurArray533, UCNIntegralArray533 , ErrcurArray533 , UCNIntegralErrArray533);
   gr533_curhist -> SetTitle("UCN Counts vs Average Beam Current");
@@ -1806,7 +1806,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_curhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr533_curhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr533_curhist -> SetMarkerColor(2);
-  gr533_curhist -> SetMarkerStyle(7);
+  gr533_curhist -> SetMarkerStyle(20);
 
   gr533_curcounts -> Draw("Ap");
   gr533_curhist -> Draw("p");
@@ -1826,7 +1826,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr533_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr533_cyclecounts -> SetMarkerStyle(7);
+  gr533_cyclecounts -> SetMarkerStyle(20);
 
 
   TGraphErrors *gr533_cyclehist = new TGraphErrors(counts_533, cycleNumberArray533 , HistIntegralArray533, 0, HistIntegralErrArray533);
@@ -1840,7 +1840,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
   gr533_cyclehist -> GetYaxis() -> SetTitleOffset(0.9);
   gr533_cyclehist -> SetMarkerColor(2);
-  gr533_cyclehist -> SetMarkerStyle(7);
+  gr533_cyclehist -> SetMarkerStyle(20);
 
   gr533_cyclecounts -> Draw("Ap");
   gr533_cyclehist -> Draw("p");
@@ -1857,7 +1857,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_cycledelay -> GetYaxis() -> SetTitleSize(0.05); 
   gr533_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr533_cycledelay -> SetMarkerStyle(7);
+  gr533_cycledelay -> SetMarkerStyle(20);
 
   gr533_cycledelay -> Draw("Ap");
 
@@ -1868,7 +1868,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr533_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr533_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
-  gr533_cycletempIrrad -> SetMarkerStyle(7);
+  gr533_cycletempIrrad -> SetMarkerStyle(20);
   gr533_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.82, 1.);
   gr533_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr533_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -1880,7 +1880,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr533_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr533_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Number");
-  gr533_cycletempValveOpen -> SetMarkerStyle(7);
+  gr533_cycletempValveOpen -> SetMarkerStyle(20);
   gr533_cycletempValveOpen -> SetMarkerColor(2);
   gr533_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr533_cycletempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -1904,7 +1904,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
   gr533_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr533_cyclecur -> SetMarkerStyle(7);
+  gr533_cyclecur -> SetMarkerStyle(20);
   gr533_cyclecur -> Draw("Ap");
 
 
@@ -1924,7 +1924,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_cyclefall -> GetYaxis() -> SetTitleSize(0.05); 
   gr533_cyclefall -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr533_cyclefall -> SetMarkerStyle(7);
+  gr533_cyclefall -> SetMarkerStyle(20);
   gr533_cyclefall -> Draw("Ap");
 
 
@@ -1941,7 +1941,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_cyclebaseline -> GetYaxis() -> SetTitleSize(0.05); 
   gr533_cyclebaseline -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr533_cyclebaseline -> SetMarkerStyle(7);
+  gr533_cyclebaseline -> SetMarkerStyle(20);
   gr533_cyclebaseline -> Draw("Ap");
 
   c533_cycleNumFit -> cd(3);
@@ -1957,7 +1957,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_cyclebaselineirrad -> GetYaxis() -> SetTitleSize(0.05); 
   gr533_cyclebaselineirrad -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr533_cyclebaselineirrad -> SetMarkerStyle(7);
+  gr533_cyclebaselineirrad -> SetMarkerStyle(20);
   gr533_cyclebaselineirrad -> Draw("Ap");
 
   c533_cycleNumFit -> cd(4);
@@ -1973,7 +1973,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr533_cyclerise -> GetYaxis() -> SetTitleSize(0.05); 
   gr533_cyclerise -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr533_cyclerise -> SetMarkerStyle(7);
+  gr533_cyclerise -> SetMarkerStyle(20);
   gr533_cyclerise -> Draw("Ap");
 
 
@@ -1999,7 +1999,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_delaycounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr534_delaycounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr534_delaycounts -> SetMarkerStyle(7);
+  gr534_delaycounts -> SetMarkerStyle(20);
   gr534_delaycounts -> Fit(fit);
   storage534 = fit -> GetParameter(1);
   storageErr534 = fit -> GetParError(1);
@@ -2015,7 +2015,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_delayhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr534_delayhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr534_delayhist -> SetMarkerColor(2);
-  gr534_delayhist -> SetMarkerStyle(7);
+  gr534_delayhist -> SetMarkerStyle(20);
 
   TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
   leg2 -> AddEntry(gr534_delaycounts , "Without Background" , "p") ;
@@ -2041,10 +2041,10 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_tempIrradcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr534_tempIrradcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr534_tempIrradcounts -> SetMarkerStyle(7);
+  gr534_tempIrradcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr534_tempValveOpencounts = new TGraphErrors (counts_534 , avets12ValveOpenArray534, UCNIntegralArray534 , ts12ValveOpenErr534 , UCNIntegralErrArray534);
-  gr534_tempValveOpencounts -> SetMarkerStyle(7);
+  gr534_tempValveOpencounts -> SetMarkerStyle(20);
   gr534_tempValveOpencounts -> SetMarkerColor(2);
 
   TLegend *leg = new TLegend(0.4,0.7, 0.9, 0.9);
@@ -2061,7 +2061,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_delaytempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr534_delaytempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr534_delaytempIrrad -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr534_delaytempIrrad -> SetMarkerStyle(7);
+  gr534_delaytempIrrad -> SetMarkerStyle(20);
   gr534_delaytempIrrad -> GetYaxis() -> SetRangeUser(0.82, 1.);
   gr534_delaytempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr534_delaytempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -2074,7 +2074,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_delaytempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr534_delaytempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr534_delaytempValveOpen -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr534_delaytempValveOpen -> SetMarkerStyle(7);
+  gr534_delaytempValveOpen -> SetMarkerStyle(20);
   gr534_delaytempValveOpen -> SetMarkerColor(2);
   gr534_delaytempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr534_delaytempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -2100,7 +2100,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_curcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr534_curcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr534_curcounts -> SetMarkerStyle(7);
+  gr534_curcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr534_curhist = new TGraphErrors (counts_534 , avecurArray534, UCNIntegralArray534 , ErrcurArray534 , UCNIntegralErrArray534);
   gr534_curhist -> SetTitle("UCN Counts vs Average Beam Current");
@@ -2113,7 +2113,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_curhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr534_curhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr534_curhist -> SetMarkerColor(2);
-  gr534_curhist -> SetMarkerStyle(7);
+  gr534_curhist -> SetMarkerStyle(20);
 
   gr534_curcounts -> Draw("Ap");
   gr534_curhist -> Draw("p");
@@ -2133,7 +2133,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr534_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr534_cyclecounts -> SetMarkerStyle(7);
+  gr534_cyclecounts -> SetMarkerStyle(20);
 
 
   TGraphErrors *gr534_cyclehist = new TGraphErrors(counts_534, cycleNumberArray534 , HistIntegralArray534, 0, HistIntegralErrArray534);
@@ -2147,7 +2147,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
   gr534_cyclehist -> GetYaxis() -> SetTitleOffset(0.9);
   gr534_cyclehist -> SetMarkerColor(2);
-  gr534_cyclehist -> SetMarkerStyle(7);
+  gr534_cyclehist -> SetMarkerStyle(20);
 
   gr534_cyclecounts -> Draw("Ap");
   gr534_cyclehist -> Draw("p");
@@ -2164,7 +2164,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_cycledelay -> GetYaxis() -> SetTitleSize(0.05); 
   gr534_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr534_cycledelay -> SetMarkerStyle(7);
+  gr534_cycledelay -> SetMarkerStyle(20);
 
   gr534_cycledelay -> Draw("Ap");
 
@@ -2175,7 +2175,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr534_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr534_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
-  gr534_cycletempIrrad -> SetMarkerStyle(7);
+  gr534_cycletempIrrad -> SetMarkerStyle(20);
   gr534_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.82, 1.);
   gr534_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr534_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -2187,7 +2187,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr534_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr534_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Number");
-  gr534_cycletempValveOpen -> SetMarkerStyle(7);
+  gr534_cycletempValveOpen -> SetMarkerStyle(20);
   gr534_cycletempValveOpen -> SetMarkerColor(2);
   gr534_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr534_cycletempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -2211,7 +2211,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
   gr534_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr534_cyclecur -> SetMarkerStyle(7);
+  gr534_cyclecur -> SetMarkerStyle(20);
   gr534_cyclecur -> Draw("Ap");
 
 
@@ -2231,7 +2231,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_cyclefall -> GetYaxis() -> SetTitleSize(0.05); 
   gr534_cyclefall -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr534_cyclefall -> SetMarkerStyle(7);
+  gr534_cyclefall -> SetMarkerStyle(20);
   gr534_cyclefall -> Draw("Ap");
 
 
@@ -2248,7 +2248,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_cyclebaseline -> GetYaxis() -> SetTitleSize(0.05); 
   gr534_cyclebaseline -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr534_cyclebaseline -> SetMarkerStyle(7);
+  gr534_cyclebaseline -> SetMarkerStyle(20);
   gr534_cyclebaseline -> Draw("Ap");
 
   c534_cycleNumFit -> cd(3);
@@ -2264,7 +2264,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_cyclebaselineirrad -> GetYaxis() -> SetTitleSize(0.05); 
   gr534_cyclebaselineirrad -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr534_cyclebaselineirrad -> SetMarkerStyle(7);
+  gr534_cyclebaselineirrad -> SetMarkerStyle(20);
   gr534_cyclebaselineirrad -> Draw("Ap");
 
   c534_cycleNumFit -> cd(4);
@@ -2280,7 +2280,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr534_cyclerise -> GetYaxis() -> SetTitleSize(0.05); 
   gr534_cyclerise -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr534_cyclerise -> SetMarkerStyle(7);
+  gr534_cyclerise -> SetMarkerStyle(20);
   gr534_cyclerise -> Draw("Ap");
 
 
@@ -2307,7 +2307,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_delaycounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr535_delaycounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr535_delaycounts -> SetMarkerStyle(7);
+  gr535_delaycounts -> SetMarkerStyle(20);
   gr535_delaycounts -> Fit(fit);
   storage535 = fit -> GetParameter(1);
   storageErr535 = fit -> GetParError(1);
@@ -2323,7 +2323,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_delayhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr535_delayhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr535_delayhist -> SetMarkerColor(2);
-  gr535_delayhist -> SetMarkerStyle(7);
+  gr535_delayhist -> SetMarkerStyle(20);
 
   TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
   leg2 -> AddEntry(gr535_delaycounts , "Without Background" , "p") ;
@@ -2349,10 +2349,10 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_tempIrradcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr535_tempIrradcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr535_tempIrradcounts -> SetMarkerStyle(7);
+  gr535_tempIrradcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr535_tempValveOpencounts = new TGraphErrors (counts_535 , avets12ValveOpenArray535, UCNIntegralArray535 , ts12ValveOpenErr535 , UCNIntegralErrArray535);
-  gr535_tempValveOpencounts -> SetMarkerStyle(7);
+  gr535_tempValveOpencounts -> SetMarkerStyle(20);
   gr535_tempValveOpencounts -> SetMarkerColor(2);
 
   TLegend *leg = new TLegend(0.4,0.7, 0.9, 0.9);
@@ -2369,7 +2369,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_delaytempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr535_delaytempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr535_delaytempIrrad -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr535_delaytempIrrad -> SetMarkerStyle(7);
+  gr535_delaytempIrrad -> SetMarkerStyle(20);
   gr535_delaytempIrrad -> GetYaxis() -> SetRangeUser(0.82, 1.);
   gr535_delaytempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr535_delaytempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -2382,7 +2382,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_delaytempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr535_delaytempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr535_delaytempValveOpen -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr535_delaytempValveOpen -> SetMarkerStyle(7);
+  gr535_delaytempValveOpen -> SetMarkerStyle(20);
   gr535_delaytempValveOpen -> SetMarkerColor(2);
   gr535_delaytempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr535_delaytempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -2408,7 +2408,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_curcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr535_curcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr535_curcounts -> SetMarkerStyle(7);
+  gr535_curcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr535_curhist = new TGraphErrors (counts_535 , avecurArray535, UCNIntegralArray535 , ErrcurArray535 , UCNIntegralErrArray535);
   gr535_curhist -> SetTitle("UCN Counts vs Average Beam Current");
@@ -2421,7 +2421,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_curhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr535_curhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr535_curhist -> SetMarkerColor(2);
-  gr535_curhist -> SetMarkerStyle(7);
+  gr535_curhist -> SetMarkerStyle(20);
 
   gr535_curcounts -> Draw("Ap");
   gr535_curhist -> Draw("p");
@@ -2441,7 +2441,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr535_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr535_cyclecounts -> SetMarkerStyle(7);
+  gr535_cyclecounts -> SetMarkerStyle(20);
 
 
   TGraphErrors *gr535_cyclehist = new TGraphErrors(counts_535, cycleNumberArray535 , HistIntegralArray535, 0, HistIntegralErrArray535);
@@ -2455,7 +2455,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
   gr535_cyclehist -> GetYaxis() -> SetTitleOffset(0.9);
   gr535_cyclehist -> SetMarkerColor(2);
-  gr535_cyclehist -> SetMarkerStyle(7);
+  gr535_cyclehist -> SetMarkerStyle(20);
 
   gr535_cyclecounts -> Draw("Ap");
   gr535_cyclehist -> Draw("p");
@@ -2472,7 +2472,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_cycledelay -> GetYaxis() -> SetTitleSize(0.05); 
   gr535_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr535_cycledelay -> SetMarkerStyle(7);
+  gr535_cycledelay -> SetMarkerStyle(20);
 
   gr535_cycledelay -> Draw("Ap");
 
@@ -2483,7 +2483,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr535_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr535_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
-  gr535_cycletempIrrad -> SetMarkerStyle(7);
+  gr535_cycletempIrrad -> SetMarkerStyle(20);
   gr535_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.82, 1.);
   gr535_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr535_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -2495,7 +2495,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr535_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr535_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Number");
-  gr535_cycletempValveOpen -> SetMarkerStyle(7);
+  gr535_cycletempValveOpen -> SetMarkerStyle(20);
   gr535_cycletempValveOpen -> SetMarkerColor(2);
   gr535_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr535_cycletempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -2519,7 +2519,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
   gr535_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr535_cyclecur -> SetMarkerStyle(7);
+  gr535_cyclecur -> SetMarkerStyle(20);
   gr535_cyclecur -> Draw("Ap");
 
 
@@ -2539,7 +2539,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_cyclefall -> GetYaxis() -> SetTitleSize(0.05); 
   gr535_cyclefall -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr535_cyclefall -> SetMarkerStyle(7);
+  gr535_cyclefall -> SetMarkerStyle(20);
   gr535_cyclefall -> Draw("Ap");
 
 
@@ -2556,7 +2556,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_cyclebaseline -> GetYaxis() -> SetTitleSize(0.05); 
   gr535_cyclebaseline -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr535_cyclebaseline -> SetMarkerStyle(7);
+  gr535_cyclebaseline -> SetMarkerStyle(20);
   gr535_cyclebaseline -> Draw("Ap");
 
   c535_cycleNumFit -> cd(3);
@@ -2572,7 +2572,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_cyclebaselineirrad -> GetYaxis() -> SetTitleSize(0.05); 
   gr535_cyclebaselineirrad -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr535_cyclebaselineirrad -> SetMarkerStyle(7);
+  gr535_cyclebaselineirrad -> SetMarkerStyle(20);
   gr535_cyclebaselineirrad -> Draw("Ap");
 
   c535_cycleNumFit -> cd(4);
@@ -2588,7 +2588,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr535_cyclerise -> GetYaxis() -> SetTitleSize(0.05); 
   gr535_cyclerise -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr535_cyclerise -> SetMarkerStyle(7);
+  gr535_cyclerise -> SetMarkerStyle(20);
   gr535_cyclerise -> Draw("Ap");
 
 
@@ -2614,7 +2614,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_delaycounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr536_delaycounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr536_delaycounts -> SetMarkerStyle(7);
+  gr536_delaycounts -> SetMarkerStyle(20);
   gr536_delaycounts -> Fit(fit);
   storage536 = fit -> GetParameter(1);
   storageErr536 = fit -> GetParError(1);
@@ -2630,7 +2630,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_delayhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr536_delayhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr536_delayhist -> SetMarkerColor(2);
-  gr536_delayhist -> SetMarkerStyle(7);
+  gr536_delayhist -> SetMarkerStyle(20);
 
   TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
   leg2 -> AddEntry(gr536_delaycounts , "Without Background" , "p") ;
@@ -2656,10 +2656,10 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_tempIrradcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr536_tempIrradcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr536_tempIrradcounts -> SetMarkerStyle(7);
+  gr536_tempIrradcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr536_tempValveOpencounts = new TGraphErrors (counts_536 , avets12ValveOpenArray536, UCNIntegralArray536 , ts12ValveOpenErr536 , UCNIntegralErrArray536);
-  gr536_tempValveOpencounts -> SetMarkerStyle(7);
+  gr536_tempValveOpencounts -> SetMarkerStyle(20);
   gr536_tempValveOpencounts -> SetMarkerColor(2);
 
   TLegend *leg = new TLegend(0.4,0.7, 0.9, 0.9);
@@ -2676,7 +2676,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_delaytempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr536_delaytempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr536_delaytempIrrad -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr536_delaytempIrrad -> SetMarkerStyle(7);
+  gr536_delaytempIrrad -> SetMarkerStyle(20);
   gr536_delaytempIrrad -> GetYaxis() -> SetRangeUser(1.1, 1.5);
   gr536_delaytempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr536_delaytempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -2689,7 +2689,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_delaytempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr536_delaytempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr536_delaytempValveOpen -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr536_delaytempValveOpen -> SetMarkerStyle(7);
+  gr536_delaytempValveOpen -> SetMarkerStyle(20);
   gr536_delaytempValveOpen -> SetMarkerColor(2);
   gr536_delaytempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr536_delaytempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -2715,7 +2715,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_curcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr536_curcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr536_curcounts -> SetMarkerStyle(7);
+  gr536_curcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr536_curhist = new TGraphErrors (counts_536 , avecurArray536, UCNIntegralArray536 , ErrcurArray536 , UCNIntegralErrArray536);
   gr536_curhist -> SetTitle("UCN Counts vs Average Beam Current");
@@ -2728,7 +2728,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_curhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr536_curhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr536_curhist -> SetMarkerColor(2);
-  gr536_curhist -> SetMarkerStyle(7);
+  gr536_curhist -> SetMarkerStyle(20);
 
   gr536_curcounts -> Draw("Ap");
   gr536_curhist -> Draw("p");
@@ -2748,7 +2748,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr536_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr536_cyclecounts -> SetMarkerStyle(7);
+  gr536_cyclecounts -> SetMarkerStyle(20);
 
 
   TGraphErrors *gr536_cyclehist = new TGraphErrors(counts_536, cycleNumberArray536 , HistIntegralArray536, 0, HistIntegralErrArray536);
@@ -2762,7 +2762,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
   gr536_cyclehist -> GetYaxis() -> SetTitleOffset(0.9);
   gr536_cyclehist -> SetMarkerColor(2);
-  gr536_cyclehist -> SetMarkerStyle(7);
+  gr536_cyclehist -> SetMarkerStyle(20);
 
   gr536_cyclecounts -> Draw("Ap");
   gr536_cyclehist -> Draw("p");
@@ -2779,7 +2779,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_cycledelay -> GetYaxis() -> SetTitleSize(0.05); 
   gr536_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr536_cycledelay -> SetMarkerStyle(7);
+  gr536_cycledelay -> SetMarkerStyle(20);
 
   gr536_cycledelay -> Draw("Ap");
 
@@ -2790,7 +2790,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr536_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr536_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
-  gr536_cycletempIrrad -> SetMarkerStyle(7);
+  gr536_cycletempIrrad -> SetMarkerStyle(20);
   gr536_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.82, 1.1);
   gr536_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr536_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -2802,7 +2802,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr536_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr536_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Number");
-  gr536_cycletempValveOpen -> SetMarkerStyle(7);
+  gr536_cycletempValveOpen -> SetMarkerStyle(20);
   gr536_cycletempValveOpen -> SetMarkerColor(2);
   gr536_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr536_cycletempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -2826,7 +2826,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
   gr536_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr536_cyclecur -> SetMarkerStyle(7);
+  gr536_cyclecur -> SetMarkerStyle(20);
   gr536_cyclecur -> Draw("Ap");
 
 
@@ -2846,7 +2846,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_cyclefall -> GetYaxis() -> SetTitleSize(0.05); 
   gr536_cyclefall -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr536_cyclefall -> SetMarkerStyle(7);
+  gr536_cyclefall -> SetMarkerStyle(20);
   gr536_cyclefall -> Draw("Ap");
 
 
@@ -2863,7 +2863,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_cyclebaseline -> GetYaxis() -> SetTitleSize(0.05); 
   gr536_cyclebaseline -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr536_cyclebaseline -> SetMarkerStyle(7);
+  gr536_cyclebaseline -> SetMarkerStyle(20);
   gr536_cyclebaseline -> Draw("Ap");
 
   c536_cycleNumFit -> cd(3);
@@ -2879,7 +2879,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_cyclebaselineirrad -> GetYaxis() -> SetTitleSize(0.05); 
   gr536_cyclebaselineirrad -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr536_cyclebaselineirrad -> SetMarkerStyle(7);
+  gr536_cyclebaselineirrad -> SetMarkerStyle(20);
   gr536_cyclebaselineirrad -> Draw("Ap");
 
   c536_cycleNumFit -> cd(4);
@@ -2895,7 +2895,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr536_cyclerise -> GetYaxis() -> SetTitleSize(0.05); 
   gr536_cyclerise -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr536_cyclerise -> SetMarkerStyle(7);
+  gr536_cyclerise -> SetMarkerStyle(20);
   gr536_cyclerise -> Draw("Ap");
 
 
@@ -2923,7 +2923,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_delaycounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr537_delaycounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr537_delaycounts -> SetMarkerStyle(7);
+  gr537_delaycounts -> SetMarkerStyle(20);
   gr537_delaycounts -> Fit(fit);
   storage537 = fit -> GetParameter(1);
   storageErr537 = fit -> GetParError(1);
@@ -2939,7 +2939,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_delayhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr537_delayhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr537_delayhist -> SetMarkerColor(2);
-  gr537_delayhist -> SetMarkerStyle(7);
+  gr537_delayhist -> SetMarkerStyle(20);
 
   TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
   leg2 -> AddEntry(gr537_delaycounts , "Without Background" , "p") ;
@@ -2968,7 +2968,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_tempIrradcounts -> SetMarkerStyle(7);
 
   TGraphErrors *gr537_tempValveOpencounts = new TGraphErrors (counts_537 , avets12ValveOpenArray537, UCNIntegralArray537 , ts12ValveOpenErr537 , UCNIntegralErrArray537);
-  gr537_tempValveOpencounts -> SetMarkerStyle(7);
+  gr537_tempValveOpencounts -> SetMarkerStyle(20);
   gr537_tempValveOpencounts -> SetMarkerColor(2);
 
   TLegend *leg = new TLegend(0.4,0.7, 0.9, 0.9);
@@ -2985,7 +2985,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_delaytempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr537_delaytempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr537_delaytempIrrad -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr537_delaytempIrrad -> SetMarkerStyle(7);
+  gr537_delaytempIrrad -> SetMarkerStyle(20);
   gr537_delaytempIrrad -> GetYaxis() -> SetRangeUser(0.9, 1.3);
   gr537_delaytempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr537_delaytempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -2998,7 +2998,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_delaytempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr537_delaytempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr537_delaytempValveOpen -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr537_delaytempValveOpen -> SetMarkerStyle(7);
+  gr537_delaytempValveOpen -> SetMarkerStyle(20);
   gr537_delaytempValveOpen -> SetMarkerColor(2);
   gr537_delaytempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr537_delaytempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -3024,7 +3024,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_curcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr537_curcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr537_curcounts -> SetMarkerStyle(7);
+  gr537_curcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr537_curhist = new TGraphErrors (counts_537 , avecurArray537, UCNIntegralArray537 , ErrcurArray537 , UCNIntegralErrArray537);
   gr537_curhist -> SetTitle("UCN Counts vs Average Beam Current");
@@ -3037,7 +3037,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_curhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr537_curhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr537_curhist -> SetMarkerColor(2);
-  gr537_curhist -> SetMarkerStyle(7);
+  gr537_curhist -> SetMarkerStyle(20);
 
   gr537_curcounts -> Draw("Ap");
   gr537_curhist -> Draw("p");
@@ -3057,7 +3057,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr537_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr537_cyclecounts -> SetMarkerStyle(7);
+  gr537_cyclecounts -> SetMarkerStyle(20);
 
 
   TGraphErrors *gr537_cyclehist = new TGraphErrors(counts_537, cycleNumberArray537 , HistIntegralArray537, 0, HistIntegralErrArray537);
@@ -3071,7 +3071,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
   gr537_cyclehist -> GetYaxis() -> SetTitleOffset(0.9);
   gr537_cyclehist -> SetMarkerColor(2);
-  gr537_cyclehist -> SetMarkerStyle(7);
+  gr537_cyclehist -> SetMarkerStyle(20);
 
   gr537_cyclecounts -> Draw("Ap");
   gr537_cyclehist -> Draw("p");
@@ -3088,7 +3088,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_cycledelay -> GetYaxis() -> SetTitleSize(0.05); 
   gr537_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr537_cycledelay -> SetMarkerStyle(7);
+  gr537_cycledelay -> SetMarkerStyle(20);
 
   gr537_cycledelay -> Draw("Ap");
 
@@ -3111,7 +3111,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr537_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr537_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Number");
-  gr537_cycletempValveOpen -> SetMarkerStyle(7);
+  gr537_cycletempValveOpen -> SetMarkerStyle(20);
   gr537_cycletempValveOpen -> SetMarkerColor(2);
   gr537_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr537_cycletempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -3135,7 +3135,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
   gr537_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr537_cyclecur -> SetMarkerStyle(7);
+  gr537_cyclecur -> SetMarkerStyle(20);
   gr537_cyclecur -> Draw("Ap");
 
 
@@ -3155,7 +3155,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_cyclefall -> GetYaxis() -> SetTitleSize(0.05); 
   gr537_cyclefall -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr537_cyclefall -> SetMarkerStyle(7);
+  gr537_cyclefall -> SetMarkerStyle(20);
   gr537_cyclefall -> Draw("Ap");
 
 
@@ -3172,7 +3172,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_cyclebaseline -> GetYaxis() -> SetTitleSize(0.05); 
   gr537_cyclebaseline -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr537_cyclebaseline -> SetMarkerStyle(7);
+  gr537_cyclebaseline -> SetMarkerStyle(20);
   gr537_cyclebaseline -> Draw("Ap");
 
   c537_cycleNumFit -> cd(3);
@@ -3188,7 +3188,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_cyclebaselineirrad -> GetYaxis() -> SetTitleSize(0.05); 
   gr537_cyclebaselineirrad -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr537_cyclebaselineirrad -> SetMarkerStyle(7);
+  gr537_cyclebaselineirrad -> SetMarkerStyle(20);
   gr537_cyclebaselineirrad -> Draw("Ap");
 
   c537_cycleNumFit -> cd(4);
@@ -3204,7 +3204,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr537_cyclerise -> GetYaxis() -> SetTitleSize(0.05); 
   gr537_cyclerise -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr537_cyclerise -> SetMarkerStyle(7);
+  gr537_cyclerise -> SetMarkerStyle(20);
   gr537_cyclerise -> Draw("Ap");
 
 
@@ -3231,7 +3231,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_delaycounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr538_delaycounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr538_delaycounts -> SetMarkerStyle(7);
+  gr538_delaycounts -> SetMarkerStyle(20);
   gr538_delaycounts -> Fit(fit);
   storage538 = fit -> GetParameter(1);
   storageErr538 = fit -> GetParError(1);
@@ -3247,7 +3247,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_delayhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr538_delayhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr538_delayhist -> SetMarkerColor(2);
-  gr538_delayhist -> SetMarkerStyle(7);
+  gr538_delayhist -> SetMarkerStyle(20);
 
   TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
   leg2 -> AddEntry(gr538_delaycounts , "Without Background" , "p") ;
@@ -3273,10 +3273,10 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_tempIrradcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr538_tempIrradcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr538_tempIrradcounts -> SetMarkerStyle(7);
+  gr538_tempIrradcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr538_tempValveOpencounts = new TGraphErrors (counts_538 , avets12ValveOpenArray538, UCNIntegralArray538 , ts12ValveOpenErr538 , UCNIntegralErrArray538);
-  gr538_tempValveOpencounts -> SetMarkerStyle(7);
+  gr538_tempValveOpencounts -> SetMarkerStyle(20);
   gr538_tempValveOpencounts -> SetMarkerColor(2);
 
   TLegend *leg = new TLegend(0.4,0.7, 0.9, 0.9);
@@ -3293,7 +3293,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_delaytempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr538_delaytempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr538_delaytempIrrad -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr538_delaytempIrrad -> SetMarkerStyle(7);
+  gr538_delaytempIrrad -> SetMarkerStyle(20);
   gr538_delaytempIrrad -> GetYaxis() -> SetRangeUser(1.1, 1.4);
   gr538_delaytempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr538_delaytempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -3306,7 +3306,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_delaytempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr538_delaytempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr538_delaytempValveOpen -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr538_delaytempValveOpen -> SetMarkerStyle(7);
+  gr538_delaytempValveOpen -> SetMarkerStyle(20);
   gr538_delaytempValveOpen -> SetMarkerColor(2);
   gr538_delaytempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr538_delaytempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -3332,7 +3332,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_curcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr538_curcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr538_curcounts -> SetMarkerStyle(7);
+  gr538_curcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr538_curhist = new TGraphErrors (counts_538 , avecurArray538, UCNIntegralArray538 , ErrcurArray538 , UCNIntegralErrArray538);
   gr538_curhist -> SetTitle("UCN Counts vs Average Beam Current");
@@ -3345,7 +3345,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_curhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr538_curhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr538_curhist -> SetMarkerColor(2);
-  gr538_curhist -> SetMarkerStyle(7);
+  gr538_curhist -> SetMarkerStyle(20);
 
   gr538_curcounts -> Draw("Ap");
   gr538_curhist -> Draw("p");
@@ -3365,7 +3365,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr538_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr538_cyclecounts -> SetMarkerStyle(7);
+  gr538_cyclecounts -> SetMarkerStyle(20);
 
 
   TGraphErrors *gr538_cyclehist = new TGraphErrors(counts_538, cycleNumberArray538 , HistIntegralArray538, 0, HistIntegralErrArray538);
@@ -3379,7 +3379,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
   gr538_cyclehist -> GetYaxis() -> SetTitleOffset(0.9);
   gr538_cyclehist -> SetMarkerColor(2);
-  gr538_cyclehist -> SetMarkerStyle(7);
+  gr538_cyclehist -> SetMarkerStyle(20);
 
   gr538_cyclecounts -> Draw("Ap");
   gr538_cyclehist -> Draw("p");
@@ -3396,7 +3396,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_cycledelay -> GetYaxis() -> SetTitleSize(0.05); 
   gr538_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr538_cycledelay -> SetMarkerStyle(7);
+  gr538_cycledelay -> SetMarkerStyle(20);
 
   gr538_cycledelay -> Draw("Ap");
 
@@ -3407,7 +3407,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr538_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr538_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
-  gr538_cycletempIrrad -> SetMarkerStyle(7);
+  gr538_cycletempIrrad -> SetMarkerStyle(20);
   gr538_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.82, 1.);
   gr538_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr538_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -3419,7 +3419,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr538_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr538_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Number");
-  gr538_cycletempValveOpen -> SetMarkerStyle(7);
+  gr538_cycletempValveOpen -> SetMarkerStyle(20);
   gr538_cycletempValveOpen -> SetMarkerColor(2);
   gr538_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr538_cycletempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -3443,7 +3443,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
   gr538_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr538_cyclecur -> SetMarkerStyle(7);
+  gr538_cyclecur -> SetMarkerStyle(20);
   gr538_cyclecur -> Draw("Ap");
 
 
@@ -3463,7 +3463,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_cyclefall -> GetYaxis() -> SetTitleSize(0.05); 
   gr538_cyclefall -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr538_cyclefall -> SetMarkerStyle(7);
+  gr538_cyclefall -> SetMarkerStyle(20);
   gr538_cyclefall -> Draw("Ap");
 
 
@@ -3480,7 +3480,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_cyclebaseline -> GetYaxis() -> SetTitleSize(0.05); 
   gr538_cyclebaseline -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr538_cyclebaseline -> SetMarkerStyle(7);
+  gr538_cyclebaseline -> SetMarkerStyle(20);
   gr538_cyclebaseline -> Draw("Ap");
 
   c538_cycleNumFit -> cd(3);
@@ -3496,7 +3496,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_cyclebaselineirrad -> GetYaxis() -> SetTitleSize(0.05); 
   gr538_cyclebaselineirrad -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr538_cyclebaselineirrad -> SetMarkerStyle(7);
+  gr538_cyclebaselineirrad -> SetMarkerStyle(20);
   gr538_cyclebaselineirrad -> Draw("Ap");
 
   c538_cycleNumFit -> cd(4);
@@ -3512,7 +3512,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr538_cyclerise -> GetYaxis() -> SetTitleSize(0.05); 
   gr538_cyclerise -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr538_cyclerise -> SetMarkerStyle(7);
+  gr538_cyclerise -> SetMarkerStyle(20);
   gr538_cyclerise -> Draw("Ap");
 
 
@@ -3538,7 +3538,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_delaycounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr539_delaycounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr539_delaycounts -> SetMarkerStyle(7);
+  gr539_delaycounts -> SetMarkerStyle(20);
   gr539_delaycounts -> Fit(fit);
   storage539 = fit -> GetParameter(1);
   storageErr539 = fit -> GetParError(1);
@@ -3554,7 +3554,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_delayhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr539_delayhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr539_delayhist -> SetMarkerColor(2);
-  gr539_delayhist -> SetMarkerStyle(7);
+  gr539_delayhist -> SetMarkerStyle(20);
 
   TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
   leg2 -> AddEntry(gr539_delaycounts , "Without Background" , "p") ;
@@ -3580,10 +3580,10 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_tempIrradcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr539_tempIrradcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr539_tempIrradcounts -> SetMarkerStyle(7);
+  gr539_tempIrradcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr539_tempValveOpencounts = new TGraphErrors (counts_539 , avets12ValveOpenArray539, UCNIntegralArray539 , ts12ValveOpenErr539 , UCNIntegralErrArray539);
-  gr539_tempValveOpencounts -> SetMarkerStyle(7);
+  gr539_tempValveOpencounts -> SetMarkerStyle(20);
   gr539_tempValveOpencounts -> SetMarkerColor(2);
 
   TLegend *leg = new TLegend(0.4,0.7, 0.9, 0.9);
@@ -3600,7 +3600,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_delaytempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr539_delaytempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr539_delaytempIrrad -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr539_delaytempIrrad -> SetMarkerStyle(7);
+  gr539_delaytempIrrad -> SetMarkerStyle(20);
   gr539_delaytempIrrad -> GetYaxis() -> SetRangeUser(1.1, 1.4);
   gr539_delaytempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr539_delaytempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -3613,7 +3613,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_delaytempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr539_delaytempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr539_delaytempValveOpen -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr539_delaytempValveOpen -> SetMarkerStyle(7);
+  gr539_delaytempValveOpen -> SetMarkerStyle(20);
   gr539_delaytempValveOpen -> SetMarkerColor(2);
   gr539_delaytempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr539_delaytempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -3639,7 +3639,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_curcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr539_curcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr539_curcounts -> SetMarkerStyle(7);
+  gr539_curcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr539_curhist = new TGraphErrors (counts_539 , avecurArray539, UCNIntegralArray539 , ErrcurArray539 , UCNIntegralErrArray539);
   gr539_curhist -> SetTitle("UCN Counts vs Average Beam Current");
@@ -3652,7 +3652,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_curhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr539_curhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr539_curhist -> SetMarkerColor(2);
-  gr539_curhist -> SetMarkerStyle(7);
+  gr539_curhist -> SetMarkerStyle(20);
 
   gr539_curcounts -> Draw("Ap");
   gr539_curhist -> Draw("p");
@@ -3672,7 +3672,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr539_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr539_cyclecounts -> SetMarkerStyle(7);
+  gr539_cyclecounts -> SetMarkerStyle(20);
 
 
   TGraphErrors *gr539_cyclehist = new TGraphErrors(counts_539, cycleNumberArray539 , HistIntegralArray539, 0, HistIntegralErrArray539);
@@ -3686,7 +3686,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
   gr539_cyclehist -> GetYaxis() -> SetTitleOffset(0.9);
   gr539_cyclehist -> SetMarkerColor(2);
-  gr539_cyclehist -> SetMarkerStyle(7);
+  gr539_cyclehist -> SetMarkerStyle(20);
 
   gr539_cyclecounts -> Draw("Ap");
   gr539_cyclehist -> Draw("p");
@@ -3703,7 +3703,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_cycledelay -> GetYaxis() -> SetTitleSize(0.05); 
   gr539_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr539_cycledelay -> SetMarkerStyle(7);
+  gr539_cycledelay -> SetMarkerStyle(20);
 
   gr539_cycledelay -> Draw("Ap");
 
@@ -3714,7 +3714,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr539_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr539_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
-  gr539_cycletempIrrad -> SetMarkerStyle(7);
+  gr539_cycletempIrrad -> SetMarkerStyle(20);
   gr539_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.82, 0.9);
   gr539_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr539_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -3726,7 +3726,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr539_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr539_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Number");
-  gr539_cycletempValveOpen -> SetMarkerStyle(7);
+  gr539_cycletempValveOpen -> SetMarkerStyle(20);
   gr539_cycletempValveOpen -> SetMarkerColor(2);
   gr539_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr539_cycletempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -3750,7 +3750,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
   gr539_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr539_cyclecur -> SetMarkerStyle(7);
+  gr539_cyclecur -> SetMarkerStyle(20);
   gr539_cyclecur -> Draw("Ap");
 
 
@@ -3770,7 +3770,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_cyclefall -> GetYaxis() -> SetTitleSize(0.05); 
   gr539_cyclefall -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr539_cyclefall -> SetMarkerStyle(7);
+  gr539_cyclefall -> SetMarkerStyle(20);
   gr539_cyclefall -> Draw("Ap");
 
 
@@ -3787,7 +3787,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_cyclebaseline -> GetYaxis() -> SetTitleSize(0.05); 
   gr539_cyclebaseline -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr539_cyclebaseline -> SetMarkerStyle(7);
+  gr539_cyclebaseline -> SetMarkerStyle(20);
   gr539_cyclebaseline -> Draw("Ap");
 
   c539_cycleNumFit -> cd(3);
@@ -3803,7 +3803,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_cyclebaselineirrad -> GetYaxis() -> SetTitleSize(0.05); 
   gr539_cyclebaselineirrad -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr539_cyclebaselineirrad -> SetMarkerStyle(7);
+  gr539_cyclebaselineirrad -> SetMarkerStyle(20);
   gr539_cyclebaselineirrad -> Draw("Ap");
 
   c539_cycleNumFit -> cd(4);
@@ -3819,7 +3819,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr539_cyclerise -> GetYaxis() -> SetTitleSize(0.05); 
   gr539_cyclerise -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr539_cyclerise -> SetMarkerStyle(7);
+  gr539_cyclerise -> SetMarkerStyle(20);
   gr539_cyclerise -> Draw("Ap");
 
 
@@ -3845,7 +3845,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_delaycounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr540_delaycounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr540_delaycounts -> SetMarkerStyle(7);
+  gr540_delaycounts -> SetMarkerStyle(20);
   gr540_delaycounts -> Fit(fit);
   storage540 = fit -> GetParameter(1);
   storageErr540 = fit -> GetParError(1);
@@ -3861,7 +3861,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_delayhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr540_delayhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr540_delayhist -> SetMarkerColor(2);
-  gr540_delayhist -> SetMarkerStyle(7);
+  gr540_delayhist -> SetMarkerStyle(20);
 
   TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
   leg2 -> AddEntry(gr540_delaycounts , "Without Background" , "p") ;
@@ -3887,10 +3887,10 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_tempIrradcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr540_tempIrradcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr540_tempIrradcounts -> SetMarkerStyle(7);
+  gr540_tempIrradcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr540_tempValveOpencounts = new TGraphErrors (counts_540 , avets12ValveOpenArray540, UCNIntegralArray540 , ts12ValveOpenErr540 , UCNIntegralErrArray540);
-  gr540_tempValveOpencounts -> SetMarkerStyle(7);
+  gr540_tempValveOpencounts -> SetMarkerStyle(20);
   gr540_tempValveOpencounts -> SetMarkerColor(2);
 
   TLegend *leg = new TLegend(0.4,0.7, 0.9, 0.9);
@@ -3907,7 +3907,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_delaytempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr540_delaytempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr540_delaytempIrrad -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr540_delaytempIrrad -> SetMarkerStyle(7);
+  gr540_delaytempIrrad -> SetMarkerStyle(20);
   gr540_delaytempIrrad -> GetYaxis() -> SetRangeUser(1.1, 1.4);
   gr540_delaytempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr540_delaytempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -3920,7 +3920,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_delaytempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
   gr540_delaytempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr540_delaytempValveOpen -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr540_delaytempValveOpen -> SetMarkerStyle(7);
+  gr540_delaytempValveOpen -> SetMarkerStyle(20);
   gr540_delaytempValveOpen -> SetMarkerColor(2);
   gr540_delaytempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr540_delaytempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -3946,7 +3946,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_curcounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr540_curcounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr540_curcounts -> SetMarkerStyle(7);
+  gr540_curcounts -> SetMarkerStyle(20);
 
   TGraphErrors *gr540_curhist = new TGraphErrors (counts_540 , avecurArray540, UCNIntegralArray540 , ErrcurArray540 , UCNIntegralErrArray540);
   gr540_curhist -> SetTitle("UCN Counts vs Average Beam Current");
@@ -3959,7 +3959,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_curhist -> GetYaxis() -> SetTitleSize(0.05); 
   gr540_curhist -> GetYaxis() -> SetTitleOffset(0.9);
   gr540_curhist -> SetMarkerColor(2);
-  gr540_curhist -> SetMarkerStyle(7);
+  gr540_curhist -> SetMarkerStyle(20);
 
   gr540_curcounts -> Draw("Ap");
   gr540_curhist -> Draw("p");
@@ -3979,7 +3979,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr540_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr540_cyclecounts -> SetMarkerStyle(7);
+  gr540_cyclecounts -> SetMarkerStyle(20);
 
 
   TGraphErrors *gr540_cyclehist = new TGraphErrors(counts_540, cycleNumberArray540 , HistIntegralArray540, 0, HistIntegralErrArray540);
@@ -3993,7 +3993,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
   gr540_cyclehist -> GetYaxis() -> SetTitleOffset(0.9);
   gr540_cyclehist -> SetMarkerColor(2);
-  gr540_cyclehist -> SetMarkerStyle(7);
+  gr540_cyclehist -> SetMarkerStyle(20);
 
   gr540_cyclecounts -> Draw("Ap");
   gr540_cyclehist -> Draw("p");
@@ -4010,7 +4010,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_cycledelay -> GetYaxis() -> SetTitleSize(0.05); 
   gr540_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr540_cycledelay -> SetMarkerStyle(7);
+  gr540_cycledelay -> SetMarkerStyle(20);
 
   gr540_cycledelay -> Draw("Ap");
 
@@ -4021,7 +4021,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr540_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr540_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
-  gr540_cycletempIrrad -> SetMarkerStyle(7);
+  gr540_cycletempIrrad -> SetMarkerStyle(20);
   gr540_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.82, 0.9);
   gr540_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr540_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
@@ -4033,7 +4033,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr540_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr540_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Number");
-  gr540_cycletempValveOpen -> SetMarkerStyle(7);
+  gr540_cycletempValveOpen -> SetMarkerStyle(20);
   gr540_cycletempValveOpen -> SetMarkerColor(2);
   gr540_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr540_cycletempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
@@ -4057,7 +4057,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
   gr540_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr540_cyclecur -> SetMarkerStyle(7);
+  gr540_cyclecur -> SetMarkerStyle(20);
   gr540_cyclecur -> Draw("Ap");
 
 
@@ -4077,7 +4077,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_cyclefall -> GetYaxis() -> SetTitleSize(0.05); 
   gr540_cyclefall -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr540_cyclefall -> SetMarkerStyle(7);
+  gr540_cyclefall -> SetMarkerStyle(20);
   gr540_cyclefall -> Draw("Ap");
 
 
@@ -4094,7 +4094,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_cyclebaseline -> GetYaxis() -> SetTitleSize(0.05); 
   gr540_cyclebaseline -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr540_cyclebaseline -> SetMarkerStyle(7);
+  gr540_cyclebaseline -> SetMarkerStyle(20);
   gr540_cyclebaseline -> Draw("Ap");
 
   c540_cycleNumFit -> cd(3);
@@ -4110,7 +4110,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_cyclebaselineirrad -> GetYaxis() -> SetTitleSize(0.05); 
   gr540_cyclebaselineirrad -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr540_cyclebaselineirrad -> SetMarkerStyle(7);
+  gr540_cyclebaselineirrad -> SetMarkerStyle(20);
   gr540_cyclebaselineirrad -> Draw("Ap");
 
   c540_cycleNumFit -> cd(4);
@@ -4126,7 +4126,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   gr540_cyclerise -> GetYaxis() -> SetTitleSize(0.05); 
   gr540_cyclerise -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr540_cyclerise -> SetMarkerStyle(7);
+  gr540_cyclerise -> SetMarkerStyle(20);
   gr540_cyclerise -> Draw("Ap");
 
 
@@ -4154,7 +4154,7 @@ void StorageTime_17002_Taraneh_edit_ver2(){
   grAll -> GetYaxis() -> SetTitleOffset(0.9);
   grAll -> Fit(fit);
 
-  grAll -> SetMarkerStyle(7);
+  grAll -> SetMarkerStyle(20);
   grAll -> Draw("Ap");
   
 

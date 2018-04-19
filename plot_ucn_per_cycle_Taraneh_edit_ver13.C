@@ -71,7 +71,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("outputTree_587.root", "RECREATE");
+  TFile hfile ("outputTree_532.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -142,7 +142,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   double Li6CountsValveOpen;
   double Li6CountsCycleStart;
   Double_t maxXrange = 0, minXrange=1540000000.;
-  Int_t BinWidth=3;
+  Int_t BinWidth=1;
   Int_t NBins = 1;
       
   TH2F *psd_vs_ql[16];
@@ -280,7 +280,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // *************************************************************
   
 
-  Int_t StorageTimeFiles[10] ={587};
+  Int_t StorageTimeFiles[10] ={532};
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;
@@ -1033,7 +1033,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
       Double_t tauFall[max] , tauFallErr[max];
       Double_t delay[max] , delayErr[max];
       Double_t Integral[max] , IntegralErr[max];
-      /*
+      
 
       gStyle -> SetOptFit(0000);
       for (int i=0 ; i < cycleStartTimes.size(); i++){
@@ -1093,9 +1093,9 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	Li6_Fit_Func -> FixParameter(10, cyclevalveclose[i]);
 	Li6_Fit_Func -> FixParameter(11,delayTimeArray[i]);
 	Li6_Fit_Func -> SetNpx(10000);
-	TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
+	//TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
 	cout << "***********************************************************" << endl;
-	Int_t fitStatus = status;
+	/*	Int_t fitStatus = status;
 	cout << fitStatus << endl;
 	if (fitStatus == 4) {
 	  failfit_cycle++;
@@ -1113,13 +1113,14 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	tauRiseErr[i] = Li6_Fit_Func -> GetParError(7);
 	tauFallErr[i] = Li6_Fit_Func -> GetParError(8);
 	delayErr[i] = Li6_Fit_Func -> GetParError(9);
-	Integral[i] = Li6_Fit_Func -> Integral(cyclevalveopen[i] , cyclevalveclose[i])/BinWidth;
-	IntegralErr[i] = Li6_Fit_Func -> IntegralError(cyclevalveopen[i] , cyclevalveclose[i]);
+	//Integral[i] = Li6_Fit_Func -> Integral(cyclevalveopen[i] , cyclevalveclose[i])/BinWidth;
+	//IntegralErr[i] = Li6_Fit_Func -> IntegralError(cyclevalveopen[i] , cyclevalveclose[i]);
 	//Li6_Fit_Func-> Draw("");
 	//cout <<  (irradiationStartTime[i] - minmin_range[i]) << " "<< baseline[i]<< endl;
 	//cout << BaselineInt[i] << endl;
 	//cout << baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]) << endl;
 	//cout << ( baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]))/BaselineInt[i] << endl;
+	*/
 	hfile.cd();
       }
       
@@ -1137,7 +1138,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
       
       UCN_rate_li6 -> SetBins(NBins, minXrange , maxXrange);
       UCN_rate_Li6_all -> Add (UCN_rate_li6);
-      */
+      
    
 
 

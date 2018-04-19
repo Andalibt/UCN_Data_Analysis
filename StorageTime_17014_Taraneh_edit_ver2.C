@@ -111,7 +111,7 @@ void StorageTime_17014_Taraneh_edit_ver2(){
 
 
   // UCN INTEGRAL FROM THE FIT FUNCTION (ARRAY)
-  double UCNIntegralArray780 [100] = 0;
+  double UCNIntegralArray780 [100];
   double UCNIntegralArray781 [100];
   double UCNIntegralArray782 [100];
   double UCNIntegralArray783 [100];

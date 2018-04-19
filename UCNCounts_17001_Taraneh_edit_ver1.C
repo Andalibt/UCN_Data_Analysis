@@ -2231,15 +2231,20 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
 
   // UCN COUNT VS BEAM CURRENT
 
-  TCanvas *c_countcur = new TCanvas("c_countcur" , "c_countcur" , 1200, 900);
-  c_countcur -> SetLogy();
+  // ONLINE ANALYSIS
+  double curOnline[100] = {0.05, 0.05, 0.05, 0.05, 0.5, 0.5 , 0.5 ,0.5 , 0.5, 1 ,1 ,1, 1, 1, 0.25, 0.25, 0.25, 0.25, 0.25, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 1, 1, 1, 1, 1 };
 
-  TGraphErrors *gr524_countcur = new TGraphErrors (counts_524, avecurArray524, UCNIntegralArray524, ErrcurArray524,  UCNIntegralErrArray524);
+  double countsOnline[100] = {2600, 2300, 2245, 2300, 20100, 20200, 20000, 20150, 20150, 40000,39300, 39900, 39500, 39500, 10300, 10100, 10100, 10100, 10100, 30200, 30100, 30300, 30000, 30300, 30200, 40200, 39600, 39200, 39800, 40200} ;
+
+  TCanvas *c_countcur = new TCanvas("c_countcur" , "c_countcur" , 1200, 900);
+  // c_countcur -> SetLogy();
+
+  TGraphErrors *gr524_countcur = new TGraphErrors (counts_524, avecurArray524, UCNIntegralArray524, 0,  UCNIntegralErrArray524);
   gr524_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr524_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
   gr524_countcur -> GetYaxis()-> SetTitle("UCN Counts");
   gr524_countcur -> SetMarkerStyle(20);
-  gr524_countcur -> GetYaxis() -> SetRangeUser(10,1000000);
+  gr524_countcur -> GetYaxis() -> SetRangeUser(10,70000);
   gr524_countcur -> GetXaxis()-> SetLimits(0., 2.5);
   gr524_countcur -> GetXaxis() -> SetTitleSize(0.05);
   gr524_countcur -> GetXaxis() -> SetTitleOffset(1.0);
@@ -2249,7 +2254,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
 
 
 
-  TGraphErrors *gr524_histcur = new  TGraphErrors (counts_524,  avecurArray524, HistIntegralArray524, ErrcurArray524, HistIntegralErrArray524);
+  TGraphErrors *gr524_histcur = new  TGraphErrors (counts_524,  avecurArray524, HistIntegralArray524, 0, HistIntegralErrArray524);
   gr524_histcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr524_histcur -> GetXaxis() -> SetTitle("Average Predicted Beam Current" );
   gr524_histcur -> GetYaxis() -> SetTitle("UCN Counts");
@@ -2262,7 +2267,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   gr524_histcur -> GetYaxis() -> SetTitleOffset(0.9);
   gr524_histcur -> SetMarkerColor(1);
 
-  TGraphErrors *gr525_countcur = new TGraphErrors (counts_525,  avecurArray525, UCNIntegralArray525, ErrcurArray525, UCNIntegralErrArray525);
+  TGraphErrors *gr525_countcur = new TGraphErrors (counts_525,  avecurArray525, UCNIntegralArray525,0 , UCNIntegralErrArray525);
   gr525_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr525_countcur -> GetXaxis() -> SetTitle("Average Predicted Beam Current" );
   gr525_countcur -> GetYaxis() -> SetTitle("UCN Counts");
@@ -2275,7 +2280,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   gr525_countcur -> GetYaxis() -> SetTitleOffset(0.9);
   gr525_countcur -> SetMarkerColor(2);
 
-  TGraphErrors *gr525_histcur = new TGraphErrors (counts_525,  avecurArray525, HistIntegralArray525, ErrcurArray525, HistIntegralErrArray525);
+  TGraphErrors *gr525_histcur = new TGraphErrors (counts_525,  avecurArray525, HistIntegralArray525, 0, HistIntegralErrArray525);
   gr525_histcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr525_histcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
   gr525_histcur -> GetYaxis()-> SetTitle("UCN Counts");
@@ -2288,7 +2293,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   gr525_histcur -> GetYaxis() -> SetTitleOffset(0.9);
   gr525_histcur -> SetMarkerColor(2);
 
-  TGraphErrors *gr527_countcur = new TGraphErrors (counts_527, avecurArray527,  UCNIntegralArray527, ErrcurArray527 , UCNIntegralErrArray527);
+  TGraphErrors *gr527_countcur = new TGraphErrors (counts_527, avecurArray527,  UCNIntegralArray527, 0 , UCNIntegralErrArray527);
   gr527_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr527_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
   gr527_countcur -> GetYaxis()-> SetTitle("UCN Counts");
@@ -2301,7 +2306,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   gr527_countcur -> GetYaxis() -> SetTitleOffset(0.9);
   gr527_countcur -> SetMarkerColor(4);
 
-  TGraphErrors *gr527_histcur = new TGraphErrors (counts_527 ,avecurArray527, HistIntegralArray527,  ErrcurArray527, HistIntegralErrArray527);
+  TGraphErrors *gr527_histcur = new TGraphErrors (counts_527 ,avecurArray527, HistIntegralArray527, 0, HistIntegralErrArray527);
   gr527_histcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr527_histcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
   gr527_histcur -> GetYaxis()-> SetTitle("UCN Counts");
@@ -2314,7 +2319,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   gr527_histcur -> GetYaxis() -> SetTitleOffset(0.9);
   gr527_histcur -> SetMarkerColor(4);
   
-  TGraphErrors *gr528_countcur = new TGraphErrors (counts_528,  avecurArray528, UCNIntegralArray528, ErrcurArray528 ,UCNIntegralErrArray528);
+  TGraphErrors *gr528_countcur = new TGraphErrors (counts_528,  avecurArray528, UCNIntegralArray528,0 ,UCNIntegralErrArray528);
   gr528_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr528_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
   gr528_countcur -> GetYaxis()-> SetTitle("UCN Counts");
@@ -2327,7 +2332,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   gr528_countcur -> GetYaxis() -> SetTitleOffset(0.9);
   gr528_countcur -> SetMarkerColor(8);
 
-  TGraphErrors *gr528_histcur = new TGraphErrors (counts_528, avecurArray528, HistIntegralArray528 , ErrcurArray528 ,  HistIntegralErrArray528);
+  TGraphErrors *gr528_histcur = new TGraphErrors (counts_528, avecurArray528, HistIntegralArray528 ,0,  HistIntegralErrArray528);
   gr528_histcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr528_histcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
   gr528_histcur -> GetYaxis()-> SetTitle("UCN Counts");
@@ -2340,7 +2345,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   gr528_histcur -> GetYaxis() -> SetTitleOffset(0.9);
   gr528_histcur -> SetMarkerColor(8);
 
-  TGraphErrors *gr529_countcur = new TGraphErrors (counts_529 , avecurArray529 ,  UCNIntegralArray529, ErrcurArray529, UCNIntegralErrArray529);
+  TGraphErrors *gr529_countcur = new TGraphErrors (counts_529 , avecurArray529 ,  UCNIntegralArray529, 0, UCNIntegralErrArray529);
   gr529_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr529_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
   gr529_countcur -> GetYaxis()-> SetTitle("UCN Counts");
@@ -2354,7 +2359,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   gr529_countcur -> SetMarkerColor(6);
 
 
-  TGraphErrors *gr529_histcur = new TGraphErrors (counts_529, avecurArray529,  HistIntegralArray529, ErrcurArray529  , HistIntegralErrArray529);
+  TGraphErrors *gr529_histcur = new TGraphErrors (counts_529, avecurArray529,  HistIntegralArray529, 0, HistIntegralErrArray529);
   gr529_histcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr529_histcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
   gr529_histcur -> GetYaxis()-> SetTitle("UCN Counts");
@@ -2366,6 +2371,20 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   gr529_histcur -> GetYaxis() -> SetTitleSize(0.05); 
   gr529_histcur -> GetYaxis() -> SetTitleOffset(0.9);
   gr529_histcur -> SetMarkerColor(6);
+
+
+  TGraphErrors *gr_online = new TGraphErrors (30, curOnline,  countsOnline, 0, 0);
+  gr_online -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
+  gr_online -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
+  gr_online -> GetYaxis()-> SetTitle("UCN Counts");
+  gr_online -> SetMarkerStyle(3);
+  gr_online -> GetYaxis() -> SetRangeUser(10,500000);
+  gr_online -> GetXaxis()-> SetLimits(0., 1.2);
+  gr_online -> GetXaxis() -> SetTitleSize(0.05);
+  gr_online -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_online -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_online -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_online -> SetMarkerColor(1);
 
   TLegend *legcur = new TLegend (0.7, 0.5, 0.9, 0.9);
 
@@ -2379,7 +2398,8 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   legcur -> AddEntry (gr528_histcur , "With background , 0.75 #muA" , "p");
   legcur -> AddEntry (gr529_countcur , "Without background (fit), 1 #muA", "p");
   legcur -> AddEntry (gr529_histcur , "With background , 1 #muA" , "p");
-
+  legcur -> AddEntry (gr_online , "Online Analysis" , "p");
+  
 
   gr524_countcur -> Draw("ap");
   gr524_histcur -> Draw("p");
@@ -2391,6 +2411,7 @@ void UCNCounts_17001_Taraneh_edit_ver1(){
   gr528_histcur -> Draw("p");
   gr529_countcur -> Draw("p");
   gr529_histcur -> Draw("p");
+  gr_online -> Draw("p");
   legcur -> Draw();
   
 }

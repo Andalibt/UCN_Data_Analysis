@@ -152,6 +152,7 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
   events = (Double_t) outputTree -> GetEntries();
 
   for (ULong64_t j = 0 ; j < events ; j++){
+    
     outputTree -> GetEvent(j);
     if (midasrun == 618 || midasrun == 623 || midasrun == 624)
       continue;
@@ -159,8 +160,8 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
       continue;
     if (midasrun == 637 || midasrun == 638 )
       continue;
-    if (midasrun == 639 && counts == 0)
-      continue;
+    //if (midasrun == 639 && counts == 0)
+    // continue;
     if (midasrun == 640 || midasrun == 642 || midasrun == 643)
       continue;
     if (midasrun == 647 || midasrun == 648 || midasrun == 649)
@@ -171,6 +172,7 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
       continue;
     if (midasrun == 657 || midasrun == 658 || midasrun == 659)
       continue;
+    
     UCNIntegralArray[counts] = UCNIntegral;
     UCNIntegralErrArray[counts] = UCNIntegralErr;
     HistIntegralArray[counts] = HistIntegral;
@@ -198,10 +200,11 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
     // cout << UCNIntegralManualArray[counts] << endl;
     UCNIntegralManualErrArray[counts] = sqrt(HistIntegral - BaselineIntegral);
     cout << " The irradiation time for run " <<midasrun << " for cycle "<< counts << " is "<< cycleStartTimes - irradStartTimes << endl;
+
     // *******************
     // FOR THE FINAL GRAPH
     // ********************
-
+    
     // 1.5 muA
     if (avecur > 1.4 && avecur < 1.6){
       UCNIntegralArray_1muA[counts_1muA] = UCNIntegral;
@@ -240,6 +243,9 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
 
     // 7 muA
     if (avecur > 6.8 && avecur < 7.3){
+      if (midasrun == 639 && UCNIntegral < 1000)
+        continue;
+      // cout << midasrun << " " << UCNIntegral << endl;
       UCNIntegralArray_7muA[counts_7muA] = UCNIntegral;
       UCNIntegralErrArray_7muA[counts_7muA] = UCNIntegralErr;
       HistIntegralArray_7muA[counts_7muA] = HistIntegral;
@@ -260,9 +266,9 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
       UCNIntegralManualErrArray_10muA[counts_10muA] = sqrt(HistIntegral - BaselineIntegral);
       irradtimeArray_10muA[counts_10muA] = cycleStartTimes - irradStartTimes;
       counts_10muA++;
-    }
-    
+      }
     counts++;
+    //cout << counts << endl;
   }
 
 
@@ -273,8 +279,8 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
   //     GRAPHS
   // ******************
 
-  
-  /*
+  #if 0
+
   TCanvas *c_cylceNum =  new TCanvas("c_cycleNum" , "c_cycleNum " , 1200, 900);
   c_cycleNum-> Divide(2,2);
 
@@ -470,10 +476,10 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
   //gr_HistValveOpen -> Draw("p");
   leg3 -> Draw();
 
-
-  */
+#endif
+ 
   } 
-
+  
   TCanvas *cAll = new TCanvas ("cAll" , "cAll", 1200, 900);
   cAll -> SetLogy();
 
@@ -506,7 +512,7 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
   grcountsM_1muA -> SetTitle( "UCN Counts vs Irradiation Time");
   grcountsM_1muA -> GetXaxis()-> SetTitle("Irradiation Time (s)" );
   grcountsM_1muA -> GetYaxis()-> SetTitle("UCN Counts");
-  grcountsM_1muA -> SetMarkerStyle(25);
+  grcountsM_1muA -> SetMarkerStyle(24);
   grcountsM_1muA -> GetXaxis()-> SetLimits(0, 150);
   grcountsM_1muA -> GetXaxis() -> SetTitleSize(0.05);
   grcountsM_1muA -> GetXaxis() -> SetTitleOffset(1.0);
@@ -542,7 +548,7 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
   grcountsM_3muA -> SetTitle( "UCN Counts vs Irradiation Time");
   grcountsM_3muA -> GetXaxis()-> SetTitle("Irradiation Time (s)" );
   grcountsM_3muA -> GetYaxis()-> SetTitle("UCN Counts");
-  grcountsM_3muA -> SetMarkerStyle(25);
+  grcountsM_3muA -> SetMarkerStyle(24);
   grcountsM_3muA -> GetXaxis()-> SetLimits(0, 150);
   grcountsM_3muA -> GetXaxis() -> SetTitleSize(0.05);
   grcountsM_3muA -> GetXaxis() -> SetTitleOffset(1.0);
@@ -579,7 +585,7 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
   grcountsM_5muA -> SetTitle( "UCN Counts vs Irradiation Time");
   grcountsM_5muA -> GetXaxis()-> SetTitle("Irradiation Time (s)" );
   grcountsM_5muA -> GetYaxis()-> SetTitle("UCN Counts");
-  grcountsM_5muA -> SetMarkerStyle(25);
+  grcountsM_5muA -> SetMarkerStyle(24);
   grcountsM_5muA -> GetXaxis()-> SetLimits(0, 150);
   grcountsM_5muA -> GetXaxis() -> SetTitleSize(0.05);
   grcountsM_5muA -> GetXaxis() -> SetTitleOffset(1.0);
@@ -615,7 +621,7 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
   grcountsM_7muA -> SetTitle( "UCN Counts vs Irradiation Time");
   grcountsM_7muA -> GetXaxis()-> SetTitle("Irradiation Time (s)" );
   grcountsM_7muA -> GetYaxis()-> SetTitle("UCN Counts");
-  grcountsM_7muA -> SetMarkerStyle(25);
+  grcountsM_7muA -> SetMarkerStyle(24);
   grcountsM_7muA -> GetXaxis()-> SetLimits(0, 150);
   grcountsM_7muA -> GetXaxis() -> SetTitleSize(0.05);
   grcountsM_7muA -> GetXaxis() -> SetTitleOffset(1.0);
@@ -652,7 +658,7 @@ void UCNCounts_17007_Taraneh_edit_ver1(){
   grcountsM_10muA -> SetTitle( "UCN Counts vs Irradiation Time");
   grcountsM_10muA -> GetXaxis()-> SetTitle("Irradiation Time (s)" );
   grcountsM_10muA -> GetYaxis()-> SetTitle("UCN Counts");
-  grcountsM_10muA -> SetMarkerStyle(25);
+  grcountsM_10muA -> SetMarkerStyle(24);
   grcountsM_10muA -> GetXaxis()-> SetLimits(0, 150);
   grcountsM_10muA -> GetXaxis() -> SetTitleSize(0.05);
   grcountsM_10muA -> GetXaxis() -> SetTitleOffset(1.0);

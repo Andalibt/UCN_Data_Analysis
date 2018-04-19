@@ -855,6 +855,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
   double HistIntegralErrAll[100];
   double UCNIntegralManualAll[100];
   double UCNIntegralManualErrAll[100];
+  double irradArray[100];
 
   // *****
   // 562
@@ -902,6 +903,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     HistIntegralErrAll[counts_562] = sqrt (HistIntegral562);
     UCNIntegralManualAll[counts_562] = HistIntegral562 - BaselineIntegral562;
     UCNIntegralManualErrAll[counts_562] = sqrt(HistIntegral562 - BaselineIntegral562);
+    irradArray[counts_562] = cycleStartTimes562 - irradStartTimes562;
     counts_562++;
   }
 
@@ -947,6 +949,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     // FOR THE FINAL GRAPH
     // ********************
     UCNIntegralAll[counts_562+counts_563] = UCNIntegral563;
+    irradArray[counts_562+counts_563]  = cycleStartTimes563 - irradStartTimes563;
     UCNIntegralErrAll[counts_562+counts_563] = UCNIntegralErr563;
     HistIntegralAll[counts_562+counts_563] = HistIntegral563;
     HistIntegralErrAll[counts_562+counts_563] = sqrt (HistIntegral563);
@@ -997,6 +1000,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     // FOR THE FINAL GRAPH
     // ********************
     UCNIntegralAll[counts_562+counts_563+counts_564] = UCNIntegral564;
+    irradArray[counts_562+counts_563+counts_564] = cycleStartTimes564 - irradStartTimes564;
     UCNIntegralErrAll[counts_562+counts_563+counts_564] = UCNIntegralErr564;
     HistIntegralAll[counts_562+counts_563+counts_564] = HistIntegral564;
     HistIntegralErrAll[counts_562+counts_563+counts_564] = sqrt (HistIntegral564);
@@ -1048,6 +1052,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     // FOR THE FINAL GRAPH
     // ********************
     UCNIntegralAll[counts_562+counts_563+counts_564+counts_565] = UCNIntegral565;
+    irradArray[counts_562+counts_563+counts_564+counts_565] = cycleStartTimes565 - irradStartTimes565;
     UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565] = UCNIntegralErr565;
     HistIntegralAll[counts_562+counts_563+counts_564+counts_565] = HistIntegral565;
     HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565] = sqrt (HistIntegral565);
@@ -1067,6 +1072,8 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
 
   for (ULong64_t j = 0 ; j < events566 ; j++){
     outputTree566 -> GetEvent(j);
+    if (j ==1 )
+      continue;
     UCNIntegralArray566[counts_566] = UCNIntegral566;
     UCNIntegralErrArray566[counts_566] = UCNIntegralErr566;
     HistIntegralArray566[counts_566] = HistIntegral566;
@@ -1098,6 +1105,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     // FOR THE FINAL GRAPH
     // ********************
     UCNIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566] = UCNIntegral566;
+    irradArray[counts_562+counts_563+counts_564+counts_565+counts_566] = cycleStartTimes566 - irradStartTimes566;
     UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566] = UCNIntegralErr566;
     HistIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566] = HistIntegral566;
     HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566] = sqrt (HistIntegral566);
@@ -1148,6 +1156,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     // FOR THE FINAL GRAPH
     // ********************
     UCNIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567] = UCNIntegral567;
+    irradArray[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567] = cycleStartTimes567 - irradStartTimes567;
     UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567] = UCNIntegralErr567;
     HistIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567] = HistIntegral567;
     HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567] = sqrt (HistIntegral567);
@@ -1197,6 +1206,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     // FOR THE FINAL GRAPH
     // ********************
     UCNIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568] = UCNIntegral568;
+    irradArray[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568] = cycleStartTimes568 - irradStartTimes568;
     UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568] = UCNIntegralErr568;
     HistIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568] = HistIntegral568;
     HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568] = sqrt (HistIntegral568);
@@ -1246,6 +1256,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     // FOR THE FINAL GRAPH
     // ********************
     UCNIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569] = UCNIntegral569;
+    irradArray[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569] = cycleStartTimes569 - irradStartTimes569;
     UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569] = UCNIntegralErr569;
     HistIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569] = HistIntegral569;
     HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569] = sqrt (HistIntegral569);
@@ -1297,6 +1308,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     // FOR THE FINAL GRAPH
     // ********************
     UCNIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570] = UCNIntegral570;
+    irradArray[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570] = cycleStartTimes570 - irradStartTimes570;
     UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570] = UCNIntegralErr570;
     HistIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570] = HistIntegral570;
     HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570] = sqrt (HistIntegral570);
@@ -1347,6 +1359,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     // FOR THE FINAL GRAPH
     // ********************
     UCNIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571] = UCNIntegral571;
+    irradArray[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571] = cycleStartTimes571 - irradStartTimes571;
     UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571] = UCNIntegralErr571;
     HistIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571] = HistIntegral571;
     HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571] = sqrt (HistIntegral571);
@@ -1397,6 +1410,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     // FOR THE FINAL GRAPH
     // ********************
     UCNIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571+counts_572] = UCNIntegral572;
+    irradArray[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571+counts_572] = cycleStartTimes572 - irradStartTimes572;
     UCNIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571+counts_572] = UCNIntegralErr572;
     HistIntegralAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571+counts_572] = HistIntegral572;
     HistIntegralErrAll[counts_562+counts_563+counts_564+counts_565+counts_566+counts_567+counts_568+counts_569+counts_570+counts_571+counts_572] = sqrt (HistIntegral572);
@@ -1405,7 +1419,6 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
     counts_572++;
   }
 
-  
   
   // *******************
   //     GRAPHS
@@ -1543,8 +1556,8 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
   // TEMPERATURE AND COUNTS
   // ************************
 
-  TCanvas *c562_counttemp = new TCanvas ("c562_counttemp" , "c562_counttemp " , 1200, 900);
-  c562_counttemp -> SetLogy();
+  TCanvas *c_counttemp = new TCanvas ("c_counttemp" , "c_counttemp " , 1200, 900);
+  c_counttemp -> SetLogy();
 
   TGraphErrors *gr562_countIrrad = new TGraphErrors (counts_562, avets12IrradArray562, UCNIntegralArray562, ts12IrradErr562, UCNIntegralErrArray562);
   gr562_countIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
@@ -1606,9 +1619,9 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
   leg3 -> SetTextSize(0.04);
 
   gr562_countIrrad -> Draw("AP");
-  //gr562_countValveOpen -> Draw("p");
+  //gr_countValveOpen -> Draw("p");
    gr562_HistIrrad -> Draw("p");
-  //gr562_HistValveOpen -> Draw("p");
+  //gr_HistValveOpen -> Draw("p");
   leg3 -> Draw();
 
 
@@ -3500,12 +3513,18 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
   // OVERALL
   // ******************************************
 
-  double irradAll[40] = {10, 20, 30, 40 , 50, 100 , 60, 120 , 80, 150};
+  // online analysis
+
+  double irradOnline[100] = {10, 10, 10, 20, 20, 20, 30, 30, 30, 40, 40, 40, 50, 50, 50, 60, 60, 60, 80, 80, 80, 100, 100, 100, 120, 120, 120, 150, 150, 150 };
+
+  double countsOnline[100] = {14015, 13658, 13764, 23507, 23682, 23026, 30489, 29814, 30518, 35465, 34632, 35041, 38704, 39412, 38999, 41790, 42082, 41584, 45070, 44639, 44133, 47569, 47205, 46749, 48915, 48302, 47670, 48426, 48872, 48231 };
+
+  // double irradAll[40] = {10, 20, 30, 40 , 50, 100 , 60, 120 , 80, 150};
 
   TCanvas *cAll = new TCanvas ("cAll" , "cAll" , 1200, 900);
-  cAll -> SetLogy();
+  //cAll -> SetLogy();
 
-  TGraphErrors *gr_counts = new TGraphErrors (10, irradAll, UCNIntegralAll, 0 , UCNIntegralErrAll);
+  TGraphErrors *gr_counts = new TGraphErrors (29, irradArray, UCNIntegralAll, 0 , UCNIntegralErrAll);
   gr_counts -> SetTitle( "UCN Counts vs irradiation time");
   gr_counts -> GetXaxis() -> SetTitle("Irradiation Time (s)" );
   gr_counts -> GetYaxis() -> SetTitle("UCN Counts");
@@ -3518,7 +3537,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
   gr_counts -> GetYaxis() -> SetTitleOffset(0.9);
   gr_counts -> SetMarkerColor(1);
   
-  TGraphErrors *gr_countsmanual = new TGraphErrors (10, irradAll, UCNIntegralManualAll, 0 , UCNIntegralManualErrAll);
+  TGraphErrors *gr_countsmanual = new TGraphErrors (29, irradArray, UCNIntegralManualAll, 0 , UCNIntegralManualErrAll);
   gr_countsmanual -> SetTitle( "UCN Counts vs irradiation time");
   gr_countsmanual -> GetXaxis() -> SetTitle("Irradiation Time (s)" );
   gr_countsmanual -> GetYaxis() -> SetTitle("UCN Counts");
@@ -3531,7 +3550,7 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
   gr_countsmanual -> SetMarkerColor(2);
 
 
-  TGraphErrors *gr_hist = new TGraphErrors (10, irradAll, HistIntegralAll, 0 , HistIntegralErrAll);
+  TGraphErrors *gr_hist = new TGraphErrors (29, irradArray, HistIntegralAll, 0 , HistIntegralErrAll);
   gr_hist -> SetTitle( "UCN Counts vs irradiation time");
   gr_hist -> GetXaxis() -> SetTitle("Irradiation Time (s)" );
   gr_hist -> GetYaxis() -> SetTitle("UCN Counts");
@@ -3543,14 +3562,28 @@ void UCNCounts_17004_Taraneh_edit_ver1(){
   gr_hist -> GetYaxis() -> SetTitleOffset(0.9);
   gr_hist -> SetMarkerColor(1);
 
+  TGraphErrors *gr_online = new TGraphErrors (30, irradOnline, countsOnline, 0 , 0);
+  gr_online -> SetTitle( "UCN Counts vs irradiation time");
+  gr_online -> GetXaxis() -> SetTitle("Irradiation Time (s)" );
+  gr_online -> GetYaxis() -> SetTitle("UCN Counts");
+  gr_online -> SetMarkerStyle(3);
+  gr_online -> GetXaxis() -> SetLimits(0, 170);
+  gr_online -> GetXaxis() -> SetTitleSize(0.05);
+  gr_online -> GetXaxis() -> SetTitleOffset(1.0);
+  gr_online -> GetYaxis() -> SetTitleSize(0.05); 
+  gr_online -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_online -> SetMarkerColor(8);
+
   TLegend *legAll = new TLegend(0.7, 0.7, 0.9, 0.9);
   legAll -> AddEntry(gr_counts, "Counts without background (fit)" , "p");
   legAll -> AddEntry(gr_countsmanual, "Counts without background" , "p");
   legAll -> AddEntry(gr_hist , "Counts with background" , "p");
+  legAll -> AddEntry(gr_online, "Online Analysis" , "P");
 
   gr_counts -> Draw("ap");
   gr_countsmanual -> Draw("p");
   gr_hist -> Draw("p");
+  gr_online -> Draw("p");
   legAll -> Draw();
   
 }

@@ -313,7 +313,18 @@ void UCNCounts_17003A_Taraneh_edit_ver1(){
   gr548_HistIrrad -> GetYaxis() -> SetTitleSize(0.05); 
   gr548_HistIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
-  
+  TGraphErrors *gr548_countmanualIrrad = new TGraphErrors (counts_548, avets12IrradArray548,UCNIntegralManualArray548, ts12IrradErr548, UCNIntegralManualErrArray548);
+  gr548_countmanualIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
+  gr548_countmanualIrrad -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr548_countmanualIrrad -> GetYaxis()-> SetTitle("UCN Counts");
+  gr548_countmanualIrrad -> SetMarkerStyle(24);
+  gr548_countmanualIrrad -> GetYaxis() -> SetRangeUser(10,500000);
+  gr548_countmanualIrrad -> GetXaxis()-> SetLimits(1.4, 1.8);
+  gr548_countmanualIrrad -> GetXaxis() -> SetTitleSize(0.05);
+  gr548_countmanualIrrad -> GetXaxis() -> SetTitleOffset(1.0);
+  gr548_countmanualIrrad -> GetYaxis() -> SetTitleSize(0.05); 
+  gr548_countmanualIrrad -> GetYaxis() -> SetTitleOffset(0.9);
+  gr548_countmanualIrrad -> SetMarkerColor(1);
 
  TGraphErrors *gr548_countValveOpen = new TGraphErrors (counts_548, avets12ValveOpenArray548, UCNIntegralArray548, ts12ValveOpenErr548, UCNIntegralErrArray548);
   gr548_countValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
@@ -342,13 +353,14 @@ void UCNCounts_17003A_Taraneh_edit_ver1(){
 
 
   TGraphErrors *gr_online = new TGraphErrors (7, tempOnline, countsOnline, 0, 0);
-  gr_online -> SetMarkerStyle(25);
-  gr_online -> SetMarkerColor(2);
+  gr_online -> SetMarkerStyle(3);
+  gr_online -> SetMarkerColor(8);
 
   TLegend *leg3 = new TLegend(0.25,0.7, 0.9, 0.9);
-  leg3 -> AddEntry(gr548_countIrrad , "Irradiation time + delay time, without background" , "p") ;
+  leg3 -> AddEntry(gr548_countIrrad , "Counts without background (fit)" , "p") ;
+    leg3 -> AddEntry(gr548_countmanualIrrad , "Counts without background" , "p") ;
   //leg3 -> AddEntry(gr548_countValveOpen , "Valve open, without background" , "p") ;
-  leg3 -> AddEntry(gr548_HistIrrad , "Irradiation time + delay time, with background" , "p") ;
+  leg3 -> AddEntry(gr548_HistIrrad , "Counts with background" , "p") ;
   //leg3 -> AddEntry(gr548_HistValveOpen , "Valve open, with background" , "p") ;
   leg3 -> AddEntry(gr_online, "Online Analysis" , "p");
   leg3 -> SetTextSize(0.04);
@@ -358,6 +370,7 @@ void UCNCounts_17003A_Taraneh_edit_ver1(){
    gr548_HistIrrad -> Draw("p");
   //gr548_HistValveOpen -> Draw("p");
   gr_online -> Draw("p");
+  gr548_countmanualIrrad -> Draw("p");
   leg3 -> Draw();
   
 }

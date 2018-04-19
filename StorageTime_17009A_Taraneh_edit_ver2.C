@@ -23,7 +23,7 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
   int file_counter = 0;
 
 
-  for (midasrun = 731 ; midasrun <737; midasrun++){
+  for (midasrun = 722; midasrun <730; midasrun++){
 
 
     
@@ -322,7 +322,7 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
     //               GRAPHS
     // **************************************************************************
    
-    
+    /*
     //*********************************
     //*********************************
     //              midasrun
@@ -533,7 +533,7 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
     grmidasrun_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
     grmidasrun_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
     grmidasrun_cycletempIrrad -> SetMarkerStyle(20);
-    grmidasrun_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 1.1);
+    grmidasrun_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 1.3);
     grmidasrun_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
     grmidasrun_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
     grmidasrun_cycletempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
@@ -644,7 +644,7 @@ void StorageTime_17009A_Taraneh_edit_ver2(){
     grmidasrun_cyclerise -> Draw("Ap");
 
     canvas_cycleNumFit[file_counter]-> Update(); 
-    
+    */
     file_counter++;
   }
   for (int k = 0; k < counts_old ; k++){

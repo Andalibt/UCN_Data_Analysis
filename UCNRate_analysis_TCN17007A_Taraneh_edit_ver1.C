@@ -97,7 +97,7 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   // *************
   // FOR RUN 654
   // ************
-
+  
   int counts654 = 0;
   int boCounts654;
   
@@ -140,11 +140,12 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
     sourceEpics654 -> GetEvent(j);
     TSArrayse654[j] = timestamp_se654; // source epics timestamp array
     tempArray654[j] = ts12654; // temperature array
+    //cout << tempArray654[j] << " "<< TSArrayse
     ts12Ave654 += ts12654;
     SEcounts654++; // total counts for the source epics tree
   }
 
-  
+
   curAve654 = curAve654 / boCounts654;
   ts12Ave654 = ts12Ave654/SEcounts654;
   NBins654 = max654 - min654;
@@ -197,7 +198,7 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   
   cout << "*******************************************" << endl;
 
-
+  
   // *************
   // FOR RUN 659
   // ************
@@ -300,7 +301,7 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   // GRAPHS
   //*******************
 
-
+  
   // *****
   // 654
   // *****
@@ -351,39 +352,51 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   //UCNrate_li6654 -> Draw("same");
 
 
-
+  
   // *************************************************
   // I want to graph the ucn rate vs temperature but
   // they have different number of points. As a result,
   // I have to find a way to make it work.
 
   int aveRate654 = 0;
-  double aveRateArray654[10000];
+  double aveRateArray654[10000000];
+  double btempArray654[1000000];
+  int counter654 = 0;
   
-  for (int k = 0 ; k < SEcounts654 ; k++ ){
-    for (ULong64_t j = 0 ; j < eventTot654 ; j++) {
-      uinli6654 -> GetEvent(j);
-      if (tUnixTime654 > TSArray654[k] && tUnixTime654 < TSArray654[k+1]){
-	if (tIsUCN654 > 0 && tUnixTime654 > 20e6){
-	  //cout << TSArray654[k+1] - TSArray654[k] << endl;
-	  aveRate654++;
-	}
-      }
-      
+
+  for (int k = 0 ; k < SEcounts654 - 2 ; k++ ){
+    //cout << " k " << k << endl;
+    //cout << tempArray654[k] << " " << TSArrayse654[k] << endl;
+    if (TSArrayse654[k] > 1511038876 +50  && TSArrayse654[k] < 1511039474 - 70   ){ //if the time stamp is when the beam in on
+      // cout << "timestamp is within the beam on time" << endl;
+      btempArray654[counter654] = tempArray654[k];
+      //cout << " k and counter654 are " << k << " "<< counter654 << " " << btempArray654[counter654] << " " << tempArray654[k] << endl;
+       for (ULong64_t j = 0 ; j < eventTot654 ; j++) {
+      	uinli6654 -> GetEvent(j);
+
+      	if (tUnixTime654 > TSArrayse654[k] && tUnixTime654 < TSArrayse654[k+1]  ){
+	  //cout << " " <<sdt::fixed << tUnixTime654 << " " << TSArray654[k] << endl;
+	  //cout << " now the beam timestamp is between the two successive epics data points" << endl;
+	  if (tIsUCN654 > 0 && tUnixTime654 > 20e6){
+	    aveRate654++;
+          }
+	  //   cout << " just added up the rate" << endl;
+      	}
+       }
+ 
+       aveRateArray654[counter654] = aveRate654/ (TSArrayse654[k+1] - TSArrayse654[k] )/3; // the time difference between timestamp k and k+1 is 5 seconds. And divided by 2 muA
+       //cout << "k " << k << " counter " << counter654 << " temp " << btempArray654[counter654] << " "<< tempArray654[k] <<  " rate " << aveRateArray654[counter654] << " " << std::fixed << TSArray654[k] << endl;
+       aveRate654 = 0;
+       counter654++;
+       
     }
-    if (k == SEcounts654 - 1){
-      TSArray654[k+1]=5;
-      TSArray654[k] = 0;
-      }
-    aveRateArray654[k] = aveRate654/ (TSArray654[k+1] - TSArray654[k] )/3; // the time difference betweek timestamp k and k+1 is 5 seconds.
-    //cout << aveRateArray654[k] << endl;
-    aveRate654 = 0;
   }
+  
   //*********************************************************
   
   TCanvas *c654ratetemp = new TCanvas ("c654ratetemp", "c654ratetemp", 1200, 900);
-
-  TGraph *gr654ratetemp = new TGraph (SEcounts654, tempArray654, aveRateArray654 );
+  
+  TGraph *gr654ratetemp = new TGraph (counter654, btempArray654, aveRateArray654 );
   gr654ratetemp -> SetTitle(" UCN Rate Average vs Isopure Helium Temperature ");
   gr654ratetemp -> GetXaxis() -> SetTitle("Isopure Helium Temperature (K)");
   gr654ratetemp -> GetYaxis() -> SetTitle("UCN Rate Average (average counts/s*#muA)");
@@ -397,7 +410,7 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
 
   gr654ratetemp -> Draw("ap");
   
-
+ 
   // ******
   //  659
   // *****
@@ -453,32 +466,44 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   // I have to find a way to make it work.
 
   int aveRate659 = 0;
-  double aveRateArray659[10000];
+  double aveRateArray659[1000000];
+  double btempArray659[1000000];
+  int counter659 = 0;
   
-  for (int k = 0 ; k < SEcounts659 ; k++ ){
-    for (ULong64_t j = 0 ; j < eventTot659 ; j++) {
-      uinli6659 -> GetEvent(j);
-      if (tUnixTime659 > TSArray659[k] && tUnixTime659 < TSArray659[k+1]){
-	if (tIsUCN659 > 0 && tUnixTime659 > 20e6){
-	  //cout << TSArray659[k+1] - TSArray659[k] << endl;
-	  aveRate659++;
-	}
-      }
-      
+
+  for (int k = 0 ; k < SEcounts659 - 2 ; k++ ){
+    //cout << " k " << k << endl;
+    // cout << tempArray659[k] << " " << TSArrayse659[k] << endl;
+    if (TSArrayse659[k] > 1511042729 +50  && TSArrayse659[k] < 1511043339 - 70   ){ //if the time stamp is when the beam in on
+      // cout << "timestamp is within the beam on time" << endl;
+      btempArray659[counter659] = tempArray659[k];
+      //cout << " k and counter659 are " << k << " "<< counter659 << " " << btempArray659[counter659] << " " << tempArray659[k] << endl;
+       for (ULong64_t j = 0 ; j < eventTot659 ; j++) {
+      	uinli6659 -> GetEvent(j);
+
+      	if (tUnixTime659 > TSArrayse659[k] && tUnixTime659 < TSArrayse659[k+1]  ){
+	  //cout << " " <<sdt::fixed << tUnixTime659 << " " << TSArray659[k] << endl;
+	  //cout << " now the beam timestamp is between the two successive epics data points" << endl;
+	  if (tIsUCN659 > 0 && tUnixTime659 > 20e6){
+	    aveRate659++;
+          }
+	  //   cout << " just added up the rate" << endl;
+      	}
+       }
+ 
+       aveRateArray659[counter659] = aveRate659/ (TSArrayse659[k+1] - TSArrayse659[k] )/2; // the time difference between timestamp k and k+1 is 5 seconds. And divided by 2 muA
+       //cout << "k " << k << " counter " << counter659 << " temp " << btempArray659[counter659] << " "<< tempArray659[k] <<  " rate " << aveRateArray659[counter659] << " " << std::fixed << TSArray659[k] << endl;
+       aveRate659 = 0;
+       counter659++;       
     }
-    if (k == SEcounts659 - 1){
-      TSArray659[k+1]=5;
-      TSArray659[k] = 0;
-      }
-    aveRateArray659[k] = aveRate659/ (TSArray659[k+1] - TSArray659[k] )/2; // the time difference between timestamp k and k+1 is 5 seconds. And divided by 2 muA
-    //cout << aveRateArray659[k] << endl;
-    aveRate659 = 0;
   }
+  
+  
   //*********************************************************
   
   TCanvas *c659ratetemp = new TCanvas ("c659ratetemp", "c659ratetemp", 1200, 900);
 
-  TGraph *gr659ratetemp = new TGraph (SEcounts659, tempArray659, aveRateArray659 );
+  TGraph *gr659ratetemp = new TGraph (counter659, btempArray659, aveRateArray659 );
   gr659ratetemp -> SetTitle(" UCN Rate Average vs Isopure Helium Temperature ");
   gr659ratetemp -> GetXaxis() -> SetTitle("Isopure Helium Temperature (K)");
   gr659ratetemp -> GetYaxis() -> SetTitle("UCN Rate Average (average counts/s*#muA)");
@@ -491,7 +516,7 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   gr659ratetemp -> SetMarkerColor(1);
 
   gr659ratetemp -> Draw("ap");
-  
+
   // ********************************************
   // THE OVERAL RESULT
 

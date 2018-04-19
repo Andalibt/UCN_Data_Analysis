@@ -1,8 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-
-
+import seaborn as sns
+import pandas as pd
+sns.set()
 
 
 
@@ -14,10 +15,21 @@ storage = [32.7, 31.9, 29.6, 29.4, 32.7, 31.4, 31.3, 32.7, 33.5, 28.2, 29.7
 storageErr = [0.5, 0.3, 0.3, 0.3, 0.5, 0.4, 0.4, 0.4, 0.6, 0.2, 0.2, 0.7,
               0.2]
 
+
+
+data = pd.DataFrame(np.concatenate((beamCur, irradTime, storage)))
+print(data.head(10))
+
+f, ax = plt.subplots(figsize=(9, 6))
+sns.heatmap(data, annot=True, fmt="d", linewidths=.5, ax=ax)
+
 fig, ax = plt.subplots()
 plt.scatter (irradTime, beamCur, c=storage, s= 50, cmap= mpl.cm.Reds)
 plt.colorbar()
 plt.title("Beam Current vs Irradiation Time")
 plt.xlabel("Irradiation Time (s)")
 plt.ylabel("Beam Current ($\mu$A)")
-plt.show()
+#plt.show()
+
+
+

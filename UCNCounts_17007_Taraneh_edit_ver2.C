@@ -154,6 +154,8 @@ void UCNCounts_17007_Taraneh_edit_ver2(){
   for (ULong64_t j = 0 ; j < events ; j++){
     
     outputTree -> GetEvent(j);
+    if (UCNIntegral < 10)
+      continue;
     if (midasrun == 618 || midasrun == 623 || midasrun == 624)
       continue;
     if (midasrun == 632 || midasrun == 635 || midasrun == 636)
@@ -557,20 +559,24 @@ void UCNCounts_17007_Taraneh_edit_ver2(){
 
   TLegend *leg1muA = new TLegend (0.7, 0.7, 0.9, 0.9);
   leg1muA -> AddEntry(grcounts_1muA, "Counts without background (fit)" , "p");
-  leg1muA -> AddEntry(grhist_1muA, "Counts with background (fit)", "p");
   leg1muA -> AddEntry(grcountsM_1muA , "Counts without background" ,"p");
+  leg1muA -> AddEntry(grhist_1muA, "Counts with background", "p");
   leg1muA -> AddEntry(gr1muAOnline , "Online Analysis" , "p");
+  leg1muA -> SetTextSize(0.04);
   
   grcounts_1muA -> Draw("Ap");
   grhist_1muA -> Draw("p");
   grcountsM_1muA -> Draw("p");
+  gr1muAOnline -> Draw("p");
   leg1muA -> Draw();
 
   TCanvas *c_3muA = new TCanvas ("c_3muA" , "c_3mA", 1200, 900);
+  c_3muA -> SetLogy();
   TGraphErrors *grcounts_3muA = new TGraphErrors (counts_3muA, irradtimeArray_3muA, UCNIntegralArray_3muA, 0 , UCNIntegralErrArray_3muA);
   grcounts_3muA -> SetTitle( "UCN Counts vs Irradiation Time");
   grcounts_3muA -> GetXaxis()-> SetTitle("Irradiation Time (s)" );
   grcounts_3muA -> GetYaxis()-> SetTitle("UCN Counts");
+  grcounts_3muA -> GetYaxis() -> SetRangeUser (1, 1000000);
   grcounts_3muA -> SetMarkerStyle(20);
   grcounts_3muA -> GetXaxis()-> SetLimits(0, 150);
   grcounts_3muA -> GetXaxis() -> SetTitleSize(0.05);
@@ -618,13 +624,16 @@ void UCNCounts_17007_Taraneh_edit_ver2(){
   grcounts_3muA -> Draw("Ap");
   grhist_3muA -> Draw("p");
   grcountsM_3muA -> Draw("p");
+  gr3muAOnline -> Draw("p");
   leg1muA -> Draw();
 
-    TCanvas *c_5muA = new TCanvas ("c_5muA" , "c_5mA", 1200, 900);
+  TCanvas *c_5muA = new TCanvas ("c_5muA" , "c_5mA", 1200, 900);
+  c_5muA -> SetLogy();
   TGraphErrors *grcounts_5muA = new TGraphErrors (counts_5muA, irradtimeArray_5muA, UCNIntegralArray_5muA, 0 , UCNIntegralErrArray_5muA);
   grcounts_5muA -> SetTitle( "UCN Counts vs Irradiation Time");
   grcounts_5muA -> GetXaxis()-> SetTitle("Irradiation Time (s)" );
   grcounts_5muA -> GetYaxis()-> SetTitle("UCN Counts");
+  grcounts_5muA -> GetYaxis() -> SetRangeUser (1, 1000000);
   grcounts_5muA -> SetMarkerStyle(20);
   grcounts_5muA -> GetXaxis()-> SetLimits(0, 150);
   grcounts_5muA -> GetXaxis() -> SetTitleSize(0.05);
@@ -668,17 +677,21 @@ void UCNCounts_17007_Taraneh_edit_ver2(){
   gr5muAOnline -> GetYaxis() -> SetTitleSize(0.05); 
   gr5muAOnline -> GetYaxis() -> SetTitleOffset(0.9);
   gr5muAOnline -> SetMarkerColor(8);
+  
 
   grcounts_5muA -> Draw("Ap");
   grhist_5muA -> Draw("p");
   grcountsM_5muA -> Draw("p");
+  gr5muAOnline -> Draw("p");
   leg1muA -> Draw();
 
   TCanvas *c_7muA = new TCanvas ("c_7muA" , "c_7mA", 1200, 900);
+  c_7muA -> SetLogy();
   TGraphErrors *grcounts_7muA = new TGraphErrors (counts_7muA, irradtimeArray_7muA, UCNIntegralArray_7muA, 0 , UCNIntegralErrArray_7muA);
   grcounts_7muA -> SetTitle( "UCN Counts vs Irradiation Time");
   grcounts_7muA -> GetXaxis()-> SetTitle("Irradiation Time (s)" );
   grcounts_7muA -> GetYaxis()-> SetTitle("UCN Counts");
+  grcounts_7muA -> GetYaxis() -> SetRangeUser (1, 1000000);
   grcounts_7muA -> SetMarkerStyle(20);
   grcounts_7muA -> GetXaxis()-> SetLimits(0, 150);
   grcounts_7muA -> GetXaxis() -> SetTitleSize(0.05);
@@ -727,14 +740,17 @@ void UCNCounts_17007_Taraneh_edit_ver2(){
   grcounts_7muA -> Draw("Ap");
   grhist_7muA -> Draw("p");
   grcountsM_7muA -> Draw("p");
+  gr7muAOnline -> Draw("p");
   leg1muA -> Draw();
 
   
   TCanvas *c_10muA = new TCanvas ("c_10muA" , "c_10mA", 1200, 900);
+  c_10muA -> SetLogy();
   TGraphErrors *grcounts_10muA = new TGraphErrors (counts_10muA, irradtimeArray_10muA, UCNIntegralArray_10muA, 0 , UCNIntegralErrArray_10muA);
   grcounts_10muA -> SetTitle( "UCN Counts vs Irradiation Time");
   grcounts_10muA -> GetXaxis()-> SetTitle("Irradiation Time (s)" );
   grcounts_10muA -> GetYaxis()-> SetTitle("UCN Counts");
+  grcounts_10muA -> GetYaxis() -> SetRangeUser (1, 1000000);
   grcounts_10muA -> SetMarkerStyle(20);
   grcounts_10muA -> GetXaxis()-> SetLimits(0, 150);
   grcounts_10muA -> GetXaxis() -> SetTitleSize(0.05);
@@ -783,6 +799,7 @@ void UCNCounts_17007_Taraneh_edit_ver2(){
   grcounts_10muA -> Draw("Ap");
   grhist_10muA -> Draw("p");
   grcountsM_10muA -> Draw("p");
+  gr10muAOnline -> Draw("p");
   leg1muA -> Draw();
 
 
