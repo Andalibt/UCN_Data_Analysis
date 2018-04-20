@@ -71,7 +71,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("outputTree_532.root", "RECREATE");
+  TFile hfile ("outputTree_583.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -192,6 +192,8 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 
   double BaselineIntegral;
   double BaselineIrradIntegral;
+  double BASELINERATE;
+  double BASELINEIRRADRATE;
 
   // Create branches. 
   outputTree -> Branch ("runNumber" , &runNumber);
@@ -274,13 +276,15 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   outputTree -> Branch ("HistIntegral" , &HistIntegral);
   outputTree -> Branch ("BaselineIntegral" , &BaselineIntegral);
   outputTree -> Branch ("BaselineIrradIntegral" , &BaselineIrradIntegral);
+  outputTree -> Branch ("BASELINERATE" , &BASELINERATE);
+  outputTree -> Branch ("BASELINEIRRADRATE" , &BASELINEIRRADRATE);
   
   // *************************************************************
   // STARTING THE LOOP OVER THE FILES.
   // *************************************************************
   
 
-  Int_t StorageTimeFiles[10] ={532};
+  Int_t StorageTimeFiles[10] ={583};
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;
@@ -689,7 +693,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	}
 	for(ULong64_t j=0 ; j < sourceEpicsEvent ;j++) {
 	  sourceTree -> GetEvent(j);
-	  if(timestamp > irradiationStartTime[i] && timestamp < cyclevalveopen[i]){
+	  if(timestamp > irradiationStartTime[i] && timestamp < cyclevalveopen[i]){ // DURING THE IRRADIATION AND THE DELAY TIME
 	    avets12_temperature_irrad[i]+=UCN_ISO_TS12_RDTEMP;
 	    fm1_ave[i]+=UCN_HE3_FM1_RDFLOW;
 	    fm4_ave[i] += UCN_HE4_FM4_RDFLOW;
@@ -939,6 +943,16 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	  BaselineIrradInt[i] = UCN_rate_li6 -> Integral(bin2[i] , bin3[i]);
 	}
 
+	// to get the baseline rate
+
+	double BaselineRate[100000];
+	double BaselineIrradRate[10000];
+
+	for ( int i = 0; i < cycleStartTimes.size(); i++){
+	  BaselineRate[i] = BaselineInt[i]/(irradiationStartTime[i] - minmin_range[i] );
+	  BaselineIrradRate[i] = BaselineIrradRate[i]/(cycleStartTimes[i] - irradiationStartTime[i] );
+	}
+	
 	
       //-----------------------------
       // He3 detector stuff
@@ -1093,9 +1107,9 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	Li6_Fit_Func -> FixParameter(10, cyclevalveclose[i]);
 	Li6_Fit_Func -> FixParameter(11,delayTimeArray[i]);
 	Li6_Fit_Func -> SetNpx(10000);
-	//TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
+	TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
 	cout << "***********************************************************" << endl;
-	/*	Int_t fitStatus = status;
+		Int_t fitStatus = status;
 	cout << fitStatus << endl;
 	if (fitStatus == 4) {
 	  failfit_cycle++;
@@ -1120,7 +1134,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	//cout << BaselineInt[i] << endl;
 	//cout << baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]) << endl;
 	//cout << ( baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]))/BaselineInt[i] << endl;
-	*/
+	
 	hfile.cd();
       }
       
@@ -1243,6 +1257,8 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	cycleNumber = cycleNumberArray[i] ;
 	BaselineIntegral = BaselineInt[i];
 	BaselineIrradIntegral = BaselineIrradInt[i];
+	BASELINERATE[i] = BaselineRate[i];
+	BASELINEIRRADRATE[i] = BaselineIrradRate[i];
 	outputTree->Fill();
       }
       
