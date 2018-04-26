@@ -71,7 +71,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("outputTree_583.root", "RECREATE");
+  TFile hfile ("outputTree_523.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -169,7 +169,10 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   TH1* UCN_rate_He3= new TH1F("UCN_rate_He3", "UCN-rate Histogram", NBins , minXrange, maxXrange);
   THStack *UCN_rate_Li6_all = new THStack("UCN_rate_Li6_all" , " ");
 
-
+  UCN_rate_li6 -> GetXaxis() -> SetTitle("UnixTime (s)");
+  UCN_rate_li6 -> GetYaxis() -> SetTitle("UCN Counts/s");
+  UCN_per_cycle_Li6_All -> GetXaxis() -> SetTitle("UnixTime (s)");
+  UCN_per_cycle_Li6_All -> GetYaxis() -> SetTitle("UCN Counts/s");
   double Baseline; // BASELINE THAT COMES FROM THE FIT
   double BaselineDuringIrrad; // BASELINE DURING IRRADIATION THAT COMES FROM THE FIT
   double Amplitude; // AMPLITUDE THAT COMES FROM THE FIT 
@@ -284,7 +287,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // *************************************************************
   
 
-  Int_t StorageTimeFiles[10] ={583};
+  Int_t StorageTimeFiles[10] ={523};
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;
