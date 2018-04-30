@@ -199,7 +199,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   double UCNIntegralErr; // UCN INTEGRAL ERROR THAT COMES FROM THE FIT
 
   double HistIntegral; // HISTOGRAM INTEGRAL
-
+  double HistIntegralHe3;
 
   double BaselineIntegral;
   double BaselineIrradIntegral;
@@ -287,6 +287,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   outputTree -> Branch ("UCNIntegral" , &UCNIntegral);
   outputTree -> Branch ("UCNIntegralErr" , &UCNIntegralErr);
   outputTree -> Branch ("HistIntegral" , &HistIntegral);
+  outputTree -> Branch ("HistIntegralHe3" , &HistIntegralHe3);
   outputTree -> Branch ("BaselineIntegral" , &BaselineIntegral);
   outputTree -> Branch ("BaselineIrradIntegral" , &BaselineIrradIntegral);
   outputTree -> Branch ("BASELINERATE" , &BASELINERATE);
@@ -1051,7 +1052,28 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	  UCN_per_cycle_He3_valveOpen->SetMarkerStyle(20);
 	  }
 
-      
+	// FOR THE INTEGRAL OF THE UCN RATE
+
+	int bin_low_He3[max];
+	int bin_high_He3[max];
+	double min_range_He3[max];
+	double max_range_He3[max];
+	int He3_Integral[max];
+
+	for(ULong64_t j=0; j < He3Event ; j++) {
+	  uinhe3->GetEvent(j);
+	  for ( int i = 0; i < cycleStartTimes_He3.size(); i++){
+	    min_range_He3[i] = cyclevalveopen_He3[i];
+	    max_range_He3[i] = cyclevalveclose_He3[i];
+	    bin_low_He3[i] = UCN_rate_He3 -> GetXaxis() -> FindBin(cyclevalveopen_He3[i]);
+	    bin_high_He3[i] = UCN_rate_He3 ->  GetXaxis() -> FindBin(cyclevalveclose_He3[i]);
+	  }
+	}
+	
+	for ( int i = 0; i < cycleStartTimes_He3.size(); i++){
+	He3_Integral[i] = UCN_rate_He3 -> Integral(bin_low_He3[i] , bin_high_He3[i]);
+      }
+	
       //**********************************************************************
       // FIT THE UCN_RATE HISTOGRAM
       //**********************************************************************
@@ -1276,6 +1298,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	UCNIntegral = Integral[i];
 	UCNIntegralErr = IntegralErr[i]/BinWidth;
 	HistIntegral = Li6_integral[i];
+	HistIntegralHe3 = He3_Integral[i];
 	cycleNumber = cycleNumberArray[i] ;
 	BaselineIntegral = BaselineInt[i];
 	BaselineIrradIntegral = BaselineIrradInt[i];
