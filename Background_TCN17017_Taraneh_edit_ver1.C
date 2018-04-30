@@ -29,6 +29,13 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   double HistIntegralArray794[100]; // histogram integral array for run 794
   double HistIntegralErrArray794[100]; // histogram integral error array for run 794
   cycle_info794 -> SetBranchAddress("HistIntegral" , &HistIntegral794);
+
+
+  // INTEGRAL OF THE UCN RATE FROM HE3 DETECTOR
+  double HistIntegralHe3794;
+  double HistIntegralHe3Array794[100];
+  double HistIntegralHe3ErrArray794[100];
+  cycle_info794 -> SetBranchAddress ("HistIntegralHe3" , &HistIntegralHe3794);
   
   // ISOPURE TEMPERATURE AVERAGE DURING IRRADIAITON
   double avets12Irrad794; // average ts12 temparature during irradiation for run 794
@@ -101,7 +108,7 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   double cycleValveClose794;
   cycle_info794 -> SetBranchAddress ("cycleValveCloseTime" , &cycleValveClose794);
   double baselinecountsArray794[100];
-
+  double baselineArrayErr794[100];
   
   // READING FROM THE TREE , FILLING THE ARRAYS
   // *************
@@ -145,7 +152,9 @@ void Background_TCN17017_Taraneh_edit_ver1(){
     irradStartTimeArray794[counter794] = irradStartTime794;
     cycleStartTimeArray794[counter794] = cycleStartTime794;
     HistIntegralArray794[counter794] = HistIntegral794;
+    HistIntegralHe3Array794[counter794] = HistIntegralHe3794;
     HistIntegralErrArray794[counter794] = sqrt(HistIntegral794);
+    HistIntegralHe3ErrArray794[counter794] = sqrt(HistIntegralHe3794);
     avetempIrradArray794[counter794] = avets12Irrad794;
     maxtempIrradArray794[counter794] = maxts12Irrad794;
     mintempIrradArray794[counter794] = mints12Irrad794;
@@ -157,6 +166,7 @@ void Background_TCN17017_Taraneh_edit_ver1(){
     cycleNumArray794[counter794] = cyclenum794;
     cycleDelayTimeArray794[counter794] = cycleDelayTime794;
     baselinecountsArray794[counter794] = baselinerate794*(cycleValveClose794 - cycleValveOpen794);
+    baselineArrayErr794[counter794] = sqrt(baselinecountsArray794[counter794]);
     UCNCounts794[counter794] = HistIntegralArray794[counter794] - baselinecountsArray794[counter794];
     UCNCountsErr794[counter794] = sqrt(UCNCounts794[counter794]);
     avecurArray794[counter794] = avecur794;
@@ -164,8 +174,8 @@ void Background_TCN17017_Taraneh_edit_ver1(){
     // %%%%%%%%%%%%%%%%%%%%%%%
     HistIntegralAll[counter794] = HistIntegral794;
     HistIntegralErrAll[counter794] =  sqrt(HistIntegral794);
-    UCNCountsAll[counter794] = HistIntegralArray794[counter794] - baselinecountsArray794[counter794];
-    UCNCountsErrAll[counter794] = sqrt(UCNCounts794[counter794]);
+    //UCNCountsAll[counter794] = HistIntegralArray794[counter794] - baselinecountsArray794[counter794];
+    //UCNCountsErrAll[counter794] = sqrt(UCNCounts794[counter794]);
     curAll[counter794] = avecur794;
     curErrAll[counter794] = (maxcur794 - mincur794)/2;
     tempIrradAll[counter794] = avets12Irrad794;
@@ -175,7 +185,7 @@ void Background_TCN17017_Taraneh_edit_ver1(){
     cycleNumArrayAll[counter794] = cyclenum794;
     cycleDelayTimeArrayAll[counter794] = cycleDelayTime794;
     cycleStartTimeAll[counter794] = cycleStartTime794;
-    cout << std::fixed <<cycleStartTimeAll[counter794] << endl;
+    // cout << std::fixed <<cycleStartTimeAll[counter794] << endl;
     counterAll= counter794;
     counter794++;
   }
@@ -195,7 +205,7 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   gr794_cyclehist -> SetTitle("UCN Counts vs Cycle Number");
   gr794_cyclehist -> GetXaxis()-> SetTitle("Cycle Number" );
   gr794_cyclehist -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr794_cyclehist -> GetYaxis()-> SetRangeUser(10, 100000);
+  gr794_cyclehist -> GetYaxis()-> SetRangeUser(10, 700);
   gr794_cyclehist -> GetXaxis() -> SetTitleSize(0.05);
   gr794_cyclehist -> GetXaxis() -> SetTitleOffset(1.0);
   gr794_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
@@ -203,25 +213,25 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   gr794_cyclehist -> SetMarkerColor(2);
   gr794_cyclehist -> SetMarkerStyle(20);
 
-  TGraphErrors *gr794_cyclecountmanual = new TGraphErrors(counter794, cycleNumArray794 , UCNCounts794, 0, UCNCountsErr794);
+  TGraphErrors *gr794_cyclecountBB = new TGraphErrors(counter794, cycleNumArray794 , HistIntegralHe3Array794, 0, HistIntegralHe3ErrArray794);
   
-  gr794_cyclecountmanual -> SetTitle("UCN Counts vs Number");
-  gr794_cyclecountmanual -> GetXaxis()-> SetTitle("Cycle Number" );
-  gr794_cyclecountmanual -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr794_cyclecountmanual -> GetYaxis()-> SetRangeUser(1000, 500000);
-  gr794_cyclecountmanual -> GetXaxis() -> SetTitleSize(0.05);
-  gr794_cyclecountmanual -> GetXaxis() -> SetTitleOffset(1.0);
-  gr794_cyclecountmanual -> GetYaxis() -> SetTitleSize(0.05); 
-  gr794_cyclecountmanual -> GetYaxis() -> SetTitleOffset(0.9);
-  gr794_cyclecountmanual -> SetMarkerColor(1);
-  gr794_cyclecountmanual -> SetMarkerStyle(25);
+  gr794_cyclecountBB -> SetTitle("UCN Counts vs Number");
+  gr794_cyclecountBB -> GetXaxis()-> SetTitle("Cycle Number" );
+  gr794_cyclecountBB -> GetYaxis()-> SetTitle("Cycle UCN Counts");
+  gr794_cyclecountBB -> GetYaxis()-> SetRangeUser(1000, 500000);
+  gr794_cyclecountBB -> GetXaxis() -> SetTitleSize(0.05);
+  gr794_cyclecountBB -> GetXaxis() -> SetTitleOffset(1.0);
+  gr794_cyclecountBB -> GetYaxis() -> SetTitleSize(0.05); 
+  gr794_cyclecountBB -> GetYaxis() -> SetTitleOffset(0.9);
+  gr794_cyclecountBB -> SetMarkerColor(1);
+  gr794_cyclecountBB -> SetMarkerStyle(25);
   
   TLegend *leg2 = new TLegend(0.7, 0.7, 0.9, 0.9);
-  leg2 -> AddEntry(gr794_cyclehist, "With Background" , "p");
-  leg2 -> AddEntry(gr794_cyclecountmanual, "Without Background" , "p");
+  leg2 -> AddEntry(gr794_cyclehist, "Li6 Counts" , "p");
+  leg2 -> AddEntry(gr794_cyclecountBB, "He3 Counts" , "p");
   
   gr794_cyclehist -> Draw("Ap");
-  gr794_cyclecountmanual -> Draw("p");
+  gr794_cyclecountBB -> Draw("p");
   leg2-> Draw();
   
   c794_cycleNum -> cd(2);
