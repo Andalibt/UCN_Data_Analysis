@@ -71,7 +71,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("outputTree_794.root", "RECREATE");
+  TFile hfile ("outputTree_777.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -288,8 +288,8 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   outputTree -> Branch ("UCNIntegralErr" , &UCNIntegralErr);
   outputTree -> Branch ("HistIntegral" , &HistIntegral);
   outputTree -> Branch ("HistIntegralHe3" , &HistIntegralHe3);
-  outputTree -> Branch ("BaselineIntegral" , &BaselineIntegral);
-  outputTree -> Branch ("BaselineIrradIntegral" , &BaselineIrradIntegral);
+  //outputTree -> Branch ("BaselineIntegral" , &BaselineIntegral);
+  //outputTree -> Branch ("BaselineIrradIntegral" , &BaselineIrradIntegral);
   outputTree -> Branch ("BASELINERATE" , &BASELINERATE);
   outputTree -> Branch ("BASELINEIRRADRATE" , &BASELINEIRRADRATE);
   
@@ -298,22 +298,24 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   // *************************************************************
   
 
-  Int_t StorageTimeFiles[10] ={794};
+  Int_t InputFiles[10] ={777};
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;
   Int_t total_cycle = 0;
   Int_t numcycle = 0; 
   Int_t failfit_cycle = 0;
-  Int_t StorageTimeFileCounter =0; 
-  for ( midasrun =523; midasrun <838; midasrun++){
+  Int_t InputFileCounter =0; 
+  for ( midasrun =523; midasrun <838; midasrun++){ //This loop is if I want to loop over all the files.
+                                                   // In that case I have to remove the InputFile condition.
     total_counter ++;
     runNumber = midasrun;
     runs++;
     cout << midasrun << endl;
+
     sprintf (filename , "~/raw_Data/ucn_tree_00000%d.root",midasrun);
  
-    if (StorageTimeFiles[StorageTimeFileCounter] != midasrun)
+    if (InputFiles[InputFileCounter] != midasrun)
       continue;
     
 
@@ -618,7 +620,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	for(ULong64_t j=0; j < beamlineEvent ;j++) {
 	  BeamlineEpicsTree -> GetEvent(j);
 	  beamlineReadTimes.push_back(timestamp_beamline);
-	  if (timestamp_beamline > irradiationStartTime[i] && timestamp_beamline < cycleStartTimes[i]) {
+	  if (timestamp_beamline > irradiationStartTime[i]+3 && timestamp_beamline < cycleStartTimes[i]) {
 	    b1_ave[i]+=B1_FOIL_ADJCUR;
 	    if (B1V_KSM_PREDCUR >0 ){
 	      prdcur_ave[i]+=B1V_KSM_PREDCUR;
@@ -1144,9 +1146,9 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	Li6_Fit_Func -> FixParameter(10, cyclevalveclose[i]);
 	Li6_Fit_Func -> FixParameter(11,delayTimeArray[i]);
 	Li6_Fit_Func -> SetNpx(10000);
-	//TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
+	TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
 	cout << "***********************************************************" << endl;
-	/*Int_t fitStatus = status;
+	Int_t fitStatus = status;
 	cout << fitStatus << endl;
 	if (fitStatus == 4) {
 	  failfit_cycle++;
@@ -1164,14 +1166,14 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	tauRiseErr[i] = Li6_Fit_Func -> GetParError(7);
 	tauFallErr[i] = Li6_Fit_Func -> GetParError(8);
 	delayErr[i] = Li6_Fit_Func -> GetParError(9);
-	//Integral[i] = Li6_Fit_Func -> Integral(cyclevalveopen[i] , cyclevalveclose[i])/BinWidth;
-	//IntegralErr[i] = Li6_Fit_Func -> IntegralError(cyclevalveopen[i] , cyclevalveclose[i]);
+	Integral[i] = Li6_Fit_Func -> Integral(cyclevalveopen[i] , cyclevalveclose[i])/BinWidth;
+	IntegralErr[i] = Li6_Fit_Func -> IntegralError(cyclevalveopen[i] , cyclevalveclose[i]);
 	//Li6_Fit_Func-> Draw("");
 	//cout <<  (irradiationStartTime[i] - minmin_range[i]) << " "<< baseline[i]<< endl;
 	//cout << BaselineInt[i] << endl;
 	//cout << baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]) << endl;
 	//cout << ( baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]))/BaselineInt[i] << endl;
-	*/
+	
 	hfile.cd();
       }
       
@@ -1300,8 +1302,8 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	HistIntegral = Li6_integral[i];
 	HistIntegralHe3 = He3_Integral[i];
 	cycleNumber = cycleNumberArray[i] ;
-	BaselineIntegral = BaselineInt[i];
-	BaselineIrradIntegral = BaselineIrradInt[i];
+	//BaselineIntegral = BaselineInt[i];
+	//BaselineIrradIntegral = BaselineIrradInt[i];
 	BASELINERATE[i] = BaselineRate[i];
 	BASELINEIRRADRATE[i] = BaselineIrradRate[i];
 	outputTree->Fill();
@@ -1312,16 +1314,16 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
       //***************************************************************
       // Writing the tree
       
-      StorageTimeFileCounter++;
+      InputFileCounter++;
       fin->Close();
       delete fin;
       
   }
-  cout << "TOTAL NUMBER OF FILES: " << total_counter << endl;
-  cout << "TOTAL NUMBER OF FILES ANALYZED: " << fit_counter << endl;
-  cout << "TOTAL NUMBER OF CYCLES: " << total_cycle << endl;
-  cout << "TOTAL NUMBER OF FITTED CYCLES: " << total_cycle - failfit_cycle << endl;
-  cout << (double)fit_counter*100/total_counter << " OF FILES ARE ANALYZED." << endl;
+  //cout << "TOTAL NUMBER OF FILES: " << total_counter << endl;
+  //cout << "TOTAL NUMBER OF FILES ANALYZED: " << fit_counter << endl;
+  //cout << "TOTAL NUMBER OF CYCLES: " << total_cycle << endl;
+  //cout << "TOTAL NUMBER OF FITTED CYCLES: " << total_cycle - failfit_cycle << endl;
+  //cout << (double)fit_counter*100/total_counter << " OF FILES ARE ANALYZED." << endl;
 
   //outputTree -> Fill();
   //outputTree -> Print();
