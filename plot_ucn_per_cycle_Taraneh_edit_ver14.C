@@ -71,7 +71,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("outputTree_777.root", "RECREATE");
+  TFile hfile ("outputTree_1muA_60sIrrad.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -88,6 +88,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   double cycleValveOpenDuration;
   double cycleDelayTimes;  
   int cycleNumber;
+  int cycleNumberAll;
   double AVE_PRDCUR;
   double AVE_TNIM;
   double AVE_B1CUR;
@@ -146,6 +147,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   Double_t maxXrange = 0, minXrange=1540000000.;
   Int_t BinWidth=1;
   Int_t NBins = 1;
+ 
       
   TH2F *psd_vs_ql[16];
   for(int i = 0; i < 16; i++){
@@ -173,13 +175,25 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   THStack *UCN_rate_Li6_all = new THStack("UCN_rate_Li6_all" , " ");
   THStack *UCN_rate_He3_all = new THStack("UCN_rate_He3_all" , " ");
 
-  UCN_rate_li6 -> GetXaxis() -> SetTitle("UnixTime (s)");
+  //UCN_rate_li6 -> GetXaxis() -> SetTitle("UnixTime (s)");
   UCN_rate_li6 -> GetYaxis() -> SetTitle("UCN Counts/s");
   UCN_per_cycle_Li6_All -> GetXaxis() -> SetTitle("UnixTime (s)");
   UCN_per_cycle_Li6_All -> GetYaxis() -> SetTitle("UCN Counts/s");
+  UCN_rate_li6 -> GetXaxis() -> SetTimeDisplay(1);
+  UCN_rate_li6 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  UCN_rate_li6 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  UCN_rate_li6 -> GetXaxis() -> SetTitleSize(0.05);
+  UCN_rate_li6 -> GetXaxis() -> SetLabelOffset(.03);
+  UCN_rate_li6 -> GetXaxis() -> SetLabelSize(.04);
 
-  UCN_rate_He3 -> GetXaxis() -> SetTitle("UnixTime (s)");
+  //UCN_rate_He3 -> GetXaxis() -> SetTitle("UnixTime (s)");
   UCN_rate_He3 -> GetYaxis() -> SetTitle("UCN Counts/s");
+  UCN_rate_He3 -> GetXaxis() -> SetTimeDisplay(1);
+  UCN_rate_He3 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  UCN_rate_He3 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  UCN_rate_He3 -> GetXaxis() -> SetTitleSize(0.05);
+  UCN_rate_He3 -> GetXaxis() -> SetLabelOffset(.03);
+  UCN_rate_He3 -> GetXaxis() -> SetLabelSize(.04);
   
   double Baseline; // BASELINE THAT COMES FROM THE FIT
   double BaselineDuringIrrad; // BASELINE DURING IRRADIATION THAT COMES FROM THE FIT
@@ -218,6 +232,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   outputTree -> Branch ("cycleDelayTime", &cycleDelayTimes);
   outputTree -> Branch ("cycleValveOpenDuration", &cycleValveOpenDuration);
   outputTree -> Branch ("cycleNumber" , &cycleNumber);
+  outputTree -> Branch ("cycleNumberAll" , &cycleNumberAll); 
   outputTree -> Branch ("AVE_PRDCUR",&AVE_PRDCUR);
   outputTree -> Branch ("MAX_PRDCUR",&MAX_PRDCUR);
   outputTree -> Branch ("MIN_PRDCUR",&MIN_PRDCUR);
@@ -298,7 +313,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   // *************************************************************
   
 
-  Int_t InputFiles[10] ={777};
+  Int_t InputFiles[17] ={532, 541, 553, 573, 595, 605, 775, 777, 791, 803, 813, 819, 821, 827, 832, 834};
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;
@@ -387,6 +402,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
       double cyclevalveclose[max];
       for(int i = 0; i < cycleStartTimes.size(); i++) cyclevalveclose[i]=0;
       int cycleNumberArray[max] ;
+      int cycleNumberAllArray[max];
       
 
       truntime->SetBranchAddress("cycleStartTime",&cycleStart); 
@@ -412,6 +428,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	//numberEventsPerCycleValveOpen.push_back(0);
 	numcycle=j+1;
 	cycleNumberArray[j] = numcycle;
+	cycleNumberAllArray[j] = numcycle+total_cycle;
       }
       total_cycle = total_cycle + numcycle;
       cout << "Total number of cycles in this run is " << numcycle << endl;
@@ -771,7 +788,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	if (prdcur_ave[i] >  0.001){
 	  prdcur_ave[i]=prdcur_ave[i]/(counter_cur);
 	}
-	cout << "delay counter " << counter_delay << endl;
+	//cout << "delay counter " << counter_delay << endl;
 	//cout << counter_1 << " "<< counter_2<< " "<< counter_3<< " " << counter_4 << endl;
 	//cout << avets12_temperature_valveOpen[i] << endl;
 	tnim_ave[i]=tnim_ave[i]/(counter_3);
@@ -907,7 +924,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
       
       for(ULong64_t j=0;j<eventTot;j++) {
 	uinli6->GetEvent(j);
-	if( j==11) {
+	if( j==35) {
 	  firstTS = tUnixTimePrecise_li6;
 	}
 	for ( int i = 0; i < cycleStartTimes.size(); i++){
@@ -933,6 +950,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	Li6Max[i] = UCN_rate_li6 -> GetMaximum();
 	mu_li6[i] = UCN_rate_li6 -> GetMean();
 	Li6_integral[i] = UCN_rate_li6 -> Integral(Bin_low[i] , Bin_high[i]);
+	//cout << Li6_integral[i] << endl;
       }
       
       // Fix the range to see all the cycles
@@ -948,8 +966,8 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
       }
 
       // To get the integral before the start of irradiation and during the irradiation
-      double BaselineInt[100000];
-      double BaselineIrradInt[100000];
+      double BaselineInt[1000000];
+      double BaselineIrradInt[1000000];
 
 
 
@@ -961,13 +979,16 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 
 	// to get the baseline rate
 
-	double BaselineRate[100000];
-	double BaselineIrradRate[10000];
+	double BaselineRate[10000000];
+	double BaselineIrradRate[1000000];
 
 	for ( int i = 0; i < cycleStartTimes.size(); i++){
 	  BaselineRate[i] = BaselineInt[i]/(irradiationStartTime[i] - minmin_range[i] );
+	  //cout << "baseline rate: " << BaselineRate[i] << endl;
 	  //cout << "cycle " << i <<  " valve open time:" << cyclevalveopen[i] << " ,valve close time" << cyclevalveclose[i] << endl;
-	  BaselineIrradRate[i] = BaselineIrradRate[i]/(cycleStartTimes[i] - irradiationStartTime[i] );
+	  BaselineIrradRate[i] = BaselineIrradInt[i]/(cycleStartTimes[i] - irradiationStartTime[i] );
+	  
+	  //cout << BaselineIrradRate[i]<< " " << irradiationStartTime[i] << " " << minmin_range[i] << endl;
 	}
 	
 
@@ -1146,9 +1167,9 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	Li6_Fit_Func -> FixParameter(10, cyclevalveclose[i]);
 	Li6_Fit_Func -> FixParameter(11,delayTimeArray[i]);
 	Li6_Fit_Func -> SetNpx(10000);
-	TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
+	//TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
 	cout << "***********************************************************" << endl;
-	Int_t fitStatus = status;
+	/*Int_t fitStatus = status;
 	cout << fitStatus << endl;
 	if (fitStatus == 4) {
 	  failfit_cycle++;
@@ -1173,7 +1194,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	//cout << BaselineInt[i] << endl;
 	//cout << baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]) << endl;
 	//cout << ( baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]))/BaselineInt[i] << endl;
-	
+	*/
 	hfile.cd();
       }
       
@@ -1302,6 +1323,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	HistIntegral = Li6_integral[i];
 	HistIntegralHe3 = He3_Integral[i];
 	cycleNumber = cycleNumberArray[i] ;
+	cycleNumberAll = cycleNumberAllArray[i];
 	//BaselineIntegral = BaselineInt[i];
 	//BaselineIrradIntegral = BaselineIrradInt[i];
 	BASELINERATE[i] = BaselineRate[i];
