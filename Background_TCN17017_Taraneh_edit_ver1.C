@@ -6,6 +6,7 @@
 
 #define max 1000
 void Background_TCN17017_Taraneh_edit_ver1(){
+  gStyle -> SetOptStat(0);
 
   // *************************************************************************************
   // This is how I did this analysis: I started by only looking at the run794 which is the 
@@ -120,6 +121,7 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   // CYCLE VALVE CLOSE TIME
   double cycleValveClose794;
   cycle_info794 -> SetBranchAddress ("cycleValveCloseTime" , &cycleValveClose794);
+  double cycleValveCloseArray794[100];
   double baselinecountsArray794[100];
   double baselineArrayErr794[100];
   
@@ -168,6 +170,8 @@ void Background_TCN17017_Taraneh_edit_ver1(){
       continue;
     irradStartTimeArray794[counter794] = irradStartTime794;
     cycleStartTimeArray794[counter794] = cycleStartTime794;
+    cycleValveOpenArray794[counter794] = cycleValveOpen794;
+    cycleValveCloseArray794[counter794] = cycleValveClose794;
     HistIntegralArray794[counter794] = HistIntegral794;
     HistIntegralHe3Array794[counter794] = HistIntegralHe3794;
     HistIntegralErrArray794[counter794] = sqrt(HistIntegral794);
@@ -567,7 +571,7 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   // ************************************************************
 
 
-    TCanvas *cAll_cylceNum =  new TCanvas("cAll_cycleNum" , "cAll_cycleNum " , 1200, 900);
+  TCanvas *cAll_cylceNum =  new TCanvas("cAll_cycleNum" , "cAll_cycleNum " , 1200, 900);
   cAll_cycleNum-> Divide(2,2);
 
   TPad *pAll_1 = cAll_cycleNum->cd(1);
@@ -683,7 +687,129 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   grAll_cyclecur -> Draw("Ap");
   cAll_cycleNum -> Update();
 
+  // ***********************************************************
+  // Now I like to look at the UCN rate from the raw data file
+  // and add when the valve opened and closed and irradiation
+  // happened
 
+  TFile *finraw794 = new TFile("~/raw_Data/ucn_tree_00000794.root");
+  TTree *uinLi6 = (TTree*) finraw794 -> Get("UCNHits_Li-6");
+  TTree *uinHe3 = (TTree*) finraw794 -> Get("UCNHits_He3");
+  TTree *runtransLi6 = (TTree*) finraw794 -> Get("RunTransitions_Li6");
+  TTree *runtransHe3 = (TTree*) finraw794 -> Get("RunTransitions_He3");
+  TTree *BL = (TTree*) finraw794 -> Get("BeamlineEpicsTree");
+
+  Double_t maxXrange = 0, minXrange=1540000000.;
+  Int_t BinWidth=1;
+  Int_t NBins = 1;
+   
+  double tUnixTimePrecise_Li6, tUnixTime_Li6;
+  double tUnixTimePrecise_He3, tUnixTime_He3;
+  UShort_t tIsUCN_Li6;
+  UShort_t tIsUCN_He3;
+  int timestamp_beamline;
+
+  uinLi6 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise_Li6);
+  uinLi6 -> SetBranchAddress ("tUnixTime" , &tUnixTime_Li6);
+  uinLi6 -> SetBranchAddress ("tIsUCN" , &tIsUCN_Li6);
+  uinHe3 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise_He3);
+  uinHe3 -> SetBranchAddress ("tUnixTime",&tUnixTime_He3);
+  uinHe3 -> SetBranchAddress ("tIsUCN" , &tIsUCN_He3);
+  BL -> SetBranchAddress("timestamp" , &timestamp_beamline);
   
 
+  TH1* UCNRate_Li6= new TH1F("UCN_rate_Li6", "UCN Rate Histogram Li6",NBins , minXrange, maxXrange);
+  UCNRate_Li6 -> GetXaxis() -> SetTimeDisplay(1);
+  UCNRate_Li6 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  UCNRate_Li6 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  UCNRate_Li6 -> GetXaxis() -> SetTitleSize(0.05);
+  UCNRate_Li6 -> GetXaxis() -> SetLabelOffset(.03);
+  UCNRate_Li6 -> GetXaxis() -> SetLabelSize(.04);
+  TH1* UCNRate_He3= new TH1F("UCN_rate_He3", "UCN Rate Histogram He3", NBins , minXrange, maxXrange);
+  UCNRate_He3 -> GetYaxis() -> SetTitle("UCN Counts/s");
+  UCNRate_He3 -> GetXaxis() -> SetTimeDisplay(1);
+  UCNRate_He3 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  UCNRate_He3 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  UCNRate_He3 -> GetXaxis() -> SetTitleSize(0.05);
+  UCNRate_He3 -> GetXaxis() -> SetLabelOffset(.03);
+  UCNRate_He3 -> GetXaxis() -> SetLabelSize(.04);
+  
+  ULong64_t beamlineEvent = (Double_t) BL -> GetEntries();
+
+  for(ULong64_t j=0 ; j < beamlineEvent ;j++) {
+    BeamlineEpicsTree -> GetEvent(j);
+    //cout << timestamp_beamline << endl;
+    if (timestamp_beamline < minXrange ){
+      minXrange = timestamp_beamline;
+    }
+    if (timestamp_beamline > maxXrange)
+      {
+	maxXrange = timestamp_beamline;
+      }
+  }
+  
+  NBins = (maxXrange - minXrange)/BinWidth ; 
+  UCNRate_Li6 -> SetBins(NBins, minXrange , maxXrange);
+  UCNRate_He3 -> SetBins(NBins, minXrange , maxXrange);
+    
+  ULong64_t eventsLi6 = (Double_t) uinLi6 -> GetEntries();
+  ULong64_t eventsHe3 = (Double_t) uinHe3 -> GetEntries();
+
+  for (ULong64_t j = 0 ; j < eventsLi6 ; j++){
+    uinLi6 -> GetEvent(j);
+    //cout << tUnixTime_Li6 << endl;
+    if (tIsUCN_Li6 >0 && tUnixTimePrecise_Li6 >20e6){
+      UCNRate_Li6-> Fill (tUnixTimePrecise_Li6);
+    }
+  }
+  
+  for (ULong64_t j = 0 ; j < eventsHe3; j++){
+    uinHe3 -> GetEvent(j);
+    if (tIsUCN_He3 >0 && tUnixTime_He3 >20e6){
+      UCNRate_He3-> Fill (tUnixTime_He3);
+    }
+  }
+
+  Float_t He3MaxRate = UCNRate_He3 -> GetMaximum();
+  Float_t Li6MaxRate = UCNRate_Li6 -> GetMaximum();
+  
+
+  
+  TCanvas *He3rate = new TCanvas("He3rate" , "He3rate" , 1200, 900);
+  UCNRate_He3 -> Draw();
+  
+  TLine *lineHe3;
+  TLine *line2He3;
+  for (int k = 0 ; k < counter794; k++){
+    lineHe3 = new TLine(cycleValveOpenArray794[k],0, cycleValveOpenArray794[k] , He3MaxRate);
+    
+    lineHe3->SetLineColor(kRed);
+    lineHe3 -> SetLineWidth(3);
+    line2He3 = new TLine(irradStartTimeArray794[k],0, irradStartTimeArray794[k] , He3MaxRate);
+    
+    line2He3->SetLineColor(8);
+    line2He3 -> SetLineWidth(3);
+    lineHe3->Draw();
+    line2He3 -> Draw();
+  }
+  TCanvas *Li6rate = new TCanvas("Li6rate" , "Li6rate" , 1200 , 900);
+  UCNRate_Li6 -> Draw();
+  
+  TLine *lineLi6;
+  TLine *line2Li6;
+  for (int k = 0 ; k < counter794; k++){
+    lineLi6 = new TLine(cycleValveOpenArray794[k],0, cycleValveOpenArray794[k] , Li6MaxRate);
+    lineLi6->SetLineColor(kRed);
+    lineLi6 -> SetLineWidth(3);
+    line2Li6 = new TLine(irradStartTimeArray794[k],0, irradStartTimeArray794[k] , Li6MaxRate);
+    
+    line2Li6->SetLineColor(8);
+    line2Li6 -> SetLineWidth(3);
+    lineLi6 -> Draw();
+    line2Li6 -> Draw();
+  }
+
+
+
+  
 }
