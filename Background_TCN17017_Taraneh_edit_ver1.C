@@ -154,6 +154,8 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   double cycleNumArrayAll[max]; // the cycle number for all the runs
   double cycleDelayTimeArrayAll[max]; // cycle delay time for all the runs
   double cycleStartTimeAll[max];
+  double baselineRateArrayAll[max];
+  double baselineRateErrArrayAll[max];
   double Li6BgAll[max];
   double Li6BgErrAll[max];
   int counterAll;
@@ -202,6 +204,8 @@ void Background_TCN17017_Taraneh_edit_ver1(){
     cycleStartTimeAll[counter794] = cycleStartTime794;
     Li6BgAll[counter794] = HistIntegral794;
     Li6BgErrAll[counter794] = sqrt(HistIntegral794);
+    baselineRateArrayAll[counter794] = baselinerate794;
+    baselineRateErrArrayAll[counter794] = sqrt(baselinerate794);
     // cout << std::fixed <<cycleStartTimeAll[counter794] << endl;
     counterAll= counter794;
     counter794++;
@@ -213,42 +217,6 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   // TIME AND 0 S CYCLE DELAY TIME: 532, 541, 553, 573, 595, 605
   // I CAN LOOK AT THE BACKGROUND DURING THOSE RUNS AND COMPARE IT WITH THIS MEASUREMENT
   // *********************************************************************************
-  /*
-  TFile *fin532 = new TFile ("./outputTree_532.root", "READ");
-  TFile *fin541 = new TFile ("./outputTree_541.root", "READ");
-  TFile *fin553 = new TFile ("./outputTree_553.root", "READ");
-  TFile *fin573 = new TFile ("./outputTree_573.root", "READ");
-  TFile *fin595 = new TFile ("./outputTree_595.root", "READ");
-  TFile *fin605 = new TFile ("./outputTree_605.root", "READ");
-  TFile *fin775 = new TFile ("./outputTree_775.root", "READ"); // the rest of these runs have all the delay times
-  TFile *fin777 = new TFile ("./outputTree_777.root", "READ");
-  TFile *fin791 = new TFile ("./outputTree_791.root", "READ");
-  TFile *fin803 = new TFile ("./outputTree_803.root", "READ");
-  TFile *fin813 = new TFile ("./outputTree_813.root", "READ");
-  TFile *fin819 = new TFile ("./outputTree_819.root", "READ");
-  TFile *fin821 = new TFile ("./outputTree_821.root", "READ");
-  TFile *fin827 = new TFile ("./outputTree_827.root", "READ");
-  TFile *fin832 = new TFile ("./outputTree_832.root", "READ");
-  TFile *fin834 = new TFile ("./outputTree_834.root", "READ");
-
-  // GETTING THE CYCLE INFORMATION TREE ...
-  TTree *cycle_info532 = (TTree*) fin532 -> Get("cycle_info");
-  TTree *cycle_info541 = (TTree*) fin541 -> Get("cycle_info");
-  TTree *cycle_info553 = (TTree*) fin553 -> Get("cycle_info");
-  TTree *cycle_info573 = (TTree*) fin573 -> Get("cycle_info");
-  TTree *cycle_info595 = (TTree*) fin595 -> Get("cycle_info");
-  TTree *cycle_info605 = (TTree*) fin605 -> Get("cycle_info");
-  TTree *cycle_info775 = (TTree*) fin775 -> Get("cycle_info");
-  TTree *cycle_info777 = (TTree*) fin777 -> Get("cycle_info");
-  TTree *cycle_info791 = (TTree*) fin791 -> Get("cycle_info");
-  TTree *cycle_info803 = (TTree*) fin803 -> Get("cycle_info");
-  TTree *cycle_info813 = (TTree*) fin813 -> Get("cycle_info");
-  TTree *cycle_info819 = (TTree*) fin819 -> Get("cycle_info");
-  TTree *cycle_info821 = (TTree*) fin821 -> Get("cycle_info");
-  TTree *cycle_info827 = (TTree*) fin827 -> Get("cycle_info");
-  TTree *cycle_info832 = (TTree*) fin832 -> Get("cycle_info");
-  TTree *cycle_info834 = (TTree*) fin834 -> Get("cycle_info");*/
-
   
   // I WILL USE THE OVERALL FILE THAT I CREATED AND THEN IF THERE WAS A PROBLEM I WILL LOOK AT INDIVIDUAL FILES
   TFile *finAll = new TFile ("./outputTree_1muA_60sIrrad.root", "READ");
@@ -309,8 +277,6 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   cycle_infoAll -> SetBranchAddress ("cycleValveCloseTime" , &cycleValveClose);
   double cycleValveCloseArray[max];
 
-
-  
 	  
   int counter = 0;
   double UCNCounts [max];
@@ -325,7 +291,7 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   for (ULong64_t j = 0 ; j < events ; j++ ){
     cycle_infoAll -> GetEvent(j);
     if (cycleDelayTime > 0)
-      continue;
+      continue; // because I only care about cycle delay time of 0
     cycleDelayTimeArray[counter] = cycleDelayTime;
     cycleStartTimeArray[counter] = cycleStartTime;
     HistIntegralArray[counter] = HistIntegral;
@@ -362,8 +328,10 @@ void Background_TCN17017_Taraneh_edit_ver1(){
     cycleNumArrayAll[counter+counter794] = cyclenum;
     cycleDelayTimeArrayAll[counter+counter794] = cycleDelayTime;
     cycleStartTimeAll[counter+counter794] = cycleStartTime;
-    Li6BgAll[counter+counter794] = HistIntegral794;
-    Li6BgErrAll[counter+counter794] = sqrt(HistIntegral794);
+    Li6BgAll[counter+counter794] = baselineArray[counter];
+    Li6BgErrAll[counter+counter794] = sqrt(baselineArray[counter]);
+    baselineRateArrayAll[counter + counter794] = baselinerate;
+    baselineRateErrArrayAll[counter + counter794] = sqrt(baselinerate);
     // cout << std::fixed <<cycleStartTimeAll[counter] << endl;
     counterAll= counter;
     counter++;
@@ -377,6 +345,10 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   // GRAPHS
   // **************************
 
+  //***********
+  // 794
+  //**********
+  
   TCanvas *c794_cylceNum =  new TCanvas("c794_cycleNum" , "c794_cycleNum " , 1200, 900);
   c794_cycleNum-> Divide(2,2);
 
@@ -481,9 +453,9 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   gr794_cyclecur -> Draw("Ap");
   c794_cycleNum -> Update();
 
-  // ******************************************************************
+  // ****************************************************
   // FOR ALL THE OTHER 1MUA , 60 S IRRADIAITON TIME RUNS
-  // ******************************************************************
+  // ****************************************************
 
    TCanvas *c_cylceNum =  new TCanvas("c_cycleNum" , "c_cycleNum " , 1200, 900);
   c_cycleNum-> Divide(2,2);
@@ -601,14 +573,16 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   TPad *pAll_1 = cAll_cycleNum->cd(1);
   //pAll_1->SetLogy(); 
   
-  TGraphErrors *grAll_cyclehist = new TGraphErrors(counterAll, cycleStartTimeAll , HistpercurAll, 0, HistpercurErrAll);
+  TGraphErrors *grAll_cyclehist = new TGraphErrors(counterAll, cycleStartTimeAll , baselineRateArrayAll, 0, baselineRateErrArrayAll);
   
-  grAll_cyclehist -> SetTitle("Normalized UCN Counts vs Cycle Start Time");
-  grAll_cyclehist -> GetXaxis()-> SetTitle("Cycle Start Time " );
-  grAll_cyclehist -> GetYaxis()-> SetTitle("Cycle UCN Counts/#muA");
+  grAll_cyclehist -> SetTitle("Li6 Background Rate vs Cycle Start Time");
+  //grAll_cyclehist -> GetXaxis()-> SetTitle("Cycle Start Time " );
+  grAll_cyclehist -> GetYaxis()-> SetTitle("Cycle UCN Counts/s");
   //grAll_cyclehist -> GetYaxis()-> SetRangeUser(10, 500000);
   grAll_cyclehist -> GetXaxis() -> SetTimeDisplay(1);
-  grAll_cyclehist -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  // grAll_cyclehist -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grAll_cyclehist -> GetXaxis() -> SetTimeFormat(" #splitline{%d}{%b}");
+  grAll_cyclehist -> GetXaxis() -> SetNdivisions(20);
   grAll_cyclehist -> GetXaxis() -> SetTimeOffset(0, "pdt");
   grAll_cyclehist -> GetXaxis() -> SetTitleSize(0.05);
   grAll_cyclehist -> GetXaxis() -> SetLabelOffset(.03);
@@ -618,36 +592,19 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   grAll_cyclehist -> GetYaxis() -> SetTitleOffset(1.3);
   grAll_cyclehist -> SetMarkerColor(2);
   grAll_cyclehist -> SetMarkerStyle(20);
-
-  TGraphErrors *grAll_cyclecountmanual = new TGraphErrors(counterAll, cycleStartTimeAll , CountspercurAll, 0, CountspercurErrAll);
-  
-  grAll_cyclecountmanual -> SetTitle("UCN Counts vs Cycle Start Time");
-  grAll_cyclecountmanual -> GetXaxis()-> SetTitle("Cycle Start Time" );
-  grAll_cyclecountmanual -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  grAll_cyclecountmanual -> GetYaxis()-> SetRangeUser(1000, 500000);
-  grAll_cyclecountmanual -> GetXaxis() -> SetTimeDisplay(1);
-  grAll_cyclecountmanual -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
-  grAll_cyclecountmanual -> GetXaxis() -> SetTimeOffset(0, "pdt");
-  grAll_cyclecountmanual -> GetXaxis() -> SetTitleSize(0.05);
-  grAll_cyclecountmanual -> GetXaxis() -> SetTitleOffset(1.3);
-  grAll_cyclecountmanual -> GetYaxis() -> SetTitleSize(0.05); 
-  grAll_cyclecountmanual -> GetYaxis() -> SetTitleOffset(0.9);
-  grAll_cyclecountmanual -> GetXaxis() -> SetLabelOffset(.03);
-  grAll_cyclecountmanual -> GetXaxis() -> SetLabelSize(.04);
-  grAll_cyclecountmanual -> SetMarkerColor(1);
-  grAll_cyclecountmanual -> SetMarkerStyle(25);
   
   grAll_cyclehist -> Draw("Ap");
-  grAll_cyclecountmanual -> Draw("p");
-  leg2-> Draw();
+
   
   cAll_cycleNum -> cd(2);
   TGraphErrors *grAll_cycledelay = new TGraphErrors (counterAll , cycleStartTimeAll, cycleDelayTimeArrayAll, 0 , 0);
   grAll_cycledelay -> SetTitle("Delay Time vs Cycle Start Time");
-  grAll_cycledelay -> GetXaxis()-> SetTitle("Cycle Start Time" );
+  //grAll_cycledelay -> GetXaxis()-> SetTitle("Cycle Start Time" );
   grAll_cycledelay -> GetYaxis()-> SetTitle("Cycle Delay Time (s)");
   grAll_cycledelay -> GetXaxis() -> SetTimeDisplay(1);
-  grAll_cycledelay -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  //grAll_cycledelay -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grAll_cycledelay -> GetXaxis() -> SetTimeFormat(" #splitline{%d}{%b}");
+  grAll_cycledelay -> GetXaxis() -> SetNdivisions(20);
   grAll_cycledelay -> GetXaxis() -> SetTimeOffset(0, "pdt");
   grAll_cycledelay -> GetXaxis() -> SetTitleSize(0.05);
   grAll_cycledelay -> GetXaxis() -> SetTitleOffset(1.3);
@@ -665,7 +622,7 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   
   grAll_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   grAll_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  grAll_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Start Time");
+  //grAll_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Start Time");
   grAll_cycletempIrrad -> SetMarkerStyle(20);
   grAll_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.8, 0.9);
   grAll_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
@@ -673,7 +630,9 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   grAll_cycletempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
   grAll_cycletempIrrad -> GetYaxis() -> SetTitleOffset(0.9);
   grAll_cycletempIrrad -> GetXaxis() -> SetTimeDisplay(1);
-  grAll_cycletempIrrad -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  //grAll_cycletempIrrad -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grAll_cycletempIrrad -> GetXaxis() -> SetTimeFormat(" #splitline{%d}{%b}");
+  grAll_cycletempIrrad -> GetXaxis() -> SetNdivisions(20);
   grAll_cycletempIrrad -> GetXaxis() -> SetTimeOffset(0, "pdt");
   grAll_cycletempIrrad -> GetXaxis() -> SetLabelOffset(.03);
   grAll_cycletempIrrad -> GetXaxis() -> SetLabelSize(.04);
@@ -682,7 +641,7 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   
   grAll_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Start Time");
   grAll_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  grAll_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Start Time");
+  //grAll_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Start Time");
   grAll_cycletempValveOpen -> SetMarkerStyle(20);
   grAll_cycletempValveOpen -> SetMarkerColor(2);
   grAll_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
@@ -690,7 +649,9 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   grAll_cycletempValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
   grAll_cycletempValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
   grAll_cycletempValveOpen -> GetXaxis() -> SetTimeDisplay(1);
-  grAll_cycletempValveOpen -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  //grAll_cycletempValveOpen -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grAll_cycletempValveOpen -> GetXaxis() -> SetTimeFormat(" #splitline{%d}{%b}");
+  grAll_cycletempValveOpen -> GetXaxis() -> SetNdivisions(20);
   grAll_cycletempValveOpen -> GetXaxis() -> SetTimeOffset(0, "pdt");
   grAll_cycletempValveOpen -> GetXaxis() -> SetLabelOffset(.03);
   grAll_cycletempValveOpen -> GetXaxis() -> SetLabelSize(.04);
@@ -703,7 +664,7 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   TGraphErrors *grAll_cyclecur = new TGraphErrors (counterAll , cycleStartTimeAll , curAll, 0, curErrAll );
   grAll_cyclecur -> SetTitle(" Average Beam Current vs Cycle Start Time");
   grAll_cyclecur -> GetYaxis()-> SetTitle("Average Beam Current (#muA)" );
-  grAll_cyclecur -> GetXaxis()-> SetTitle("Cycle Start Time");
+  //grAll_cyclecur -> GetXaxis()-> SetTitle("Cycle Start Time");
   //grAll_cyclecur -> GetYaxis()-> SetRangeUser(1, 500000);
   //  grAll_cyclecur -> GetXaxis()-> SetLimits(0.82 ,0.90);
   grAll_cyclecur -> GetXaxis() -> SetTitleSize(0.05);
@@ -711,7 +672,9 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   grAll_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
   grAll_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
   grAll_cyclecur -> GetXaxis() -> SetTimeDisplay(1);
-  grAll_cyclecur -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  //grAll_cyclecur -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grAll_cyclecur -> GetXaxis() -> SetTimeFormat(" #splitline{%d}{%b}");
+  grAll_cyclecur -> GetXaxis() -> SetNdivisions(20);
   grAll_cyclecur -> GetXaxis() -> SetTimeOffset(0, "pdt");
   grAll_cyclecur -> GetXaxis() -> SetLabelOffset(.03);
   grAll_cyclecur -> GetXaxis() -> SetLabelSize(.04);
