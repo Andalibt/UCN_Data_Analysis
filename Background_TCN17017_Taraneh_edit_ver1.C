@@ -95,7 +95,12 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   double baselinerate794;
   cycle_info794 -> SetBranchAddress ("BASELINERATE" , &baselinerate794);
 
-
+  // BASELINE DURING IRRADIATION
+  double baselineIrradrate794;
+  cycle_info794 -> SetBranchAddress ("BASELINEIRRADRATE" , &baselineIrradrate794);
+  double baselineIrradrateArray794[100];
+  double baselineIrradrateErrArray794[100];
+  
   // AVERAGE PREDICTED CURRENT
   double avecur794;
   double avecurArray794[100];
@@ -158,6 +163,8 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   double cycleStartTimeAll[max];
   double baselineRateArrayAll[max];
   double baselineRateErrArrayAll[max];
+  double baselineIrradRateArrayAll[max];
+  double baselineIrradRateErrArrayAll[max];
   double Li6BgAll[max];
   double Li6BgErrAll[max];
   int counterAll;
@@ -210,6 +217,8 @@ void Background_TCN17017_Taraneh_edit_ver1(){
     Li6BgErrAll[counter794] = sqrt(HistIntegral794);
     baselineRateArrayAll[counter794] = baselinerate794;
     baselineRateErrArrayAll[counter794] = sqrt(baselinerate794);
+    baselineIrradRateArrayAll[counter794] = baselineIrradrate794;
+    baselineIrradRateErrArrayAll[counter794] = sqrt (baselineIrradrate794);
     // cout << std::fixed <<cycleStartTimeAll[counter794] << endl;
     counterAll= counter794;
     counter794++;
@@ -266,6 +275,8 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   cycle_infoAll -> SetBranchAddress ("BASELINERATE" , &baselinerate);
   double baselineArray[max];
   double baselineErrArray[max];
+  double baselineIrradrate;
+  cycle_infoAll -> SetBranchAddress ("BASELINEIRRADRATE" , &baselineIrradrate);
   double avecur;
   cycle_infoAll -> SetBranchAddress ("AVE_PRDCUR" , &avecur);
   double avecurArray[max];
@@ -336,6 +347,8 @@ void Background_TCN17017_Taraneh_edit_ver1(){
     Li6BgErrAll[counter+counter794] = sqrt(baselineArray[counter]);
     baselineRateArrayAll[counter + counter794] = baselinerate;
     baselineRateErrArrayAll[counter + counter794] = sqrt(baselinerate);
+    baselineIrradRateArrayAll[counter + counter794] = baselineIrradrate;
+    baselineIrradRateErrArrayAll[counter + counter794] = sqrt (baselineIrradrate);
     // cout << std::fixed <<cycleStartTimeAll[counter] << endl;
     counterAll= counter;
     counter++;
@@ -576,6 +589,31 @@ void Background_TCN17017_Taraneh_edit_ver1(){
 
   TPad *pAll_1 = cAll_cycleNum->cd(1);
   //pAll_1->SetLogy(); 
+
+
+  TGraphErrors *grAll_baselineIrrad = new TGraphErrors(counterAll, cycleStartTimeAll , baselineIrradRateArrayAll, 0, baselineIrradRateErrArrayAll);
+  
+  grAll_baselineIrrad -> SetTitle("Li6 Background Rate vs Cycle Start Time");
+  //grAll_baselineIrrad -> GetXaxis()-> SetTitle("Cycle Start Time " );
+  grAll_baselineIrrad -> GetYaxis()-> SetTitle("Cycle UCN Counts/s");
+  //grAll_baselineIrrad -> GetYaxis()-> SetRangeUser(10, 500000);
+  grAll_baselineIrrad -> GetXaxis() -> SetTimeDisplay(1);
+  // grAll_baselineIrrad -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grAll_baselineIrrad -> GetXaxis() -> SetTimeFormat(" #splitline{%d}{%b}");
+  grAll_baselineIrrad -> GetXaxis() -> SetNdivisions(20);
+  grAll_baselineIrrad -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grAll_baselineIrrad -> GetXaxis() -> SetTitleSize(0.05);
+  grAll_baselineIrrad -> GetXaxis() -> SetLabelOffset(.03);
+  grAll_baselineIrrad -> GetXaxis() -> SetLabelSize(.04);
+  grAll_baselineIrrad -> GetXaxis() -> SetTitleOffset(1.3);
+  grAll_baselineIrrad -> GetYaxis() -> SetTitleSize(0.05); 
+  grAll_baselineIrrad -> GetYaxis() -> SetTitleOffset(1.3);
+  grAll_baselineIrrad -> SetMarkerColor(1);
+  grAll_baselineIrrad -> SetMarkerStyle(20);
+  
+
+
+
   
   TGraphErrors *grAll_cyclehist = new TGraphErrors(counterAll, cycleStartTimeAll , baselineRateArrayAll, 0, baselineRateErrArrayAll);
   
@@ -596,8 +634,14 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   grAll_cyclehist -> GetYaxis() -> SetTitleOffset(1.3);
   grAll_cyclehist -> SetMarkerColor(2);
   grAll_cyclehist -> SetMarkerStyle(20);
-  
-  grAll_cyclehist -> Draw("Ap");
+
+  TLegend *leg_BR = new TLegend (0.7 , 0.7, 0.9, 0.9);
+  leg_BR -> AddEntry(grAll_baselineIrrad, "Backround RateDuring Irradiation" , "p");
+  leg_BR -> AddEntry(grAll_cyclehist, "Background Rate Before Irradiation" , "P");
+
+  grAll_baselineIrrad -> Draw("Ap");
+  grAll_cyclehist -> Draw("p");
+  leg_BR -> Draw();
 
   
   cAll_cycleNum -> cd(2);
@@ -770,6 +814,7 @@ void Background_TCN17017_Taraneh_edit_ver1(){
     }
   }
 
+  
   Float_t He3MaxRate = UCNRate_He3 -> GetMaximum();
   Float_t Li6MaxRate = UCNRate_Li6 -> GetMaximum();
   
@@ -780,6 +825,13 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   
   TLine *lineHe3;
   TLine *line2He3;
+
+
+  TLegend *legline = new TLegend (0.7, 0.7, 0.9, 0.9);
+  legline -> AddEntry (lineHe3 , "Valve Open Time" , "l");
+  legline -> AddEntry (line2He3 , "Irradiation Start Time" , "l");
+  
+  
   for (int k = 0 ; k < counter794; k++){
     lineHe3 = new TLine(cycleValveOpenArray794[k],0, cycleValveOpenArray794[k] , He3MaxRate);
     
@@ -792,6 +844,7 @@ void Background_TCN17017_Taraneh_edit_ver1(){
     lineHe3->Draw();
     line2He3 -> Draw();
   }
+  //legline -> Draw();
   TCanvas *Li6rate = new TCanvas("Li6rate" , "Li6rate" , 1200 , 900);
   UCNRate_Li6 -> Draw();
   
@@ -808,7 +861,7 @@ void Background_TCN17017_Taraneh_edit_ver1(){
     lineLi6 -> Draw();
     line2Li6 -> Draw();
   }
-
+  //legline -> Draw();
 
 
   
