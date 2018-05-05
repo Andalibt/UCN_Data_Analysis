@@ -167,6 +167,8 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   double baselineIrradRateErrArrayAll[max];
   double Li6BgAll[max];
   double Li6BgErrAll[max];
+  double bkgdcurAll[max];
+  double bkgdcurErrAll[max];
   int counterAll;
   
   events794 = (Double_t) cycle_info794 -> GetEntries();
@@ -219,6 +221,8 @@ void Background_TCN17017_Taraneh_edit_ver1(){
     baselineRateErrArrayAll[counter794] = sqrt(baselinerate794);
     baselineIrradRateArrayAll[counter794] = baselineIrradrate794;
     baselineIrradRateErrArrayAll[counter794] = sqrt (baselineIrradrate794);
+    bkgdcurAll[counter794] = baselineIrradrate794/avecur794;
+    bkgdcurErrAll[counter794] = baselineIrradrate794/avecur794*sqrt(1/baselineIrradrate794 + 1/avecur794);
     // cout << std::fixed <<cycleStartTimeAll[counter794] << endl;
     counterAll= counter794;
     counter794++;
@@ -349,6 +353,8 @@ void Background_TCN17017_Taraneh_edit_ver1(){
     baselineRateErrArrayAll[counter + counter794] = sqrt(baselinerate);
     baselineIrradRateArrayAll[counter + counter794] = baselineIrradrate;
     baselineIrradRateErrArrayAll[counter + counter794] = sqrt (baselineIrradrate);
+    bkgdcurAll[counter + counter794] = baselineIrradrate/avecur;
+    bkgdcurErrAll[counter + counter794] = baselineIrradrate/avecur*sqrt(1/baselineIrradrate + 1/avecur);
     // cout << std::fixed <<cycleStartTimeAll[counter] << endl;
     counterAll= counter;
     counter++;
@@ -863,6 +869,32 @@ void Background_TCN17017_Taraneh_edit_ver1(){
   }
   //legline -> Draw();
 
+
+  // ********************************************************************
+  // Looking at the ratio of the background during irradiation per average
+  // current vs time
+
+  TCanvas *c_bkgdcur = new TCanvas("c_bkgdcur", "c_bkgdcur" , 1200 , 900);
+  TGraphErrors *grAll_bkgdcur = new TGraphErrors (counterAll , cycleStartTimeAll , bkgdcurAll, 0, bkgdcurErrAll );
+  grAll_bkgdcur -> SetTitle(" Background/Average Beam Current vs Cycle Start Time");
+  grAll_bkgdcur -> GetYaxis()-> SetTitle("Background/Average Beam Current (UCN counts/s#muA)" );
+  //grAll_bkgdcur -> GetXaxis()-> SetTitle("Cycle Start Time");
+  //grAll_bkgdcur -> GetYaxis()-> SetRangeUser(1, 500000);
+  //  grAll_bkgdcur -> GetXaxis()-> SetLimits(0.82 ,0.90);
+  grAll_bkgdcur -> GetXaxis() -> SetTitleSize(0.05);
+  grAll_bkgdcur -> GetXaxis() -> SetTitleOffset(1.3);
+  grAll_bkgdcur -> GetYaxis() -> SetTitleSize(0.05); 
+  grAll_bkgdcur -> GetYaxis() -> SetTitleOffset(0.9);
+  grAll_bkgdcur -> GetXaxis() -> SetTimeDisplay(1);
+  //grAll_bkgdcur -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grAll_bkgdcur -> GetXaxis() -> SetTimeFormat(" #splitline{%d}{%b}");
+  grAll_bkgdcur -> GetXaxis() -> SetNdivisions(20);
+  grAll_bkgdcur -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grAll_bkgdcur -> GetXaxis() -> SetLabelOffset(.03);
+  grAll_bkgdcur -> GetXaxis() -> SetLabelSize(.04);
+  
+  grAll_bkgdcur -> SetMarkerStyle(20);
+  grAll_bkgdcur -> Draw("Ap");
 
   
 }
