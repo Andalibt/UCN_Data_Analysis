@@ -220,6 +220,12 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   double BASELINERATE;
   double BASELINEIRRADRATE;
 
+  double BaselineIntegral_he3;
+  double BaselineIrradIntegral_he3;
+  double BASELINERATE_he3;
+  double BASELINEIRRADRATE_he3;
+
+
   // Create branches. 
   outputTree -> Branch ("runNumber" , &runNumber);
   outputTree -> Branch ("expNumber" , &expNumber );
@@ -307,7 +313,14 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   outputTree -> Branch ("BaselineIrradIntegral" , &BaselineIrradIntegral);
   outputTree -> Branch ("BASELINERATE" , &BASELINERATE);
   outputTree -> Branch ("BASELINEIRRADRATE" , &BASELINEIRRADRATE);
-  
+  outputTree -> Branch ("BaselineIntegralhe3" , &BaselineIntegral_he3);
+  outputTree -> Branch ("BaselineIrradIntegralhe3" , &BaselineIrradIntegral_he3);
+  outputTree -> Branch ("BASELINERATE_he3" , &BASELINERATE_he3);
+  outputTree -> Branch ("BASELINEIRRADRATE_he3" , &BASELINEIRRADRATE_he3);
+
+
+
+
   // *************************************************************
   // STARTING THE LOOP OVER THE FILES.
   // *************************************************************
@@ -1083,20 +1096,63 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	double max_range_He3[max];
 	int He3_Integral[max];
 
+     double minmin_range_he3[1000000];
+     double firstTS_he3; // first time stamp
+     int bin1_he3[1000000];
+     int bin2_he3[1000000];
+     int bin3_he3[1000000];
+
+    
 	for(ULong64_t j=0; j < He3Event ; j++) {
 	  uinhe3->GetEvent(j);
-	  for ( int i = 0; i < cycleStartTimes_He3.size(); i++){
-	    min_range_He3[i] = cyclevalveopen_He3[i];
-	    max_range_He3[i] = cyclevalveclose_He3[i];
-	    bin_low_He3[i] = UCN_rate_He3 -> GetXaxis() -> FindBin(cyclevalveopen_He3[i]);
-	    bin_high_He3[i] = UCN_rate_He3 ->  GetXaxis() -> FindBin(cyclevalveclose_He3[i]);
+	 if( j==11) {
+	   firstTS_he3 = tUnixTime_he3;
+	   }
+	 for ( int i = 0; i < cycleStartTimes_He3.size(); i++){
+	   if (i == 0) {
+	    minmin_range_he3[i] = firstTS_he3;
+	   }
+	  if (i > 0){
+	    minmin_range_he3[i] = cyclevalveclose_He3[i-1];
 	  }
+	   min_range_He3[i] = cyclevalveopen_He3[i];
+	   max_range_He3[i] = cyclevalveclose_He3[i];
+	   bin_low_He3[i] = UCN_rate_He3 -> GetXaxis() -> FindBin(cyclevalveopen_He3[i]);
+	   bin_high_He3[i] = UCN_rate_He3 ->  GetXaxis() -> FindBin(cyclevalveclose_He3[i]);
+	   bin1_he3[i] = UCN_rate_He3 -> GetXaxis() -> FindBin(minmin_range_he3[i]);
+	   bin2_he3[i] = UCN_rate_He3 -> GetXaxis() -> FindBin(irradiationStartTime[i]);
+	   bin3_he3[i] = UCN_rate_He3 -> GetXaxis() -> FindBin(cycleStartTimes_He3[i]);
+       //std::cout<<"bin1 " <<bin1_he3[i] << ", bin2 " << bin2_he3[i] << ", bin3 "<< bin3_he3[i] << std::endl; //to test
+	 } 
 	}
-	
+	 
 	for ( int i = 0; i < cycleStartTimes_He3.size(); i++){
 	He3_Integral[i] = UCN_rate_He3 -> Integral(bin_low_He3[i] , bin_high_He3[i]);
-      }
-	
+    //std::cout<< He3_Integral[i] << std::endl; //to test
+    }
+
+      // To get the integral before the start of irradiation and during the irradiation
+      double BaselineInt_he3[100000];
+      double BaselineIrradInt_he3[100000];
+
+	for ( int i = 0; i < cycleStartTimes_He3.size(); i++){
+	  BaselineInt_he3[i] = UCN_rate_He3 -> Integral(bin1_he3[i] , bin2_he3[i]);
+	  BaselineIrradInt_he3[i] = UCN_rate_He3 -> Integral(bin2_he3[i] , bin3_he3[i]);
+	}
+
+	// to get the baseline rate
+
+	double BaselineRate_he3[100000];
+	double BaselineIrradRate_he3[10000];
+
+	for ( int i = 0; i < cycleStartTimes_He3.size(); i++){
+	  BaselineRate_he3[i] = BaselineInt_he3[i]/(irradiationStartTime[i] - minmin_range_he3[i] );
+	  //cout << "cycle " << i <<  " valve open time:" << cyclevalveopen[i] << " ,valve close time" << cyclevalveclose[i] << endl;
+	  BaselineIrradRate_he3[i] = BaselineIrradRate_he3[i]/(cycleStartTimes_He3[i] - irradiationStartTime[i] );
+	}
+
+
+
       //**********************************************************************
       // FIT THE UCN_RATE HISTOGRAM
       //**********************************************************************
@@ -1328,6 +1384,8 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	BaselineIrradIntegral = BaselineIrradInt[i];
 	BASELINERATE[i] = BaselineRate[i];
 	BASELINEIRRADRATE[i] = BaselineIrradRate[i];
+	BASELINERATE_he3[i] = BaselineRate_he3[i];
+	BASELINEIRRADRATE_he3[i] = BaselineIrradRate_he3[i];
 	outputTree->Fill();
       }
       
