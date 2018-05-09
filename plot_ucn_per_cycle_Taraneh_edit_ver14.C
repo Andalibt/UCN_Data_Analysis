@@ -71,7 +71,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("outputTree_1muA_60sIrrad.root", "RECREATE");
+  TFile hfile ("outputTree_794.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -303,8 +303,8 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   outputTree -> Branch ("UCNIntegralErr" , &UCNIntegralErr);
   outputTree -> Branch ("HistIntegral" , &HistIntegral);
   outputTree -> Branch ("HistIntegralHe3" , &HistIntegralHe3);
-  //outputTree -> Branch ("BaselineIntegral" , &BaselineIntegral);
-  //outputTree -> Branch ("BaselineIrradIntegral" , &BaselineIrradIntegral);
+  outputTree -> Branch ("BaselineIntegral" , &BaselineIntegral);
+  outputTree -> Branch ("BaselineIrradIntegral" , &BaselineIrradIntegral);
   outputTree -> Branch ("BASELINERATE" , &BASELINERATE);
   outputTree -> Branch ("BASELINEIRRADRATE" , &BASELINEIRRADRATE);
   
@@ -313,7 +313,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   // *************************************************************
   
 
-  Int_t InputFiles[17] ={532, 541, 553, 573, 595, 605, 775, 777, 791, 803, 813, 819, 821, 827, 832, 834};
+  Int_t InputFiles[17] ={794};
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;
@@ -988,7 +988,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	  //cout << "cycle " << i <<  " valve open time:" << cyclevalveopen[i] << " ,valve close time" << cyclevalveclose[i] << endl;
 	  BaselineIrradRate[i] = BaselineIrradInt[i]/(cycleStartTimes[i] - irradiationStartTime[i] );
 	  
-	  //cout << BaselineIrradRate[i]<< " " << irradiationStartTime[i] << " " << minmin_range[i] << endl;
+	  cout << BaselineIrradRate[i]<< " " << irradiationStartTime[i] << " " << minmin_range[i] << endl;
 	}
 	
 
@@ -1324,8 +1324,8 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	HistIntegralHe3 = He3_Integral[i];
 	cycleNumber = cycleNumberArray[i] ;
 	cycleNumberAll = cycleNumberAllArray[i];
-	//BaselineIntegral = BaselineInt[i];
-	//BaselineIrradIntegral = BaselineIrradInt[i];
+	BaselineIntegral = BaselineInt[i];
+	BaselineIrradIntegral = BaselineIrradInt[i];
 	BASELINERATE[i] = BaselineRate[i];
 	BASELINEIRRADRATE[i] = BaselineIrradRate[i];
 	outputTree->Fill();
