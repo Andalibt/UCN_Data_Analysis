@@ -368,16 +368,16 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double FM1779;    
 
   sourceEpics765 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1765);
-  sourceEpics766 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1765);
-  sourceEpics767 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1765);
-  sourceEpics768 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1765);
-  sourceEpics769 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1765);
-  sourceEpics770 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1765);
-  sourceEpics771 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1765);
-  sourceEpics772 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1765);
-  sourceEpics773 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1765);
-  sourceEpics778 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1765);
-  sourceEpics779 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1765);
+  sourceEpics766 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1766);
+  sourceEpics767 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1767);
+  sourceEpics768 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1768);
+  sourceEpics769 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1769);
+  sourceEpics770 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1770);
+  sourceEpics771 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1771);
+  sourceEpics772 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1772);
+  sourceEpics773 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1773);
+  sourceEpics778 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1778);
+  sourceEpics779 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1779);
 
 
   double FM1Array765[max];
@@ -515,7 +515,6 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   int maxXrange779 = 0, minXrange779 = 1540000000.;
 
   
-
   TH1* UCNRate765 = new TH1F("UCNRate765", "UCN-rate Histogram", NBins765 , minXrange765, maxXrange765); // defining the rate histogram for each run
   TH1* UCNRate766 = new TH1F("UCNRate766", "UCN-rate Histogram", NBins766 , minXrange766, maxXrange766);
   TH1* UCNRate767 = new TH1F("UCNRate767", "UCN-rate Histogram", NBins767 , minXrange767, maxXrange767);
@@ -1029,12 +1028,847 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
 
   //run 765
   TCanvas *cSource765 = new TCanvas("cSource765" , "cSource765" , 1200, 900);
-  // TGraph *grtemp765 = new TGraph(seEvents765 , TSseArray765 , 
+  cSource765 -> Divide (2,2);
+
+  cSource765 -> cd(1);
+  TGraph *grtemp765 = new TGraph(seEvents765 , TSseArray765 , tempArray765);
+  grtemp765 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp765 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp765 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp765 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp765 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp765 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp765 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp765 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp765 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp765 -> GetXaxis() -> SetNdivisions(10);
+  grtemp765 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp765 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp765 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp765 -> SetMarkerStyle(20);
+  grtemp765 -> Draw("AP");
+
+  cSource765 -> cd(3);
+  TGraph *grFM4765 = new TGraph (seEvents765 , TSseArray765 , FM4Array765);
+  grFM4765 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4765 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4765 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4765 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4765 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4765 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4765 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4765 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4765 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4765 -> GetXaxis() -> SetNdivisions(10);
+  grFM4765 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4765 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4765 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4765 -> SetMarkerStyle(20);
+  grFM4765 -> Draw("AP");
+  
+  cSource765 -> cd(2);
+  TGraph *grFM1765 = new TGraph (seEvents765 , TSseArray765 , FM1Array765);
+  grFM1765 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1765 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1765 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1765 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1765 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1765 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1765 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1765 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1765 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1765 -> GetXaxis() -> SetNdivisions(10);
+  grFM1765 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1765 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1765 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1765 -> SetMarkerStyle(20);
+  grFM1765 -> Draw("AP");
+  
+  cSource765 -> cd(4);
+  TGraph *grFM5765 = new TGraph (seEvents765 , TSseArray765 , FM5Array765);
+  grFM5765 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5765 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5765 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5765 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5765 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5765 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5765 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5765 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5765 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5765 -> GetXaxis() -> SetNdivisions(10);
+  grFM5765 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5765 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5765 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5765 -> SetMarkerStyle(20);
+  grFM5765 -> Draw("AP");
+  
+
+  //run 766
+  TCanvas *cSource766 = new TCanvas("cSource766" , "cSource766" , 1200, 900);
+  cSource766 -> Divide (2,2);
+
+  cSource766 -> cd(1);
+  TGraph *grtemp766 = new TGraph(seEvents766 , TSseArray766 , tempArray766);
+  grtemp766 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp766 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp766 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp766 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp766 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp766 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp766 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp766 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp766 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp766 -> GetXaxis() -> SetNdivisions(10);
+  grtemp766 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp766 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp766 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp766 -> SetMarkerStyle(20);
+  grtemp766 -> Draw("AP");
+
+  cSource766 -> cd(3);
+  TGraph *grFM4766 = new TGraph (seEvents766 , TSseArray766 , FM4Array766);
+  grFM4766 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4766 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4766 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4766 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4766 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4766 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4766 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4766 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4766 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4766 -> GetXaxis() -> SetNdivisions(10);
+  grFM4766 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4766 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4766 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4766 -> SetMarkerStyle(20);
+  grFM4766 -> Draw("AP");
+  
+  cSource766 -> cd(2);
+  TGraph *grFM1766 = new TGraph (seEvents766 , TSseArray766 , FM1Array766);
+  grFM1766 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1766 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1766 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1766 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1766 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1766 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1766 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1766 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1766 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1766 -> GetXaxis() -> SetNdivisions(10);
+  grFM1766 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1766 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1766 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1766 -> SetMarkerStyle(20);
+  grFM1766 -> Draw("AP");
+  
+  cSource766 -> cd(4);
+  TGraph *grFM5766 = new TGraph (seEvents766 , TSseArray766 , FM5Array766);
+  grFM5766 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5766 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5766 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5766 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5766 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5766 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5766 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5766 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5766 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5766 -> GetXaxis() -> SetNdivisions(10);
+  grFM5766 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5766 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5766 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5766 -> SetMarkerStyle(20);
+  grFM5766 -> Draw("AP");
+  
+  //run 767
+  TCanvas *cSource767 = new TCanvas("cSource767" , "cSource767" , 1200, 900);
+  cSource767 -> Divide (2,2);
+
+  cSource767 -> cd(1);
+  TGraph *grtemp767 = new TGraph(seEvents767 , TSseArray767 , tempArray767);
+  grtemp767 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp767 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp767 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp767 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp767 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp767 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp767 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp767 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp767 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp767 -> GetXaxis() -> SetNdivisions(10);
+  grtemp767 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp767 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp767 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp767 -> SetMarkerStyle(20);
+  grtemp767 -> Draw("AP");
+
+  cSource767 -> cd(3);
+  TGraph *grFM4767 = new TGraph (seEvents767 , TSseArray767 , FM4Array767);
+  grFM4767 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4767 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4767 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4767 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4767 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4767 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4767 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4767 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4767 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4767 -> GetXaxis() -> SetNdivisions(10);
+  grFM4767 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4767 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4767 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4767 -> SetMarkerStyle(20);
+  grFM4767 -> Draw("AP");
+  
+  cSource767 -> cd(2);
+  TGraph *grFM1767 = new TGraph (seEvents767 , TSseArray767 , FM1Array767);
+  grFM1767 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1767 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1767 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1767 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1767 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1767 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1767 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1767 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1767 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1767 -> GetXaxis() -> SetNdivisions(10);
+  grFM1767 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1767 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1767 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1767 -> SetMarkerStyle(20);
+  grFM1767 -> Draw("AP");
+  
+  cSource767 -> cd(4);
+  TGraph *grFM5767 = new TGraph (seEvents767 , TSseArray767 , FM5Array767);
+  grFM5767 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5767 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5767 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5767 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5767 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5767 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5767 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5767 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5767 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5767 -> GetXaxis() -> SetNdivisions(10);
+  grFM5767 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5767 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5767 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5767 -> SetMarkerStyle(20);
+  grFM5767 -> Draw("AP");
+  
+
+  //run 768
+  TCanvas *cSource768 = new TCanvas("cSource768" , "cSource768" , 1200, 900);
+  cSource768 -> Divide (2,2);
+
+  cSource768 -> cd(1);
+  TGraph *grtemp768 = new TGraph(seEvents768 , TSseArray768 , tempArray768);
+  grtemp768 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp768 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp768 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp768 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp768 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp768 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp768 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp768 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp768 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp768 -> GetXaxis() -> SetNdivisions(10);
+  grtemp768 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp768 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp768 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp768 -> SetMarkerStyle(20);
+  grtemp768 -> Draw("AP");
+
+  cSource768 -> cd(3);
+  TGraph *grFM4768 = new TGraph (seEvents768 , TSseArray768 , FM4Array768);
+  grFM4768 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4768 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4768 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4768 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4768 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4768 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4768 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4768 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4768 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4768 -> GetXaxis() -> SetNdivisions(10);
+  grFM4768 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4768 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4768 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4768 -> SetMarkerStyle(20);
+  grFM4768 -> Draw("AP");
+  
+  cSource768 -> cd(2);
+  TGraph *grFM1768 = new TGraph (seEvents768 , TSseArray768 , FM1Array768);
+  grFM1768 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1768 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1768 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1768 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1768 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1768 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1768 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1768 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1768 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1768 -> GetXaxis() -> SetNdivisions(10);
+  grFM1768 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1768 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1768 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1768 -> SetMarkerStyle(20);
+  grFM1768 -> Draw("AP");
+  
+  cSource768 -> cd(4);
+  TGraph *grFM5768 = new TGraph (seEvents768 , TSseArray768 , FM5Array768);
+  grFM5768 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5768 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5768 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5768 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5768 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5768 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5768 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5768 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5768 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5768 -> GetXaxis() -> SetNdivisions(10);
+  grFM5768 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5768 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5768 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5768 -> SetMarkerStyle(20);
+  grFM5768 -> Draw("AP");
+
+  //run 769
+  TCanvas *cSource769 = new TCanvas("cSource769" , "cSource769" , 1200, 900);
+  cSource769 -> Divide (2,2);
+
+  cSource769 -> cd(1);
+  TGraph *grtemp769 = new TGraph(seEvents769 , TSseArray769 , tempArray769);
+  grtemp769 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp769 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp769 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp769 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp769 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp769 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp769 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp769 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp769 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp769 -> GetXaxis() -> SetNdivisions(10);
+  grtemp769 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp769 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp769 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp769 -> SetMarkerStyle(20);
+  grtemp769 -> Draw("AP");
+
+  cSource769 -> cd(3);
+  TGraph *grFM4769 = new TGraph (seEvents769 , TSseArray769 , FM4Array769);
+  grFM4769 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4769 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4769 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4769 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4769 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4769 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4769 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4769 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4769 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4769 -> GetXaxis() -> SetNdivisions(10);
+  grFM4769 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4769 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4769 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4769 -> SetMarkerStyle(20);
+  grFM4769 -> Draw("AP");
+  
+  cSource769 -> cd(2);
+  TGraph *grFM1769 = new TGraph (seEvents769 , TSseArray769 , FM1Array769);
+  grFM1769 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1769 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1769 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1769 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1769 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1769 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1769 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1769 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1769 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1769 -> GetXaxis() -> SetNdivisions(10);
+  grFM1769 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1769 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1769 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1769 -> SetMarkerStyle(20);
+  grFM1769 -> Draw("AP");
+  
+  cSource769 -> cd(4);
+  TGraph *grFM5769 = new TGraph (seEvents769 , TSseArray769 , FM5Array769);
+  grFM5769 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5769 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5769 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5769 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5769 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5769 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5769 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5769 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5769 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5769 -> GetXaxis() -> SetNdivisions(10);
+  grFM5769 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5769 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5769 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5769 -> SetMarkerStyle(20);
+  grFM5769 -> Draw("AP");
 
 
+  //run 770
+  TCanvas *cSource770 = new TCanvas("cSource770" , "cSource770" , 1200, 900);
+  cSource770 -> Divide (2,2);
+
+  cSource770 -> cd(1);
+  TGraph *grtemp770 = new TGraph(seEvents770 , TSseArray770 , tempArray770);
+  grtemp770 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp770 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp770 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp770 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp770 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp770 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp770 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp770 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp770 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp770 -> GetXaxis() -> SetNdivisions(10);
+  grtemp770 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp770 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp770 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp770 -> SetMarkerStyle(20);
+  grtemp770 -> Draw("AP");
+
+  cSource770 -> cd(3);
+  TGraph *grFM4770 = new TGraph (seEvents770 , TSseArray770 , FM4Array770);
+  grFM4770 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4770 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4770 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4770 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4770 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4770 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4770 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4770 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4770 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4770 -> GetXaxis() -> SetNdivisions(10);
+  grFM4770 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4770 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4770 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4770 -> SetMarkerStyle(20);
+  grFM4770 -> Draw("AP");
+  
+  cSource770 -> cd(2);
+  TGraph *grFM1770 = new TGraph (seEvents770 , TSseArray770 , FM1Array770);
+  grFM1770 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1770 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1770 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1770 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1770 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1770 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1770 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1770 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1770 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1770 -> GetXaxis() -> SetNdivisions(10);
+  grFM1770 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1770 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1770 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1770 -> SetMarkerStyle(20);
+  grFM1770 -> Draw("AP");
+  
+  cSource770 -> cd(4);
+  TGraph *grFM5770 = new TGraph (seEvents770 , TSseArray770 , FM5Array770);
+  grFM5770 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5770 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5770 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5770 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5770 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5770 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5770 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5770 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5770 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5770 -> GetXaxis() -> SetNdivisions(10);
+  grFM5770 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5770 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5770 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5770 -> SetMarkerStyle(20);
+  grFM5770 -> Draw("AP");
 
 
+  //run 771
+  TCanvas *cSource771 = new TCanvas("cSource771" , "cSource771" , 1200, 900);
+  cSource771 -> Divide (2,2);
+
+  cSource771 -> cd(1);
+  TGraph *grtemp771 = new TGraph(seEvents771 , TSseArray771 , tempArray771);
+  grtemp771 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp771 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp771 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp771 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp771 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp771 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp771 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp771 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp771 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp771 -> GetXaxis() -> SetNdivisions(10);
+  grtemp771 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp771 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp771 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp771 -> SetMarkerStyle(20);
+  grtemp771 -> Draw("AP");
+
+  cSource771 -> cd(3);
+  TGraph *grFM4771 = new TGraph (seEvents771 , TSseArray771 , FM4Array771);
+  grFM4771 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4771 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4771 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4771 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4771 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4771 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4771 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4771 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4771 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4771 -> GetXaxis() -> SetNdivisions(10);
+  grFM4771 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4771 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4771 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4771 -> SetMarkerStyle(20);
+  grFM4771 -> Draw("AP");
+  
+  cSource771 -> cd(2);
+  TGraph *grFM1771 = new TGraph (seEvents771 , TSseArray771 , FM1Array771);
+  grFM1771 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1771 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1771 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1771 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1771 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1771 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1771 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1771 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1771 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1771 -> GetXaxis() -> SetNdivisions(10);
+  grFM1771 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1771 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1771 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1771 -> SetMarkerStyle(20);
+  grFM1771 -> Draw("AP");
+  
+  cSource771 -> cd(4);
+  TGraph *grFM5771 = new TGraph (seEvents771 , TSseArray771 , FM5Array771);
+  grFM5771 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5771 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5771 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5771 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5771 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5771 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5771 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5771 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5771 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5771 -> GetXaxis() -> SetNdivisions(10);
+  grFM5771 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5771 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5771 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5771 -> SetMarkerStyle(20);
+  grFM5771 -> Draw("AP");
 
 
+  //run 772
+  TCanvas *cSource772 = new TCanvas("cSource772" , "cSource772" , 1200, 900);
+  cSource772 -> Divide (2,2);
+
+  cSource772 -> cd(1);
+  TGraph *grtemp772 = new TGraph(seEvents772 , TSseArray772 , tempArray772);
+  grtemp772 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp772 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp772 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp772 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp772 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp772 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp772 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp772 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp772 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp772 -> GetXaxis() -> SetNdivisions(10);
+  grtemp772 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp772 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp772 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp772 -> SetMarkerStyle(20);
+  grtemp772 -> Draw("AP");
+
+  cSource772 -> cd(3);
+  TGraph *grFM4772 = new TGraph (seEvents772 , TSseArray772 , FM4Array772);
+  grFM4772 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4772 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4772 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4772 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4772 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4772 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4772 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4772 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4772 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4772 -> GetXaxis() -> SetNdivisions(10);
+  grFM4772 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4772 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4772 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4772 -> SetMarkerStyle(20);
+  grFM4772 -> Draw("AP");
+  
+  cSource772 -> cd(2);
+  TGraph *grFM1772 = new TGraph (seEvents772 , TSseArray772 , FM1Array772);
+  grFM1772 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1772 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1772 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1772 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1772 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1772 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1772 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1772 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1772 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1772 -> GetXaxis() -> SetNdivisions(10);
+  grFM1772 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1772 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1772 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1772 -> SetMarkerStyle(20);
+  grFM1772 -> Draw("AP");
+  
+  cSource772 -> cd(4);
+  TGraph *grFM5772 = new TGraph (seEvents772 , TSseArray772 , FM5Array772);
+  grFM5772 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5772 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5772 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5772 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5772 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5772 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5772 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5772 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5772 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5772 -> GetXaxis() -> SetNdivisions(10);
+  grFM5772 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5772 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5772 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5772 -> SetMarkerStyle(20);
+  grFM5772 -> Draw("AP");
+
+  //run 773
+  TCanvas *cSource773 = new TCanvas("cSource773" , "cSource773" , 1200, 900);
+  cSource773 -> Divide (2,2);
+
+  cSource773 -> cd(1);
+  TGraph *grtemp773 = new TGraph(seEvents773 , TSseArray773 , tempArray773);
+  grtemp773 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp773 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp773 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp773 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp773 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp773 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp773 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp773 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp773 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp773 -> GetXaxis() -> SetNdivisions(10);
+  grtemp773 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp773 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp773 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp773 -> SetMarkerStyle(20);
+  grtemp773 -> Draw("AP");
+
+  cSource773 -> cd(3);
+  TGraph *grFM4773 = new TGraph (seEvents773 , TSseArray773 , FM4Array773);
+  grFM4773 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4773 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4773 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4773 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4773 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4773 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4773 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4773 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4773 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4773 -> GetXaxis() -> SetNdivisions(10);
+  grFM4773 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4773 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4773 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4773 -> SetMarkerStyle(20);
+  grFM4773 -> Draw("AP");
+  
+  cSource773 -> cd(2);
+  TGraph *grFM1773 = new TGraph (seEvents773 , TSseArray773 , FM1Array773);
+  grFM1773 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1773 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1773 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1773 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1773 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1773 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1773 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1773 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1773 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1773 -> GetXaxis() -> SetNdivisions(10);
+  grFM1773 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1773 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1773 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1773 -> SetMarkerStyle(20);
+  grFM1773 -> Draw("AP");
+  
+  cSource773 -> cd(4);
+  TGraph *grFM5773 = new TGraph (seEvents773 , TSseArray773 , FM5Array773);
+  grFM5773 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5773 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5773 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5773 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5773 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5773 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5773 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5773 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5773 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5773 -> GetXaxis() -> SetNdivisions(10);
+  grFM5773 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5773 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5773 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5773 -> SetMarkerStyle(20);
+  grFM5773 -> Draw("AP");
+
+
+  //run 778
+  TCanvas *cSource778 = new TCanvas("cSource778" , "cSource778" , 1200, 900);
+  cSource778 -> Divide (2,2);
+
+  cSource778 -> cd(1);
+  TGraph *grtemp778 = new TGraph(seEvents778 , TSseArray778 , tempArray778);
+  grtemp778 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp778 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp778 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp778 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp778 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp778 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp778 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp778 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp778 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp778 -> GetXaxis() -> SetNdivisions(10);
+  grtemp778 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp778 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp778 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp778 -> SetMarkerStyle(20);
+  grtemp778 -> Draw("AP");
+
+  cSource778 -> cd(3);
+  TGraph *grFM4778 = new TGraph (seEvents778 , TSseArray778 , FM4Array778);
+  grFM4778 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4778 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4778 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4778 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4778 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4778 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4778 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4778 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4778 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4778 -> GetXaxis() -> SetNdivisions(10);
+  grFM4778 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4778 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4778 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4778 -> SetMarkerStyle(20);
+  grFM4778 -> Draw("AP");
+  
+  cSource778 -> cd(2);
+  TGraph *grFM1778 = new TGraph (seEvents778 , TSseArray778 , FM1Array778);
+  grFM1778 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1778 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1778 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1778 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1778 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1778 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1778 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1778 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1778 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1778 -> GetXaxis() -> SetNdivisions(10);
+  grFM1778 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1778 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1778 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1778 -> SetMarkerStyle(20);
+  grFM1778 -> Draw("AP");
+  
+  cSource778 -> cd(4);
+  TGraph *grFM5778 = new TGraph (seEvents778 , TSseArray778 , FM5Array778);
+  grFM5778 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5778 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5778 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5778 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5778 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5778 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5778 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5778 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5778 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5778 -> GetXaxis() -> SetNdivisions(10);
+  grFM5778 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5778 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5778 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5778 -> SetMarkerStyle(20);
+  grFM5778 -> Draw("AP");
+
+
+  //run 779
+  TCanvas *cSource779 = new TCanvas("cSource779" , "cSource779" , 1200, 900);
+  cSource779 -> Divide (2,2);
+
+  cSource779 -> cd(1);
+  TGraph *grtemp779 = new TGraph(seEvents779 , TSseArray779 , tempArray779);
+  grtemp779 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp779 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp779 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp779 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp779 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp779 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp779 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp779 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp779 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp779 -> GetXaxis() -> SetNdivisions(10);
+  grtemp779 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp779 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp779 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp779 -> SetMarkerStyle(20);
+  grtemp779 -> Draw("AP");
+
+  cSource779 -> cd(3);
+  TGraph *grFM4779 = new TGraph (seEvents779 , TSseArray779 , FM4Array779);
+  grFM4779 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4779 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4779 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4779 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4779 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4779 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4779 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4779 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4779 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4779 -> GetXaxis() -> SetNdivisions(10);
+  grFM4779 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4779 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4779 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4779 -> SetMarkerStyle(20);
+  grFM4779 -> Draw("AP");
+  
+  cSource779 -> cd(2);
+  TGraph *grFM1779 = new TGraph (seEvents779 , TSseArray779 , FM1Array779);
+  grFM1779 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1779 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1779 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1779 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1779 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1779 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1779 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1779 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1779 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1779 -> GetXaxis() -> SetNdivisions(10);
+  grFM1779 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1779 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1779 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1779 -> SetMarkerStyle(20);
+  grFM1779 -> Draw("AP");
+  
+  cSource779 -> cd(4);
+  TGraph *grFM5779 = new TGraph (seEvents779 , TSseArray779 , FM5Array779);
+  grFM5779 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5779 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5779 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5779 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5779 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5779 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5779 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5779 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5779 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5779 -> GetXaxis() -> SetNdivisions(10);
+  grFM5779 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5779 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5779 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5779 -> SetMarkerStyle(20);
+  grFM5779 -> Draw("AP");
+
+  
   
 }
