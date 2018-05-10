@@ -511,6 +511,11 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   int maxXrange778 = 0, minXrange778 = 1540000000.;
   int maxXrange779 = 0, minXrange779 = 1540000000.;
 
+  //Defining the canvasas
+  //run 765
+  //TCanvas *cSource765 = new TCanvas("cSource765" , "cSource765" , 1200, 900);
+  // cSource765 -> Divide (3,2);
+
   
   TH1* UCNRate765 = new TH1F("UCNRate765", "UCN-rate Histogram", NBins765 , minXrange765, maxXrange765); // defining the rate histogram for each run
   TH1* UCNRate766 = new TH1F("UCNRate766", "UCN-rate Histogram", NBins766 , minXrange766, maxXrange766);
@@ -783,7 +788,9 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   // **************************
 
   //run 765
-  TCanvas *cRate765 = new TCanvas ("cRate765" , "cRate765" , 1200 , 900);
+  TCanvas *c765 = new TCanvas ("c765" , "c765" , 1200 , 900);
+  c765 -> Divide(3,2);
+  c765 -> cd(1);
   UCNRate765 -> GetYaxis() -> SetTitle("UCN Counts/s");
   UCNRate765 -> GetXaxis() -> SetTimeDisplay(1);
   UCNRate765 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
@@ -794,7 +801,9 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   UCNRate765 -> Draw();
 
   //run 766
-  TCanvas *cRate766 = new TCanvas ("cRate766" , "cRate766" , 1200 , 900);
+  TCanvas *c766 = new TCanvas ("c766" , "c766" , 1200 , 900);
+  c766 -> Divide(3,2);
+  c766 -> cd(1);
   UCNRate766 -> GetYaxis() -> SetTitle("UCN Counts/s");
   UCNRate766 -> GetXaxis() -> SetTimeDisplay(1);
   UCNRate766 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
@@ -805,7 +814,9 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   UCNRate766 -> Draw();
 
   //run 767
-  TCanvas *cRate767 = new TCanvas ("cRate767" , "cRate767" , 1200 , 900);
+  TCanvas *c767 = new TCanvas ("c767" , "c767" , 1200 , 900);
+  c767 -> Divide(3,2);
+  c767 -> cd(1);
   UCNRate767 -> GetYaxis() -> SetTitle("UCN Counts/s");
   UCNRate767 -> GetXaxis() -> SetTimeDisplay(1);
   UCNRate767 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
@@ -816,7 +827,9 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   UCNRate767 -> Draw();
 
   //run 768
-  TCanvas *cRate768 = new TCanvas ("cRate768" , "cRate768" , 1200 , 900);
+  TCanvas *c768 = new TCanvas ("c768" , "c768" , 1200 , 900);
+  c768 -> Divide(3,2);
+  c768 -> cd(1);
   UCNRate768 -> GetYaxis() -> SetTitle("UCN Counts/s");
   UCNRate768 -> GetXaxis() -> SetTimeDisplay(1);
   UCNRate768 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
@@ -827,7 +840,9 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   UCNRate768 -> Draw();
 
   //run 769
-  TCanvas *cRate769 = new TCanvas ("cRate769" , "cRate769" , 1200 , 900);
+  TCanvas *c769 = new TCanvas ("c769" , "c769" , 1200 , 900);
+  c769 -> Divide(3,2);
+  c769 -> cd(1);
   UCNRate769 -> GetYaxis() -> SetTitle("UCN Counts/s");
   UCNRate769 -> GetXaxis() -> SetTimeDisplay(1);
   UCNRate769 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
@@ -838,7 +853,9 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   UCNRate769 -> Draw();
 
   //run 770
-  TCanvas *cRate770 = new TCanvas ("cRate770" , "cRate770" , 1200 , 900);
+  TCanvas *c770 = new TCanvas ("c770" , "c770" , 1200 , 900);
+  c770 -> Divide(3,2);
+  c770 -> cd(1);
   UCNRate770 -> GetYaxis() -> SetTitle("UCN Counts/s");
   UCNRate770 -> GetXaxis() -> SetTimeDisplay(1);
   UCNRate770 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
@@ -850,7 +867,9 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
 
 
   //run 771
-  TCanvas *cRate771 = new TCanvas ("cRate771" , "cRate771" , 1200 , 900);
+  TCanvas *c771 = new TCanvas ("c771" , "c771" , 1200 , 900);
+  c771 -> Divide(3,2);
+  c771 -> cd(1);
   UCNRate771 -> GetYaxis() -> SetTitle("UCN Counts/s");
   UCNRate771 -> GetXaxis() -> SetTimeDisplay(1);
   UCNRate771 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
@@ -861,7 +880,9 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   UCNRate771 -> Draw();
 
   //run 772
-  TCanvas *cRate772 = new TCanvas ("cRate772" , "cRate772" , 1200 , 900);
+  TCanvas *c772 = new TCanvas ("c772" , "c772" , 1200 , 900);
+  c772 -> Divide(3,2);
+  c772 -> cd(1);
   UCNRate772 -> GetYaxis() -> SetTitle("UCN Counts/s");
   UCNRate772 -> GetXaxis() -> SetTimeDisplay(1);
   UCNRate772 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
@@ -872,7 +893,9 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   UCNRate772 -> Draw();
 
   //run 773
-  TCanvas *cRate773 = new TCanvas ("cRate773" , "cRate773" , 1200 , 900);
+  TCanvas *c773 = new TCanvas ("c773" , "c773" , 1200 , 900);
+  c773 -> Divide(3,2);
+  c773 -> cd(1);
   UCNRate773 -> GetYaxis() -> SetTitle("UCN Counts/s");
   UCNRate773 -> GetXaxis() -> SetTimeDisplay(1);
   UCNRate773 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
@@ -883,7 +906,9 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   UCNRate773 -> Draw();
 
   //run 778
-  TCanvas *cRate778 = new TCanvas ("cRate778" , "cRate778" , 1200 , 900);
+  TCanvas *c778 = new TCanvas ("c778" , "c778" , 1200 , 900);
+  c778 -> Divide(3,2);
+  c778 -> cd(1);
   UCNRate778 -> GetYaxis() -> SetTitle("UCN Counts/s");
   UCNRate778 -> GetXaxis() -> SetTimeDisplay(1);
   UCNRate778 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
@@ -894,7 +919,9 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   UCNRate778 -> Draw();
 
   //run 779
-  TCanvas *cRate779 = new TCanvas ("cRate779" , "cRate779" , 1200 , 900);
+  TCanvas *c779 = new TCanvas ("c779" , "c779" , 1200 , 900);
+  c779 -> Divide(3,2);
+  c779 -> cd(1);
   UCNRate779 -> GetYaxis() -> SetTitle("UCN Counts/s");
   UCNRate779 -> GetXaxis() -> SetTimeDisplay(1);
   UCNRate779 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
@@ -1094,10 +1121,8 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   // **********************************
 
   //run 765
-  TCanvas *cSource765 = new TCanvas("cSource765" , "cSource765" , 1200, 900);
-  cSource765 -> Divide (2,2);
 
-  cSource765 -> cd(1);
+  c765 -> cd(2);
   TGraph *grtemp765 = new TGraph(seEvents765 , TSseArray765 , tempArray765);
   grtemp765 -> SetTitle(" Isopure Helium Temperature vs Time ");
   grtemp765 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
@@ -1115,7 +1140,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grtemp765 -> SetMarkerStyle(20);
   grtemp765 -> Draw("AP");
 
-  cSource765 -> cd(3);
+  c765 -> cd(3);
   TGraph *grFM4765 = new TGraph (seEvents765 , TSseArray765 , FM4Array765);
   grFM4765 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
   grFM4765 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1133,7 +1158,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM4765 -> SetMarkerStyle(20);
   grFM4765 -> Draw("AP");
   
-  cSource765 -> cd(2);
+  c765 -> cd(4);
   TGraph *grFM1765 = new TGraph (seEvents765 , TSseArray765 , FM1Array765);
   grFM1765 -> SetTitle(" ^{3}He Flow Rate vs Time ");
   grFM1765 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
@@ -1151,7 +1176,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM1765 -> SetMarkerStyle(20);
   grFM1765 -> Draw("AP");
   
-  cSource765 -> cd(4);
+  c765 -> cd(5);
   TGraph *grFM5765 = new TGraph (seEvents765 , TSseArray765 , FM5Array765);
   grFM5765 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
   grFM5765 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1168,13 +1193,28 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM5765 -> GetXaxis() -> SetLabelSize(.04);
   grFM5765 -> SetMarkerStyle(20);
   grFM5765 -> Draw("AP");
+
+  c765 -> cd(6);
+  TGraph *grBL765 = new TGraph (blEvent765 , TSblArray765 , curArray765);
+  grBL765 -> SetTitle(" Predicted current vs Time ");
+  grBL765 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL765 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL765 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL765 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL765 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL765 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL765 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL765 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL765 -> GetXaxis() -> SetNdivisions(10);
+  grBL765 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL765 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL765 -> GetXaxis() -> SetLabelSize(.04);
+  grBL765 -> SetMarkerStyle(20);
+  grBL765 -> Draw("AP");
   
 
   //run 766
-  TCanvas *cSource766 = new TCanvas("cSource766" , "cSource766" , 1200, 900);
-  cSource766 -> Divide (2,2);
-
-  cSource766 -> cd(1);
+  c766 -> cd(2);
   TGraph *grtemp766 = new TGraph(seEvents766 , TSseArray766 , tempArray766);
   grtemp766 -> SetTitle(" Isopure Helium Temperature vs Time ");
   grtemp766 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
@@ -1192,7 +1232,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grtemp766 -> SetMarkerStyle(20);
   grtemp766 -> Draw("AP");
 
-  cSource766 -> cd(3);
+  c766 -> cd(3);
   TGraph *grFM4766 = new TGraph (seEvents766 , TSseArray766 , FM4Array766);
   grFM4766 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
   grFM4766 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1210,7 +1250,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM4766 -> SetMarkerStyle(20);
   grFM4766 -> Draw("AP");
   
-  cSource766 -> cd(2);
+  c766 -> cd(4);
   TGraph *grFM1766 = new TGraph (seEvents766 , TSseArray766 , FM1Array766);
   grFM1766 -> SetTitle(" ^{3}He Flow Rate vs Time ");
   grFM1766 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
@@ -1228,7 +1268,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM1766 -> SetMarkerStyle(20);
   grFM1766 -> Draw("AP");
   
-  cSource766 -> cd(4);
+  c766 -> cd(5);
   TGraph *grFM5766 = new TGraph (seEvents766 , TSseArray766 , FM5Array766);
   grFM5766 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
   grFM5766 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1245,12 +1285,27 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM5766 -> GetXaxis() -> SetLabelSize(.04);
   grFM5766 -> SetMarkerStyle(20);
   grFM5766 -> Draw("AP");
+
+  c766 -> cd(6);
+  TGraph *grBL766 = new TGraph (blEvent766 , TSblArray766 , curArray766);
+  grBL766 -> SetTitle(" Predicted current vs Time ");
+  grBL766 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL766 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL766 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL766 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL766 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL766 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL766 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL766 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL766 -> GetXaxis() -> SetNdivisions(10);
+  grBL766 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL766 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL766 -> GetXaxis() -> SetLabelSize(.04);
+  grBL766 -> SetMarkerStyle(20);
+  grBL766 -> Draw("AP");
   
   //run 767
-  TCanvas *cSource767 = new TCanvas("cSource767" , "cSource767" , 1200, 900);
-  cSource767 -> Divide (2,2);
-
-  cSource767 -> cd(1);
+  c767 -> cd(2);
   TGraph *grtemp767 = new TGraph(seEvents767 , TSseArray767 , tempArray767);
   grtemp767 -> SetTitle(" Isopure Helium Temperature vs Time ");
   grtemp767 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
@@ -1268,7 +1323,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grtemp767 -> SetMarkerStyle(20);
   grtemp767 -> Draw("AP");
 
-  cSource767 -> cd(3);
+  c767 -> cd(3);
   TGraph *grFM4767 = new TGraph (seEvents767 , TSseArray767 , FM4Array767);
   grFM4767 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
   grFM4767 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1286,7 +1341,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM4767 -> SetMarkerStyle(20);
   grFM4767 -> Draw("AP");
   
-  cSource767 -> cd(2);
+  c767 -> cd(4);
   TGraph *grFM1767 = new TGraph (seEvents767 , TSseArray767 , FM1Array767);
   grFM1767 -> SetTitle(" ^{3}He Flow Rate vs Time ");
   grFM1767 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
@@ -1304,7 +1359,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM1767 -> SetMarkerStyle(20);
   grFM1767 -> Draw("AP");
   
-  cSource767 -> cd(4);
+  c767 -> cd(5);
   TGraph *grFM5767 = new TGraph (seEvents767 , TSseArray767 , FM5Array767);
   grFM5767 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
   grFM5767 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1321,13 +1376,28 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM5767 -> GetXaxis() -> SetLabelSize(.04);
   grFM5767 -> SetMarkerStyle(20);
   grFM5767 -> Draw("AP");
-  
+
+  c767 -> cd(6);
+  TGraph *grBL767 = new TGraph (blEvent767 , TSblArray767 , curArray767);
+  grBL767 -> SetTitle(" Predicted current vs Time ");
+  grBL767 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL767 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL767 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL767 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL767 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL767 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL767 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL767 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL767 -> GetXaxis() -> SetNdivisions(10);
+  grBL767 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL767 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL767 -> GetXaxis() -> SetLabelSize(.04);
+  grBL767 -> SetMarkerStyle(20);
+  grBL767 -> Draw("AP");
+
 
   //run 768
-  TCanvas *cSource768 = new TCanvas("cSource768" , "cSource768" , 1200, 900);
-  cSource768 -> Divide (2,2);
-
-  cSource768 -> cd(1);
+  c768 -> cd(2);
   TGraph *grtemp768 = new TGraph(seEvents768 , TSseArray768 , tempArray768);
   grtemp768 -> SetTitle(" Isopure Helium Temperature vs Time ");
   grtemp768 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
@@ -1345,7 +1415,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grtemp768 -> SetMarkerStyle(20);
   grtemp768 -> Draw("AP");
 
-  cSource768 -> cd(3);
+  c768 -> cd(3);
   TGraph *grFM4768 = new TGraph (seEvents768 , TSseArray768 , FM4Array768);
   grFM4768 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
   grFM4768 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1363,7 +1433,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM4768 -> SetMarkerStyle(20);
   grFM4768 -> Draw("AP");
   
-  cSource768 -> cd(2);
+  c768 -> cd(4);
   TGraph *grFM1768 = new TGraph (seEvents768 , TSseArray768 , FM1Array768);
   grFM1768 -> SetTitle(" ^{3}He Flow Rate vs Time ");
   grFM1768 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
@@ -1381,7 +1451,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM1768 -> SetMarkerStyle(20);
   grFM1768 -> Draw("AP");
   
-  cSource768 -> cd(4);
+  c768 -> cd(5);
   TGraph *grFM5768 = new TGraph (seEvents768 , TSseArray768 , FM5Array768);
   grFM5768 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
   grFM5768 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1399,11 +1469,26 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM5768 -> SetMarkerStyle(20);
   grFM5768 -> Draw("AP");
 
+  c768 -> cd(6);
+  TGraph *grBL768 = new TGraph (blEvent768 , TSblArray768 , curArray768);
+  grBL768 -> SetTitle(" Predicted current vs Time ");
+  grBL768 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL768 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL768 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL768 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL768 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL768 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL768 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL768 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL768 -> GetXaxis() -> SetNdivisions(10);
+  grBL768 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL768 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL768 -> GetXaxis() -> SetLabelSize(.04);
+  grBL768 -> SetMarkerStyle(20);
+  grBL768 -> Draw("AP");
+  
   //run 769
-  TCanvas *cSource769 = new TCanvas("cSource769" , "cSource769" , 1200, 900);
-  cSource769 -> Divide (2,2);
-
-  cSource769 -> cd(1);
+  c769 -> cd(2);
   TGraph *grtemp769 = new TGraph(seEvents769 , TSseArray769 , tempArray769);
   grtemp769 -> SetTitle(" Isopure Helium Temperature vs Time ");
   grtemp769 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
@@ -1421,7 +1506,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grtemp769 -> SetMarkerStyle(20);
   grtemp769 -> Draw("AP");
 
-  cSource769 -> cd(3);
+  c769 -> cd(3);
   TGraph *grFM4769 = new TGraph (seEvents769 , TSseArray769 , FM4Array769);
   grFM4769 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
   grFM4769 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1439,7 +1524,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM4769 -> SetMarkerStyle(20);
   grFM4769 -> Draw("AP");
   
-  cSource769 -> cd(2);
+  c769 -> cd(4);
   TGraph *grFM1769 = new TGraph (seEvents769 , TSseArray769 , FM1Array769);
   grFM1769 -> SetTitle(" ^{3}He Flow Rate vs Time ");
   grFM1769 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
@@ -1457,7 +1542,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM1769 -> SetMarkerStyle(20);
   grFM1769 -> Draw("AP");
   
-  cSource769 -> cd(4);
+  c769 -> cd(5);
   TGraph *grFM5769 = new TGraph (seEvents769 , TSseArray769 , FM5Array769);
   grFM5769 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
   grFM5769 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1476,11 +1561,26 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM5769 -> Draw("AP");
 
 
-  //run 770
-  TCanvas *cSource770 = new TCanvas("cSource770" , "cSource770" , 1200, 900);
-  cSource770 -> Divide (2,2);
+  c769 -> cd(6);
+  TGraph *grBL769 = new TGraph (blEvent769 , TSblArray769 , curArray769);
+  grBL769 -> SetTitle(" Predicted current vs Time ");
+  grBL769 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL769 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL769 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL769 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL769 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL769 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL769 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL769 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL769 -> GetXaxis() -> SetNdivisions(10);
+  grBL769 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL769 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL769 -> GetXaxis() -> SetLabelSize(.04);
+  grBL769 -> SetMarkerStyle(20);
+  grBL769 -> Draw("AP");
 
-  cSource770 -> cd(1);
+  //run 770
+  c770 -> cd(2);
   TGraph *grtemp770 = new TGraph(seEvents770 , TSseArray770 , tempArray770);
   grtemp770 -> SetTitle(" Isopure Helium Temperature vs Time ");
   grtemp770 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
@@ -1498,7 +1598,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grtemp770 -> SetMarkerStyle(20);
   grtemp770 -> Draw("AP");
 
-  cSource770 -> cd(3);
+  c770 -> cd(3);
   TGraph *grFM4770 = new TGraph (seEvents770 , TSseArray770 , FM4Array770);
   grFM4770 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
   grFM4770 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1516,7 +1616,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM4770 -> SetMarkerStyle(20);
   grFM4770 -> Draw("AP");
   
-  cSource770 -> cd(2);
+  c770 -> cd(4);
   TGraph *grFM1770 = new TGraph (seEvents770 , TSseArray770 , FM1Array770);
   grFM1770 -> SetTitle(" ^{3}He Flow Rate vs Time ");
   grFM1770 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
@@ -1534,7 +1634,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM1770 -> SetMarkerStyle(20);
   grFM1770 -> Draw("AP");
   
-  cSource770 -> cd(4);
+  c770 -> cd(5);
   TGraph *grFM5770 = new TGraph (seEvents770 , TSseArray770 , FM5Array770);
   grFM5770 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
   grFM5770 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1552,12 +1652,26 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM5770 -> SetMarkerStyle(20);
   grFM5770 -> Draw("AP");
 
+  c770 -> cd(6);
+  TGraph *grBL770 = new TGraph (blEvent770 , TSblArray770 , curArray770);
+  grBL770 -> SetTitle(" Predicted current vs Time ");
+  grBL770 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL770 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL770 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL770 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL770 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL770 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL770 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL770 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL770 -> GetXaxis() -> SetNdivisions(10);
+  grBL770 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL770 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL770 -> GetXaxis() -> SetLabelSize(.04);
+  grBL770 -> SetMarkerStyle(20);
+  grBL770 -> Draw("AP");
 
   //run 771
-  TCanvas *cSource771 = new TCanvas("cSource771" , "cSource771" , 1200, 900);
-  cSource771 -> Divide (2,2);
-
-  cSource771 -> cd(1);
+  c771 -> cd(2);
   TGraph *grtemp771 = new TGraph(seEvents771 , TSseArray771 , tempArray771);
   grtemp771 -> SetTitle(" Isopure Helium Temperature vs Time ");
   grtemp771 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
@@ -1575,7 +1689,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grtemp771 -> SetMarkerStyle(20);
   grtemp771 -> Draw("AP");
 
-  cSource771 -> cd(3);
+  c771 -> cd(3);
   TGraph *grFM4771 = new TGraph (seEvents771 , TSseArray771 , FM4Array771);
   grFM4771 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
   grFM4771 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1593,7 +1707,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM4771 -> SetMarkerStyle(20);
   grFM4771 -> Draw("AP");
   
-  cSource771 -> cd(2);
+  c771 -> cd(4);
   TGraph *grFM1771 = new TGraph (seEvents771 , TSseArray771 , FM1Array771);
   grFM1771 -> SetTitle(" ^{3}He Flow Rate vs Time ");
   grFM1771 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
@@ -1611,7 +1725,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM1771 -> SetMarkerStyle(20);
   grFM1771 -> Draw("AP");
   
-  cSource771 -> cd(4);
+  c771 -> cd(5);
   TGraph *grFM5771 = new TGraph (seEvents771 , TSseArray771 , FM5Array771);
   grFM5771 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
   grFM5771 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1629,12 +1743,27 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM5771 -> SetMarkerStyle(20);
   grFM5771 -> Draw("AP");
 
+  c771 -> cd(6);
+  TGraph *grBL771 = new TGraph (blEvent771 , TSblArray771 , curArray771);
+  grBL771 -> SetTitle(" Predicted current vs Time ");
+  grBL771 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL771 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL771 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL771 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL771 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL771 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL771 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL771 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL771 -> GetXaxis() -> SetNdivisions(10);
+  grBL771 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL771 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL771 -> GetXaxis() -> SetLabelSize(.04);
+  grBL771 -> SetMarkerStyle(20);
+  grBL771 -> Draw("AP");
 
+  
   //run 772
-  TCanvas *cSource772 = new TCanvas("cSource772" , "cSource772" , 1200, 900);
-  cSource772 -> Divide (2,2);
-
-  cSource772 -> cd(1);
+  c772 -> cd(2);
   TGraph *grtemp772 = new TGraph(seEvents772 , TSseArray772 , tempArray772);
   grtemp772 -> SetTitle(" Isopure Helium Temperature vs Time ");
   grtemp772 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
@@ -1652,7 +1781,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grtemp772 -> SetMarkerStyle(20);
   grtemp772 -> Draw("AP");
 
-  cSource772 -> cd(3);
+  c772 -> cd(3);
   TGraph *grFM4772 = new TGraph (seEvents772 , TSseArray772 , FM4Array772);
   grFM4772 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
   grFM4772 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1670,7 +1799,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM4772 -> SetMarkerStyle(20);
   grFM4772 -> Draw("AP");
   
-  cSource772 -> cd(2);
+  c772 -> cd(4);
   TGraph *grFM1772 = new TGraph (seEvents772 , TSseArray772 , FM1Array772);
   grFM1772 -> SetTitle(" ^{3}He Flow Rate vs Time ");
   grFM1772 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
@@ -1688,7 +1817,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM1772 -> SetMarkerStyle(20);
   grFM1772 -> Draw("AP");
   
-  cSource772 -> cd(4);
+  c772 -> cd(5);
   TGraph *grFM5772 = new TGraph (seEvents772 , TSseArray772 , FM5Array772);
   grFM5772 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
   grFM5772 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1706,11 +1835,26 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM5772 -> SetMarkerStyle(20);
   grFM5772 -> Draw("AP");
 
-  //run 773
-  TCanvas *cSource773 = new TCanvas("cSource773" , "cSource773" , 1200, 900);
-  cSource773 -> Divide (2,2);
+  c772 -> cd(6);
+  TGraph *grBL772 = new TGraph (blEvent772 , TSblArray772 , curArray772);
+  grBL772 -> SetTitle(" Predicted current vs Time ");
+  grBL772 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL772 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL772 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL772 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL772 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL772 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL772 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL772 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL772 -> GetXaxis() -> SetNdivisions(10);
+  grBL772 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL772 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL772 -> GetXaxis() -> SetLabelSize(.04);
+  grBL772 -> SetMarkerStyle(20);
+  grBL772 -> Draw("AP");
 
-  cSource773 -> cd(1);
+  //run 773
+  c773 -> cd(2);
   TGraph *grtemp773 = new TGraph(seEvents773 , TSseArray773 , tempArray773);
   grtemp773 -> SetTitle(" Isopure Helium Temperature vs Time ");
   grtemp773 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
@@ -1728,7 +1872,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grtemp773 -> SetMarkerStyle(20);
   grtemp773 -> Draw("AP");
 
-  cSource773 -> cd(3);
+  c773 -> cd(3);
   TGraph *grFM4773 = new TGraph (seEvents773 , TSseArray773 , FM4Array773);
   grFM4773 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
   grFM4773 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1746,7 +1890,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM4773 -> SetMarkerStyle(20);
   grFM4773 -> Draw("AP");
   
-  cSource773 -> cd(2);
+  c773 -> cd(4);
   TGraph *grFM1773 = new TGraph (seEvents773 , TSseArray773 , FM1Array773);
   grFM1773 -> SetTitle(" ^{3}He Flow Rate vs Time ");
   grFM1773 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
@@ -1764,7 +1908,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM1773 -> SetMarkerStyle(20);
   grFM1773 -> Draw("AP");
   
-  cSource773 -> cd(4);
+  c773 -> cd(5);
   TGraph *grFM5773 = new TGraph (seEvents773 , TSseArray773 , FM5Array773);
   grFM5773 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
   grFM5773 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1783,11 +1927,26 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM5773 -> Draw("AP");
 
 
-  //run 778
-  TCanvas *cSource778 = new TCanvas("cSource778" , "cSource778" , 1200, 900);
-  cSource778 -> Divide (2,2);
+  c773 -> cd(6);
+  TGraph *grBL773 = new TGraph (blEvent773 , TSblArray773 , curArray773);
+  grBL773 -> SetTitle(" Predicted current vs Time ");
+  grBL773 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL773 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL773 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL773 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL773 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL773 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL773 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL773 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL773 -> GetXaxis() -> SetNdivisions(10);
+  grBL773 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL773 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL773 -> GetXaxis() -> SetLabelSize(.04);
+  grBL773 -> SetMarkerStyle(20);
+  grBL773 -> Draw("AP");
 
-  cSource778 -> cd(1);
+  //run 778
+  c778 -> cd(2);
   TGraph *grtemp778 = new TGraph(seEvents778 , TSseArray778 , tempArray778);
   grtemp778 -> SetTitle(" Isopure Helium Temperature vs Time ");
   grtemp778 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
@@ -1805,7 +1964,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grtemp778 -> SetMarkerStyle(20);
   grtemp778 -> Draw("AP");
 
-  cSource778 -> cd(3);
+  c778 -> cd(3);
   TGraph *grFM4778 = new TGraph (seEvents778 , TSseArray778 , FM4Array778);
   grFM4778 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
   grFM4778 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1823,7 +1982,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM4778 -> SetMarkerStyle(20);
   grFM4778 -> Draw("AP");
   
-  cSource778 -> cd(2);
+  c778 -> cd(4);
   TGraph *grFM1778 = new TGraph (seEvents778 , TSseArray778 , FM1Array778);
   grFM1778 -> SetTitle(" ^{3}He Flow Rate vs Time ");
   grFM1778 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
@@ -1841,7 +2000,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM1778 -> SetMarkerStyle(20);
   grFM1778 -> Draw("AP");
   
-  cSource778 -> cd(4);
+  c778 -> cd(5);
   TGraph *grFM5778 = new TGraph (seEvents778 , TSseArray778 , FM5Array778);
   grFM5778 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
   grFM5778 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1860,11 +2019,26 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM5778 -> Draw("AP");
 
 
+  c778 -> cd(6);
+  TGraph *grBL778 = new TGraph (blEvent778 , TSblArray778 , curArray778);
+  grBL778 -> SetTitle(" Predicted current vs Time ");
+  grBL778 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL778 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL778 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL778 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL778 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL778 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL778 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL778 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL778 -> GetXaxis() -> SetNdivisions(10);
+  grBL778 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL778 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL778 -> GetXaxis() -> SetLabelSize(.04);
+  grBL778 -> SetMarkerStyle(20);
+  grBL778 -> Draw("AP");
+  
   //run 779
-  TCanvas *cSource779 = new TCanvas("cSource779" , "cSource779" , 1200, 900);
-  cSource779 -> Divide (2,2);
-
-  cSource779 -> cd(1);
+  c779 -> cd(2);
   TGraph *grtemp779 = new TGraph(seEvents779 , TSseArray779 , tempArray779);
   grtemp779 -> SetTitle(" Isopure Helium Temperature vs Time ");
   grtemp779 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
@@ -1882,7 +2056,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grtemp779 -> SetMarkerStyle(20);
   grtemp779 -> Draw("AP");
 
-  cSource779 -> cd(3);
+  c779 -> cd(3);
   TGraph *grFM4779 = new TGraph (seEvents779 , TSseArray779 , FM4Array779);
   grFM4779 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
   grFM4779 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1900,7 +2074,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM4779 -> SetMarkerStyle(20);
   grFM4779 -> Draw("AP");
   
-  cSource779 -> cd(2);
+  c779 -> cd(4);
   TGraph *grFM1779 = new TGraph (seEvents779 , TSseArray779 , FM1Array779);
   grFM1779 -> SetTitle(" ^{3}He Flow Rate vs Time ");
   grFM1779 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
@@ -1918,7 +2092,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM1779 -> SetMarkerStyle(20);
   grFM1779 -> Draw("AP");
   
-  cSource779 -> cd(4);
+  c779 -> cd(5);
   TGraph *grFM5779 = new TGraph (seEvents779 , TSseArray779 , FM5Array779);
   grFM5779 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
   grFM5779 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
@@ -1936,6 +2110,23 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFM5779 -> SetMarkerStyle(20);
   grFM5779 -> Draw("AP");
 
-  
+
+  c779 -> cd(6);
+  TGraph *grBL779 = new TGraph (blEvent779 , TSblArray779 , curArray779);
+  grBL779 -> SetTitle(" Predicted current vs Time ");
+  grBL779 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL779 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL779 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL779 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL779 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL779 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL779 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL779 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL779 -> GetXaxis() -> SetNdivisions(10);
+  grBL779 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL779 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL779 -> GetXaxis() -> SetLabelSize(.04);
+  grBL779 -> SetMarkerStyle(20);
+  grBL779 -> Draw("AP");
   
 }
