@@ -429,9 +429,6 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double FM4Array778[max];
   double FM4Array779[max];
 
-
-
-
   double FM5765; // Flow rate of the 4K reservoir
   double FM5766;
   double FM5767;
@@ -1019,6 +1016,76 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array779[j] = FM1779;
     FM4Array779[j] = FM4779;
     FM5Array779[j] = FM5779;
+  }
+
+  //***********************************
+  // Loop over the beamline Tree values
+  //***********************************
+
+  //run 765
+  for (ULong64_t j = 0; j < blEvent765 ; j++){
+    TSblArray765[j] = timestamp_bl765;
+    curArray765[j] = cur765;
+  }
+
+  //run 766
+  for (ULong64_t j = 0; j < blEvent766 ; j++){
+    TSblArray766[j] = timestamp_bl766;
+    curArray766[j] = cur766;
+  }
+
+  //run 767
+  for (ULong64_t j = 0; j < blEvent767 ; j++){
+    TSblArray767[j] = timestamp_bl767;
+    curArray767[j] = cur767;
+  }
+
+  //run 768
+  for (ULong64_t j = 0; j < blEvent768 ; j++){
+    TSblArray768[j] = timestamp_bl768;
+    curArray768[j] = cur768;
+  }
+
+  //run 769
+  for (ULong64_t j = 0; j < blEvent769 ; j++){
+    TSblArray769[j] = timestamp_bl769;
+    curArray769[j] = cur769;
+  }
+
+  //run 770
+  for (ULong64_t j = 0; j < blEvent770 ; j++){
+    TSblArray770[j] = timestamp_bl770;
+    curArray770[j] = cur770;
+  }
+
+  //run 771
+  for (ULong64_t j = 0; j < blEvent771 ; j++){
+    TSblArray771[j] = timestamp_bl771;
+    curArray771[j] = cur771;
+  }
+
+  //run 772
+  for (ULong64_t j = 0; j < blEvent772 ; j++){
+    TSblArray772[j] = timestamp_bl772;
+    curArray772[j] = cur772;
+  }
+
+  //run 773
+  for (ULong64_t j = 0; j < blEvent773 ; j++){
+    TSblArray773[j] = timestamp_bl773;
+    curArray773[j] = cur773;
+  }
+
+  //run 778
+  for (ULong64_t j = 0; j < blEvent778 ; j++){
+    TSblArray778[j] = timestamp_bl778;
+    curArray778[j] = cur778;
+  }
+
+  //run 779
+  for (ULong64_t j = 0; j < blEvent779 ; j++){
+    TSblArray779[j] = timestamp_bl779;
+    curArray779[j] = cur779;
   }
 
 
