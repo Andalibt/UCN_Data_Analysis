@@ -2911,7 +2911,7 @@ void StorageTime_17014_Taraneh_edit_ver2(){
   grAll -> GetXaxis() -> SetTitleOffset(1.0);
   grAll -> GetYaxis() -> SetTitleSize(0.05); 
   grAll -> GetYaxis() -> SetTitleOffset(0.9);
-  grAll -> SetMarkerStyle(7);
+  grAll -> SetMarkerStyle(20);
 
   TGraphErrors *grAllOnline = new TGraphErrors (7, tempOnline, StorageOnline , 0, 0);
   grAllOnline -> SetMarkerStyle(7);
@@ -2923,8 +2923,8 @@ void StorageTime_17014_Taraneh_edit_ver2(){
   leg3 -> SetTextSize(0.05);
 
   grAll -> Draw("Ap");
-  grAllOnline -> Draw("p");
-  leg3 -> Draw();
+  //grAllOnline -> Draw("p");
+  //leg3 -> Draw();
 
 
 

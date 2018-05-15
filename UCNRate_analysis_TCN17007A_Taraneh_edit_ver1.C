@@ -8,7 +8,81 @@
 
 #define max 100
 
+// Define the time offset as 2017, November 18
+TDatime T0(2017,11,18,00,00,00);
+int X0 = T0.Convert();
+gStyle->SetTimeOffset(X0);
+
+// Define the lowest histogram limit as 2017, Nov 18
+TDatime T1(2017,11,18,13,00,46);
+int X1 = T1.Convert();
+
+// Define the highest histogram limit as 2017, Nov 18
+TDatime T2(2017,11,18,13,12,58);
+int X2 = T2.Convert()-X1;
+
+// Define beam on time for run 654
+TDatime T3(2017,11,18,13,01,16);
+int bontime654 = T3.Convert();
+
+// Define beam off time for run 659
+TDatime T4(2017,11,18,13,11,14);
+int bofftime = T4.Convert();
+
+double temp(double time) {
+  double t1 = 1511038876; // beam on for 654
+  double t2 = 1511039474; // beam off for 654
+  double temptemp;
+  //temptemp=0.87+(1.24-.87)*(time - )/(b - X1);
+  temptemp = (1.24 - 0.87)*time/ (t2 - t1) + ((0.87*t2 - 1.24*t1)/(t2 - t1));
+  if(time>t2){
+    temptemp=1.24;
+  }
+  return temptemp;
+}
+
+
+double dndetdt(double time) {
+  double t1 = 1511038876; // beam on for 654
+  double t2 = 1511039474; // beam off for 654
+  
+  double tau_loss=35.; //s
+  double area=3.14159*.0425*.0425; // m^2
+  double vsource=27./1000.; //m^3
+  double vheii=8.5/1000.; //m^3
+  double vguide=3.6*3.14159*pow(.085/2,2);//m^3
+  double volume=vsource+vguide; //m^3    
+  double v=1.;//m/s
+  double tau_det=1./(v*area/(4*volume));//s
+  double f=vheii/volume; //volume fraction of He-II
+  double b=.032;//s^-1K^-7
+  double mytemp=temp(time);//K
+  double tau_tot=1./(f*b*pow(mytemp,7)+1./tau_loss+1./tau_det);//s
+  double p=7200.;//s^-1
+  double n_tot=p*tau_tot*(1-exp(-(time - t1)/tau_tot));
+  if(time>t2)
+    //n_tot=p*tau_tot*(1-exp(-10*60/tau_tot))*exp(-(time+X0 -10*60)/tau_tot);
+    n_tot=p*tau_tot*(1-exp(-t2/tau_tot))*exp(-(time -t2)/tau_tot);
+  return n_tot/tau_det;
+}
+
+double testfunc(double *x, double *par) {
+   double s;
+   s = dndetdt(x[0]);
+   return s;
+}
+
+double tempfunc(double *x, double *par) {
+   double s;
+   s = temp(x[0]);
+   return s;
+}
+
+
 void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
+
+  TF1 *f1 = new TF1("f1",testfunc,1511038846,1511039578,0); // fit function for the rate
+  TF1 *f2 = new TF1 ("f2" , tempfunc ,1511038846 , 1511039578, 0 );
 
   TFile *fin654 = new TFile ("~/raw_Data/ucn_tree_00000654.root", "READ");
   TFile *fin659 = new TFile ("~/raw_Data/ucn_tree_00000659.root", "READ");
@@ -94,14 +168,17 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   sourceEpics659 -> SetBranchAddress ("timestamp", &timestamp_se659);
 
 
-  // *************
+  // ***************************************************
   // FOR RUN 654
-  // ************
+  // ***************************************************
   
   int counts654 = 0;
   int boCounts654;
+  int timecounter = 0;
+  double timeaxis654[1000000];
   
 
+  
   double beamlineEvent654 = (Double_t) bl654-> GetEntries();
   cout << "*******************************************" << endl;
   cout << "For midas run 654 " << endl;
@@ -110,7 +187,9 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
     bl654 -> GetEvent(j);
     TSArray654[counts654] = timestamp_bl654;
     curArray654[counts654] = cur654*2000;
-
+    //cout << std::fixed << TSArray654[counts654] << endl;
+    timeaxis654[counts654] = timecounter;
+    //cout << timeaxis654[counts654] << endl;
     if (counts654 > 1){
       if (curArray654[counts654 - 1] < 0.08 && curArray654[counts654] > 0.08){
 
@@ -130,10 +209,10 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
     if (timestamp_bl654 > max654){
       max654 = timestamp_bl654;
     }
-
+    timecounter = timecounter+5;
     counts654++;
     }
-
+  cout << std::fixed << TSArray654[0] << " " << TSArray654[beamlineEvent654-1] << endl;
   int SEcounts654;
   double sourceEpicsEvents654 = (double) sourceEpics654 -> GetEntries();
   for (ULong64_t j = 0 ; j < sourceEpicsEvents654 ; j++){
@@ -155,13 +234,16 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   int points654;
   int rate1654 = 0;
   int interval1654;
+  int X3;
 
   ULong64_t eventTot654 = (Double_t) uinli6654 -> GetEntries();
   for (ULong64_t j = 0 ; j < eventTot654 ; j++) {
     uinli6654 -> GetEvent(j);
-      
+    // cout <<std::fixed << tUnixTimePrecise654 << endl;
     if (tIsUCN654 > 0 && tUnixTime654 > 20e6){
-      UCNrate_li6654 -> Fill(tUnixTimePrecise654);
+      X3 = T1.Convert() - X1;
+      UCNrate_li6654 -> Fill( tUnixTimePrecise654);
+      // UCNrate_li6654 -> Fill(X3);
       if (tUnixTimePrecise654 > 1511038876 + 20 && tUnixTimePrecise654 < 1511039474 - 20){
 	rate1654++;
  
@@ -199,9 +281,9 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   cout << "*******************************************" << endl;
 
   
-  // *************
+  // **************************************************
   // FOR RUN 659
-  // ************
+  // **************************************************
 
   int counts659 = 0;
   int boCounts659;
@@ -297,9 +379,11 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
 
   cout << "*******************************************" << endl;
 
-  // ******************
+  // **********************************************************************
   // GRAPHS
-  //*******************
+  //************************************************************************
+
+
 
   
   // *****
@@ -307,16 +391,18 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   // *****
   
   TCanvas *c1654 = new TCanvas ("c1654", "c1654", 1200, 900);
+  UCNrate_li6654 -> GetYaxis() -> SetTitle("Counts/s");
+  UCNrate_li6654 -> GetXaxis() -> SetTitle("Unixtime (s)");
   UCNrate_li6654 -> Draw();
-
-
+  f1 -> Draw("same");
 
   TCanvas *c2654 = new TCanvas ("c2654" , "c2654", 1200, 900);
 
   TGraphErrors *gr_b654 = new TGraphErrors (counts654 , TSArray654 , curArray654, 0 , 0);
+  //TGraphErrors *gr_b654 = new TGraphErrors (counts654 , timeaxis654 , curArray654, 0 , 0);
 
   gr_b654 -> SetTitle(" Predicted Beam Current vs Unix Time ");
-  gr_b654 -> GetXaxis() -> SetTitle("Unix Time" );
+  //gr_b654 -> GetXaxis() -> SetTitle("Unix Time" );
   gr_b654 -> GetYaxis() -> SetTitle("Predicted Beam Current (#muA)* 2000");
   gr_b654 -> SetMarkerStyle(20);
   
@@ -324,6 +410,11 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   gr_b654 -> GetXaxis() -> SetTitleOffset(1.0);
   gr_b654 -> GetYaxis() -> SetTitleSize(0.05); 
   gr_b654 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_b654 -> GetXaxis() -> SetTimeDisplay(1);
+  gr_b654 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  gr_b654 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  gr_b654 -> GetXaxis() -> SetLabelOffset(.03);
+  gr_b654 -> GetXaxis() -> SetLabelSize(.04);
   gr_b654 -> SetMarkerColor(1);
 
   
@@ -331,12 +422,14 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   gr_b654 -> Draw("Ap");
   UCNrate_li6654 -> Draw("same");
 
+  
+
   TF1 *f654 = new TF1("f654","140", min654 ,max654 );
   TCanvas *c3654 = new TCanvas ("c3654" , "c3654" , 1200, 900);
 
   TGraph *gr_s654 = new TGraph (SEcounts654 , TSArrayse654, tempArray654);
   gr_s654 -> SetTitle(" Isopure Temperature vs Unix Time ");
-  gr_s654 -> GetXaxis() -> SetTitle("Unix Time" );
+  // gr_s654 -> GetXaxis() -> SetTitle("Unix Time" );
   gr_s654 -> GetYaxis() -> SetTitle("Isopure Temperature (K)");
   //gr_s654 -> GetYaxis() -> SetRangeUser (0, 200);
   gr_s654 -> SetMarkerStyle(20);
@@ -345,12 +438,18 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   gr_s654 -> GetXaxis() -> SetTitleOffset(1.0);
   gr_s654 -> GetYaxis() -> SetTitleSize(0.05); 
   gr_s654 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_s654 -> GetXaxis() -> SetTimeDisplay(1);
+  gr_s654 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  gr_s654 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  gr_s654 -> GetXaxis() -> SetLabelOffset(.03);
+  gr_s654 -> GetXaxis() -> SetLabelSize(.04);
   gr_s654 -> SetMarkerColor(1);
 
   gr_s654 -> Draw("ap");
+  f2 -> Draw("same");
   //  UCNrate_li6654 -> Divide(f654);
   //UCNrate_li6654 -> Draw("same");
-
+  break;
 
   
   // *************************************************
@@ -406,6 +505,7 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   gr654ratetemp -> GetXaxis() -> SetTitleOffset(1.0);
   gr654ratetemp -> GetYaxis() -> SetTitleSize(0.05); 
   gr654ratetemp -> GetYaxis() -> SetTitleOffset(0.9);
+  
   gr654ratetemp -> SetMarkerColor(1);
 
   gr654ratetemp -> Draw("ap");
@@ -432,6 +532,11 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   gr_b659 -> GetXaxis() -> SetTitleOffset(1.0);
   gr_b659 -> GetYaxis() -> SetTitleSize(0.05); 
   gr_b659 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr_b659 -> GetXaxis() -> SetTimeDisplay(1);
+  gr_b659 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  gr_b659 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  gr_b659 -> GetXaxis() -> SetLabelOffset(.03);
+  gr_b659 -> GetXaxis() -> SetLabelSize(.04);
   gr_b659 -> SetMarkerColor(1);
 
   
@@ -446,6 +551,11 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   gr_s659 -> SetTitle(" Isopure Temperature vs Unix Time ");
   gr_s659 -> GetXaxis() -> SetTitle("Unix Time" );
   gr_s659 -> GetYaxis() -> SetTitle("Isopure Temperature (K)");
+  gr_s659 -> GetXaxis() -> SetTimeDisplay(1);
+  gr_s659 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  gr_s659 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  gr_s659 -> GetXaxis() -> SetLabelOffset(.03);
+  gr_s659 -> GetXaxis() -> SetLabelSize(.04);
   //gr_s659 -> GetYaxis() -> SetRangeUser (0, 200);
   gr_s659 -> SetMarkerStyle(20);
   
@@ -513,7 +623,12 @@ void UCNRate_analysis_TCN17007A_Taraneh_edit_ver1(){
   gr659ratetemp -> GetXaxis() -> SetTitleOffset(1.0);
   gr659ratetemp -> GetYaxis() -> SetTitleSize(0.05); 
   gr659ratetemp -> GetYaxis() -> SetTitleOffset(0.9);
-  gr659ratetemp -> SetMarkerColor(1);
+  //  gr659ratetemp -> GetXaxis() -> SetTimeDisplay(1);
+  //  gr659ratetemp -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  //  gr659ratetemp -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  // gr659ratetemp -> GetXaxis() -> SetLabelOffset(.03);
+  //  gr659ratetemp -> GetXaxis() -> SetLabelSize(.04);
+  // gr659ratetemp -> SetMarkerColor(1);
 
   gr659ratetemp -> Draw("ap");
 

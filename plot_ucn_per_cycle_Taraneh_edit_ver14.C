@@ -71,7 +71,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("outputTree_794.root", "RECREATE");
+  TFile hfile ("outputTree_775.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -326,7 +326,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   // *************************************************************
   
 
-  Int_t InputFiles[17] ={794};
+  Int_t InputFiles[17] ={775};
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;

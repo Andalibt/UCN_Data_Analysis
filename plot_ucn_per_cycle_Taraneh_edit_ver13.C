@@ -71,7 +71,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("outputTree_523.root", "RECREATE");
+  TFile hfile ("outputTree_766.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -287,7 +287,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   // *************************************************************
   
 
-  Int_t StorageTimeFiles[10] ={523};
+  Int_t StorageTimeFiles[10] ={766};
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;
@@ -295,7 +295,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
   Int_t numcycle = 0; 
   Int_t failfit_cycle = 0;
   Int_t StorageTimeFileCounter =0; 
-  for ( midasrun =524; midasrun <838; midasrun++){
+  for ( midasrun =523; midasrun <838; midasrun++){
     total_counter ++;
     runNumber = midasrun;
     runs++;
@@ -394,7 +394,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	cyclevalveclose[j]=valveCloseTime;
 	cycleValveOpenDuration[j] = valveOpenDuration;
 	delayTimeArray[j]=delayTime;
-	cycleDelayTimes[j] = delayTime;
+	//cycleDelayTimes[j] = delayTime;
 	numberEventsPerCycle.push_back(0);
 	numberEventsPerCycleValveOpen.push_back(0);
 	numcycle=j+1;
@@ -953,10 +953,11 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 
 	for ( int i = 0; i < cycleStartTimes.size(); i++){
 	  BaselineRate[i] = BaselineInt[i]/(irradiationStartTime[i] - minmin_range[i] );
+	  //cout << "cycle " << i <<  " valve open time:" << cyclevalveopen[i] << " ,valve close time" << cyclevalveclose[i] << endl;
 	  BaselineIrradRate[i] = BaselineIrradRate[i]/(cycleStartTimes[i] - irradiationStartTime[i] );
 	}
 	
-	
+
       //-----------------------------
       // He3 detector stuff
 
@@ -1110,9 +1111,9 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	Li6_Fit_Func -> FixParameter(10, cyclevalveclose[i]);
 	Li6_Fit_Func -> FixParameter(11,delayTimeArray[i]);
 	Li6_Fit_Func -> SetNpx(10000);
-	TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
+	//TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
 	cout << "***********************************************************" << endl;
-		Int_t fitStatus = status;
+	/*Int_t fitStatus = status;
 	cout << fitStatus << endl;
 	if (fitStatus == 4) {
 	  failfit_cycle++;
@@ -1137,7 +1138,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver13(){
 	//cout << BaselineInt[i] << endl;
 	//cout << baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]) << endl;
 	//cout << ( baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]))/BaselineInt[i] << endl;
-	
+	*/
 	hfile.cd();
       }
       

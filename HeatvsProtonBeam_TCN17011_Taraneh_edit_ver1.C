@@ -245,17 +245,17 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double TSblArray778[max];
   double TSblArray779[max];
 
-  ULong64_t blEvent765 = (Double_t) bl765 -> GetEntries();  //Total number of events in the beamline tree
-  ULong64_t blEvent766 = (Double_t) bl766 -> GetEntries();  
-  ULong64_t blEvent767 = (Double_t) bl767 -> GetEntries();  
-  ULong64_t blEvent768 = (Double_t) bl768 -> GetEntries();
-  ULong64_t blEvent769 = (Double_t) bl769 -> GetEntries();  
-  ULong64_t blEvent770 = (Double_t) bl770 -> GetEntries();  
-  ULong64_t blEvent771 = (Double_t) bl771 -> GetEntries();  
-  ULong64_t blEvent772 = (Double_t) bl772 -> GetEntries();  
-  ULong64_t blEvent773 = (Double_t) bl773 -> GetEntries();  
-  ULong64_t blEvent778 = (Double_t) bl778 -> GetEntries();  
-  ULong64_t blEvent779 = (Double_t) bl779 -> GetEntries();  
+  ULong64_t blEvent765 =  bl765 -> GetEntries();  //Total number of events in the beamline tree
+  ULong64_t blEvent766 =  bl766 -> GetEntries();  
+  ULong64_t blEvent767 =  bl767 -> GetEntries();  
+  ULong64_t blEvent768 =  bl768 -> GetEntries();
+  ULong64_t blEvent769 =  bl769 -> GetEntries();  
+  ULong64_t blEvent770 =  bl770 -> GetEntries();  
+  ULong64_t blEvent771 =  bl771 -> GetEntries();  
+  ULong64_t blEvent772 =  bl772 -> GetEntries();  
+  ULong64_t blEvent773 =  bl773 -> GetEntries();  
+  ULong64_t blEvent778 =  bl778 -> GetEntries();  
+  ULong64_t blEvent779 =  bl779 -> GetEntries();  
 
   
   
@@ -1051,71 +1051,82 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
 
   //run 765
   for (ULong64_t j = 0; j < blEvent765 ; j++){
+    bl765 -> GetEvent(j);
     TSblArray765[j] = timestamp_bl765;
     curArray765[j] = cur765;
   }
 
   //run 766
   for (ULong64_t j = 0; j < blEvent766 ; j++){
+    bl766 -> GetEvent(j);
     TSblArray766[j] = timestamp_bl766;
     curArray766[j] = cur766;
   }
 
   //run 767
   for (ULong64_t j = 0; j < blEvent767 ; j++){
+    bl767 -> GetEvent(j);
     TSblArray767[j] = timestamp_bl767;
     curArray767[j] = cur767;
   }
 
   //run 768
   for (ULong64_t j = 0; j < blEvent768 ; j++){
+    bl768 -> GetEvent(j);
     TSblArray768[j] = timestamp_bl768;
     curArray768[j] = cur768;
   }
 
   //run 769
   for (ULong64_t j = 0; j < blEvent769 ; j++){
+    bl769 -> GetEvent(j);
     TSblArray769[j] = timestamp_bl769;
     curArray769[j] = cur769;
   }
 
   //run 770
   for (ULong64_t j = 0; j < blEvent770 ; j++){
+    bl770 -> GetEvent(j);
     TSblArray770[j] = timestamp_bl770;
     curArray770[j] = cur770;
   }
 
   //run 771
   for (ULong64_t j = 0; j < blEvent771 ; j++){
+    bl771 -> GetEvent(j);
     TSblArray771[j] = timestamp_bl771;
     curArray771[j] = cur771;
   }
 
   //run 772
   for (ULong64_t j = 0; j < blEvent772 ; j++){
+    bl772 -> GetEvent(j);
     TSblArray772[j] = timestamp_bl772;
     curArray772[j] = cur772;
   }
 
   //run 773
   for (ULong64_t j = 0; j < blEvent773 ; j++){
+    bl773 -> GetEvent(j);
     TSblArray773[j] = timestamp_bl773;
     curArray773[j] = cur773;
   }
 
   //run 778
   for (ULong64_t j = 0; j < blEvent778 ; j++){
+    bl778 -> GetEvent(j);
     TSblArray778[j] = timestamp_bl778;
     curArray778[j] = cur778;
   }
 
   //run 779
   for (ULong64_t j = 0; j < blEvent779 ; j++){
+    bl779 -> GetEvent(j);
     TSblArray779[j] = timestamp_bl779;
     curArray779[j] = cur779;
   }
 
-
+#if 0
   // **********************************
   // graph the temperature and flow
   // **********************************
@@ -2128,5 +2139,58 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grBL779 -> GetXaxis() -> SetLabelSize(.04);
   grBL779 -> SetMarkerStyle(20);
   grBL779 -> Draw("AP");
+
+#endif 
+  // *************************************************************
+  // I like to make a graph of Florian Rehm's data written in his
+  // thesis.
+  // ************************************************************
+
+
+  double power[12] = {2.5, 12.5, 25, 75, 250, 25, 50, 75, 100, 150, 200, 250}; //mW
+  double ts12_low[12] = {0.926, 0.924, 0.919, 0.922, 0.93, 0.84, 0.84, 0.85, 0.85, 0.84, 0.84, 0.84};
+  double ts12_high[12] = {0.9271, 0.929, 0.929, 0.952, 1, 0.86, 0.9, 0.92, 0.96, 0.99, 1.23, 1.345};
+  double deltaT[12];
+
+  double beam[] = {0.1};
+  double ts12_low_run[] = {0.84};
+    double ts12_
+
+    
+  int size = (sizeof(power)/sizeof(*power));
+  int i;
+
+  
+  for (i=0 ; i < size ; i++){
+    deltaT[i] = ts12_high[i] - ts12_low[i] ;
+  }
+
+  TF1 *f1 = new TF1("f1" , "pow(x,[0])*exp([1])", 0.001, 0.8);
+  f1 -> SetParameter(0, 0.8);
+  f1 -> SetParameter(1,6.3);
+  f1 -> SetParLimits(0, 0.73, 0.8);
+  f1 -> SetParLimits(1, 6.15, 6.4);
+
+
+  TCanvas *cHT = new TCanvas ("cHT" , "cHT", 1200 , 900);
+  cHT -> SetLogx();
+  cHT -> SetLogy();
+  TGraph * grHT = new TGraph(i , deltaT, power);
+  grHT -> SetTitle(" Heater power vs Change in the TS12 Temperature  ");
+  grHT -> GetYaxis()-> SetTitle("Heater Power (mW)" );
+  grHT -> GetXaxis() -> SetTitle(" Change in TS12 Temperature(K)");
+  grHT -> GetXaxis() -> SetLimits(0., 1);
+  grHT -> GetXaxis() -> SetTitleSize(0.05);
+  grHT -> GetXaxis() -> SetTitleOffset(0.9);
+  grHT -> GetYaxis() -> SetTitleSize(0.05); 
+  grHT -> GetYaxis() -> SetTitleOffset(0.9);
+  grHT -> SetMarkerStyle(20);
+  grHT -> Fit("f1");
+  grHT -> Draw("AP");
+
+
+  double FM1_low[12] = {11, 11, 10.7, 11, 11, 12.5, 11.75, 11.8, 11.8, 12.2};
+  double FM1_high[12]
+
   
 }

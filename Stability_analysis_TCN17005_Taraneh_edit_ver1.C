@@ -234,6 +234,10 @@ void Stability_analysis_TCN17005_Taraneh_edit_ver1(){
   double cycleNumArrayAll[100]; // the cycle number for all the runs
   double cycleDelayTimeArrayAll[100]; // cycle delay time for all the runs
   double cycleStartTimeAll[100];
+  double HistpercurAll[100]; // normalized histogram integral to the beam current
+  double HistpercurErrAll[100];
+  double CountspercurAll[100]; // normalized counts to the beam current
+  double CountspercurErrAll[100];
   int counterAll;
   
   events582 = (Double_t) cycle_info582 -> GetEntries();
@@ -275,7 +279,11 @@ void Stability_analysis_TCN17005_Taraneh_edit_ver1(){
     cycleNumArrayAll[counter582] = cyclenum582;
     cycleDelayTimeArrayAll[counter582] = cycleDelayTime582;
     cycleStartTimeAll[counter582] = cycleStartTime582;
-    cout << std::fixed <<cycleStartTimeAll[counter582] << endl;
+    HistpercurAll[counter582] = HistIntegral582/avecur582;
+    HistpercurErrAll[counter582] = sqrt(HistpercurAll[counter582]);
+    CountspercurAll[counter582] = ( HistIntegralArray582[counter582] - baselinecountsArray582[counter582])/avecur582;
+    CountspercurErrAll[counter582] = sqrt(CountspercurAll[counter582]);
+    //cout << std::fixed <<cycleStartTimeAll[counter582] << endl;
     counterAll= counter582;
     counter582++;
   }
@@ -330,6 +338,11 @@ void Stability_analysis_TCN17005_Taraneh_edit_ver1(){
     cycleNumArrayAll[counter582 + counter583] = cyclenum583;
     cycleDelayTimeArrayAll[counter582 + counter583] = cycleDelayTime583;
     cycleStartTimeAll[counter582 + counter583] = cycleStartTime583;
+    HistpercurAll[counter582+counter583] = HistIntegral583/avecur583;
+    HistpercurErrAll[counter582 + counter583] = sqrt( HistpercurAll[counter582+counter583]);
+    //cout << HistpercurAll[counter582+counter583] << endl;
+    CountspercurAll[counter582+counter583] = ( HistIntegralArray583[counter583] - baselinecountsArray583[counter583])/avecur583;
+    CountspercurErrAll[counter582+ counter583] = sqrt( CountspercurAll[counter582+counter583]);
     counterAll = counter582 + counter583;
     counter583++;
   }
@@ -553,11 +566,11 @@ void Stability_analysis_TCN17005_Taraneh_edit_ver1(){
   TPad *pAll_1 = cAll_cycleNum->cd(1);
   //pAll_1->SetLogy(); 
   
-  TGraphErrors *grAll_cyclehist = new TGraphErrors(counterAll, cycleStartTimeAll , HistIntegralAll, 0, HistIntegralErrAll);
+  TGraphErrors *grAll_cyclehist = new TGraphErrors(counterAll, cycleStartTimeAll , HistpercurAll, 0, HistpercurErrAll);
   
-  grAll_cyclehist -> SetTitle("UCN Counts vs Cycle Start Time");
+  grAll_cyclehist -> SetTitle("Normalized UCN Counts vs Cycle Start Time");
   grAll_cyclehist -> GetXaxis()-> SetTitle("Cycle Start Time " );
-  grAll_cyclehist -> GetYaxis()-> SetTitle("Cycle UCN Counts");
+  grAll_cyclehist -> GetYaxis()-> SetTitle("Cycle UCN Counts/#muA");
   //grAll_cyclehist -> GetYaxis()-> SetRangeUser(10, 500000);
   grAll_cyclehist -> GetXaxis() -> SetTimeDisplay(1);
   grAll_cyclehist -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
@@ -571,7 +584,7 @@ void Stability_analysis_TCN17005_Taraneh_edit_ver1(){
   grAll_cyclehist -> SetMarkerColor(2);
   grAll_cyclehist -> SetMarkerStyle(20);
 
-  TGraphErrors *grAll_cyclecountmanual = new TGraphErrors(counterAll, cycleStartTimeAll , UCNCountsAll, 0, UCNCountsErrAll);
+  TGraphErrors *grAll_cyclecountmanual = new TGraphErrors(counterAll, cycleStartTimeAll , CountspercurAll, 0, CountspercurErrAll);
   
   grAll_cyclecountmanual -> SetTitle("UCN Counts vs Cycle Start Time");
   grAll_cyclecountmanual -> GetXaxis()-> SetTitle("Cycle Start Time" );
