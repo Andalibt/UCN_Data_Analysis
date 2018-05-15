@@ -1126,7 +1126,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     curArray779[j] = cur779;
   }
 
-#if 0
+#if 1
   // **********************************
   // graph the temperature and flow
   // **********************************
@@ -2147,25 +2147,24 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   // ************************************************************
 
 
-  double power[12] = {2.5, 12.5, 25, 75, 250, 25, 50, 75, 100, 150, 200, 250}; //mW
-  double ts12_low[12] = {0.926, 0.924, 0.919, 0.922, 0.93, 0.84, 0.84, 0.85, 0.85, 0.84, 0.84, 0.84};
-  double ts12_high[12] = {0.9271, 0.929, 0.929, 0.952, 1, 0.86, 0.9, 0.92, 0.96, 0.99, 1.23, 1.345};
-  double deltaT[12];
+  double power[17] = {2.5, 12.5, 25, 75, 250, 25, 50, 75, 100, 150, 200, 250, 25, 50, 75, 100, 200}; //mW
+  double ts12_low[17] = {0.926, 0.924, 0.919, 0.922, 0.93, 0.84, 0.84, 0.85, 0.85, 0.84, 0.84, 0.84,0.93, 0.93, 0.93, 0.93, 0.93};
+  double ts12_high[17] = {0.9271, 0.929, 0.929, 0.952, 1, 0.86, 0.9, 0.92, 0.96, 0.99, 1.23, 1.345, 0.95, 0.97, 0.99, 1.075, 1.225};
+  double deltaT[17];
 
-  double beam[] = {0.1};
-  double ts12_low_run[] = {0.84};
-    double ts12_
+  //double beam[] = {0.1};
+  // double ts12_low_run[] = {0.84};
+  //  double ts12_
 
     
   int size = (sizeof(power)/sizeof(*power));
-  int i;
 
   
-  for (i=0 ; i < size ; i++){
+  for (int i=0 ; i < size ; i++){
     deltaT[i] = ts12_high[i] - ts12_low[i] ;
   }
 
-  TF1 *f1 = new TF1("f1" , "pow(x,[0])*exp([1])", 0.001, 0.8);
+  TF1 *f1 = new TF1("f1" , "pow(x,[0])*exp([1])", 0.00, 1);
   f1 -> SetParameter(0, 0.8);
   f1 -> SetParameter(1,6.3);
   f1 -> SetParLimits(0, 0.73, 0.8);
@@ -2189,8 +2188,30 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grHT -> Draw("AP");
 
 
-  double FM1_low[12] = {11, 11, 10.7, 11, 11, 12.5, 11.75, 11.8, 11.8, 12.2};
-  double FM1_high[12]
+  double FM1_low[17] = {11, 11, 10.7, 11, 11,  13.9, 13.9, 14.4, 14.8, 14.8, 14, 14.2, 12.5, 11.75, 11.8, 11.8, 12.2};
+  double FM1_high[17] = {11.5, 12., 11.8, 14.8, 22.,14.6, 15.7, 17.7, 18.7, 21.2, 20.8, 22.6,13.2, 13.7, 14.7, 15.2, 19.5  };
+  double deltaFM1[17];
 
+  for (int i=0 ; i < size ; i++){
+    deltaFM1[i] = FM1_high[i] - FM1_low[i] ;
+  }
+
+
+
+  TCanvas *cHFM = new TCanvas ("cHFM" , "cHFM", 1200 , 900);
+  //cHFM -> SetLogx();
+  //cHFM -> SetLogy();
+  TGraph * grHFM = new TGraph(i , deltaFM1, power);
+  grHFM -> SetTitle(" Heater power vs Change in the FM1 Flow Rate  ");
+  grHFM -> GetYaxis()-> SetTitle("Heater Power (mW)" );
+  grHFM -> GetXaxis() -> SetTitle(" Change in FM1 (He3) Flow Rate (LPM)");
+  // grHFM -> GetXaxis() -> SetLimits(0., 1);
+  grHFM -> GetXaxis() -> SetTitleSize(0.05);
+  grHFM -> GetXaxis() -> SetTitleOffset(0.9);
+  grHFM -> GetYaxis() -> SetTitleSize(0.05); 
+  grHFM -> GetYaxis() -> SetTitleOffset(0.9);
+  grHFM -> SetMarkerStyle(20);
+  // grHFM -> Fit("f1");
+  grHFM -> Draw("AP");
   
 }
