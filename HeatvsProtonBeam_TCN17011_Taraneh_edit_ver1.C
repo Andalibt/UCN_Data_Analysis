@@ -21,6 +21,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   TFile *fin773 = new TFile ("~/raw_Data/ucn_tree_00000773.root", "READ");
   TFile *fin778 = new TFile ("~/raw_Data/ucn_tree_00000778.root", "READ");
   TFile *fin779 = new TFile ("~/raw_Data/ucn_tree_00000779.root", "READ");
+  TFile *fin587 = new TFile ("~/raw_Data/ucn_tree_00000587.root", "READ");
+  TFile *fin588 = new TFile ("~/raw_Data/ucn_tree_00000588.root", "READ");
+  TFile *fin589 = new TFile ("~/raw_Data/ucn_tree_00000589.root", "READ");
+  TFile *fin590 = new TFile ("~/raw_Data/ucn_tree_00000590.root", "READ");
+  TFile *fin591 = new TFile ("~/raw_Data/ucn_tree_00000591.root", "READ");
+  TFile *fin592 = new TFile ("~/raw_Data/ucn_tree_00000592.root", "READ");
+  TFile *fin593 = new TFile ("~/raw_Data/ucn_tree_00000593.root", "READ");
+  TFile *fin654 = new TFile ("~/raw_Data/ucn_tree_00000654.root", "READ");
+  TFile *fin659 = new TFile ("~/raw_Data/ucn_tree_00000659.root", "READ");
 
 
   // READING THE UCN HIT Li6 TREE
@@ -35,6 +44,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   TTree *uinli6773 = (TTree*) fin773 -> Get("UCNHits_Li-6");
   TTree *uinli6778 = (TTree*) fin778 -> Get("UCNHits_Li-6");
   TTree *uinli6779 = (TTree*) fin779 -> Get("UCNHits_Li-6");
+  TTree *uinli6587 = (TTree*) fin587 -> Get("UCNHits_Li-6");
+  TTree *uinli6588 = (TTree*) fin588 -> Get("UCNHits_Li-6");
+  TTree *uinli6589 = (TTree*) fin589 -> Get("UCNHits_Li-6");
+  TTree *uinli6590 = (TTree*) fin590 -> Get("UCNHits_Li-6");
+  TTree *uinli6591 = (TTree*) fin591 -> Get("UCNHits_Li-6");
+  TTree *uinli6592 = (TTree*) fin592 -> Get("UCNHits_Li-6");
+  TTree *uinli6593 = (TTree*) fin593 -> Get("UCNHits_Li-6");
+  TTree *uinli6654 = (TTree*) fin654 -> Get("UCNHits_Li-6");
+  TTree *uinli6659 = (TTree*) fin659 -> Get("UCNHits_Li-6");
 
 
   // READING THE BEAMLINE TREE
@@ -49,6 +67,23 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   TTree *bl773 = (TTree*) fin773 -> Get("BeamlineEpicsTree");
   TTree *bl778 = (TTree*) fin778 -> Get("BeamlineEpicsTree");
   TTree *bl779 = (TTree*) fin779 -> Get("BeamlineEpicsTree");
+  TTree *bl587 = (TTree*) fin587 -> Get("BeamlineEpicsTree");
+  TTree *bl588 = (TTree*) fin588 -> Get("BeamlineEpicsTree");
+  TTree *bl589 = (TTree*) fin589 -> Get("BeamlineEpicsTree");
+  TTree *bl590 = (TTree*) fin590 -> Get("BeamlineEpicsTree");
+  TTree *bl591 = (TTree*) fin591 -> Get("BeamlineEpicsTree");
+  TTree *bl592 = (TTree*) fin592 -> Get("BeamlineEpicsTree");
+  TTree *bl593 = (TTree*) fin593 -> Get("BeamlineEpicsTree");
+  TTree *bl587 = (TTree*) fin587 -> Get("BeamlineEpicsTree");
+  TTree *bl588 = (TTree*) fin588 -> Get("BeamlineEpicsTree");
+  TTree *bl589 = (TTree*) fin589 -> Get("BeamlineEpicsTree");
+  TTree *bl590 = (TTree*) fin590 -> Get("BeamlineEpicsTree");
+  TTree *bl591 = (TTree*) fin591 -> Get("BeamlineEpicsTree");
+  TTree *bl592 = (TTree*) fin592 -> Get("BeamlineEpicsTree");
+  TTree *bl593 = (TTree*) fin593 -> Get("BeamlineEpicsTree");
+  TTree *bl654 = (TTree*) fin654 -> Get("BeamlineEpicsTree");
+  TTree *bl659 = (TTree*) fin659 -> Get("BeamlineEpicsTree");
+
 
 
   // READING THE EPICS TREE
@@ -63,6 +98,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   TTree *sourceEpics773 = (TTree*) fin773 -> Get("SourceEpicsTree");
   TTree *sourceEpics778 = (TTree*) fin778 -> Get("SourceEpicsTree");
   TTree *sourceEpics779 = (TTree*) fin779 -> Get("SourceEpicsTree");
+  TTree *sourceEpics587 = (TTree*) fin587 -> Get("SourceEpicsTree");
+  TTree *sourceEpics588 = (TTree*) fin588 -> Get("SourceEpicsTree");
+  TTree *sourceEpics589 = (TTree*) fin589 -> Get("SourceEpicsTree");
+  TTree *sourceEpics590 = (TTree*) fin590 -> Get("SourceEpicsTree");
+  TTree *sourceEpics591 = (TTree*) fin591 -> Get("SourceEpicsTree");
+  TTree *sourceEpics592 = (TTree*) fin592 -> Get("SourceEpicsTree");
+  TTree *sourceEpics593 = (TTree*) fin593 -> Get("SourceEpicsTree");
+  TTree *sourceEpics654 = (TTree*) fin654 -> Get("SourceEpicsTree");
+  TTree *sourceEpics659 = (TTree*) fin659 -> Get("SourceEpicsTree");
 
 
   // VARIABLES FOR THE Li6 COUNTS TREE
@@ -77,6 +121,16 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double tUnixTimePrecise773;
   double tUnixTimePrecise778;
   double tUnixTimePrecise779;
+  double tUnixTimePrecise587;
+  double tUnixTimePrecise588;
+  double tUnixTimePrecise589;
+  double tUnixTimePrecise590;
+  double tUnixTimePrecise591;
+  double tUnixTimePrecise592;
+  double tUnixTimePrecise593;
+  double tUnixTimePrecise654;
+  double tUnixTimePrecise659;
+  
 
   uinli6765 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise765);
   uinli6766 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise766);
@@ -89,8 +143,16 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   uinli6773 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise773);
   uinli6778 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise778);
   uinli6779 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise779);
+  uinli6587 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise587);
+  uinli6588 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise588);
+  uinli6589 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise589);
+  uinli6590 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise590);
+  uinli6591 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise591);
+  uinli6592 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise592);
+  uinli6593 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise593);
+  uinli6654 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise654);
+  uinli6659 -> SetBranchAddress ("tUnixTimePrecise" , &tUnixTimePrecise659);
 
-  
 
   double tUnixTime765;
   double tUnixTime766;
@@ -103,6 +165,16 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double tUnixTime773;
   double tUnixTime778;
   double tUnixTime779;
+  double tUnixTime587;
+  double tUnixTime588;
+  double tUnixTime589;
+  double tUnixTime590;
+  double tUnixTime591;
+  double tUnixTime592;
+  double tUnixTime593;
+  double tUnixTime654;
+  double tUnixTime659;
+
 
   uinli6765 -> SetBranchAddress ("tUnixTime" , &tUnixTime765);
   uinli6766 -> SetBranchAddress ("tUnixTime" , &tUnixTime766);
@@ -115,6 +187,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   uinli6773 -> SetBranchAddress ("tUnixTime" , &tUnixTime773);
   uinli6778 -> SetBranchAddress ("tUnixTime" , &tUnixTime778);
   uinli6779 -> SetBranchAddress ("tUnixTime" , &tUnixTime779);
+  uinli6587 -> SetBranchAddress ("tUnixTime" , &tUnixTime587);
+  uinli6588 -> SetBranchAddress ("tUnixTime" , &tUnixTime588);
+  uinli6589 -> SetBranchAddress ("tUnixTime" , &tUnixTime589);
+  uinli6590 -> SetBranchAddress ("tUnixTime" , &tUnixTime590);
+  uinli6591 -> SetBranchAddress ("tUnixTime" , &tUnixTime591);
+  uinli6592 -> SetBranchAddress ("tUnixTime" , &tUnixTime592);
+  uinli6593 -> SetBranchAddress ("tUnixTime" , &tUnixTime593);
+  uinli6654 -> SetBranchAddress ("tUnixTime" , &tUnixTime654);
+  uinli6659 -> SetBranchAddress ("tUnixTime" , &tUnixTime659);
   
   UShort_t tIsUCN765;
   UShort_t tIsUCN766;
@@ -127,6 +208,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   UShort_t tIsUCN773;
   UShort_t tIsUCN778;
   UShort_t tIsUCN779;
+  UShort_t tIsUCN587;
+  UShort_t tIsUCN588;
+  UShort_t tIsUCN589;
+  UShort_t tIsUCN590;
+  UShort_t tIsUCN591;
+  UShort_t tIsUCN592;
+  UShort_t tIsUCN593;
+  UShort_t tIsUCN654;
+  UShort_t tIsUCN659;
 
 
   uinli6765 -> SetBranchAddress ("tIsUCN" , &tIsUCN765);
@@ -140,6 +230,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   uinli6773 -> SetBranchAddress ("tIsUCN" , &tIsUCN773);
   uinli6778 -> SetBranchAddress ("tIsUCN" , &tIsUCN778);
   uinli6779 -> SetBranchAddress ("tIsUCN" , &tIsUCN779);
+  uinli6587 -> SetBranchAddress ("tIsUCN" , &tIsUCN587);
+  uinli6588 -> SetBranchAddress ("tIsUCN" , &tIsUCN588);
+  uinli6589 -> SetBranchAddress ("tIsUCN" , &tIsUCN589);
+  uinli6590 -> SetBranchAddress ("tIsUCN" , &tIsUCN590);
+  uinli6591 -> SetBranchAddress ("tIsUCN" , &tIsUCN591);
+  uinli6592 -> SetBranchAddress ("tIsUCN" , &tIsUCN592);
+  uinli6593 -> SetBranchAddress ("tIsUCN" , &tIsUCN593);
+  uinli6654 -> SetBranchAddress ("tIsUCN" , &tIsUCN654);
+  uinli6659 -> SetBranchAddress ("tIsUCN" , &tIsUCN659);
 
   ULong64_t ucnli6Events765 = (Double_t) uinli6765 -> GetEntries(); //Total events of the UCNHits_Li-6 tree
   ULong64_t ucnli6Events766 = (Double_t) uinli6766 -> GetEntries();
@@ -152,6 +251,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   ULong64_t ucnli6Events773 = (Double_t) uinli6773 -> GetEntries();
   ULong64_t ucnli6Events778 = (Double_t) uinli6778 -> GetEntries();
   ULong64_t ucnli6Events779 = (Double_t) uinli6779 -> GetEntries();
+  ULong64_t ucnli6Events587 = (Double_t) uinli6587 -> GetEntries();
+  ULong64_t ucnli6Events588 = (Double_t) uinli6588 -> GetEntries();
+  ULong64_t ucnli6Events589 = (Double_t) uinli6589 -> GetEntries();
+  ULong64_t ucnli6Events590 = (Double_t) uinli6590 -> GetEntries();
+  ULong64_t ucnli6Events591 = (Double_t) uinli6591 -> GetEntries();
+  ULong64_t ucnli6Events592 = (Double_t) uinli6592 -> GetEntries();
+  ULong64_t ucnli6Events593 = (Double_t) uinli6593 -> GetEntries();
+  ULong64_t ucnli6Events654 = (Double_t) uinli6654 -> GetEntries();
+  ULong64_t ucnli6Events659 = (Double_t) uinli6659 -> GetEntries();
 
 
 
@@ -170,6 +278,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double cur773;
   double cur778;
   double cur779;
+  double cur587;
+  double cur588;
+  double cur589;
+  double cur590;
+  double cur591;
+  double cur592;
+  double cur593;
+  double cur654;
+  double cur659;
 
   bl765 -> SetBranchAddress ("B1V_KSM_PREDCUR" , &cur765);
   bl766 -> SetBranchAddress ("B1V_KSM_PREDCUR" , &cur766);
@@ -182,7 +299,16 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   bl773 -> SetBranchAddress ("B1V_KSM_PREDCUR" , &cur773);
   bl778 -> SetBranchAddress ("B1V_KSM_PREDCUR" , &cur778);
   bl779 -> SetBranchAddress ("B1V_KSM_PREDCUR" , &cur779);
-  
+  bl587 -> SetBranchAddress ("B1V_KSM_PREDCUR" , &cur587);
+  bl588 -> SetBranchAddress ("B1V_KSM_PREDCUR" , &cur588);
+  bl589 -> SetBranchAddress ("B1V_KSM_PREDCUR" , &cur589);
+  bl590 -> SetBranchAddress ("B1V_KSM_PREDCUR" , &cur590);
+  bl591 -> SetBranchAddress ("B1V_KSM_PREDCUR" , &cur591);
+  bl592 -> SetBranchAddress ("B1V_KSM_PREDCUR" , &cur592);
+  bl593 -> SetBranchAddress ("B1V_KSM_PREDCUR" , &cur593);
+  bl654 -> SetBranchAddress ("B1V_KSM_PREDCUR" , &cur654);
+  bl659 -> SetBranchAddress ("B1V_KSM_PREDCUR" , &cur659);
+
 
   double curArray765[max];
   double curArray766[max];
@@ -195,6 +321,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double curArray773[max];
   double curArray778[max];
   double curArray779[max];
+  double curArray587[max];
+  double curArray588[max];
+  double curArray589[max];
+  double curArray590[max];
+  double curArray591[max];
+  double curArray592[max];
+  double curArray593[max];
+  double curArray654[max];
+  double curArray659[max];
 
   double curAve765;
   double curAve766;
@@ -207,6 +342,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double curAve773;
   double curAve778;
   double curAve779;
+  double curAve587;
+  double curAve588;
+  double curAve589;
+  double curAve590;
+  double curAve591;
+  double curAve592;
+  double curAve593;
+  double curAve654;
+  double curAve659;
 
   int timestamp_bl765;
   int timestamp_bl766;
@@ -219,6 +363,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   int timestamp_bl773;
   int timestamp_bl778;
   int timestamp_bl779;
+  int timestamp_bl587;
+  int timestamp_bl588;
+  int timestamp_bl589;
+  int timestamp_bl590;
+  int timestamp_bl591;
+  int timestamp_bl592;
+  int timestamp_bl593;
+  int timestamp_bl654;
+  int timestamp_bl659;
 
   bl765 -> SetBranchAddress ("timestamp" , &timestamp_bl765);
   bl766 -> SetBranchAddress ("timestamp" , &timestamp_bl766);
@@ -231,6 +384,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   bl773 -> SetBranchAddress ("timestamp" , &timestamp_bl773);
   bl778 -> SetBranchAddress ("timestamp" , &timestamp_bl778);
   bl779 -> SetBranchAddress ("timestamp" , &timestamp_bl779);
+  bl587 -> SetBranchAddress ("timestamp" , &timestamp_bl587);
+  bl588 -> SetBranchAddress ("timestamp" , &timestamp_bl588);
+  bl589 -> SetBranchAddress ("timestamp" , &timestamp_bl589);
+  bl590 -> SetBranchAddress ("timestamp" , &timestamp_bl590);
+  bl591 -> SetBranchAddress ("timestamp" , &timestamp_bl591);
+  bl592 -> SetBranchAddress ("timestamp" , &timestamp_bl592);
+  bl593 -> SetBranchAddress ("timestamp" , &timestamp_bl593);
+  bl654 -> SetBranchAddress ("timestamp" , &timestamp_bl654);
+  bl659 -> SetBranchAddress ("timestamp" , &timestamp_bl659);
   
 
   double TSblArray765[max];
@@ -244,6 +406,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double TSblArray773[max];
   double TSblArray778[max];
   double TSblArray779[max];
+  double TSblArray587[max];
+  double TSblArray588[max];
+  double TSblArray589[max];
+  double TSblArray590[max];
+  double TSblArray591[max];
+  double TSblArray592[max];
+  double TSblArray593[max];
+  double TSblArray654[max];
+  double TSblArray659[max];
 
   ULong64_t blEvent765 =  bl765 -> GetEntries();  //Total number of events in the beamline tree
   ULong64_t blEvent766 =  bl766 -> GetEntries();  
@@ -256,6 +427,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   ULong64_t blEvent773 =  bl773 -> GetEntries();  
   ULong64_t blEvent778 =  bl778 -> GetEntries();  
   ULong64_t blEvent779 =  bl779 -> GetEntries();  
+  ULong64_t blEvent587 =  bl587 -> GetEntries();  
+  ULong64_t blEvent588 =  bl588 -> GetEntries();  
+  ULong64_t blEvent589 =  bl589 -> GetEntries();  
+  ULong64_t blEvent590 =  bl590 -> GetEntries();  
+  ULong64_t blEvent591 =  bl591 -> GetEntries();  
+  ULong64_t blEvent592 =  bl592 -> GetEntries();  
+  ULong64_t blEvent593 =  bl593 -> GetEntries();  
+  ULong64_t blEvent654 =  bl654 -> GetEntries();  
+  ULong64_t blEvent659 =  bl659 -> GetEntries();  
 
   
   
@@ -275,6 +455,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double ts12773;
   double ts12778;
   double ts12779;
+  double ts12587;
+  double ts12588;
+  double ts12589;
+  double ts12590;
+  double ts12591;
+  double ts12592;
+  double ts12593;
+  double ts12654;
+  double ts12659;
 
   sourceEpics765 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12765);
   sourceEpics766 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12766);
@@ -287,6 +476,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   sourceEpics773 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12773);
   sourceEpics778 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12778);
   sourceEpics779 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12779);
+  sourceEpics587 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12587);
+  sourceEpics588 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12588);
+  sourceEpics589 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12589);
+  sourceEpics590 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12590);
+  sourceEpics591 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12591);
+  sourceEpics592 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12592);
+  sourceEpics593 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12593);
+  sourceEpics654 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12654);
+  sourceEpics659 -> SetBranchAddress ("UCN_ISO_TS12_RDTEMP" , &ts12659);
   
   
 
@@ -302,6 +500,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double ts12Ave765;
   double ts12Ave765;
 
+
   double tempArray765[max];
   double tempArray766[max];
   double tempArray767[max];
@@ -313,6 +512,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double tempArray773[max];
   double tempArray778[max];
   double tempArray779[max];
+  double tempArray587[max];
+  double tempArray588[max];
+  double tempArray589[max];
+  double tempArray590[max];
+  double tempArray591[max];
+  double tempArray592[max];
+  double tempArray593[max];
+  double tempArray654[max];
+  double tempArray659[max];
   
   
 
@@ -327,6 +535,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   int timestamp_se773;
   int timestamp_se778;
   int timestamp_se779;
+  int timestamp_se587;
+  int timestamp_se588;
+  int timestamp_se589;
+  int timestamp_se590;
+  int timestamp_se591;
+  int timestamp_se592;
+  int timestamp_se593;
+  int timestamp_se654;
+  int timestamp_se659;
 
   sourceEpics765 -> SetBranchAddress ("timestamp" , &timestamp_se765);
   sourceEpics766 -> SetBranchAddress ("timestamp" , &timestamp_se766);
@@ -339,6 +556,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   sourceEpics773 -> SetBranchAddress ("timestamp" , &timestamp_se773);
   sourceEpics778 -> SetBranchAddress ("timestamp" , &timestamp_se778);
   sourceEpics779 -> SetBranchAddress ("timestamp" , &timestamp_se779);
+  sourceEpics587 -> SetBranchAddress ("timestamp" , &timestamp_se587);
+  sourceEpics588 -> SetBranchAddress ("timestamp" , &timestamp_se588);
+  sourceEpics589 -> SetBranchAddress ("timestamp" , &timestamp_se589);
+  sourceEpics590 -> SetBranchAddress ("timestamp" , &timestamp_se590);
+  sourceEpics591 -> SetBranchAddress ("timestamp" , &timestamp_se591);
+  sourceEpics592 -> SetBranchAddress ("timestamp" , &timestamp_se592);
+  sourceEpics593 -> SetBranchAddress ("timestamp" , &timestamp_se593);
+  sourceEpics654 -> SetBranchAddress ("timestamp" , &timestamp_se654);
+  sourceEpics659 -> SetBranchAddress ("timestamp" , &timestamp_se659);
 
   
   
@@ -353,6 +579,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double TSseArray773[max];
   double TSseArray778[max];
   double TSseArray779[max];
+  double TSseArray587[max];
+  double TSseArray588[max];
+  double TSseArray589[max];
+  double TSseArray590[max];
+  double TSseArray591[max];
+  double TSseArray592[max];
+  double TSseArray593[max];
+  double TSseArray654[max];
+  double TSseArray659[max];
 
 
   double FM1765; // Flow of the He3 gas (FM1)
@@ -366,6 +601,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double FM1773;    
   double FM1778;    
   double FM1779;    
+  double FM1587;    
+  double FM1588;    
+  double FM1589;    
+  double FM1590;    
+  double FM1591;    
+  double FM1592;    
+  double FM1593;    
+  double FM1654;    
+  double FM1659;    
 
   sourceEpics765 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1765);
   sourceEpics766 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1766);
@@ -378,6 +622,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   sourceEpics773 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1773);
   sourceEpics778 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1778);
   sourceEpics779 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1779);
+  sourceEpics587 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1587);
+  sourceEpics588 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1588);
+  sourceEpics589 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1589);
+  sourceEpics590 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1590);
+  sourceEpics591 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1591);
+  sourceEpics592 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1592);
+  sourceEpics593 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1593);
+  sourceEpics654 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1654);
+  sourceEpics659 -> SetBranchAddress ("UCN_HE3_FM1_RDFLOW" , &FM1659);
 
 
   double FM1Array765[max];
@@ -391,6 +644,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double FM1Array773[max];
   double FM1Array778[max];
   double FM1Array779[max];
+  double FM1Array587[max];
+  double FM1Array588[max];
+  double FM1Array589[max];
+  double FM1Array590[max];
+  double FM1Array591[max];
+  double FM1Array592[max];
+  double FM1Array593[max];
+  double FM1Array654[max];
+  double FM1Array659[max];
   
 
   double FM4765; //Flow rate in the 4K reservoir (chimney)
@@ -404,6 +666,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double FM4773;
   double FM4778;
   double FM4779;
+  double FM4587;
+  double FM4588;
+  double FM4589;
+  double FM4590;
+  double FM4591;
+  double FM4592;
+  double FM4593;
+  double FM4654;
+  double FM4659;
 
   sourceEpics765 -> SetBranchAddress ("UCN_HE4_FM4_RDFLOW" , &FM4765);
   sourceEpics766 -> SetBranchAddress ("UCN_HE4_FM4_RDFLOW" , &FM4766);
@@ -416,6 +687,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   sourceEpics773 -> SetBranchAddress ("UCN_HE4_FM4_RDFLOW" , &FM4773);
   sourceEpics778 -> SetBranchAddress ("UCN_HE4_FM4_RDFLOW" , &FM4778);
   sourceEpics779 -> SetBranchAddress ("UCN_HE4_FM4_RDFLOW" , &FM4779);
+  sourceEpics587 -> SetBranchAddress ("UCN_HE4_FM4_RDFLOW" , &FM4587);
+  sourceEpics588 -> SetBranchAddress ("UCN_HE4_FM4_RDFLOW" , &FM4588);
+  sourceEpics589 -> SetBranchAddress ("UCN_HE4_FM4_RDFLOW" , &FM4589);
+  sourceEpics590 -> SetBranchAddress ("UCN_HE4_FM4_RDFLOW" , &FM4590);
+  sourceEpics591 -> SetBranchAddress ("UCN_HE4_FM4_RDFLOW" , &FM4591);
+  sourceEpics592 -> SetBranchAddress ("UCN_HE4_FM4_RDFLOW" , &FM4592);
+  sourceEpics593 -> SetBranchAddress ("UCN_HE4_FM4_RDFLOW" , &FM4593);
+  sourceEpics654 -> SetBranchAddress ("UCN_HE4_FM4_RDFLOW" , &FM4654);
+  sourceEpics659 -> SetBranchAddress ("UCN_HE4_FM4_RDFLOW" , &FM4659);
 
   double FM4Array765[max];
   double FM4Array766[max];
@@ -428,6 +708,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double FM4Array773[max];
   double FM4Array778[max];
   double FM4Array779[max];
+  double FM4Array587[max];
+  double FM4Array588[max];
+  double FM4Array589[max];
+  double FM4Array590[max];
+  double FM4Array591[max];
+  double FM4Array592[max];
+  double FM4Array593[max];
+  double FM4Array654[max];
+  double FM4Array659[max];
 
   double FM5765; // Flow rate of the 4K reservoir
   double FM5766;
@@ -440,6 +729,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double FM5773;
   double FM5778;
   double FM5779;
+  double FM5587;
+  double FM5588;
+  double FM5589;
+  double FM5590;
+  double FM5591;
+  double FM5592;
+  double FM5593;
+  double FM5654;
+  double FM5659;
   
 
   sourceEpics765 -> SetBranchAddress ("UCN_HE4_FM5_RDFLOW" , &FM5765);
@@ -453,6 +751,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   sourceEpics773 -> SetBranchAddress ("UCN_HE4_FM5_RDFLOW" , &FM5773);
   sourceEpics778 -> SetBranchAddress ("UCN_HE4_FM5_RDFLOW" , &FM5778);
   sourceEpics779 -> SetBranchAddress ("UCN_HE4_FM5_RDFLOW" , &FM5779);
+  sourceEpics587 -> SetBranchAddress ("UCN_HE4_FM5_RDFLOW" , &FM5587);
+  sourceEpics588 -> SetBranchAddress ("UCN_HE4_FM5_RDFLOW" , &FM5588);
+  sourceEpics589 -> SetBranchAddress ("UCN_HE4_FM5_RDFLOW" , &FM5589);
+  sourceEpics590 -> SetBranchAddress ("UCN_HE4_FM5_RDFLOW" , &FM5590);
+  sourceEpics591 -> SetBranchAddress ("UCN_HE4_FM5_RDFLOW" , &FM5591);
+  sourceEpics592 -> SetBranchAddress ("UCN_HE4_FM5_RDFLOW" , &FM5592);
+  sourceEpics593 -> SetBranchAddress ("UCN_HE4_FM5_RDFLOW" , &FM5593);
+  sourceEpics654 -> SetBranchAddress ("UCN_HE4_FM5_RDFLOW" , &FM5654);
+  sourceEpics659 -> SetBranchAddress ("UCN_HE4_FM5_RDFLOW" , &FM5659);
 
   double FM5Array765[max];
   double FM5Array766[max];
@@ -465,6 +772,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   double FM5Array773[max];
   double FM5Array778[max];
   double FM5Array779[max];
+  double FM5Array587[max];
+  double FM5Array588[max];
+  double FM5Array589[max];
+  double FM5Array590[max];
+  double FM5Array591[max];
+  double FM5Array592[max];
+  double FM5Array593[max];
+  double FM5Array654[max];
+  double FM5Array659[max];
 
   ULong64_t seEvents765 = sourceEpics765 -> GetEntries(); // Total number of events in Source Epics tree
   ULong64_t seEvents766 = sourceEpics766 -> GetEntries();
@@ -477,6 +793,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   ULong64_t seEvents773 = sourceEpics773 -> GetEntries();
   ULong64_t seEvents778 = sourceEpics778 -> GetEntries();
   ULong64_t seEvents779 = sourceEpics779 -> GetEntries();
+  ULong64_t seEvents587 = sourceEpics587 -> GetEntries();
+  ULong64_t seEvents588 = sourceEpics588 -> GetEntries();
+  ULong64_t seEvents589 = sourceEpics589 -> GetEntries();
+  ULong64_t seEvents590 = sourceEpics590 -> GetEntries();
+  ULong64_t seEvents591 = sourceEpics591 -> GetEntries();
+  ULong64_t seEvents592 = sourceEpics592 -> GetEntries();
+  ULong64_t seEvents593 = sourceEpics593 -> GetEntries();
+  ULong64_t seEvents654 = sourceEpics654 -> GetEntries();
+  ULong64_t seEvents659 = sourceEpics659 -> GetEntries();
 
 
 
@@ -495,6 +820,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   int NBins773 = 1;
   int NBins778 = 1;
   int NBins779 = 1;
+  int NBins587 = 1;
+  int NBins588 = 1;
+  int NBins589 = 1;
+  int NBins590 = 1;
+  int NBins591 = 1;
+  int NBins592 = 1;
+  int NBins593 = 1;
+  int NBins654 = 1;
+  int NBins659 = 1;
 
   int BinWidth = 1;
   
@@ -510,6 +844,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   int maxXrange773 = 0, minXrange773 = 1540000000.;
   int maxXrange778 = 0, minXrange778 = 1540000000.;
   int maxXrange779 = 0, minXrange779 = 1540000000.;
+  int maxXrange587 = 0, minXrange587 = 1540000000.;
+  int maxXrange588 = 0, minXrange588 = 1540000000.;
+  int maxXrange589 = 0, minXrange589 = 1540000000.;
+  int maxXrange590 = 0, minXrange590 = 1540000000.;
+  int maxXrange591 = 0, minXrange591 = 1540000000.;
+  int maxXrange592 = 0, minXrange592 = 1540000000.;
+  int maxXrange593 = 0, minXrange593 = 1540000000.;
+  int maxXrange654 = 0, minXrange654 = 1540000000.;
+  int maxXrange659 = 0, minXrange659 = 1540000000.;
 
   //Defining the canvasas
   //run 765
@@ -528,6 +871,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   TH1* UCNRate773 = new TH1F("UCNRate773", "UCN-rate Histogram", NBins773 , minXrange773, maxXrange773);
   TH1* UCNRate778 = new TH1F("UCNRate778", "UCN-rate Histogram", NBins778 , minXrange778, maxXrange778);
   TH1* UCNRate779 = new TH1F("UCNRate779", "UCN-rate Histogram", NBins779 , minXrange779, maxXrange779);
+  TH1* UCNRate587 = new TH1F("UCNRate587", "UCN-rate Histogram", NBins587 , minXrange587, maxXrange587);
+  TH1* UCNRate588 = new TH1F("UCNRate588", "UCN-rate Histogram", NBins588 , minXrange588, maxXrange588);
+  TH1* UCNRate589 = new TH1F("UCNRate589", "UCN-rate Histogram", NBins589 , minXrange589, maxXrange589);
+  TH1* UCNRate590 = new TH1F("UCNRate590", "UCN-rate Histogram", NBins590 , minXrange590, maxXrange590);
+  TH1* UCNRate591 = new TH1F("UCNRate591", "UCN-rate Histogram", NBins591 , minXrange591, maxXrange591);
+  TH1* UCNRate592 = new TH1F("UCNRate592", "UCN-rate Histogram", NBins592 , minXrange592, maxXrange592);
+  TH1* UCNRate593 = new TH1F("UCNRate593", "UCN-rate Histogram", NBins593 , minXrange593, maxXrange593);
+  TH1* UCNRate654 = new TH1F("UCNRate654", "UCN-rate Histogram", NBins654 , minXrange654, maxXrange654);
+  TH1* UCNRate659 = new TH1F("UCNRate659", "UCN-rate Histogram", NBins659 , minXrange659, maxXrange659);
 
 
   //***************************************
@@ -655,9 +1007,116 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
       maxXrange779 = timestamp_bl779;
     }
   }
+
+  //run 587
+  for(ULong64_t j = 0 ; j < blEvent587 ;j++) {
+    bl587 -> GetEvent(j);
+    if (timestamp_bl587 < minXrange587 ){
+      minXrange587 = timestamp_bl587;
+    }
+    if (timestamp_bl587 > maxXrange587){
+      maxXrange587 = timestamp_bl587;
+    }
+  }
+
+
+  //run 588
+  for(ULong64_t j = 0 ; j < blEvent588 ;j++) {
+    bl588 -> GetEvent(j);
+    if (timestamp_bl588 < minXrange588 ){
+      minXrange588 = timestamp_bl588;
+    }
+    if (timestamp_bl588 > maxXrange588){
+      maxXrange588 = timestamp_bl588;
+    }
+  }
+
+  //run 589
+  for(ULong64_t j = 0 ; j < blEvent589 ;j++) {
+    bl589 -> GetEvent(j);
+    if (timestamp_bl589 < minXrange589 ){
+      minXrange589 = timestamp_bl589;
+    }
+    if (timestamp_bl589 > maxXrange589){
+      maxXrange589 = timestamp_bl589;
+    }
+  }
+
+
+  //run 590
+  for(ULong64_t j = 0 ; j < blEvent590 ;j++) {
+    bl590 -> GetEvent(j);
+    if (timestamp_bl590 < minXrange590 ){
+      minXrange590 = timestamp_bl590;
+    }
+    if (timestamp_bl590 > maxXrange590){
+      maxXrange590 = timestamp_bl590;
+    }
+  }
+
+
+  //run 591
+  for(ULong64_t j = 0 ; j < blEvent591 ;j++) {
+    bl591 -> GetEvent(j);
+    if (timestamp_bl591 < minXrange591 ){
+      minXrange591 = timestamp_bl591;
+    }
+    if (timestamp_bl591 > maxXrange591){
+      maxXrange591 = timestamp_bl591;
+    }
+  }
+
+
+  //run 592
+  for(ULong64_t j = 0 ; j < blEvent592 ;j++) {
+    bl592 -> GetEvent(j);
+    if (timestamp_bl592 < minXrange592 ){
+      minXrange592 = timestamp_bl592;
+    }
+    if (timestamp_bl592 > maxXrange592){
+      maxXrange592 = timestamp_bl592;
+    }
+  }
+
+
+  //run 593
+  for(ULong64_t j = 0 ; j < blEvent593 ;j++) {
+    bl593 -> GetEvent(j);
+    if (timestamp_bl593 < minXrange593 ){
+      minXrange593 = timestamp_bl593;
+    }
+    if (timestamp_bl593 > maxXrange593){
+      maxXrange593 = timestamp_bl593;
+    }
+  }
+
+
+  //run 654
+  for(ULong64_t j = 0 ; j < blEvent654 ;j++) {
+    bl654 -> GetEvent(j);
+    if (timestamp_bl654 < minXrange654 ){
+      minXrange654 = timestamp_bl654;
+    }
+    if (timestamp_bl654 > maxXrange654){
+      maxXrange654 = timestamp_bl654;
+    }
+  }
+
+
+  //run 659
+  for(ULong64_t j = 0 ; j < blEvent659 ;j++) {
+    bl659 -> GetEvent(j);
+    if (timestamp_bl659 < minXrange659 ){
+      minXrange659 = timestamp_bl659;
+    }
+    if (timestamp_bl659 > maxXrange659){
+      maxXrange659 = timestamp_bl659;
+    }
+  }
+  
   // setting the bin numbers
   
-  NBins765 = (maxXrange765 - minXrange765)/BinWidth ;
+  NBins765 = (maxXrange765 - minXrange765 )/BinWidth ;
   NBins766 = (maxXrange766 - minXrange766 )/BinWidth ;
   NBins767 = (maxXrange767 - minXrange767 )/BinWidth ;
   NBins768 = (maxXrange768 - minXrange768 )/BinWidth ;
@@ -668,6 +1127,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   NBins773 = (maxXrange773 - minXrange773 )/BinWidth ;
   NBins778 = (maxXrange778 - minXrange778 )/BinWidth ;
   NBins779 = (maxXrange779 - minXrange779 )/BinWidth ;
+  NBins587 = (maxXrange587 - minXrange587 )/BinWidth ;
+  NBins588 = (maxXrange588 - minXrange588 )/BinWidth ;
+  NBins589 = (maxXrange589 - minXrange589 )/BinWidth ;
+  NBins590 = (maxXrange590 - minXrange590 )/BinWidth ;
+  NBins591 = (maxXrange591 - minXrange591 )/BinWidth ;
+  NBins592 = (maxXrange592 - minXrange592 )/BinWidth ;
+  NBins593 = (maxXrange593 - minXrange593 )/BinWidth ;
+  NBins654 = (maxXrange654 - minXrange654 )/BinWidth ;
+  NBins659 = (maxXrange659 - minXrange659 )/BinWidth ;
 
   UCNRate765 -> Reset();
   UCNRate766 -> Reset();
@@ -680,6 +1148,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   UCNRate773 -> Reset();
   UCNRate778 -> Reset();
   UCNRate779 -> Reset();
+  UCNRate587 -> Reset();
+  UCNRate588 -> Reset();
+  UCNRate589 -> Reset();
+  UCNRate590 -> Reset();
+  UCNRate591 -> Reset();
+  UCNRate592 -> Reset();
+  UCNRate593 -> Reset();
+  UCNRate654 -> Reset();
+  UCNRate659 -> Reset();
   
   UCNRate765 -> SetBins(NBins765 , minXrange765 , maxXrange765);
   UCNRate766 -> SetBins(NBins766 , minXrange766 , maxXrange766);
@@ -692,6 +1169,15 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   UCNRate773 -> SetBins(NBins773 , minXrange773 , maxXrange773);
   UCNRate778 -> SetBins(NBins778 , minXrange778 , maxXrange778);
   UCNRate779 -> SetBins(NBins779 , minXrange779 , maxXrange779);
+  UCNRate587 -> SetBins(NBins587 , minXrange587 , maxXrange587);
+  UCNRate588 -> SetBins(NBins588 , minXrange588 , maxXrange588);
+  UCNRate589 -> SetBins(NBins589 , minXrange589 , maxXrange589);
+  UCNRate590 -> SetBins(NBins590 , minXrange590 , maxXrange590);
+  UCNRate591 -> SetBins(NBins591 , minXrange591 , maxXrange591);
+  UCNRate592 -> SetBins(NBins592 , minXrange592 , maxXrange592);
+  UCNRate593 -> SetBins(NBins593 , minXrange593 , maxXrange593);
+  UCNRate654 -> SetBins(NBins654 , minXrange654 , maxXrange654);
+  UCNRate659 -> SetBins(NBins659 , minXrange659 , maxXrange659);
 
   // filling the histogram
 
@@ -782,6 +1268,79 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
       UCNRate779 -> Fill(tUnixTimePrecise779);
     }
   }
+
+  //run 587
+  for (ULong64_t j = 0 ; j < ucnli6Events587; j++){
+    uinli6587 -> GetEvent(j);
+    if (tUnixTimePrecise587 > 20e6 && tIsUCN587 > 0){
+      UCNRate587 -> Fill(tUnixTimePrecise587);
+    }
+  }
+
+  //run 588
+  for (ULong64_t j = 0 ; j < ucnli6Events588; j++){
+    uinli6588 -> GetEvent(j);
+    if (tUnixTimePrecise588 > 20e6 && tIsUCN588 > 0){
+      UCNRate588 -> Fill(tUnixTimePrecise588);
+    }
+  }
+
+  //run 589
+  for (ULong64_t j = 0 ; j < ucnli6Events589; j++){
+    uinli6589 -> GetEvent(j);
+    if (tUnixTimePrecise589 > 20e6 && tIsUCN589 > 0){
+      UCNRate589 -> Fill(tUnixTimePrecise589);
+    }
+  }
+
+  //run 590
+  for (ULong64_t j = 0 ; j < ucnli6Events590; j++){
+    uinli6590 -> GetEvent(j);
+    if (tUnixTimePrecise590 > 20e6 && tIsUCN590 > 0){
+      UCNRate590 -> Fill(tUnixTimePrecise590);
+    }
+  }
+
+  //run 591
+  for (ULong64_t j = 0 ; j < ucnli6Events591; j++){
+    uinli6591 -> GetEvent(j);
+    if (tUnixTimePrecise591 > 20e6 && tIsUCN591 > 0){
+      UCNRate591 -> Fill(tUnixTimePrecise591);
+    }
+  }
+
+  //run 592
+  for (ULong64_t j = 0 ; j < ucnli6Events592; j++){
+    uinli6592 -> GetEvent(j);
+    if (tUnixTimePrecise592 > 20e6 && tIsUCN592 > 0){
+      UCNRate592 -> Fill(tUnixTimePrecise592);
+    }
+  }
+
+  //run 593
+  for (ULong64_t j = 0 ; j < ucnli6Events593; j++){
+    uinli6593 -> GetEvent(j);
+    if (tUnixTimePrecise593 > 20e6 && tIsUCN593 > 0){
+      UCNRate593 -> Fill(tUnixTimePrecise593);
+    }
+  }
+
+  //run 654
+  for (ULong64_t j = 0 ; j < ucnli6Events654; j++){
+    uinli6654 -> GetEvent(j);
+    if (tUnixTimePrecise654 > 20e6 && tIsUCN654 > 0){
+      UCNRate654 -> Fill(tUnixTimePrecise654);
+    }
+  }
+
+  //run 659
+  for (ULong64_t j = 0 ; j < ucnli6Events659; j++){
+    uinli6659 -> GetEvent(j);
+    if (tUnixTimePrecise659 > 20e6 && tIsUCN659 > 0){
+      UCNRate659 -> Fill(tUnixTimePrecise659);
+    }
+  }
+  
 
   // ***************************
   // graph the UCN rate
@@ -931,6 +1490,131 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   UCNRate779 -> GetXaxis() -> SetLabelSize(.04);
   UCNRate779 -> Draw();
 
+
+  //run 587
+  TCanvas *c587 = new TCanvas ("c587" , "c587" , 1200 , 900);
+  c587 -> Divide(3,2);
+  c587 -> cd(1);
+  UCNRate587 -> GetYaxis() -> SetTitle("UCN Counts/s");
+  UCNRate587 -> GetXaxis() -> SetTimeDisplay(1);
+  UCNRate587 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  UCNRate587 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  UCNRate587 -> GetXaxis() -> SetTitleSize(0.05);
+  UCNRate587 -> GetXaxis() -> SetLabelOffset(.03);
+  UCNRate587 -> GetXaxis() -> SetLabelSize(.04);
+  UCNRate587 -> Draw();
+
+
+  //run 588
+  TCanvas *c588 = new TCanvas ("c588" , "c588" , 1200 , 900);
+  c588 -> Divide(3,2);
+  c588 -> cd(1);
+  UCNRate588 -> GetYaxis() -> SetTitle("UCN Counts/s");
+  UCNRate588 -> GetXaxis() -> SetTimeDisplay(1);
+  UCNRate588 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  UCNRate588 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  UCNRate588 -> GetXaxis() -> SetTitleSize(0.05);
+  UCNRate588 -> GetXaxis() -> SetLabelOffset(.03);
+  UCNRate588 -> GetXaxis() -> SetLabelSize(.04);
+  UCNRate588 -> Draw();
+
+
+  //run 589
+  TCanvas *c589 = new TCanvas ("c589" , "c589" , 1200 , 900);
+  c589 -> Divide(3,2);
+  c589 -> cd(1);
+  UCNRate589 -> GetYaxis() -> SetTitle("UCN Counts/s");
+  UCNRate589 -> GetXaxis() -> SetTimeDisplay(1);
+  UCNRate589 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  UCNRate589 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  UCNRate589 -> GetXaxis() -> SetTitleSize(0.05);
+  UCNRate589 -> GetXaxis() -> SetLabelOffset(.03);
+  UCNRate589 -> GetXaxis() -> SetLabelSize(.04);
+  UCNRate589 -> Draw();
+
+  //run 590
+  TCanvas *c590 = new TCanvas ("c590" , "c590" , 1200 , 900);
+  c590 -> Divide(3,2);
+  c590 -> cd(1);
+  UCNRate590 -> GetYaxis() -> SetTitle("UCN Counts/s");
+  UCNRate590 -> GetXaxis() -> SetTimeDisplay(1);
+  UCNRate590 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  UCNRate590 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  UCNRate590 -> GetXaxis() -> SetTitleSize(0.05);
+  UCNRate590 -> GetXaxis() -> SetLabelOffset(.03);
+  UCNRate590 -> GetXaxis() -> SetLabelSize(.04);
+  UCNRate590 -> Draw();
+
+
+  //run 591
+  TCanvas *c591 = new TCanvas ("c591" , "c591" , 1200 , 900);
+  c591 -> Divide(3,2);
+  c591 -> cd(1);
+  UCNRate591 -> GetYaxis() -> SetTitle("UCN Counts/s");
+  UCNRate591 -> GetXaxis() -> SetTimeDisplay(1);
+  UCNRate591 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  UCNRate591 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  UCNRate591 -> GetXaxis() -> SetTitleSize(0.05);
+  UCNRate591 -> GetXaxis() -> SetLabelOffset(.03);
+  UCNRate591 -> GetXaxis() -> SetLabelSize(.04);
+  UCNRate591 -> Draw();
+
+
+  //run 592
+  TCanvas *c592 = new TCanvas ("c592" , "c592" , 1200 , 900);
+  c592 -> Divide(3,2);
+  c592 -> cd(1);
+  UCNRate592 -> GetYaxis() -> SetTitle("UCN Counts/s");
+  UCNRate592 -> GetXaxis() -> SetTimeDisplay(1);
+  UCNRate592 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  UCNRate592 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  UCNRate592 -> GetXaxis() -> SetTitleSize(0.05);
+  UCNRate592 -> GetXaxis() -> SetLabelOffset(.03);
+  UCNRate592 -> GetXaxis() -> SetLabelSize(.04);
+  UCNRate592 -> Draw();
+
+
+  //run 593
+  TCanvas *c593 = new TCanvas ("c593" , "c593" , 1200 , 900);
+  c593 -> Divide(3,2);
+  c593 -> cd(1);
+  UCNRate593 -> GetYaxis() -> SetTitle("UCN Counts/s");
+  UCNRate593 -> GetXaxis() -> SetTimeDisplay(1);
+  UCNRate593 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  UCNRate593 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  UCNRate593 -> GetXaxis() -> SetTitleSize(0.05);
+  UCNRate593 -> GetXaxis() -> SetLabelOffset(.03);
+  UCNRate593 -> GetXaxis() -> SetLabelSize(.04);
+  UCNRate593 -> Draw();
+
+
+  //run 654
+  TCanvas *c654 = new TCanvas ("c654" , "c654" , 1200 , 900);
+  c654 -> Divide(3,2);
+  c654 -> cd(1);
+  UCNRate654 -> GetYaxis() -> SetTitle("UCN Counts/s");
+  UCNRate654 -> GetXaxis() -> SetTimeDisplay(1);
+  UCNRate654 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  UCNRate654 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  UCNRate654 -> GetXaxis() -> SetTitleSize(0.05);
+  UCNRate654 -> GetXaxis() -> SetLabelOffset(.03);
+  UCNRate654 -> GetXaxis() -> SetLabelSize(.04);
+  UCNRate654 -> Draw();
+
+
+  //run 659
+  TCanvas *c659 = new TCanvas ("c659" , "c659" , 1200 , 900);
+  c659 -> Divide(3,2);
+  c659 -> cd(1);
+  UCNRate659 -> GetYaxis() -> SetTitle("UCN Counts/s");
+  UCNRate659 -> GetXaxis() -> SetTimeDisplay(1);
+  UCNRate659 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  UCNRate659 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  UCNRate659 -> GetXaxis() -> SetTitleSize(0.05);
+  UCNRate659 -> GetXaxis() -> SetLabelOffset(.03);
+  UCNRate659 -> GetXaxis() -> SetLabelSize(.04);
+  UCNRate659 -> Draw();
+  
   // *****************************************************************
   // Loop to put the source Epics stuff in arrays
   // *****************************************************************
@@ -1045,6 +1729,105 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM5Array779[j] = FM5779;
   }
 
+
+  //run 587
+  for (ULong64_t j = 0 ; j < seEvents587 ; j++){
+    sourceEpics587 -> GetEvent(j);
+    TSseArray587[j] = timestamp_se587;
+    tempArray587[j] = ts12587;
+    FM1Array587[j] = FM1587;
+    FM4Array587[j] = FM4587;
+    FM5Array587[j] = FM5587;
+  }
+
+  //run 588
+  for (ULong64_t j = 0 ; j < seEvents588 ; j++){
+    sourceEpics588 -> GetEvent(j);
+    TSseArray588[j] = timestamp_se588;
+    tempArray588[j] = ts12588;
+    FM1Array588[j] = FM1588;
+    FM4Array588[j] = FM4588;
+    FM5Array588[j] = FM5588;
+  }
+
+
+  //run 589
+  for (ULong64_t j = 0 ; j < seEvents589 ; j++){
+    sourceEpics589 -> GetEvent(j);
+    TSseArray589[j] = timestamp_se589;
+    tempArray589[j] = ts12589;
+    FM1Array589[j] = FM1589;
+    FM4Array589[j] = FM4589;
+    FM5Array589[j] = FM5589;
+  }
+
+
+  //run 590
+  for (ULong64_t j = 0 ; j < seEvents590 ; j++){
+    sourceEpics590 -> GetEvent(j);
+    TSseArray590[j] = timestamp_se590;
+    tempArray590[j] = ts12590;
+    FM1Array590[j] = FM1590;
+    FM4Array590[j] = FM4590;
+    FM5Array590[j] = FM5590;
+  }
+
+
+  //run 591
+  for (ULong64_t j = 0 ; j < seEvents591 ; j++){
+    sourceEpics591 -> GetEvent(j);
+    TSseArray591[j] = timestamp_se591;
+    tempArray591[j] = ts12591;
+    FM1Array591[j] = FM1591;
+    FM4Array591[j] = FM4591;
+    FM5Array591[j] = FM5591;
+  }
+
+
+  //run 592
+  for (ULong64_t j = 0 ; j < seEvents592 ; j++){
+    sourceEpics592 -> GetEvent(j);
+    TSseArray592[j] = timestamp_se592;
+    tempArray592[j] = ts12592;
+    FM1Array592[j] = FM1592;
+    FM4Array592[j] = FM4592;
+    FM5Array592[j] = FM5592;
+  }
+
+
+  //run 593
+  for (ULong64_t j = 0 ; j < seEvents593 ; j++){
+    sourceEpics593 -> GetEvent(j);
+    TSseArray593[j] = timestamp_se593;
+    tempArray593[j] = ts12593;
+    FM1Array593[j] = FM1593;
+    FM4Array593[j] = FM4593;
+    FM5Array593[j] = FM5593;
+  }
+
+  //run 654
+  for (ULong64_t j = 0 ; j < seEvents654 ; j++){
+    sourceEpics654 -> GetEvent(j);
+    TSseArray654[j] = timestamp_se654;
+    tempArray654[j] = ts12654;
+    FM1Array654[j] = FM1654;
+    FM4Array654[j] = FM4654;
+    FM5Array654[j] = FM5654;
+  }
+
+
+  //run 659
+  for (ULong64_t j = 0 ; j < seEvents659 ; j++){
+    sourceEpics659 -> GetEvent(j);
+    TSseArray659[j] = timestamp_se659;
+    tempArray659[j] = ts12659;
+    FM1Array659[j] = FM1659;
+    FM4Array659[j] = FM4659;
+    FM5Array659[j] = FM5659;
+  }
+
+
+
   //***********************************
   // Loop over the beamline Tree values
   //***********************************
@@ -1125,6 +1908,76 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     TSblArray779[j] = timestamp_bl779;
     curArray779[j] = cur779;
   }
+
+  //run 587
+  for (ULong64_t j = 0; j < blEvent587 ; j++){
+    bl587 -> GetEvent(j);
+    TSblArray587[j] = timestamp_bl587;
+    curArray587[j] = cur587;
+  }
+
+
+  //run 588
+  for (ULong64_t j = 0; j < blEvent588 ; j++){
+    bl588 -> GetEvent(j);
+    TSblArray588[j] = timestamp_bl588;
+    curArray588[j] = cur588;
+  }
+
+
+  //run 589
+  for (ULong64_t j = 0; j < blEvent589 ; j++){
+    bl589 -> GetEvent(j);
+    TSblArray589[j] = timestamp_bl589;
+    curArray589[j] = cur589;
+  }
+
+  //run 590
+  for (ULong64_t j = 0; j < blEvent590 ; j++){
+    bl590 -> GetEvent(j);
+    TSblArray590[j] = timestamp_bl590;
+    curArray590[j] = cur590;
+  }
+
+
+  //run 591
+  for (ULong64_t j = 0; j < blEvent591 ; j++){
+    bl591 -> GetEvent(j);
+    TSblArray591[j] = timestamp_bl591;
+    curArray591[j] = cur591;
+  }
+
+
+  //run 592
+  for (ULong64_t j = 0; j < blEvent592 ; j++){
+    bl592 -> GetEvent(j);
+    TSblArray592[j] = timestamp_bl592;
+    curArray592[j] = cur592;
+  }
+
+
+  //run 593
+  for (ULong64_t j = 0; j < blEvent593 ; j++){
+    bl593 -> GetEvent(j);
+    TSblArray593[j] = timestamp_bl593;
+    curArray593[j] = cur593;
+  }
+
+  //run 654
+  for (ULong64_t j = 0; j < blEvent654 ; j++){
+    bl654 -> GetEvent(j);
+    TSblArray654[j] = timestamp_bl654;
+    curArray654[j] = cur654;
+  }
+
+  //run 659
+  for (ULong64_t j = 0; j < blEvent659 ; j++){
+    bl659 -> GetEvent(j);
+    TSblArray659[j] = timestamp_bl659;
+    curArray659[j] = cur659;
+  }
+
+  
 
 #if 1
   // **********************************
@@ -2140,6 +2993,851 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grBL779 -> SetMarkerStyle(20);
   grBL779 -> Draw("AP");
 
+
+
+  //run 587
+  c587 -> cd(2);
+  TGraph *grtemp587 = new TGraph(seEvents587 , TSseArray587 , tempArray587);
+  grtemp587 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp587 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp587 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp587 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp587 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp587 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp587 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp587 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp587 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp587 -> GetXaxis() -> SetNdivisions(10);
+  grtemp587 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp587 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp587 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp587 -> SetMarkerStyle(20);
+  grtemp587 -> Draw("AP");
+
+  c587 -> cd(3);
+  TGraph *grFM4587 = new TGraph (seEvents587 , TSseArray587 , FM4Array587);
+  grFM4587 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4587 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4587 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4587 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4587 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4587 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4587 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4587 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4587 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4587 -> GetXaxis() -> SetNdivisions(10);
+  grFM4587 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4587 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4587 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4587 -> SetMarkerStyle(20);
+  grFM4587 -> Draw("AP");
+  
+  c587 -> cd(4);
+  TGraph *grFM1587 = new TGraph (seEvents587 , TSseArray587 , FM1Array587);
+  grFM1587 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1587 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1587 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1587 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1587 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1587 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1587 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1587 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1587 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1587 -> GetXaxis() -> SetNdivisions(10);
+  grFM1587 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1587 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1587 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1587 -> SetMarkerStyle(20);
+  grFM1587 -> Draw("AP");
+  
+  c587 -> cd(5);
+  TGraph *grFM5587 = new TGraph (seEvents587 , TSseArray587 , FM5Array587);
+  grFM5587 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5587 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5587 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5587 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5587 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5587 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5587 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5587 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5587 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5587 -> GetXaxis() -> SetNdivisions(10);
+  grFM5587 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5587 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5587 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5587 -> SetMarkerStyle(20);
+  grFM5587 -> Draw("AP");
+
+
+  c587 -> cd(6);
+  TGraph *grBL587 = new TGraph (blEvent587 , TSblArray587 , curArray587);
+  grBL587 -> SetTitle(" Predicted current vs Time ");
+  grBL587 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL587 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL587 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL587 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL587 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL587 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL587 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL587 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL587 -> GetXaxis() -> SetNdivisions(10);
+  grBL587 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL587 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL587 -> GetXaxis() -> SetLabelSize(.04);
+  grBL587 -> SetMarkerStyle(20);
+  grBL587 -> Draw("AP");
+
+
+
+
+  //run 588
+  c588 -> cd(2);
+  TGraph *grtemp588 = new TGraph(seEvents588 , TSseArray588 , tempArray588);
+  grtemp588 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp588 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp588 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp588 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp588 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp588 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp588 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp588 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp588 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp588 -> GetXaxis() -> SetNdivisions(10);
+  grtemp588 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp588 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp588 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp588 -> SetMarkerStyle(20);
+  grtemp588 -> Draw("AP");
+
+  c588 -> cd(3);
+  TGraph *grFM4588 = new TGraph (seEvents588 , TSseArray588 , FM4Array588);
+  grFM4588 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4588 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4588 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4588 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4588 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4588 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4588 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4588 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4588 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4588 -> GetXaxis() -> SetNdivisions(10);
+  grFM4588 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4588 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4588 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4588 -> SetMarkerStyle(20);
+  grFM4588 -> Draw("AP");
+  
+  c588 -> cd(4);
+  TGraph *grFM1588 = new TGraph (seEvents588 , TSseArray588 , FM1Array588);
+  grFM1588 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1588 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1588 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1588 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1588 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1588 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1588 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1588 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1588 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1588 -> GetXaxis() -> SetNdivisions(10);
+  grFM1588 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1588 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1588 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1588 -> SetMarkerStyle(20);
+  grFM1588 -> Draw("AP");
+  
+  c588 -> cd(5);
+  TGraph *grFM5588 = new TGraph (seEvents588 , TSseArray588 , FM5Array588);
+  grFM5588 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5588 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5588 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5588 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5588 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5588 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5588 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5588 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5588 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5588 -> GetXaxis() -> SetNdivisions(10);
+  grFM5588 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5588 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5588 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5588 -> SetMarkerStyle(20);
+  grFM5588 -> Draw("AP");
+
+
+  c588 -> cd(6);
+  TGraph *grBL588 = new TGraph (blEvent588 , TSblArray588 , curArray588);
+  grBL588 -> SetTitle(" Predicted current vs Time ");
+  grBL588 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL588 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL588 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL588 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL588 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL588 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL588 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL588 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL588 -> GetXaxis() -> SetNdivisions(10);
+  grBL588 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL588 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL588 -> GetXaxis() -> SetLabelSize(.04);
+  grBL588 -> SetMarkerStyle(20);
+  grBL588 -> Draw("AP");
+  
+
+
+  //run 589
+  c589 -> cd(2);
+  TGraph *grtemp589 = new TGraph(seEvents589 , TSseArray589 , tempArray589);
+  grtemp589 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp589 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp589 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp589 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp589 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp589 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp589 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp589 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp589 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp589 -> GetXaxis() -> SetNdivisions(10);
+  grtemp589 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp589 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp589 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp589 -> SetMarkerStyle(20);
+  grtemp589 -> Draw("AP");
+
+  c589 -> cd(3);
+  TGraph *grFM4589 = new TGraph (seEvents589 , TSseArray589 , FM4Array589);
+  grFM4589 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4589 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4589 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4589 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4589 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4589 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4589 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4589 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4589 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4589 -> GetXaxis() -> SetNdivisions(10);
+  grFM4589 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4589 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4589 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4589 -> SetMarkerStyle(20);
+  grFM4589 -> Draw("AP");
+  
+  c589 -> cd(4);
+  TGraph *grFM1589 = new TGraph (seEvents589 , TSseArray589 , FM1Array589);
+  grFM1589 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1589 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1589 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1589 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1589 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1589 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1589 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1589 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1589 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1589 -> GetXaxis() -> SetNdivisions(10);
+  grFM1589 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1589 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1589 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1589 -> SetMarkerStyle(20);
+  grFM1589 -> Draw("AP");
+  
+  c589 -> cd(5);
+  TGraph *grFM5589 = new TGraph (seEvents589 , TSseArray589 , FM5Array589);
+  grFM5589 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5589 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5589 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5589 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5589 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5589 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5589 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5589 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5589 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5589 -> GetXaxis() -> SetNdivisions(10);
+  grFM5589 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5589 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5589 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5589 -> SetMarkerStyle(20);
+  grFM5589 -> Draw("AP");
+
+
+  c589 -> cd(6);
+  TGraph *grBL589 = new TGraph (blEvent589 , TSblArray589 , curArray589);
+  grBL589 -> SetTitle(" Predicted current vs Time ");
+  grBL589 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL589 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL589 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL589 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL589 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL589 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL589 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL589 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL589 -> GetXaxis() -> SetNdivisions(10);
+  grBL589 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL589 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL589 -> GetXaxis() -> SetLabelSize(.04);
+  grBL589 -> SetMarkerStyle(20);
+  grBL589 -> Draw("AP");
+
+
+
+  //run 590
+  c590 -> cd(2);
+  TGraph *grtemp590 = new TGraph(seEvents590 , TSseArray590 , tempArray590);
+  grtemp590 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp590 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp590 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp590 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp590 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp590 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp590 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp590 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp590 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp590 -> GetXaxis() -> SetNdivisions(10);
+  grtemp590 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp590 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp590 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp590 -> SetMarkerStyle(20);
+  grtemp590 -> Draw("AP");
+
+  c590 -> cd(3);
+  TGraph *grFM4590 = new TGraph (seEvents590 , TSseArray590 , FM4Array590);
+  grFM4590 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4590 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4590 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4590 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4590 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4590 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4590 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4590 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4590 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4590 -> GetXaxis() -> SetNdivisions(10);
+  grFM4590 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4590 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4590 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4590 -> SetMarkerStyle(20);
+  grFM4590 -> Draw("AP");
+  
+  c590 -> cd(4);
+  TGraph *grFM1590 = new TGraph (seEvents590 , TSseArray590 , FM1Array590);
+  grFM1590 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1590 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1590 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1590 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1590 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1590 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1590 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1590 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1590 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1590 -> GetXaxis() -> SetNdivisions(10);
+  grFM1590 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1590 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1590 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1590 -> SetMarkerStyle(20);
+  grFM1590 -> Draw("AP");
+  
+  c590 -> cd(5);
+  TGraph *grFM5590 = new TGraph (seEvents590 , TSseArray590 , FM5Array590);
+  grFM5590 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5590 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5590 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5590 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5590 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5590 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5590 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5590 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5590 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5590 -> GetXaxis() -> SetNdivisions(10);
+  grFM5590 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5590 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5590 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5590 -> SetMarkerStyle(20);
+  grFM5590 -> Draw("AP");
+
+
+  c590 -> cd(6);
+  TGraph *grBL590 = new TGraph (blEvent590 , TSblArray590 , curArray590);
+  grBL590 -> SetTitle(" Predicted current vs Time ");
+  grBL590 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL590 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL590 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL590 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL590 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL590 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL590 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL590 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL590 -> GetXaxis() -> SetNdivisions(10);
+  grBL590 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL590 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL590 -> GetXaxis() -> SetLabelSize(.04);
+  grBL590 -> SetMarkerStyle(20);
+  grBL590 -> Draw("AP");
+
+
+
+  //run 591
+  c591 -> cd(2);
+  TGraph *grtemp591 = new TGraph(seEvents591 , TSseArray591 , tempArray591);
+  grtemp591 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp591 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp591 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp591 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp591 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp591 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp591 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp591 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp591 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp591 -> GetXaxis() -> SetNdivisions(10);
+  grtemp591 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp591 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp591 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp591 -> SetMarkerStyle(20);
+  grtemp591 -> Draw("AP");
+
+  c591 -> cd(3);
+  TGraph *grFM4591 = new TGraph (seEvents591 , TSseArray591 , FM4Array591);
+  grFM4591 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4591 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4591 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4591 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4591 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4591 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4591 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4591 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4591 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4591 -> GetXaxis() -> SetNdivisions(10);
+  grFM4591 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4591 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4591 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4591 -> SetMarkerStyle(20);
+  grFM4591 -> Draw("AP");
+  
+  c591 -> cd(4);
+  TGraph *grFM1591 = new TGraph (seEvents591 , TSseArray591 , FM1Array591);
+  grFM1591 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1591 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1591 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1591 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1591 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1591 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1591 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1591 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1591 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1591 -> GetXaxis() -> SetNdivisions(10);
+  grFM1591 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1591 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1591 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1591 -> SetMarkerStyle(20);
+  grFM1591 -> Draw("AP");
+  
+  c591 -> cd(5);
+  TGraph *grFM5591 = new TGraph (seEvents591 , TSseArray591 , FM5Array591);
+  grFM5591 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5591 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5591 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5591 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5591 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5591 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5591 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5591 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5591 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5591 -> GetXaxis() -> SetNdivisions(10);
+  grFM5591 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5591 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5591 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5591 -> SetMarkerStyle(20);
+  grFM5591 -> Draw("AP");
+
+
+  c591 -> cd(6);
+  TGraph *grBL591 = new TGraph (blEvent591 , TSblArray591 , curArray591);
+  grBL591 -> SetTitle(" Predicted current vs Time ");
+  grBL591 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL591 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL591 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL591 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL591 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL591 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL591 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL591 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL591 -> GetXaxis() -> SetNdivisions(10);
+  grBL591 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL591 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL591 -> GetXaxis() -> SetLabelSize(.04);
+  grBL591 -> SetMarkerStyle(20);
+  grBL591 -> Draw("AP");
+
+
+  //run 592
+  c592 -> cd(2);
+  TGraph *grtemp592 = new TGraph(seEvents592 , TSseArray592 , tempArray592);
+  grtemp592 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp592 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp592 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp592 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp592 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp592 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp592 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp592 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp592 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp592 -> GetXaxis() -> SetNdivisions(10);
+  grtemp592 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp592 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp592 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp592 -> SetMarkerStyle(20);
+  grtemp592 -> Draw("AP");
+
+  c592 -> cd(3);
+  TGraph *grFM4592 = new TGraph (seEvents592 , TSseArray592 , FM4Array592);
+  grFM4592 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4592 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4592 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4592 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4592 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4592 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4592 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4592 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4592 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4592 -> GetXaxis() -> SetNdivisions(10);
+  grFM4592 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4592 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4592 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4592 -> SetMarkerStyle(20);
+  grFM4592 -> Draw("AP");
+  
+  c592 -> cd(4);
+  TGraph *grFM1592 = new TGraph (seEvents592 , TSseArray592 , FM1Array592);
+  grFM1592 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1592 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1592 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1592 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1592 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1592 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1592 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1592 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1592 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1592 -> GetXaxis() -> SetNdivisions(10);
+  grFM1592 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1592 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1592 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1592 -> SetMarkerStyle(20);
+  grFM1592 -> Draw("AP");
+  
+  c592 -> cd(5);
+  TGraph *grFM5592 = new TGraph (seEvents592 , TSseArray592 , FM5Array592);
+  grFM5592 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5592 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5592 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5592 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5592 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5592 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5592 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5592 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5592 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5592 -> GetXaxis() -> SetNdivisions(10);
+  grFM5592 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5592 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5592 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5592 -> SetMarkerStyle(20);
+  grFM5592 -> Draw("AP");
+
+
+  c592 -> cd(6);
+  TGraph *grBL592 = new TGraph (blEvent592 , TSblArray592 , curArray592);
+  grBL592 -> SetTitle(" Predicted current vs Time ");
+  grBL592 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL592 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL592 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL592 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL592 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL592 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL592 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL592 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL592 -> GetXaxis() -> SetNdivisions(10);
+  grBL592 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL592 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL592 -> GetXaxis() -> SetLabelSize(.04);
+  grBL592 -> SetMarkerStyle(20);
+  grBL592 -> Draw("AP");
+  
+
+  //run 593
+  c593 -> cd(2);
+  TGraph *grtemp593 = new TGraph(seEvents593 , TSseArray593 , tempArray593);
+  grtemp593 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp593 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp593 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp593 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp593 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp593 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp593 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp593 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp593 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp593 -> GetXaxis() -> SetNdivisions(10);
+  grtemp593 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp593 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp593 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp593 -> SetMarkerStyle(20);
+  grtemp593 -> Draw("AP");
+
+  c593 -> cd(3);
+  TGraph *grFM4593 = new TGraph (seEvents593 , TSseArray593 , FM4Array593);
+  grFM4593 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4593 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4593 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4593 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4593 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4593 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4593 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4593 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4593 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4593 -> GetXaxis() -> SetNdivisions(10);
+  grFM4593 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4593 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4593 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4593 -> SetMarkerStyle(20);
+  grFM4593 -> Draw("AP");
+  
+  c593 -> cd(4);
+  TGraph *grFM1593 = new TGraph (seEvents593 , TSseArray593 , FM1Array593);
+  grFM1593 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1593 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1593 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1593 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1593 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1593 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1593 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1593 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1593 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1593 -> GetXaxis() -> SetNdivisions(10);
+  grFM1593 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1593 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1593 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1593 -> SetMarkerStyle(20);
+  grFM1593 -> Draw("AP");
+  
+  c593 -> cd(5);
+  TGraph *grFM5593 = new TGraph (seEvents593 , TSseArray593 , FM5Array593);
+  grFM5593 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5593 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5593 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5593 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5593 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5593 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5593 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5593 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5593 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5593 -> GetXaxis() -> SetNdivisions(10);
+  grFM5593 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5593 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5593 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5593 -> SetMarkerStyle(20);
+  grFM5593 -> Draw("AP");
+
+
+  c593 -> cd(6);
+  TGraph *grBL593 = new TGraph (blEvent593 , TSblArray593 , curArray593);
+  grBL593 -> SetTitle(" Predicted current vs Time ");
+  grBL593 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL593 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL593 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL593 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL593 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL593 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL593 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL593 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL593 -> GetXaxis() -> SetNdivisions(10);
+  grBL593 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL593 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL593 -> GetXaxis() -> SetLabelSize(.04);
+  grBL593 -> SetMarkerStyle(20);
+  grBL593 -> Draw("AP");
+
+
+  //run 654
+  c654 -> cd(2);
+  TGraph *grtemp654 = new TGraph(seEvents654 , TSseArray654 , tempArray654);
+  grtemp654 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp654 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp654 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp654 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp654 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp654 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp654 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp654 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp654 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp654 -> GetXaxis() -> SetNdivisions(10);
+  grtemp654 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp654 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp654 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp654 -> SetMarkerStyle(20);
+  grtemp654 -> Draw("AP");
+
+  c654 -> cd(3);
+  TGraph *grFM4654 = new TGraph (seEvents654 , TSseArray654 , FM4Array654);
+  grFM4654 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4654 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4654 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4654 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4654 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4654 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4654 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4654 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4654 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4654 -> GetXaxis() -> SetNdivisions(10);
+  grFM4654 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4654 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4654 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4654 -> SetMarkerStyle(20);
+  grFM4654 -> Draw("AP");
+  
+  c654 -> cd(4);
+  TGraph *grFM1654 = new TGraph (seEvents654 , TSseArray654 , FM1Array654);
+  grFM1654 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1654 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1654 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1654 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1654 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1654 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1654 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1654 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1654 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1654 -> GetXaxis() -> SetNdivisions(10);
+  grFM1654 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1654 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1654 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1654 -> SetMarkerStyle(20);
+  grFM1654 -> Draw("AP");
+  
+  c654 -> cd(5);
+  TGraph *grFM5654 = new TGraph (seEvents654 , TSseArray654 , FM5Array654);
+  grFM5654 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5654 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5654 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5654 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5654 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5654 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5654 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5654 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5654 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5654 -> GetXaxis() -> SetNdivisions(10);
+  grFM5654 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5654 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5654 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5654 -> SetMarkerStyle(20);
+  grFM5654 -> Draw("AP");
+
+
+  c654 -> cd(6);
+  TGraph *grBL654 = new TGraph (blEvent654 , TSblArray654 , curArray654);
+  grBL654 -> SetTitle(" Predicted current vs Time ");
+  grBL654 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL654 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL654 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL654 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL654 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL654 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL654 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL654 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL654 -> GetXaxis() -> SetNdivisions(10);
+  grBL654 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL654 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL654 -> GetXaxis() -> SetLabelSize(.04);
+  grBL654 -> SetMarkerStyle(20);
+  grBL654 -> Draw("AP");
+
+
+  //run 659
+  c659 -> cd(2);
+  TGraph *grtemp659 = new TGraph(seEvents659 , TSseArray659 , tempArray659);
+  grtemp659 -> SetTitle(" Isopure Helium Temperature vs Time ");
+  grtemp659 -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp659 -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp659 -> GetXaxis() -> SetTitleOffset(1.3);
+  grtemp659 -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp659 -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp659 -> GetXaxis() -> SetTimeDisplay(1);
+  //grtemp659 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grtemp659 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grtemp659 -> GetXaxis() -> SetNdivisions(10);
+  grtemp659 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grtemp659 -> GetXaxis() -> SetLabelOffset(.03);
+  grtemp659 -> GetXaxis() -> SetLabelSize(.04);
+  grtemp659 -> SetMarkerStyle(20);
+  grtemp659 -> Draw("AP");
+
+  c659 -> cd(3);
+  TGraph *grFM4659 = new TGraph (seEvents659 , TSseArray659 , FM4Array659);
+  grFM4659 -> SetTitle(" ^{4}He Flow Rate (FM4) vs Time ");
+  grFM4659 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM4659 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM4659 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM4659 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM4659 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM4659 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM4659 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM4659 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM4659 -> GetXaxis() -> SetNdivisions(10);
+  grFM4659 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM4659 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM4659 -> GetXaxis() -> SetLabelSize(.04);
+  grFM4659 -> SetMarkerStyle(20);
+  grFM4659 -> Draw("AP");
+  
+  c659 -> cd(4);
+  TGraph *grFM1659 = new TGraph (seEvents659 , TSseArray659 , FM1Array659);
+  grFM1659 -> SetTitle(" ^{3}He Flow Rate vs Time ");
+  grFM1659 -> GetYaxis()-> SetTitle("^{3}He Flow Rate (lpm)" );
+  grFM1659 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM1659 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM1659 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM1659 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM1659 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM1659 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM1659 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM1659 -> GetXaxis() -> SetNdivisions(10);
+  grFM1659 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM1659 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM1659 -> GetXaxis() -> SetLabelSize(.04);
+  grFM1659 -> SetMarkerStyle(20);
+  grFM1659 -> Draw("AP");
+  
+  c659 -> cd(5);
+  TGraph *grFM5659 = new TGraph (seEvents659 , TSseArray659 , FM5Array659);
+  grFM5659 -> SetTitle(" ^{4}He Flow Rate (FM5) vs Time ");
+  grFM5659 -> GetYaxis()-> SetTitle("^{4}He Flow Rate (lpm)" );
+  grFM5659 -> GetXaxis() -> SetTitleSize(0.05);
+  grFM5659 -> GetXaxis() -> SetTitleOffset(1.3);
+  grFM5659 -> GetYaxis() -> SetTitleSize(0.05); 
+  grFM5659 -> GetYaxis() -> SetTitleOffset(0.9);
+  grFM5659 -> GetXaxis() -> SetTimeDisplay(1);
+  //grFM5659 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grFM5659 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grFM5659 -> GetXaxis() -> SetNdivisions(10);
+  grFM5659 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grFM5659 -> GetXaxis() -> SetLabelOffset(.03);
+  grFM5659 -> GetXaxis() -> SetLabelSize(.04);
+  grFM5659 -> SetMarkerStyle(20);
+  grFM5659 -> Draw("AP");
+
+
+  c659 -> cd(6);
+  TGraph *grBL659 = new TGraph (blEvent659 , TSblArray659 , curArray659);
+  grBL659 -> SetTitle(" Predicted current vs Time ");
+  grBL659 -> GetYaxis()-> SetTitle("Predicted Current (#muA)" );
+  grBL659 -> GetXaxis() -> SetTitleSize(0.05);
+  grBL659 -> GetXaxis() -> SetTitleOffset(1.3);
+  grBL659 -> GetYaxis() -> SetTitleSize(0.05); 
+  grBL659 -> GetYaxis() -> SetTitleOffset(0.9);
+  grBL659 -> GetXaxis() -> SetTimeDisplay(1);
+  //grBL659 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  grBL659 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b %d}");
+  grBL659 -> GetXaxis() -> SetNdivisions(10);
+  grBL659 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  grBL659 -> GetXaxis() -> SetLabelOffset(.03);
+  grBL659 -> GetXaxis() -> SetLabelSize(.04);
+  grBL659 -> SetMarkerStyle(20);
+  grBL659 -> Draw("AP");
+  
+  
+  
 #endif 
   // *************************************************************
   // I like to make a graph of Florian Rehm's data written in his
@@ -2179,6 +3877,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grHT -> GetYaxis()-> SetTitle("Heater Power (mW)" );
   grHT -> GetXaxis() -> SetTitle(" Change in TS12 Temperature(K)");
   grHT -> GetXaxis() -> SetLimits(0., 1);
+  grHT -> GetYaxis() -> SetRangeUser(0,500);
   grHT -> GetXaxis() -> SetTitleSize(0.05);
   grHT -> GetXaxis() -> SetTitleOffset(0.9);
   grHT -> GetYaxis() -> SetTitleSize(0.05); 
@@ -2211,7 +3910,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grHFM -> GetYaxis() -> SetTitleSize(0.05); 
   grHFM -> GetYaxis() -> SetTitleOffset(0.9);
   grHFM -> SetMarkerStyle(20);
-  // grHFM -> Fit("f1");
+  grHFM -> Fit("pol1");
   grHFM -> Draw("AP");
   
 }
