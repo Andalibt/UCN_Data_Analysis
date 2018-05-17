@@ -804,6 +804,49 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   ULong64_t seEvents659 = sourceEpics659 -> GetEntries();
 
 
+  double maxts12765 = 0;
+  double maxts12766 = 0;
+  double maxts12767 = 0;
+  double maxts12768 = 0;
+  double maxts12769 = 0;
+  double maxts12770 = 0;
+  double maxts12771 = 0;
+  double maxts12772 = 0;
+  double maxts12773 = 0;
+  double maxts12778 = 0;
+  double maxts12779 = 0;
+  double maxts12587 = 0;
+  double maxts12588 = 0;
+  double maxts12589 = 0;
+  double maxts12590 = 0;
+  double maxts12591 = 0;
+  double maxts12592 = 0;
+  double maxts12593 = 0;
+  double maxts12654 = 0;
+  double maxts12659 = 0;
+
+
+  double maxFM1765 = 0;
+  double maxFM1766 = 0;
+  double maxFM1767 = 0;
+  double maxFM1768 = 0;
+  double maxFM1769 = 0;
+  double maxFM1770 = 0;
+  double maxFM1771 = 0;
+  double maxFM1772 = 0;
+  double maxFM1773 = 0;
+  double maxFM1778 = 0;
+  double maxFM1779 = 0;
+  double maxFM1587 = 0;
+  double maxFM1588 = 0;
+  double maxFM1589 = 0;
+  double maxFM1590 = 0;
+  double maxFM1591 = 0;
+  double maxFM1592 = 0;
+  double maxFM1593 = 0;
+  double maxFM1654 = 0;
+  double maxFM1659 = 0;
+  
 
   // *******************************************************************************
   // FILLING THE HISTOGRAMS
@@ -1627,6 +1670,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array765[j] = FM1765;
     FM4Array765[j] = FM4765;
     FM5Array765[j] = FM5765;
+    if (maxFM1765 < FM1765)
+      maxFM1765 = FM1765;
+    if (maxts12765 < ts12765)
+      maxts12765 = ts12765;
   }
 
   //run 766
@@ -1637,6 +1684,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array766[j] = FM1766;
     FM4Array766[j] = FM4766;
     FM5Array766[j] = FM5766;
+    if (maxFM1766 < FM1766)
+      maxFM1766 = FM1766;
+    if (maxts12766 < ts12766)
+      maxts12766 = ts12766;
   }
 
   //run 767
@@ -1647,6 +1698,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array767[j] = FM1767;
     FM4Array767[j] = FM4767;
     FM5Array767[j] = FM5767;
+    if (maxFM1767 < FM1767)
+      maxFM1767 = FM1767;
+    if (maxts12767 < ts12767)
+      maxts12767 = ts12767;
   }
 
   //run 768
@@ -1657,6 +1712,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array768[j] = FM1768;
     FM4Array768[j] = FM4768;
     FM5Array768[j] = FM5768;
+    if (maxFM1768 < FM1768)
+      maxFM1768 = FM1768;
+    if (maxts12768 < ts12768)
+      maxts12768 = ts12768;
   }
 
   //run 769
@@ -1667,6 +1726,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array769[j] = FM1769;
     FM4Array769[j] = FM4769;
     FM5Array769[j] = FM5769;
+    if (maxFM1769 < FM1769)
+      maxFM1769 = FM1769;
+    if (maxts12769 < ts12769)
+      maxts12769 = ts12769;
   }
 
   //run 770
@@ -1677,6 +1740,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array770[j] = FM1770;
     FM4Array770[j] = FM4770;
     FM5Array770[j] = FM5770;
+    if (maxFM1770 < FM1770)
+      maxFM1770 = FM1770;
+    if (maxts12770 < ts12770)
+      maxts12770 = ts12770;
   }
 
   //run 771
@@ -1687,6 +1754,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array771[j] = FM1771;
     FM4Array771[j] = FM4771;
     FM5Array771[j] = FM5771;
+    if (maxFM1771 < FM1771)
+      maxFM1771 = FM1771;
+    if (maxts12771 < ts12771)
+      maxts12771 = ts12771;
   }
   
   //run 772
@@ -1697,6 +1768,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array772[j] = FM1772;
     FM4Array772[j] = FM4772;
     FM5Array772[j] = FM5772;
+    if (maxFM1772 < FM1772)
+      maxFM1772 = FM1772;
+    if (maxts12772 < ts12772)
+      maxts12772 = ts12772;
   }
 
   //run 773
@@ -1707,6 +1782,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array773[j] = FM1773;
     FM4Array773[j] = FM4773;
     FM5Array773[j] = FM5773;
+    if (maxFM1773 < FM1773)
+      maxFM1773 = FM1773;
+    if (maxts12773 < ts12773)
+      maxts12773 = ts12773;
   }
 
   //run 778
@@ -1717,6 +1796,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array778[j] = FM1778;
     FM4Array778[j] = FM4778;
     FM5Array778[j] = FM5778;
+    if (maxFM1778 < FM1778)
+      maxFM1778 = FM1778;
+    if (maxts12778 < ts12778)
+      maxts12778 = ts12778;
   }
 
   //run 779
@@ -1727,6 +1810,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array779[j] = FM1779;
     FM4Array779[j] = FM4779;
     FM5Array779[j] = FM5779;
+    if (maxFM1779 < FM1779)
+      maxFM1779 = FM1779;
+    if (maxts12779 < ts12779)
+      maxts12779 = ts12779;
   }
 
 
@@ -1738,6 +1825,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array587[j] = FM1587;
     FM4Array587[j] = FM4587;
     FM5Array587[j] = FM5587;
+    if (maxFM1587 < FM1587)
+      maxFM1587 = FM1587;
+    if (maxts12587 < ts12587)
+      maxts12587 = ts12587;
   }
 
   //run 588
@@ -1748,6 +1839,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array588[j] = FM1588;
     FM4Array588[j] = FM4588;
     FM5Array588[j] = FM5588;
+    if (maxFM1588 < FM1588)
+      maxFM1588 = FM1588;
+    if (maxts12588 < ts12588)
+      maxts12588 = ts12588;
   }
 
 
@@ -1759,6 +1854,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array589[j] = FM1589;
     FM4Array589[j] = FM4589;
     FM5Array589[j] = FM5589;
+    if (maxFM1589 < FM1589)
+      maxFM1589 = FM1589;
+    if (maxts12589 < ts12589)
+      maxts12589 = ts12589;
   }
 
 
@@ -1770,6 +1869,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array590[j] = FM1590;
     FM4Array590[j] = FM4590;
     FM5Array590[j] = FM5590;
+    if (maxFM1590 < FM1590)
+      maxFM1590 = FM1590;
+    if (maxts12590 < ts12590)
+      maxts12590 = ts12590;
   }
 
 
@@ -1781,6 +1884,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array591[j] = FM1591;
     FM4Array591[j] = FM4591;
     FM5Array591[j] = FM5591;
+    if (maxFM1591 < FM1591)
+      maxFM1591 = FM1591;
+    if (maxts12591 < ts12591)
+      maxts12591 = ts12591;
   }
 
 
@@ -1792,6 +1899,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array592[j] = FM1592;
     FM4Array592[j] = FM4592;
     FM5Array592[j] = FM5592;
+    if (maxFM1592 < FM1592)
+      maxFM1592 = FM1592;
+    if (maxts12592 < ts12592)
+      maxts12592 = ts12592;
   }
 
 
@@ -1803,6 +1914,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array593[j] = FM1593;
     FM4Array593[j] = FM4593;
     FM5Array593[j] = FM5593;
+    if (maxFM1593 < FM1593)
+      maxFM1593 = FM1593;
+    if (maxts12593 < ts12593)
+      maxts12593 = ts12593;
   }
 
   //run 654
@@ -1813,6 +1928,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array654[j] = FM1654;
     FM4Array654[j] = FM4654;
     FM5Array654[j] = FM5654;
+    if (maxFM1654 < FM1654)
+      maxFM1654 = FM1654;
+    if (maxts12654 < ts12654)
+      maxts12654 = ts12654;
   }
 
 
@@ -1824,6 +1943,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
     FM1Array659[j] = FM1659;
     FM4Array659[j] = FM4659;
     FM5Array659[j] = FM5659;
+    if (maxFM1659 < FM1659)
+      maxFM1659 = FM1659;
+    if (maxts12659 < ts12659)
+      maxts12659 = ts12659;
   }
 
 
@@ -3883,7 +4006,7 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grHT -> GetYaxis() -> SetTitleSize(0.05); 
   grHT -> GetYaxis() -> SetTitleOffset(0.9);
   grHT -> SetMarkerStyle(20);
-  grHT -> Fit("f1");
+  //  grHT -> Fit("f1");
   grHT -> Draw("AP");
 
 
@@ -3896,6 +4019,10 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   }
 
 
+  TF1 *f2 = new TF1 ("f2" , "[0]*x", 0, 15);
+  
+  TF1 *ftheory = new TF1 ("ftheory" , "[0] *x" , 0 , 15);
+  ftheory -> SetParameter(0, 25.63);
 
   TCanvas *cHFM = new TCanvas ("cHFM" , "cHFM", 1200 , 900);
   //cHFM -> SetLogx();
@@ -3910,7 +4037,111 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grHFM -> GetYaxis() -> SetTitleSize(0.05); 
   grHFM -> GetYaxis() -> SetTitleOffset(0.9);
   grHFM -> SetMarkerStyle(20);
-  grHFM -> Fit("pol1");
+  grHFM -> Fit("f2");
+
+  TLegend *leg1 = new TLegend (0.8, 0.8, 1, 1);
+  leg1 -> AddEntry(ftheory, "Calculation From Hepack" , "l");
+  leg1 -> AddEntry(f2, "Fit Function" , "l");
+  
   grHFM -> Draw("AP");
+  ftheory -> SetLineColor(8);
+  ftheory -> Draw("same");
+  leg1 -> Draw();
+
+  double slope1 = f2 -> GetParameter(0);
+  double slope1Err = 0;
+  //slope1Err = f2 -> GetParError(0);
+
+  double runs[5] = { 766, 768, 779, 654, 659};
+  double beam[5] = {0.1, 0.5, 0.9, 3, 2};
+  double DeltaFM1Measured[5];
+  double FM1_low_measured[5] = {14.4 , 16.5 , 15.5, 15.4, 14.5};
+  double FM1_high_measured[5] = {15.8, 18.2, 19.1, 21.4, 16.9};
+
+  for (int i = 0; i < 5 ; i++){
+    DeltaFM1Measured[i] = FM1_high_measured[i] - FM1_low_measured[i];
+  }
+
+
+  
+  TCanvas *cHFMm = new TCanvas ("cHFMm" , "cHFMm", 1200 , 900);
+  cHFMm -> Divide(2,1);
+  //cHFMm -> SetLogx();
+  //cHFMm -> SetLogy();
+  cHFMm -> cd(1);
+  TGraph * grHFMm = new TGraph(5 , DeltaFM1Measured, beam);
+  grHFMm -> SetTitle(" Beam Current vs Change in the FM1 Flow Rate  ");
+  grHFMm -> GetYaxis()-> SetTitle("Beam Current (#muA)" );
+  grHFMm -> GetXaxis() -> SetTitle(" Change in FM1 (He3) Flow Rate (LPM)");
+  // grHFMm -> GetXaxis() -> SetLimits(0., 1);
+  grHFMm -> GetXaxis() -> SetTitleSize(0.05);
+  grHFMm -> GetXaxis() -> SetTitleOffset(0.9);
+  grHFMm -> GetYaxis() -> SetTitleSize(0.05); 
+  grHFMm -> GetYaxis() -> SetTitleOffset(0.9);
+  grHFMm -> SetMarkerStyle(20);
+  grHFMm -> Fit("f2");
+  grHFMm -> Draw("AP");
+
+  double slope2 = f2 -> GetParameter(0);
+  double slope2Err = f2 -> GetParError(0);
+
+  double slope = slope1/slope2;
+  double slopeErr = slope * sqrt(slope1Err*slope1Err/ (slope1*slope1) + slope2Err*slope2Err/(slope2*slope2));
+
+  TCanvas *cQB = new TCanvas("cQB" , "cQB" , 1200, 900);
+  TF1 *f1QB = new TF1("f1QB" , "[0]*x" , 0, 10);
+  f1QB -> SetParameter(0, slope+slopeErr);
+
+  
+  TF1 *f2QB = new TF1("f2QB" , "[0]*x" , 0, 10);
+  f2QB -> SetParameter(0, slope-slopeErr);
+
+  TF1 *fQB = new TF1 ("fQB" , "[0]*x" , 0 , 10);
+   fQB -> SetParameter(0, slope);
+  
+  f1QB -> SetTitle ("Heat Load vs Beam Current" );
+  f1QB -> GetXaxis() -> SetTitle("Beam Current (#muA)");
+  f1QB -> GetYaxis() -> SetTitle("Heat Load (mW)");
+  f1QB -> SetLineColor(8);
+
+  TLegend *leg2 = new TLegend (0.7, 0.7 , 0.9, 0.9);
+  leg2 -> AddEntry(f1QB , "Upper Limit" , "l");
+  leg2 -> AddEntry(f2QB , "Lower Limit" , "l");
+
+  
+  f1QB -> Draw();
+  f2QB -> Draw("same");
+  fQB -> SetLineColor(1);
+  fQB -> SetLineStyle(9);
+  fQB -> Draw("same");
+  leg2 -> Draw();
+  
+  cout << "slope1 " << slope1 << " slope1Err " << slope1Err<< endl;
+  cout << "slope2 " << slope2 << " slope2Err " << slope2Err << endl;
+  cout << "slope " << slope<< " slopeErr " << slopeErr << endl;
+
+
+
+  //*************************************************************
+  // now with total flow
+
+  double FM1tot [5] = {maxFM1766 , maxFM1768, maxFM1779, maxFM1654, maxFM1659};
+
+  TF1 *ftotB = new TF1 ("ftotB" , "[0]*x + [1]", 0 , 25);
+
+  //TCanvas *cFtotB = new TCanvas ("cFtotB" , "cFtotB" , 1200, 900);
+  cHFMm -> cd(2);
+  TGraph * grFtotB = new TGraph(5 , FM1tot, beam);
+  grFtotB -> SetTitle(" Beam Current vs Saturated FM1 Flow Rate  ");
+  grFtotB -> GetYaxis()-> SetTitle("Beam Current (#muA)" );
+  grFtotB -> GetXaxis() -> SetTitle(" Saturated FM1 (He3) Flow Rate (LPM)");
+  // grFtotB -> GetXaxis() -> SetLimits(0., 1);
+  grFtotB -> GetXaxis() -> SetTitleSize(0.05);
+  grFtotB -> GetXaxis() -> SetTitleOffset(0.9);
+  grFtotB -> GetYaxis() -> SetTitleSize(0.05); 
+  grFtotB -> GetYaxis() -> SetTitleOffset(0.9);
+  grFtotB -> SetMarkerStyle(20);
+  grFtotB -> Fit(ftotB);
+  grFtotB -> Draw("AP");
   
 }
