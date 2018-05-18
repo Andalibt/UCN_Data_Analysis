@@ -1223,7 +1223,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	Li6_Fit_Func -> FixParameter(10, cyclevalveclose[i]);
 	Li6_Fit_Func -> FixParameter(11,delayTimeArray[i]);
 	Li6_Fit_Func -> SetNpx(10000);
-	//TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
+	//TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQI");
 	cout << "***********************************************************" << endl;
 	/*Int_t fitStatus = status;
 	cout << fitStatus << endl;
