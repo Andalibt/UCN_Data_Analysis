@@ -1,9 +1,12 @@
 //********************************************************
-//             UCN 2017 analysis
+//             2017 UCN analysis
 //********************************************************
-// THE UPDATE IN THIS VERSION IS THAT I GET RID OF THE
-// VECTORS AND I FILL OUT THE TREE ELEMENT BY ELEMENT.
-//*******************************************************
+// This script is written to create a root file to extract
+// the cycle by cycle information from the midas to root
+// files.
+
+// Taraneh Andalib
+//********************************************************
 
 #include <string>
 #include <iostream>
@@ -71,7 +74,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("outputTree_775.root", "RECREATE");
+  TFile hfile ("./2ndpass/outputTree_614.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -123,13 +126,55 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   double MAX_COL2DOWN;
   double MIN_COL2DOWN;
   double irradStartTimes;
+  double AVE_TS11_IRRAD;
+  double AVE_TS11_VALVEOPEN;
   double AVE_TS12_IRRAD;
   double AVE_TS12_VALVEOPEN;
+  double AVE_TS13_IRRAD;
+  double AVE_TS13_VALVEOPEN;
+  double AVE_TS14_IRRAD;
+  double AVE_TS14_VALVEOPEN;
+  double AVE_TS15_IRRAD;
+  double AVE_TS15_VALVEOPEN;
+  double AVE_TS16_IRRAD;
+  double AVE_TS16_VALVEOPEN;
+  double AVE_TS17_IRRAD;
+  double AVE_TS17_VALVEOPEN;
+  double AVE_TS18_IRRAD;
+  double AVE_TS18_VALVEOPEN;
   double AVE_FM1;
+  double MAX_TS11_IRRAD;
+  double MIN_TS11_IRRAD;
   double MAX_TS12_IRRAD;
   double MIN_TS12_IRRAD;
+  double MAX_TS13_IRRAD;
+  double MIN_TS13_IRRAD;
+  double MAX_TS14_IRRAD;
+  double MIN_TS14_IRRAD;
+  double MAX_TS15_IRRAD;
+  double MIN_TS15_IRRAD;
+  double MAX_TS16_IRRAD;
+  double MIN_TS16_IRRAD;
+  double MAX_TS17_IRRAD;
+  double MIN_TS17_IRRAD;
+  double MAX_TS18_IRRAD;
+  double MIN_TS18_IRRAD;
+  double MAX_TS11_VALVEOPEN;
+  double MIN_TS11_VALVEOPEN;
   double MAX_TS12_VALVEOPEN;
   double MIN_TS12_VALVEOPEN;
+  double MAX_TS13_VALVEOPEN;
+  double MIN_TS13_VALVEOPEN;
+  double MAX_TS14_VALVEOPEN;
+  double MIN_TS14_VALVEOPEN;
+  double MAX_TS15_VALVEOPEN;
+  double MIN_TS15_VALVEOPEN;
+  double MAX_TS16_VALVEOPEN;
+  double MIN_TS16_VALVEOPEN;
+  double MAX_TS17_VALVEOPEN;
+  double MIN_TS17_VALVEOPEN;
+  double MAX_TS18_VALVEOPEN;
+  double MIN_TS18_VALVEOPEN;
   double AVE_TS12_DELAY;
   double MAX_TS12_DELAY;
   double MIN_TS12_DELAY;
@@ -272,12 +317,54 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   outputTree -> Branch ("AVE_COL2LEFT",&AVE_COL2LEFT);
   outputTree -> Branch ("MAX_COL2LEFT",&MAX_COL2LEFT);
   outputTree -> Branch ("MIN_COL2LEFT",&MIN_COL2LEFT);
+  outputTree -> Branch ("AVE_TS11_IRRAD",&AVE_TS11_IRRAD);
+  outputTree -> Branch ("MAX_TS11_IRRAD",&MAX_TS11_IRRAD);
+  outputTree -> Branch ("MIN_TS11_IRRAD",&MIN_TS11_IRRAD);
   outputTree -> Branch ("AVE_TS12_IRRAD",&AVE_TS12_IRRAD);
   outputTree -> Branch ("MAX_TS12_IRRAD",&MAX_TS12_IRRAD);
   outputTree -> Branch ("MIN_TS12_IRRAD",&MIN_TS12_IRRAD);
+  outputTree -> Branch ("AVE_TS13_IRRAD",&AVE_TS13_IRRAD);
+  outputTree -> Branch ("MAX_TS13_IRRAD",&MAX_TS13_IRRAD);
+  outputTree -> Branch ("MIN_TS13_IRRAD",&MIN_TS13_IRRAD);
+  outputTree -> Branch ("AVE_TS14_IRRAD",&AVE_TS14_IRRAD);
+  outputTree -> Branch ("MAX_TS14_IRRAD",&MAX_TS14_IRRAD);
+  outputTree -> Branch ("MIN_TS14_IRRAD",&MIN_TS14_IRRAD);
+  outputTree -> Branch ("AVE_TS15_IRRAD",&AVE_TS15_IRRAD);
+  outputTree -> Branch ("MAX_TS15_IRRAD",&MAX_TS15_IRRAD);
+  outputTree -> Branch ("MIN_TS15_IRRAD",&MIN_TS15_IRRAD);
+  outputTree -> Branch ("AVE_TS16_IRRAD",&AVE_TS16_IRRAD);
+  outputTree -> Branch ("MAX_TS16_IRRAD",&MAX_TS16_IRRAD);
+  outputTree -> Branch ("MIN_TS16_IRRAD",&MIN_TS16_IRRAD);
+  outputTree -> Branch ("AVE_TS17_IRRAD",&AVE_TS17_IRRAD);
+  outputTree -> Branch ("MAX_TS17_IRRAD",&MAX_TS17_IRRAD);
+  outputTree -> Branch ("MIN_TS17_IRRAD",&MIN_TS17_IRRAD);
+  outputTree -> Branch ("AVE_TS18_IRRAD",&AVE_TS18_IRRAD);
+  outputTree -> Branch ("MAX_TS18_IRRAD",&MAX_TS18_IRRAD);
+  outputTree -> Branch ("MIN_TS18_IRRAD",&MIN_TS18_IRRAD);
+  outputTree -> Branch ("AVE_TS11_VALVEOPEN",&AVE_TS11_VALVEOPEN);
+  outputTree -> Branch ("MAX_TS11_VALVEOPEN",&MAX_TS11_VALVEOPEN);
+  outputTree -> Branch ("MIN_TS11_VALVEOPEN",&MIN_TS11_VALVEOPEN);
   outputTree -> Branch ("AVE_TS12_VALVEOPEN",&AVE_TS12_VALVEOPEN);
   outputTree -> Branch ("MAX_TS12_VALVEOPEN",&MAX_TS12_VALVEOPEN);
   outputTree -> Branch ("MIN_TS12_VALVEOPEN",&MIN_TS12_VALVEOPEN);
+  outputTree -> Branch ("AVE_TS13_VALVEOPEN",&AVE_TS13_VALVEOPEN);
+  outputTree -> Branch ("MAX_TS13_VALVEOPEN",&MAX_TS13_VALVEOPEN);
+  outputTree -> Branch ("MIN_TS13_VALVEOPEN",&MIN_TS13_VALVEOPEN);
+  outputTree -> Branch ("AVE_TS14_VALVEOPEN",&AVE_TS14_VALVEOPEN);
+  outputTree -> Branch ("MAX_TS14_VALVEOPEN",&MAX_TS14_VALVEOPEN);
+  outputTree -> Branch ("MIN_TS14_VALVEOPEN",&MIN_TS14_VALVEOPEN);
+  outputTree -> Branch ("AVE_TS15_VALVEOPEN",&AVE_TS15_VALVEOPEN);
+  outputTree -> Branch ("MAX_TS15_VALVEOPEN",&MAX_TS15_VALVEOPEN);
+  outputTree -> Branch ("MIN_TS15_VALVEOPEN",&MIN_TS15_VALVEOPEN);
+  outputTree -> Branch ("AVE_TS16_VALVEOPEN",&AVE_TS16_VALVEOPEN);
+  outputTree -> Branch ("MAX_TS16_VALVEOPEN",&MAX_TS16_VALVEOPEN);
+  outputTree -> Branch ("MIN_TS16_VALVEOPEN",&MIN_TS16_VALVEOPEN);
+  outputTree -> Branch ("AVE_TS17_VALVEOPEN",&AVE_TS17_VALVEOPEN);
+  outputTree -> Branch ("MAX_TS17_VALVEOPEN",&MAX_TS17_VALVEOPEN);
+  outputTree -> Branch ("MIN_TS17_VALVEOPEN",&MIN_TS17_VALVEOPEN);
+  outputTree -> Branch ("AVE_TS18_VALVEOPEN",&AVE_TS18_VALVEOPEN);
+  outputTree -> Branch ("MAX_TS18_VALVEOPEN",&MAX_TS18_VALVEOPEN);
+  outputTree -> Branch ("MIN_TS18_VALVEOPEN",&MIN_TS18_VALVEOPEN);
   outputTree -> Branch ("AVE_TS12_DELAY",&AVE_TS12_DELAY);
   outputTree -> Branch ("MAX_TS12_DELAY",&MAX_TS12_DELAY);
   outputTree -> Branch ("MIN_TS12_DELAY",&MIN_TS12_DELAY);
@@ -326,7 +413,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   // *************************************************************
   
 
-  Int_t InputFiles[17] ={775};
+  Int_t InputFiles[17] ={614};
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;
@@ -472,7 +559,14 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
       double B1U_TGTTEMP1_RDTEMP, B1U_TGTTEMP2_RDTEMP; //Target Temperature
       double B1U_WTEMP1_RDTEMP, B1U_WTEMP2_RDTEMP;
       double B1U_COL2RIGHT_RDTEMP, B1U_COL2DOWN_RDTEMP, B1U_COL2UP_RDTEMP,B1U_COL2LEFT_RDTEMP;
+      double UCN_ISO_TS11_RDTEMP;
       double UCN_ISO_TS12_RDTEMP;
+      double UCN_ISO_TS13_RDTEMP;
+      double UCN_ISO_TS14_RDTEMP;
+      double UCN_ISO_TS15_RDTEMP;
+      double UCN_ISO_TS16_RDTEMP;
+      double UCN_ISO_TS17_RDTEMP;
+      double UCN_ISO_TS18_RDTEMP;
       double UCN_HE3_FM1_RDFLOW;
       double UCN_HE4_FM4_RDFLOW;
       double UCN_HE4_FM5_RDFLOW;
@@ -500,8 +594,14 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
       BeamlineEpicsTree -> SetBranchAddress("B1U_COL2LEFT_RDTEMP",&B1U_COL2LEFT_RDTEMP);
       BeamlineEpicsTree -> SetBranchAddress("B1U_COL2DOWN_RDTEMP",&B1U_COL2DOWN_RDTEMP);
       BeamlineEpicsTree -> SetBranchAddress("B1U_COL2UP_RDTEMP",&B1U_COL2UP_RDTEMP);
-        
+      sourceTree -> SetBranchAddress("UCN_ISO_TS11_RDTEMP",&UCN_ISO_TS11_RDTEMP);
       sourceTree -> SetBranchAddress("UCN_ISO_TS12_RDTEMP",&UCN_ISO_TS12_RDTEMP);
+      sourceTree -> SetBranchAddress("UCN_ISO_TS13_RDTEMP",&UCN_ISO_TS13_RDTEMP);
+      sourceTree -> SetBranchAddress("UCN_ISO_TS14_RDTEMP",&UCN_ISO_TS14_RDTEMP);
+      sourceTree -> SetBranchAddress("UCN_ISO_TS15_RDTEMP",&UCN_ISO_TS15_RDTEMP);
+      sourceTree -> SetBranchAddress("UCN_ISO_TS16_RDTEMP",&UCN_ISO_TS16_RDTEMP);
+      sourceTree -> SetBranchAddress("UCN_ISO_TS17_RDTEMP",&UCN_ISO_TS17_RDTEMP);
+      sourceTree -> SetBranchAddress("UCN_ISO_TS18_RDTEMP",&UCN_ISO_TS18_RDTEMP);
       sourceTree -> SetBranchAddress("UCN_HE3_FM1_RDFLOW",&UCN_HE3_FM1_RDFLOW);
       sourceTree -> SetBranchAddress("UCN_HE4_FM4_RDFLOW", &UCN_HE4_FM4_RDFLOW);
       sourceTree -> SetBranchAddress("UCN_HE4_FM5_RDFLOW", &UCN_HE4_FM5_RDFLOW);
@@ -573,6 +673,35 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	col2left_min[k] = 100;
       int counter_3=1 , counter_2=1, counter_1 = 1, counter_4 = 1;
 
+      double avets11_temperature_irrad[max];
+     for (int k = 0 ; k < max ; k++)
+	avets11_temperature_irrad[k] = 0;
+      double avets11_temperature_valveOpen[max];
+      for (int k = 0 ; k < max ; k++)
+	avets11_temperature_valveOpen[k] = 0;
+      double avets11_delay[max] = 0;
+      for (int k = 0 ; k < max ; k++)
+	avets11_delay[k] = 0;
+      double fm1_ave[max] = 0;
+      double maxts11_temperature_irrad[max] ;
+     for (int k = 0 ; k < max ; k++)
+	maxts11_temperature_irrad[k] = 0;
+      double mints11_temperature_irrad[max];
+      for (int k = 0 ; k < max ; k++)
+	mints11_temperature_irrad[k] = 100;
+      double maxts11_temperature_valveOpen[max] = 0 ;
+      for (int k = 0 ; k < max ; k++)
+	maxts11_temperature_valveOpen[k] = 0;
+      double mints11_temperature_valveOpen[max];
+      for (int k = 0 ; k< max ; k++ )
+	mints11_temperature_valveOpen[k] = 100;
+      double maxts11_delay[max] = 0;
+      double mints11_delay[max] = 100;
+      for (int k = 0 ; k< max ; k++ )
+	mints11_delay[k] = 100;
+
+
+
       double avets12_temperature_irrad[max];
      for (int k = 0 ; k < max ; k++)
 	avets12_temperature_irrad[k] = 0;
@@ -599,6 +728,183 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
       double mints12_delay[max] = 100;
       for (int k = 0 ; k< max ; k++ )
 	mints12_delay[k] = 100;
+
+
+      double avets13_temperature_irrad[max];
+     for (int k = 0 ; k < max ; k++)
+	avets13_temperature_irrad[k] = 0;
+      double avets13_temperature_valveOpen[max];
+      for (int k = 0 ; k < max ; k++)
+	avets13_temperature_valveOpen[k] = 0;
+      double avets13_delay[max] = 0;
+      for (int k = 0 ; k < max ; k++)
+	avets13_delay[k] = 0;
+      double fm1_ave[max] = 0;
+      double maxts13_temperature_irrad[max] ;
+     for (int k = 0 ; k < max ; k++)
+	maxts13_temperature_irrad[k] = 0;
+      double mints13_temperature_irrad[max];
+      for (int k = 0 ; k < max ; k++)
+	mints13_temperature_irrad[k] = 100;
+      double maxts13_temperature_valveOpen[max] = 0 ;
+      for (int k = 0 ; k < max ; k++)
+	maxts13_temperature_valveOpen[k] = 0;
+      double mints13_temperature_valveOpen[max];
+      for (int k = 0 ; k< max ; k++ )
+	mints13_temperature_valveOpen[k] = 100;
+      double maxts13_delay[max] = 0;
+      double mints13_delay[max] = 100;
+      for (int k = 0 ; k< max ; k++ )
+	mints13_delay[k] = 100;
+
+
+
+      double avets14_temperature_irrad[max];
+     for (int k = 0 ; k < max ; k++)
+	avets14_temperature_irrad[k] = 0;
+      double avets14_temperature_valveOpen[max];
+      for (int k = 0 ; k < max ; k++)
+	avets14_temperature_valveOpen[k] = 0;
+      double avets14_delay[max] = 0;
+      for (int k = 0 ; k < max ; k++)
+	avets14_delay[k] = 0;
+      double fm1_ave[max] = 0;
+      double maxts14_temperature_irrad[max] ;
+     for (int k = 0 ; k < max ; k++)
+	maxts14_temperature_irrad[k] = 0;
+      double mints14_temperature_irrad[max];
+      for (int k = 0 ; k < max ; k++)
+	mints14_temperature_irrad[k] = 100;
+      double maxts14_temperature_valveOpen[max] = 0 ;
+      for (int k = 0 ; k < max ; k++)
+	maxts14_temperature_valveOpen[k] = 0;
+      double mints14_temperature_valveOpen[max];
+      for (int k = 0 ; k< max ; k++ )
+	mints14_temperature_valveOpen[k] = 100;
+      double maxts14_delay[max] = 0;
+      double mints14_delay[max] = 100;
+      for (int k = 0 ; k< max ; k++ )
+	mints14_delay[k] = 100;
+      
+
+
+      double avets15_temperature_irrad[max];
+     for (int k = 0 ; k < max ; k++)
+	avets15_temperature_irrad[k] = 0;
+      double avets15_temperature_valveOpen[max];
+      for (int k = 0 ; k < max ; k++)
+	avets15_temperature_valveOpen[k] = 0;
+      double avets15_delay[max] = 0;
+      for (int k = 0 ; k < max ; k++)
+	avets15_delay[k] = 0;
+      double fm1_ave[max] = 0;
+      double maxts15_temperature_irrad[max] ;
+     for (int k = 0 ; k < max ; k++)
+	maxts15_temperature_irrad[k] = 0;
+      double mints15_temperature_irrad[max];
+      for (int k = 0 ; k < max ; k++)
+	mints15_temperature_irrad[k] = 100;
+      double maxts15_temperature_valveOpen[max] = 0 ;
+      for (int k = 0 ; k < max ; k++)
+	maxts15_temperature_valveOpen[k] = 0;
+      double mints15_temperature_valveOpen[max];
+      for (int k = 0 ; k< max ; k++ )
+	mints15_temperature_valveOpen[k] = 100;
+      double maxts15_delay[max] = 0;
+      double mints15_delay[max] = 100;
+      for (int k = 0 ; k< max ; k++ )
+	mints15_delay[k] = 100;
+
+
+
+
+      double avets16_temperature_irrad[max];
+     for (int k = 0 ; k < max ; k++)
+	avets16_temperature_irrad[k] = 0;
+      double avets16_temperature_valveOpen[max];
+      for (int k = 0 ; k < max ; k++)
+	avets16_temperature_valveOpen[k] = 0;
+      double avets16_delay[max] = 0;
+      for (int k = 0 ; k < max ; k++)
+	avets16_delay[k] = 0;
+      double fm1_ave[max] = 0;
+      double maxts16_temperature_irrad[max] ;
+     for (int k = 0 ; k < max ; k++)
+	maxts16_temperature_irrad[k] = 0;
+      double mints16_temperature_irrad[max];
+      for (int k = 0 ; k < max ; k++)
+	mints16_temperature_irrad[k] = 100;
+      double maxts16_temperature_valveOpen[max] = 0 ;
+      for (int k = 0 ; k < max ; k++)
+	maxts16_temperature_valveOpen[k] = 0;
+      double mints16_temperature_valveOpen[max];
+      for (int k = 0 ; k< max ; k++ )
+	mints16_temperature_valveOpen[k] = 100;
+      double maxts16_delay[max] = 0;
+      double mints16_delay[max] = 100;
+      for (int k = 0 ; k< max ; k++ )
+	mints16_delay[k] = 100;
+      
+
+
+      double avets17_temperature_irrad[max];
+     for (int k = 0 ; k < max ; k++)
+	avets17_temperature_irrad[k] = 0;
+      double avets17_temperature_valveOpen[max];
+      for (int k = 0 ; k < max ; k++)
+	avets17_temperature_valveOpen[k] = 0;
+      double avets17_delay[max] = 0;
+      for (int k = 0 ; k < max ; k++)
+	avets17_delay[k] = 0;
+      double fm1_ave[max] = 0;
+      double maxts17_temperature_irrad[max] ;
+     for (int k = 0 ; k < max ; k++)
+	maxts17_temperature_irrad[k] = 0;
+      double mints17_temperature_irrad[max];
+      for (int k = 0 ; k < max ; k++)
+	mints17_temperature_irrad[k] = 100;
+      double maxts17_temperature_valveOpen[max] = 0 ;
+      for (int k = 0 ; k < max ; k++)
+	maxts17_temperature_valveOpen[k] = 0;
+      double mints17_temperature_valveOpen[max];
+      for (int k = 0 ; k< max ; k++ )
+	mints17_temperature_valveOpen[k] = 100;
+      double maxts17_delay[max] = 0;
+      double mints17_delay[max] = 100;
+      for (int k = 0 ; k< max ; k++ )
+	mints17_delay[k] = 100;
+
+
+
+      
+      double avets18_temperature_irrad[max];
+     for (int k = 0 ; k < max ; k++)
+	avets18_temperature_irrad[k] = 0;
+      double avets18_temperature_valveOpen[max];
+      for (int k = 0 ; k < max ; k++)
+	avets18_temperature_valveOpen[k] = 0;
+      double avets18_delay[max] = 0;
+      for (int k = 0 ; k < max ; k++)
+	avets18_delay[k] = 0;
+      double fm1_ave[max] = 0;
+      double maxts18_temperature_irrad[max] ;
+     for (int k = 0 ; k < max ; k++)
+	maxts18_temperature_irrad[k] = 0;
+      double mints18_temperature_irrad[max];
+      for (int k = 0 ; k < max ; k++)
+	mints18_temperature_irrad[k] = 100;
+      double maxts18_temperature_valveOpen[max] = 0 ;
+      for (int k = 0 ; k < max ; k++)
+	maxts18_temperature_valveOpen[k] = 0;
+      double mints18_temperature_valveOpen[max];
+      for (int k = 0 ; k< max ; k++ )
+	mints18_temperature_valveOpen[k] = 100;
+      double maxts18_delay[max] = 0;
+      double mints18_delay[max] = 100;
+      for (int k = 0 ; k< max ; k++ )
+	mints18_delay[k] = 100;
+      
+      
       double fm1_max[max];
       for (int k = 0 ; k< max ; k++ )
 	fm1_max[k] = 0;
@@ -740,7 +1046,15 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	for(ULong64_t j=0 ; j < sourceEpicsEvent ;j++) {
 	  sourceTree -> GetEvent(j);
 	  if(timestamp > irradiationStartTime[i] && timestamp < cyclevalveopen[i]){ // DURING THE IRRADIATION AND THE DELAY TIME
+	    avets11_temperature_irrad[i]+=UCN_ISO_TS11_RDTEMP;
 	    avets12_temperature_irrad[i]+=UCN_ISO_TS12_RDTEMP;
+	    avets13_temperature_irrad[i]+=UCN_ISO_TS13_RDTEMP;
+	    avets14_temperature_irrad[i]+=UCN_ISO_TS14_RDTEMP;
+	    avets15_temperature_irrad[i]+=UCN_ISO_TS15_RDTEMP;
+	    avets16_temperature_irrad[i]+=UCN_ISO_TS16_RDTEMP;
+	    avets17_temperature_irrad[i]+=UCN_ISO_TS17_RDTEMP;
+	    avets18_temperature_irrad[i]+=UCN_ISO_TS18_RDTEMP;
+	    
 	    fm1_ave[i]+=UCN_HE3_FM1_RDFLOW;
 	    fm4_ave[i] += UCN_HE4_FM4_RDFLOW;
 	    fm5_ave[i] += UCN_HE4_FM5_RDFLOW;
@@ -755,6 +1069,15 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	      counter_delay++;
 	    }
 	    counter_2++;
+
+
+	    if(UCN_ISO_TS11_RDTEMP >= maxts11_temperature_irrad[i]){
+	      maxts11_temperature_irrad[i] = UCN_ISO_TS11_RDTEMP;
+	    }
+
+	    if( UCN_ISO_TS11_RDTEMP < mints11_temperature_irrad[i]){
+	      mints11_temperature_irrad[i] = UCN_ISO_TS11_RDTEMP;
+	    }
 	    
 	    if(UCN_ISO_TS12_RDTEMP >= maxts12_temperature_irrad[i]){
 	      maxts12_temperature_irrad[i] = UCN_ISO_TS12_RDTEMP;
@@ -764,6 +1087,54 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	      mints12_temperature_irrad[i] = UCN_ISO_TS12_RDTEMP;
 	      //cout << "inside the loop " <<UCN_ISO_TS12_RDTEMP << endl;  
 	    }
+	    if(UCN_ISO_TS13_RDTEMP >= maxts13_temperature_irrad[i]){
+	      maxts13_temperature_irrad[i] = UCN_ISO_TS13_RDTEMP;
+	    }
+
+	    if( UCN_ISO_TS13_RDTEMP < mints13_temperature_irrad[i]){
+	      mints13_temperature_irrad[i] = UCN_ISO_TS13_RDTEMP;
+	    }
+
+	    if(UCN_ISO_TS14_RDTEMP >= maxts14_temperature_irrad[i]){
+	      maxts14_temperature_irrad[i] = UCN_ISO_TS14_RDTEMP;
+	    }
+
+	    if( UCN_ISO_TS14_RDTEMP < mints14_temperature_irrad[i]){
+	      mints14_temperature_irrad[i] = UCN_ISO_TS14_RDTEMP;
+	    }
+
+	    if(UCN_ISO_TS15_RDTEMP >= maxts15_temperature_irrad[i]){
+	      maxts15_temperature_irrad[i] = UCN_ISO_TS15_RDTEMP;
+	    }
+
+	    if( UCN_ISO_TS15_RDTEMP < mints15_temperature_irrad[i]){
+	      mints15_temperature_irrad[i] = UCN_ISO_TS15_RDTEMP;
+	    }
+
+	    if(UCN_ISO_TS16_RDTEMP >= maxts16_temperature_irrad[i]){
+	      maxts16_temperature_irrad[i] = UCN_ISO_TS16_RDTEMP;
+	    }
+
+	    if( UCN_ISO_TS16_RDTEMP < mints16_temperature_irrad[i]){
+	      mints16_temperature_irrad[i] = UCN_ISO_TS16_RDTEMP;
+	    }
+
+	    if(UCN_ISO_TS17_RDTEMP >= maxts17_temperature_irrad[i]){
+	      maxts17_temperature_irrad[i] = UCN_ISO_TS17_RDTEMP;
+	    }
+
+	    if( UCN_ISO_TS17_RDTEMP < mints17_temperature_irrad[i]){
+	      mints17_temperature_irrad[i] = UCN_ISO_TS17_RDTEMP;
+	    }
+
+	    if(UCN_ISO_TS18_RDTEMP >= maxts18_temperature_irrad[i]){
+	      maxts18_temperature_irrad[i] = UCN_ISO_TS18_RDTEMP;
+	    }
+
+	    if( UCN_ISO_TS18_RDTEMP < mints18_temperature_irrad[i]){
+	      mints18_temperature_irrad[i] = UCN_ISO_TS18_RDTEMP;
+	    }
+	    
 	    if(UCN_HE3_FM1_RDFLOW <= fm1_min[i]){
 	      fm1_min[i] = UCN_HE3_FM1_RDFLOW;
 	    }
@@ -773,13 +1144,62 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 
 	  }
 	  if (timestamp > cyclevalveopen[i] && timestamp < cyclevalveclose[i]){
+	    avets11_temperature_valveOpen[i]+=UCN_ISO_TS11_RDTEMP;
 	    avets12_temperature_valveOpen[i]+=UCN_ISO_TS12_RDTEMP;
+	    avets13_temperature_valveOpen[i]+=UCN_ISO_TS13_RDTEMP;
+	    avets14_temperature_valveOpen[i]+=UCN_ISO_TS14_RDTEMP;
+	    avets15_temperature_valveOpen[i]+=UCN_ISO_TS15_RDTEMP;
+	    avets16_temperature_valveOpen[i]+=UCN_ISO_TS16_RDTEMP;
+	    avets17_temperature_valveOpen[i]+=UCN_ISO_TS17_RDTEMP;
+	    avets18_temperature_valveOpen[i]+=UCN_ISO_TS18_RDTEMP;
 	    counter_1++;
+	    if(UCN_ISO_TS11_RDTEMP > maxts11_temperature_valveOpen[i]){
+	      maxts11_temperature_valveOpen[i] = UCN_ISO_TS11_RDTEMP;
+	    } 
+	    if(UCN_ISO_TS11_RDTEMP < mints11_temperature_valveOpen[i]){
+	      mints11_temperature_valveOpen[i] = UCN_ISO_TS11_RDTEMP; 
+	    }
 	    if(UCN_ISO_TS12_RDTEMP > maxts12_temperature_valveOpen[i]){
 	      maxts12_temperature_valveOpen[i] = UCN_ISO_TS12_RDTEMP;
 	    } 
 	    if(UCN_ISO_TS12_RDTEMP < mints12_temperature_valveOpen[i]){
 	      mints12_temperature_valveOpen[i] = UCN_ISO_TS12_RDTEMP; 
+	    }
+	    if(UCN_ISO_TS13_RDTEMP > maxts13_temperature_valveOpen[i]){
+	      maxts13_temperature_valveOpen[i] = UCN_ISO_TS13_RDTEMP;
+	    } 
+	    if(UCN_ISO_TS13_RDTEMP < mints13_temperature_valveOpen[i]){
+	      mints13_temperature_valveOpen[i] = UCN_ISO_TS13_RDTEMP; 
+	    }
+	    if(UCN_ISO_TS14_RDTEMP > maxts14_temperature_valveOpen[i]){
+	      maxts14_temperature_valveOpen[i] = UCN_ISO_TS14_RDTEMP;
+	    } 
+	    if(UCN_ISO_TS14_RDTEMP < mints14_temperature_valveOpen[i]){
+	      mints14_temperature_valveOpen[i] = UCN_ISO_TS14_RDTEMP; 
+	    }
+	    if(UCN_ISO_TS15_RDTEMP > maxts15_temperature_valveOpen[i]){
+	      maxts15_temperature_valveOpen[i] = UCN_ISO_TS15_RDTEMP;
+	    } 
+	    if(UCN_ISO_TS15_RDTEMP < mints15_temperature_valveOpen[i]){
+	      mints15_temperature_valveOpen[i] = UCN_ISO_TS15_RDTEMP; 
+	    }
+	    if(UCN_ISO_TS16_RDTEMP > maxts16_temperature_valveOpen[i]){
+	      maxts16_temperature_valveOpen[i] = UCN_ISO_TS16_RDTEMP;
+	    } 
+	    if(UCN_ISO_TS16_RDTEMP < mints16_temperature_valveOpen[i]){
+	      mints16_temperature_valveOpen[i] = UCN_ISO_TS16_RDTEMP; 
+	    }
+	    if(UCN_ISO_TS17_RDTEMP > maxts17_temperature_valveOpen[i]){
+	      maxts17_temperature_valveOpen[i] = UCN_ISO_TS17_RDTEMP;
+	    } 
+	    if(UCN_ISO_TS17_RDTEMP < mints17_temperature_valveOpen[i]){
+	      mints17_temperature_valveOpen[i] = UCN_ISO_TS17_RDTEMP; 
+	    }
+	    if(UCN_ISO_TS18_RDTEMP > maxts18_temperature_valveOpen[i]){
+	      maxts18_temperature_valveOpen[i] = UCN_ISO_TS18_RDTEMP;
+	    } 
+	    if(UCN_ISO_TS18_RDTEMP < mints18_temperature_valveOpen[i]){
+	      mints18_temperature_valveOpen[i] = UCN_ISO_TS18_RDTEMP; 
 	    }
 	  }
 	}
@@ -813,14 +1233,49 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	col2down_ave[i]=col2down_ave[i]/(counter_3);
 	col2right_ave[i]=col2right_ave[i]/(counter_3);
 	col2left_ave[i]=col2left_ave[i]/(counter_3);
+	avets11_temperature_irrad[i]=avets11_temperature_irrad[i]/(counter_2);
 	avets12_temperature_irrad[i]=avets12_temperature_irrad[i]/(counter_2);
+	avets13_temperature_irrad[i]=avets13_temperature_irrad[i]/(counter_2);
+	avets14_temperature_irrad[i]=avets14_temperature_irrad[i]/(counter_2);
+	avets15_temperature_irrad[i]=avets15_temperature_irrad[i]/(counter_2);
+	avets16_temperature_irrad[i]=avets16_temperature_irrad[i]/(counter_2);
+	avets17_temperature_irrad[i]=avets17_temperature_irrad[i]/(counter_2);
+	avets18_temperature_irrad[i]=avets18_temperature_irrad[i]/(counter_2);
 	fm1_ave[i] = fm1_ave[i]/(counter_2);
 	fm4_ave[i] = fm4_ave[i]/(counter_2);
 	fm5_ave[i] = fm5_ave[i]/(counter_2);
+	if (avets11_temperature_valveOpen[i] < 0.001){
+	  counter_1 = 1;
+	}
 	if (avets12_temperature_valveOpen[i] < 0.001){
 	  counter_1 = 1;
 	}
+	if (avets13_temperature_valveOpen[i] < 0.001){
+	  counter_1 = 1;
+	}
+	if (avets14_temperature_valveOpen[i] < 0.001){
+	  counter_1 = 1;
+	}
+	if (avets15_temperature_valveOpen[i] < 0.001){
+	  counter_1 = 1;
+	}
+	if (avets16_temperature_valveOpen[i] < 0.001){
+	  counter_1 = 1;
+	}
+	if (avets17_temperature_valveOpen[i] < 0.001){
+	  counter_1 = 1;
+	}
+	if (avets18_temperature_valveOpen[i] < 0.001){
+	  counter_1 = 1;
+	}
+	avets11_temperature_valveOpen[i]=avets11_temperature_valveOpen[i]/(counter_1);
 	avets12_temperature_valveOpen[i]=avets12_temperature_valveOpen[i]/(counter_1);
+	avets13_temperature_valveOpen[i]=avets13_temperature_valveOpen[i]/(counter_1);
+	avets14_temperature_valveOpen[i]=avets14_temperature_valveOpen[i]/(counter_1);	
+	avets15_temperature_valveOpen[i]=avets15_temperature_valveOpen[i]/(counter_1);
+	avets16_temperature_valveOpen[i]=avets16_temperature_valveOpen[i]/(counter_1);
+	avets17_temperature_valveOpen[i]=avets17_temperature_valveOpen[i]/(counter_1);
+	avets18_temperature_valveOpen[i]=avets18_temperature_valveOpen[i]/(counter_1);
 	LND_ave[i]=LND_ave[i]/counter_4;
 	if (counter_delay == 0)
 	  counter_delay = 1;
@@ -1223,9 +1678,9 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	Li6_Fit_Func -> FixParameter(10, cyclevalveclose[i]);
 	Li6_Fit_Func -> FixParameter(11,delayTimeArray[i]);
 	Li6_Fit_Func -> SetNpx(10000);
-	//TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQI");
+	TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
 	cout << "***********************************************************" << endl;
-	/*Int_t fitStatus = status;
+	Int_t fitStatus = status;
 	cout << fitStatus << endl;
 	if (fitStatus == 4) {
 	  failfit_cycle++;
@@ -1250,7 +1705,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	//cout << BaselineInt[i] << endl;
 	//cout << baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]) << endl;
 	//cout << ( baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]))/BaselineInt[i] << endl;
-	*/
+	
 	hfile.cd();
       }
       
@@ -1274,7 +1729,6 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
       UCN_rate_He3 -> Write(runnamehe3.str().c_str());
       UCN_rate_He3 -> SetBins(NBins, minXrange , maxXrange);
       UCN_rate_He3_all -> Add (UCN_rate_He3);
-   
 
 
       //**********************************************************************
@@ -1319,9 +1773,23 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	AVE_COL2DOWN = col2down_ave[i];
 	AVE_COL2RIGHT = col2right_ave[i];
 	AVE_COL2LEFT = col2left_ave[i];
+	AVE_TS11_IRRAD = avets11_temperature_irrad[i];
+	AVE_TS11_VALVEOPEN = avets11_temperature_valveOpen[i];
 	AVE_TS12_IRRAD = avets12_temperature_irrad[i];
 	AVE_TS12_VALVEOPEN = avets12_temperature_valveOpen[i];
 	AVE_TS12_DELAY = avets12_delay[i];
+	AVE_TS13_IRRAD = avets13_temperature_irrad[i];
+	AVE_TS13_VALVEOPEN = avets13_temperature_valveOpen[i];
+	AVE_TS14_IRRAD = avets14_temperature_irrad[i];
+	AVE_TS14_VALVEOPEN = avets14_temperature_valveOpen[i];
+	AVE_TS15_IRRAD = avets15_temperature_irrad[i];
+	AVE_TS15_VALVEOPEN = avets15_temperature_valveOpen[i];
+	AVE_TS16_IRRAD = avets16_temperature_irrad[i];
+	AVE_TS16_VALVEOPEN = avets16_temperature_valveOpen[i];
+	AVE_TS17_IRRAD = avets17_temperature_irrad[i];
+	AVE_TS17_VALVEOPEN = avets17_temperature_valveOpen[i];
+	AVE_TS18_IRRAD = avets18_temperature_irrad[i];
+	AVE_TS18_VALVEOPEN = avets18_temperature_valveOpen[i];
 	AVE_FM1 = fm1_ave[i];
 	AVE_FM4 = fm4_ave[i];
 	AVE_FM5 = fm5_ave[i];
@@ -1347,10 +1815,38 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	MIN_COL2RIGHT = col2right_min[i] ;
 	MAX_COL2LEFT =  col2left_max[i] ;
 	MIN_COL2LEFT =  col2left_min[i] ;
+	MAX_TS11_IRRAD =  maxts11_temperature_irrad[i] ;
+	MIN_TS11_IRRAD =  mints11_temperature_irrad[i] ;
 	MAX_TS12_IRRAD =  maxts12_temperature_irrad[i] ;
 	MIN_TS12_IRRAD =  mints12_temperature_irrad[i] ;
+	MAX_TS13_IRRAD =  maxts13_temperature_irrad[i] ;
+	MIN_TS13_IRRAD =  mints13_temperature_irrad[i] ;
+	MAX_TS14_IRRAD =  maxts14_temperature_irrad[i] ;
+	MIN_TS14_IRRAD =  mints14_temperature_irrad[i] ;
+	MAX_TS15_IRRAD =  maxts15_temperature_irrad[i] ;
+	MIN_TS15_IRRAD =  mints15_temperature_irrad[i] ;
+	MAX_TS16_IRRAD =  maxts16_temperature_irrad[i] ;
+	MIN_TS16_IRRAD =  mints16_temperature_irrad[i] ;
+	MAX_TS17_IRRAD =  maxts17_temperature_irrad[i] ;
+	MIN_TS17_IRRAD =  mints17_temperature_irrad[i] ;
+	MAX_TS18_IRRAD =  maxts18_temperature_irrad[i] ;
+	MIN_TS18_IRRAD =  mints18_temperature_irrad[i] ;
+	MAX_TS11_VALVEOPEN =  maxts11_temperature_valveOpen[i];
+       	MIN_TS11_VALVEOPEN =  mints11_temperature_valveOpen[i];
        	MAX_TS12_VALVEOPEN =  maxts12_temperature_valveOpen[i];
        	MIN_TS12_VALVEOPEN =  mints12_temperature_valveOpen[i];
+	MAX_TS13_VALVEOPEN =  maxts13_temperature_valveOpen[i];
+       	MIN_TS13_VALVEOPEN =  mints13_temperature_valveOpen[i];
+	MAX_TS14_VALVEOPEN =  maxts14_temperature_valveOpen[i];
+       	MIN_TS14_VALVEOPEN =  mints14_temperature_valveOpen[i];
+	MAX_TS15_VALVEOPEN =  maxts15_temperature_valveOpen[i];
+	MIN_TS15_VALVEOPEN =  mints15_temperature_valveOpen[i];
+	MAX_TS16_VALVEOPEN =  maxts16_temperature_valveOpen[i];
+       	MIN_TS16_VALVEOPEN =  mints16_temperature_valveOpen[i];
+	MAX_TS17_VALVEOPEN =  maxts17_temperature_valveOpen[i];
+       	MIN_TS17_VALVEOPEN =  mints17_temperature_valveOpen[i];
+	MAX_TS18_VALVEOPEN =  maxts18_temperature_valveOpen[i];
+       	MIN_TS18_VALVEOPEN =  mints18_temperature_valveOpen[i];
 	MAX_TS12_DELAY = maxts12_delay[i] ;
 	MIN_TS12_DELAY = mints12_delay[i] ;
 	MAX_FM1 = fm1_max[i];
