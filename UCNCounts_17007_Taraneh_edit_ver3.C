@@ -168,8 +168,9 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   double irradtimeArray_10muA[100];
   int counts_10muA = 0;
   // to 662
-  for (midasrun = 622; midasrun < 623 ; midasrun++){
-
+  for (midasrun = 614; midasrun < 662 ; midasrun++){
+    if (midasrun == 637 || midasrun == 654 || midasrun == 659 )
+      continue;
     sprintf (filename , "./2ndpass/outputTree_%d.root",midasrun);
     TFile* fin = new TFile(Form(filename),"READ");
     
@@ -246,11 +247,11 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
       continue;
     if (midasrun == 637 || midasrun == 638 )
       continue;
-    //if (midasrun == 639 && counts == 0)
-    // continue;
-    if (midasrun == 640 || midasrun == 642 || midasrun == 643)
+    if (midasrun == 639 && j == 0)
+     continue;
+    if ( midasrun == 642 || midasrun == 643)
       continue;
-    if (midasrun == 647 || midasrun == 648 || midasrun == 649)
+    if (midasrun == 647 || midasrun == 648 )
       continue;
     if (midasrun == 651 || midasrun == 652 || midasrun == 653)
       continue;
@@ -339,8 +340,8 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
 
     // 7 muA
     if (avecur > 6.8 && avecur < 7.3){
-      if (midasrun == 639 && UCNIntegral < 1000)
-        continue;
+      //if (midasrun == 639 && UCNIntegral < 1000)
+      //continue;
       // cout << midasrun << " " << UCNIntegral << endl;
       UCNIntegralArray_7muA[counts_7muA] = UCNIntegral;
       UCNIntegralErrArray_7muA[counts_7muA] = UCNIntegralErr;
@@ -374,7 +375,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   //     GRAPHS
   // ******************
 
-  #if 1
+  #if 0
 
   TCanvas *c_cylceNum =  new TCanvas("c_cycleNum" , "c_cycleNum " , 1200, 900);
   c_cycleNum-> Divide(2,2);
@@ -621,6 +622,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
  
   }
 
+  //TF1 *f1 = new TF1("f1" , "[0]*exp()
 
   // ONLINE ANALYSIS
 
@@ -638,7 +640,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
 
   double irrad_10muA[100] = {60, 30, 60, 60, 10, 10, 30, 30, 30};
   double countsOnline10muA[100] = {325380, 272176, 324800, 309519, 126541, 126998, 262278, 256605, 255361};
-  #if 0
+  #if 1
   TCanvas *c_1muA = new TCanvas ("c_1muA" , "c_1muA", 1200, 900);
   c_1muA-> SetLogy();
 
@@ -697,7 +699,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   
 
   TLegend *leg1muA = new TLegend (0.7, 0.7, 0.9, 0.9);
-  leg1muA -> AddEntry(grcounts_1muA, "Counts without background (fit)" , "p");
+  //leg1muA -> AddEntry(grcounts_1muA, "Counts without background (fit)" , "p");
   leg1muA -> AddEntry(grcountsM_1muA , "Counts without background" ,"p");
   leg1muA -> AddEntry(grhist_1muA, "Counts with background", "p");
   leg1muA -> AddEntry(gr1muAOnline , "Online Analysis" , "p");
