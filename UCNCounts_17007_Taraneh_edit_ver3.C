@@ -243,6 +243,8 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
       continue;
     if (midasrun == 618 || midasrun == 623 || midasrun == 624)
       continue;
+    if (midasrun == 626 && j ==0)
+      continue;
     if (midasrun == 632 || midasrun == 635 || midasrun == 636)
       continue;
     if (midasrun == 637 || midasrun == 638 )
@@ -296,7 +298,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
     UCNIntegralManualArray[counts] = HistIntegral - BASELINERATE*(cycleValveCloseTime - cycleValveOpenTime);
     // cout << UCNIntegralManualArray[counts] << endl;
     UCNIntegralManualErrArray[counts] = sqrt(UCNIntegralManualArray[counts]);
-    cout << " The irradiation time for run " <<midasrun << " for cycle "<< counts << " is "<< cycleStartTimes - irradStartTimes << endl;
+    //cout << " The irradiation time for run " <<midasrun << " for cycle "<< counts << " is "<< cycleStartTimes - irradStartTimes << endl;
 
     // *******************
     // FOR THE FINAL GRAPH
@@ -311,6 +313,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
       UCNIntegralManualArray_1muA[counts_1muA] =  HistIntegral -  BASELINERATE*(cycleValveCloseTime - cycleValveOpenTime);
       UCNIntegralManualErrArray_1muA[counts_1muA] = sqrt(UCNIntegralManualArray_1muA[counts]);
       irradtimeArray_1muA[counts_1muA] = cycleStartTimes - irradStartTimes;
+      //cout << "Current " << avecur << " Counts " << UCNIntegralManualArray_1muA[counts_1muA] << endl;
       counts_1muA++;
     }
 
@@ -323,6 +326,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
       UCNIntegralManualArray_3muA[counts_3muA] =  HistIntegral -  BASELINERATE*(cycleValveCloseTime - cycleValveOpenTime);
       UCNIntegralManualErrArray_3muA[counts_3muA] = sqrt(UCNIntegralManualArray_3muA[counts]);
       irradtimeArray_3muA[counts_3muA] = cycleStartTimes - irradStartTimes;
+      
       counts_3muA++;
     }
 
@@ -335,6 +339,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
       UCNIntegralManualArray_5muA[counts_5muA] =  HistIntegral -  BASELINERATE*(cycleValveCloseTime - cycleValveOpenTime);
       UCNIntegralManualErrArray_5muA[counts_5muA] = sqrt(UCNIntegralManualArray_5muA[counts]);
       irradtimeArray_5muA[counts_5muA] = cycleStartTimes - irradStartTimes;
+      //cout << "Current " << avecur << " Counts " << UCNIntegralManualArray_5muA[counts_5muA] <<" Irradiation duration " << cycleStartTimes - irradStartTimes  << endl;
       counts_5muA++;
     }
 
@@ -622,7 +627,13 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
  
   }
 
-  //TF1 *f1 = new TF1("f1" , "[0]*exp()
+  TF1 *f1 = new TF1("f1" , "[0]*[1]*(1 - exp(-x/[1]))" , 0 , 150);
+  f1 -> SetParName(0, "P");
+  f1 -> SetParName(1, "#tau");
+  f1 -> SetParameter(0, 10000);
+  f1 -> SetParameter(1, 35);
+  f1 -> SetParLimits(1, 17, 40);
+  
 
   // ONLINE ANALYSIS
 
@@ -664,6 +675,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   grhist_1muA -> SetTitle( "UCN Counts vs Irradiation Time");
   grhist_1muA -> GetXaxis()-> SetTitle("Irradiation Time (s)" );
   grhist_1muA -> GetYaxis()-> SetTitle("UCN Counts");
+  grhist_1muA -> GetYaxis() -> SetRangeUser (100, 7000000);
   grhist_1muA -> SetMarkerStyle(25);
   grhist_1muA -> GetXaxis()-> SetLimits(0, 150);
   grhist_1muA -> GetXaxis() -> SetTitleSize(0.05);
@@ -683,6 +695,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   grcountsM_1muA -> GetYaxis() -> SetTitleSize(0.05); 
   grcountsM_1muA -> GetYaxis() -> SetTitleOffset(0.9);
   grcountsM_1muA -> SetMarkerColor(1);
+
 
  TGraphErrors *gr1muAOnline = new TGraphErrors (8, irrad_1muA, countsOnline1muA, 0 , 0 );
   gr1muAOnline -> SetTitle( "UCN Counts vs Irradiation Time");
@@ -705,9 +718,10 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   leg1muA -> AddEntry(gr1muAOnline , "Online Analysis" , "p");
   leg1muA -> SetTextSize(0.04);
   
-  grcounts_1muA -> Draw("Ap");
-  grhist_1muA -> Draw("p");
+  //grcounts_1muA -> Draw("Ap");
+  grhist_1muA -> Draw("Ap");
   grcountsM_1muA -> Draw("p");
+  grcountsM_1muA -> Fit("f1", "R+M");
   gr1muAOnline -> Draw("p");
   leg1muA -> Draw();
 
@@ -730,6 +744,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   grhist_3muA -> SetTitle( "UCN Counts vs Irradiation Time");
   grhist_3muA -> GetXaxis()-> SetTitle("Irradiation Time (s)" );
   grhist_3muA -> GetYaxis()-> SetTitle("UCN Counts");
+  grhist_3muA -> GetYaxis() -> SetRangeUser (100, 7000000);
   grhist_3muA -> SetMarkerStyle(25);
   grhist_3muA -> GetXaxis()-> SetLimits(0, 150);
   grhist_3muA -> GetXaxis() -> SetTitleSize(0.05);
@@ -762,9 +777,10 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   gr3muAOnline -> GetYaxis() -> SetTitleOffset(0.9);
   gr3muAOnline -> SetMarkerColor(8);
 
-  grcounts_3muA -> Draw("Ap");
-  grhist_3muA -> Draw("p");
+  //grcounts_3muA -> Draw("Ap");
+  grhist_3muA -> Draw("Ap");
   grcountsM_3muA -> Draw("p");
+  grcountsM_3muA -> Fit("f1" , "R+M");
   gr3muAOnline -> Draw("p");
   leg1muA -> Draw();
 
@@ -787,6 +803,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   grhist_5muA -> SetTitle( "UCN Counts vs Irradiation Time");
   grhist_5muA -> GetXaxis()-> SetTitle("Irradiation Time (s)" );
   grhist_5muA -> GetYaxis()-> SetTitle("UCN Counts");
+  grhist_5muA -> GetYaxis() -> SetRangeUser (100, 7000000);
   grhist_5muA -> SetMarkerStyle(25);
   grhist_5muA -> GetXaxis()-> SetLimits(0, 150);
   grhist_5muA -> GetXaxis() -> SetTitleSize(0.05);
@@ -820,9 +837,10 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   gr5muAOnline -> SetMarkerColor(8);
   
 
-  grcounts_5muA -> Draw("Ap");
-  grhist_5muA -> Draw("p");
+  //grcounts_5muA -> Draw("Ap");
+  grhist_5muA -> Draw("Ap");
   grcountsM_5muA -> Draw("p");
+  grcountsM_5muA -> Fit("f1" , "R+M");
   gr5muAOnline -> Draw("p");
   leg1muA -> Draw();
 
@@ -845,6 +863,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   grhist_7muA -> SetTitle( "UCN Counts vs Irradiation Time");
   grhist_7muA -> GetXaxis()-> SetTitle("Irradiation Time (s)" );
   grhist_7muA -> GetYaxis()-> SetTitle("UCN Counts");
+  grhist_7muA -> GetYaxis() -> SetRangeUser (100, 7000000);
   grhist_7muA -> SetMarkerStyle(25);
   grhist_7muA -> GetXaxis()-> SetLimits(0, 150);
   grhist_7muA -> GetXaxis() -> SetTitleSize(0.05);
@@ -878,9 +897,10 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   gr7muAOnline -> GetYaxis() -> SetTitleOffset(0.9);
   gr7muAOnline -> SetMarkerColor(8);
 
-  grcounts_7muA -> Draw("Ap");
-  grhist_7muA -> Draw("p");
+  //grcounts_7muA -> Draw("Ap");
+  grhist_7muA -> Draw("Ap");
   grcountsM_7muA -> Draw("p");
+  grcountsM_7muA -> Fit("f1" , "R+M");
   gr7muAOnline -> Draw("p");
   leg1muA -> Draw();
 
@@ -904,6 +924,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   grhist_10muA -> SetTitle( "UCN Counts vs Irradiation Time");
   grhist_10muA -> GetXaxis()-> SetTitle("Irradiation Time (s)" );
   grhist_10muA -> GetYaxis()-> SetTitle("UCN Counts");
+  grhist_10muA -> GetYaxis() -> SetRangeUser (100, 7000000);
   grhist_10muA -> SetMarkerStyle(25);
   grhist_10muA -> GetXaxis()-> SetLimits(0, 150);
   grhist_10muA -> GetXaxis() -> SetTitleSize(0.05);
@@ -930,19 +951,79 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   gr10muAOnline -> GetXaxis()-> SetTitle("Irradiation Time (s)" );
   gr10muAOnline -> GetYaxis()-> SetTitle("UCN Counts");
   gr10muAOnline -> SetMarkerStyle(3);
-  gr10muAOnline -> GetXaxis()-> SetLimits(0, 150);
+  gr10muAOnline -> GetXaxis() -> SetLimits(0, 150);
   gr10muAOnline -> GetXaxis() -> SetTitleSize(0.05);
   gr10muAOnline -> GetXaxis() -> SetTitleOffset(1.0);
   gr10muAOnline -> GetYaxis() -> SetTitleSize(0.05); 
   gr10muAOnline -> GetYaxis() -> SetTitleOffset(0.9);
   gr10muAOnline -> SetMarkerColor(8);
 
-  grcounts_10muA -> Draw("Ap");
-  grhist_10muA -> Draw("p");
+  // grcounts_10muA -> Draw("Ap");
+  grhist_10muA -> Draw("Ap");
   grcountsM_10muA -> Draw("p");
+  grcountsM_10muA -> Fit("f1" , "R+EX0");
   gr10muAOnline -> Draw("p");
   leg1muA -> Draw();
 
 #endif
+
+
+#if 0
+  TCanvas *cAll = new TCanvas ("cAll" , "cAll" , 1200, 900);
+  cAll -> SetLogy();
+  grhist_1muA -> GetYaxis() -> SetRangeUser (1000, 500000);
+  grhist_1muA -> GetXaxis() -> SetLimits(0, 300);
+  grcountsM_1muA -> GetYaxis() -> SetRangeUser (1000, 7000000);
+  grcountsM_1muA -> GetXaxis() -> SetLimits(0, 300);
+
+  grhist_1muA -> SetMarkerStyle(20);
+  grhist_3muA -> SetMarkerStyle(20);
+  grhist_5muA -> SetMarkerStyle(20);
+  grhist_7muA -> SetMarkerStyle(20);
+  grhist_10muA -> SetMarkerStyle(20);
+
+  grcountsM_1muA -> SetMarkerStyle(20);
+  grcountsM_3muA -> SetMarkerStyle(21);
+  grcountsM_5muA -> SetMarkerStyle(24);
+  grcountsM_7muA -> SetMarkerStyle(25);
+  grcountsM_10muA -> SetMarkerStyle(3);
   
+  grhist_1muA -> SetMarkerColor(1);
+  grhist_3muA -> SetMarkerColor(2);
+  grhist_5muA -> SetMarkerColor(8);
+  grhist_7muA -> SetMarkerColor(4);
+  grhist_10muA -> SetMarkerColor(6);
+
+  grcountsM_1muA -> SetMarkerColor(1);
+  grcountsM_3muA -> SetMarkerColor(1);
+  grcountsM_5muA -> SetMarkerColor(1);
+  grcountsM_7muA -> SetMarkerColor(1);
+  grcountsM_10muA -> SetMarkerColor(1);
+  
+  TLegend *legAll = new TLegend(0.7, 0.7 , 0.9, 0.9);
+  //legAll -> AddEntry (grhist_1muA, "Counts With Background , 1 #muA", "p");
+  legAll -> AddEntry (grcountsM_1muA, "UCN Counts Without Background , 1.5 #muA" , "p");
+  //legAll -> AddEntry (grhist_3muA, "Counts With Background , 3 #muA" , "p");
+  legAll -> AddEntry (grcountsM_3muA, "UCN Counts Without Background , 3 #muA", "p");
+  //legAll -> AddEntry (grhist_5muA , "Counts With Background , 5 #muA" , "p");
+  legAll -> AddEntry (grcountsM_5muA, "UCN Counts Without Background , 5 #muA" , "p");
+  //legAll -> AddEntry (grhist_7muA, "Counts With Background , 7 #muA" , "p");
+  legAll -> AddEntry (grcountsM_7muA , "UCN Counts Without Background , 7.1 #muA" , "P");
+  //legAll -> AddEntry (grhist_10muA , "Counts With Background , 10 #muA" , "p");
+  legAll -> AddEntry (grcountsM_10muA , "UCN Counts Without Background , 10 #muA" , "p");
+  legAll -> SetTextSize(0.03);
+  
+  //grhist_1muA -> Draw("Ap");
+  grcountsM_1muA -> Draw("Ap");
+  grcountsM_1muA -> Fit("f1");
+  //grhist_3muA -> Draw("p");
+  grcountsM_3muA -> Draw("p");
+  //grhist_5muA -> Draw("p");
+  grcountsM_5muA -> Draw("P");
+  //grhist_7muA -> Draw("p");
+  grcountsM_7muA -> Draw("p");
+  //grhist_10muA -> Draw("p");
+  grcountsM_10muA -> Draw("p");
+  legAll -> Draw();
+  #endif
 }
