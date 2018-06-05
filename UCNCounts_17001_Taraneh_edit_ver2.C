@@ -9,15 +9,17 @@
 #define max 100
 
 void UCNCounts_17001_Taraneh_edit_ver2(){
-
-  TFile *fin524 = new TFile ("outputTree_524.root", "READ");
-  TFile *fin525 = new TFile ("outputTree_525.root", "READ");
-  TFile *fin526 = new TFile ("outputTree_526.root", "READ");
-  TFile *fin527 = new TFile ("outputTree_527.root", "READ");
-  TFile *fin528 = new TFile ("outputTree_528.root", "READ");
-  TFile *fin529 = new TFile ("outputTree_529.root", "READ");
-  TFile *fin530 = new TFile ("outputTree_530.root", "READ");
   
+  // Read the files in ...
+  TFile *fin524 = new TFile ("./2ndpass/outputTree_524.root", "READ");
+  TFile *fin525 = new TFile ("./2ndpass/outputTree_525.root", "READ");
+  TFile *fin526 = new TFile ("./2ndpass/outputTree_526.root", "READ");
+  TFile *fin527 = new TFile ("./2ndpass/outputTree_527.root", "READ");
+  TFile *fin528 = new TFile ("./2ndpass/outputTree_528.root", "READ");
+  TFile *fin529 = new TFile ("./2ndpass/outputTree_529.root", "READ");
+  TFile *fin530 = new TFile ("./2ndpass/outputTree_530.root", "READ");
+
+  // Get the cycle_info tree
   TTree *outputTree524 = (TTree*) fin524 -> Get("cycle_info");
   TTree *outputTree525 = (TTree*) fin525 -> Get("cycle_info");
   TTree *outputTree526 = (TTree*) fin526 -> Get("cycle_info");
@@ -60,9 +62,6 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   outputTree529 -> SetBranchAddress("cycleStartTimes" , &cycleStartTimes529);
   outputTree530 -> SetBranchAddress("cycleStartTimes" , &cycleStartTimes530);
 
-
-
-  
   double cycleDelayTime524;
   double cycleDelayTime525;
   double cycleDelayTime526;
@@ -85,6 +84,40 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   double delaytimeArray529[100];
   double delaytimeArray530[100];
 
+
+  double cycleValveOpenTime524;
+  double cycleValveOpenTime525;
+  double cycleValveOpenTime526;
+  double cycleValveOpenTime527;
+  double cycleValveOpenTime528;
+  double cycleValveOpenTime529;
+  double cycleValveOpenTime530;
+  outputTree524 -> SetBranchAddress("cycleValveOpenTime" , &cycleValveOpenTime524);
+  outputTree525 -> SetBranchAddress("cycleValveOpenTime" , &cycleValveOpenTime525);
+  outputTree526 -> SetBranchAddress("cycleValveOpenTime" , &cycleValveOpenTime526);
+  outputTree527 -> SetBranchAddress("cycleValveOpenTime" , &cycleValveOpenTime527);
+  outputTree528 -> SetBranchAddress("cycleValveOpenTime" , &cycleValveOpenTime528);
+  outputTree529 -> SetBranchAddress("cycleValveOpenTime" , &cycleValveOpenTime529);
+  outputTree530 -> SetBranchAddress("cycleValveOpenTime" , &cycleValveOpenTime530);
+
+
+  double cycleValveCloseTime524;
+  double cycleValveCloseTime525;
+  double cycleValveCloseTime526;
+  double cycleValveCloseTime527;
+  double cycleValveCloseTime528;
+  double cycleValveCloseTime529;
+  double cycleValveCloseTime530;
+  outputTree524 -> SetBranchAddress("cycleValveCloseTime" , &cycleValveCloseTime524);
+  outputTree525 -> SetBranchAddress("cycleValveCloseTime" , &cycleValveCloseTime525);
+  outputTree526 -> SetBranchAddress("cycleValveCloseTime" , &cycleValveCloseTime526);
+  outputTree527 -> SetBranchAddress("cycleValveCloseTime" , &cycleValveCloseTime527);
+  outputTree528 -> SetBranchAddress("cycleValveCloseTime" , &cycleValveCloseTime528);
+  outputTree529 -> SetBranchAddress("cycleValveCloseTime" , &cycleValveCloseTime529);
+  outputTree530 -> SetBranchAddress("cycleValveCloseTime" , &cycleValveCloseTime530);
+
+  
+  
   int cycleNumber524;
   int cycleNumber525;
   int cycleNumber526;
@@ -107,49 +140,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   double cycleNumberArray529 [100];
   double cycleNumberArray530 [100];  
   
-  double UCNIntegral524;
-  double UCNIntegral525;
-  double UCNIntegral526;
-  double UCNIntegral527;
-  double UCNIntegral528;
-  double UCNIntegral529;
-  double UCNIntegral530;
-  outputTree524 -> SetBranchAddress ("UCNIntegral" , &UCNIntegral524);
-  outputTree525 -> SetBranchAddress ("UCNIntegral" , &UCNIntegral525);
-  outputTree526 -> SetBranchAddress ("UCNIntegral" , &UCNIntegral526);
-  outputTree527 -> SetBranchAddress ("UCNIntegral" , &UCNIntegral527);
-  outputTree528 -> SetBranchAddress ("UCNIntegral" , &UCNIntegral528);
-  outputTree529 -> SetBranchAddress ("UCNIntegral" , &UCNIntegral529);
-  outputTree530 -> SetBranchAddress ("UCNIntegral" , &UCNIntegral530);
-  double UCNIntegralArray524 [100];
-  double UCNIntegralArray525 [100];
-  double UCNIntegralArray526 [100];
-  double UCNIntegralArray527 [100];
-  double UCNIntegralArray528 [100];
-  double UCNIntegralArray529 [100];
-  double UCNIntegralArray530 [100];
 
-  double UCNIntegralErr524;
-  double UCNIntegralErr525;
-  double UCNIntegralErr526;
-  double UCNIntegralErr527;
-  double UCNIntegralErr528;
-  double UCNIntegralErr529;
-  double UCNIntegralErr530;
-  outputTree524 -> SetBranchAddress ("UCNIntegralErr" , &UCNIntegralErr524);
-  outputTree525 -> SetBranchAddress ("UCNIntegralErr" , &UCNIntegralErr525);
-  outputTree526 -> SetBranchAddress ("UCNIntegralErr" , &UCNIntegralErr526);
-  outputTree527 -> SetBranchAddress ("UCNIntegralErr" , &UCNIntegralErr527);
-  outputTree528 -> SetBranchAddress ("UCNIntegralErr" , &UCNIntegralErr528);
-  outputTree529 -> SetBranchAddress ("UCNIntegralErr" , &UCNIntegralErr529);
-  outputTree530 -> SetBranchAddress ("UCNIntegralErr" , &UCNIntegralErr530);
-  double UCNIntegralErrArray524 [100];
-  double UCNIntegralErrArray525 [100];
-  double UCNIntegralErrArray526 [100];
-  double UCNIntegralErrArray527 [100];
-  double UCNIntegralErrArray528 [100];
-  double UCNIntegralErrArray529 [100];
-  double UCNIntegralErrArray530 [100];
 
   double HistIntegral524;
   double HistIntegral525;
@@ -180,6 +171,30 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   double HistIntegralErrArray529[100];
   double HistIntegralErrArray530[100];
 
+  // Average temperature during irradiation time
+  double avets11Irrad524;
+  double avets11Irrad525;
+  double avets11Irrad526;
+  double avets11Irrad527;
+  double avets11Irrad528;
+  double avets11Irrad529;
+  double avets11Irrad530;
+  outputTree524 -> SetBranchAddress ("AVE_TS11_IRRAD" , &avets11Irrad524);
+  outputTree525 -> SetBranchAddress ("AVE_TS11_IRRAD" , &avets11Irrad525);
+  outputTree526 -> SetBranchAddress ("AVE_TS11_IRRAD" , &avets11Irrad526);
+  outputTree527 -> SetBranchAddress ("AVE_TS11_IRRAD" , &avets11Irrad527);
+  outputTree528 -> SetBranchAddress ("AVE_TS11_IRRAD" , &avets11Irrad528);
+  outputTree529 -> SetBranchAddress ("AVE_TS11_IRRAD" , &avets11Irrad529);
+  outputTree530 -> SetBranchAddress ("AVE_TS11_IRRAD" , &avets11Irrad530);
+  double avets11IrradArray524 [100];
+  double avets11IrradArray525 [100];
+  double avets11IrradArray526 [100];
+  double avets11IrradArray527 [100];
+  double avets11IrradArray528 [100];
+  double avets11IrradArray529 [100];
+  double avets11IrradArray530 [100];
+
+  
   double avets12Irrad524;
   double avets12Irrad525;
   double avets12Irrad526;
@@ -201,7 +216,75 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   double avets12IrradArray528 [100];
   double avets12IrradArray529 [100];
   double avets12IrradArray530 [100];
+
+  double avets14Irrad524;
+  double avets14Irrad525;
+  double avets14Irrad526;
+  double avets14Irrad527;
+  double avets14Irrad528;
+  double avets14Irrad529;
+  double avets14Irrad530;
+  outputTree524 -> SetBranchAddress ("AVE_TS14_IRRAD" , &avets14Irrad524);
+  outputTree525 -> SetBranchAddress ("AVE_TS14_IRRAD" , &avets14Irrad525);
+  outputTree526 -> SetBranchAddress ("AVE_TS14_IRRAD" , &avets14Irrad526);
+  outputTree527 -> SetBranchAddress ("AVE_TS14_IRRAD" , &avets14Irrad527);
+  outputTree528 -> SetBranchAddress ("AVE_TS14_IRRAD" , &avets14Irrad528);
+  outputTree529 -> SetBranchAddress ("AVE_TS14_IRRAD" , &avets14Irrad529);
+  outputTree530 -> SetBranchAddress ("AVE_TS14_IRRAD" , &avets14Irrad530);
+  double avets14IrradArray524 [100];
+  double avets14IrradArray525 [100];
+  double avets14IrradArray526 [100];
+  double avets14IrradArray527 [100];
+  double avets14IrradArray528 [100];
+  double avets14IrradArray529 [100];
+  double avets14IrradArray530 [100];
+
+  double avets16Irrad524;
+  double avets16Irrad525;
+  double avets16Irrad526;
+  double avets16Irrad527;
+  double avets16Irrad528;
+  double avets16Irrad529;
+  double avets16Irrad530;
+  outputTree524 -> SetBranchAddress ("AVE_TS16_IRRAD" , &avets16Irrad524);
+  outputTree525 -> SetBranchAddress ("AVE_TS16_IRRAD" , &avets16Irrad525);
+  outputTree526 -> SetBranchAddress ("AVE_TS16_IRRAD" , &avets16Irrad526);
+  outputTree527 -> SetBranchAddress ("AVE_TS16_IRRAD" , &avets16Irrad527);
+  outputTree528 -> SetBranchAddress ("AVE_TS16_IRRAD" , &avets16Irrad528);
+  outputTree529 -> SetBranchAddress ("AVE_TS16_IRRAD" , &avets16Irrad529);
+  outputTree530 -> SetBranchAddress ("AVE_TS16_IRRAD" , &avets16Irrad530);
+  double avets16IrradArray524 [100];
+  double avets16IrradArray525 [100];
+  double avets16IrradArray526 [100];
+  double avets16IrradArray527 [100];
+  double avets16IrradArray528 [100];
+  double avets16IrradArray529 [100];
+  double avets16IrradArray530 [100];
   
+  // Average temperature during valve open time
+  double avets11ValveOpen524;
+  double avets11ValveOpen525;
+  double avets11ValveOpen526;
+  double avets11ValveOpen527;
+  double avets11ValveOpen528;
+  double avets11ValveOpen529;
+  double avets11ValveOpen530;
+  outputTree524 -> SetBranchAddress ("AVE_TS11_VALVEOPEN" , &avets11ValveOpen524);
+  outputTree525 -> SetBranchAddress ("AVE_TS11_VALVEOPEN" , &avets11ValveOpen525);
+  outputTree526 -> SetBranchAddress ("AVE_TS11_VALVEOPEN" , &avets11ValveOpen526);
+  outputTree527 -> SetBranchAddress ("AVE_TS11_VALVEOPEN" , &avets11ValveOpen527);
+  outputTree528 -> SetBranchAddress ("AVE_TS11_VALVEOPEN" , &avets11ValveOpen528);
+  outputTree529 -> SetBranchAddress ("AVE_TS11_VALVEOPEN" , &avets11ValveOpen529);
+  outputTree530 -> SetBranchAddress ("AVE_TS11_VALVEOPEN" , &avets11ValveOpen530);
+  double avets11ValveOpenArray524 [100];
+  double avets11ValveOpenArray525 [100];
+  double avets11ValveOpenArray526 [100];
+  double avets11ValveOpenArray527 [100];
+  double avets11ValveOpenArray528 [100];
+  double avets11ValveOpenArray529 [100];
+  double avets11ValveOpenArray530 [100];
+
+
   double avets12ValveOpen524;
   double avets12ValveOpen525;
   double avets12ValveOpen526;
@@ -223,6 +306,71 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   double avets12ValveOpenArray528 [100];
   double avets12ValveOpenArray529 [100];
   double avets12ValveOpenArray530 [100];
+
+
+  double avets14ValveOpen524;
+  double avets14ValveOpen525;
+  double avets14ValveOpen526;
+  double avets14ValveOpen527;
+  double avets14ValveOpen528;
+  double avets14ValveOpen529;
+  double avets14ValveOpen530;
+  outputTree524 -> SetBranchAddress ("AVE_TS14_VALVEOPEN" , &avets14ValveOpen524);
+  outputTree525 -> SetBranchAddress ("AVE_TS14_VALVEOPEN" , &avets14ValveOpen525);
+  outputTree526 -> SetBranchAddress ("AVE_TS14_VALVEOPEN" , &avets14ValveOpen526);
+  outputTree527 -> SetBranchAddress ("AVE_TS14_VALVEOPEN" , &avets14ValveOpen527);
+  outputTree528 -> SetBranchAddress ("AVE_TS14_VALVEOPEN" , &avets14ValveOpen528);
+  outputTree529 -> SetBranchAddress ("AVE_TS14_VALVEOPEN" , &avets14ValveOpen529);
+  outputTree530 -> SetBranchAddress ("AVE_TS14_VALVEOPEN" , &avets14ValveOpen530);
+  double avets14ValveOpenArray524 [100];
+  double avets14ValveOpenArray525 [100];
+  double avets14ValveOpenArray526 [100];
+  double avets14ValveOpenArray527 [100];
+  double avets14ValveOpenArray528 [100];
+  double avets14ValveOpenArray529 [100];
+  double avets14ValveOpenArray530 [100];
+
+
+  double avets16ValveOpen524;
+  double avets16ValveOpen525;
+  double avets16ValveOpen526;
+  double avets16ValveOpen527;
+  double avets16ValveOpen528;
+  double avets16ValveOpen529;
+  double avets16ValveOpen530;
+  outputTree524 -> SetBranchAddress ("AVE_TS16_VALVEOPEN" , &avets16ValveOpen524);
+  outputTree525 -> SetBranchAddress ("AVE_TS16_VALVEOPEN" , &avets16ValveOpen525);
+  outputTree526 -> SetBranchAddress ("AVE_TS16_VALVEOPEN" , &avets16ValveOpen526);
+  outputTree527 -> SetBranchAddress ("AVE_TS16_VALVEOPEN" , &avets16ValveOpen527);
+  outputTree528 -> SetBranchAddress ("AVE_TS16_VALVEOPEN" , &avets16ValveOpen528);
+  outputTree529 -> SetBranchAddress ("AVE_TS16_VALVEOPEN" , &avets16ValveOpen529);
+  outputTree530 -> SetBranchAddress ("AVE_TS16_VALVEOPEN" , &avets16ValveOpen530);
+  double avets16ValveOpenArray524 [100];
+  double avets16ValveOpenArray525 [100];
+  double avets16ValveOpenArray526 [100];
+  double avets16ValveOpenArray527 [100];
+  double avets16ValveOpenArray528 [100];
+  double avets16ValveOpenArray529 [100];
+  double avets16ValveOpenArray530 [100];
+  
+
+
+  // Maximum temperture during irradiation time
+  double maxts11Irrad524;
+  double maxts11Irrad525;
+  double maxts11Irrad526;
+  double maxts11Irrad527;
+  double maxts11Irrad528;
+  double maxts11Irrad529;
+  double maxts11Irrad530;
+  outputTree524 -> SetBranchAddress ("MAX_TS11_IRRAD" , &maxts11Irrad524);
+  outputTree525 -> SetBranchAddress ("MAX_TS11_IRRAD" , &maxts11Irrad525);
+  outputTree526 -> SetBranchAddress ("MAX_TS11_IRRAD" , &maxts11Irrad526);
+  outputTree527 -> SetBranchAddress ("MAX_TS11_IRRAD" , &maxts11Irrad527);
+  outputTree528 -> SetBranchAddress ("MAX_TS11_IRRAD" , &maxts11Irrad528);
+  outputTree529 -> SetBranchAddress ("MAX_TS11_IRRAD" , &maxts11Irrad529);
+  outputTree530 -> SetBranchAddress ("MAX_TS11_IRRAD" , &maxts11Irrad530);
+
   
   double maxts12Irrad524;
   double maxts12Irrad525;
@@ -238,14 +386,55 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   outputTree528 -> SetBranchAddress ("MAX_TS12_IRRAD" , &maxts12Irrad528);
   outputTree529 -> SetBranchAddress ("MAX_TS12_IRRAD" , &maxts12Irrad529);
   outputTree530 -> SetBranchAddress ("MAX_TS12_IRRAD" , &maxts12Irrad530);
-  double maxts12IrradArray524 [100];
-  double maxts12IrradArray525 [100];
-  double maxts12IrradArray526 [100];
-  double maxts12IrradArray527 [100];
-  double maxts12IrradArray528 [100];
-  double maxts12IrradArray529 [100];
-  double maxts12IrradArray530 [100];
-  
+
+  double maxts14Irrad524;
+  double maxts14Irrad525;
+  double maxts14Irrad526;
+  double maxts14Irrad527;
+  double maxts14Irrad528;
+  double maxts14Irrad529;
+  double maxts14Irrad530;
+  outputTree524 -> SetBranchAddress ("MAX_TS14_IRRAD" , &maxts14Irrad524);
+  outputTree525 -> SetBranchAddress ("MAX_TS14_IRRAD" , &maxts14Irrad525);
+  outputTree526 -> SetBranchAddress ("MAX_TS14_IRRAD" , &maxts14Irrad526);
+  outputTree527 -> SetBranchAddress ("MAX_TS14_IRRAD" , &maxts14Irrad527);
+  outputTree528 -> SetBranchAddress ("MAX_TS14_IRRAD" , &maxts14Irrad528);
+  outputTree529 -> SetBranchAddress ("MAX_TS14_IRRAD" , &maxts14Irrad529);
+  outputTree530 -> SetBranchAddress ("MAX_TS14_IRRAD" , &maxts14Irrad530);
+
+
+  double maxts16Irrad524;
+  double maxts16Irrad525;
+  double maxts16Irrad526;
+  double maxts16Irrad527;
+  double maxts16Irrad528;
+  double maxts16Irrad529;
+  double maxts16Irrad530;
+  outputTree524 -> SetBranchAddress ("MAX_TS16_IRRAD" , &maxts16Irrad524);
+  outputTree525 -> SetBranchAddress ("MAX_TS16_IRRAD" , &maxts16Irrad525);
+  outputTree526 -> SetBranchAddress ("MAX_TS16_IRRAD" , &maxts16Irrad526);
+  outputTree527 -> SetBranchAddress ("MAX_TS16_IRRAD" , &maxts16Irrad527);
+  outputTree528 -> SetBranchAddress ("MAX_TS16_IRRAD" , &maxts16Irrad528);
+  outputTree529 -> SetBranchAddress ("MAX_TS16_IRRAD" , &maxts16Irrad529);
+  outputTree530 -> SetBranchAddress ("MAX_TS16_IRRAD" , &maxts16Irrad530);
+
+  // Maximum temperature during valve open time  
+  double maxts11ValveOpen524;
+  double maxts11ValveOpen525;
+  double maxts11ValveOpen526;
+  double maxts11ValveOpen527;
+  double maxts11ValveOpen528;
+  double maxts11ValveOpen529;
+  double maxts11ValveOpen530;
+  outputTree524 -> SetBranchAddress ("MAX_TS11_VALVEOPEN" , &maxts11ValveOpen524);
+  outputTree525 -> SetBranchAddress ("MAX_TS11_VALVEOPEN" , &maxts11ValveOpen525);
+  outputTree526 -> SetBranchAddress ("MAX_TS11_VALVEOPEN" , &maxts11ValveOpen526);
+  outputTree527 -> SetBranchAddress ("MAX_TS11_VALVEOPEN" , &maxts11ValveOpen527);
+  outputTree528 -> SetBranchAddress ("MAX_TS11_VALVEOPEN" , &maxts11ValveOpen528);
+  outputTree529 -> SetBranchAddress ("MAX_TS11_VALVEOPEN" , &maxts11ValveOpen529);
+  outputTree530 -> SetBranchAddress ("MAX_TS11_VALVEOPEN" , &maxts11ValveOpen530);
+
+
   double maxts12ValveOpen524;
   double maxts12ValveOpen525;
   double maxts12ValveOpen526;
@@ -260,13 +449,56 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   outputTree528 -> SetBranchAddress ("MAX_TS12_VALVEOPEN" , &maxts12ValveOpen528);
   outputTree529 -> SetBranchAddress ("MAX_TS12_VALVEOPEN" , &maxts12ValveOpen529);
   outputTree530 -> SetBranchAddress ("MAX_TS12_VALVEOPEN" , &maxts12ValveOpen530);
-  double maxts12ValveOpenArray524 [100];
-  double maxts12ValveOpenArray525 [100];
-  double maxts12ValveOpenArray526 [100];
-  double maxts12ValveOpenArray527 [100];
-  double maxts12ValveOpenArray528 [100];
-  double maxts12ValveOpenArray529 [100];
-  double maxts12ValveOpenArray530 [100];
+
+
+  double maxts14ValveOpen524;
+  double maxts14ValveOpen525;
+  double maxts14ValveOpen526;
+  double maxts14ValveOpen527;
+  double maxts14ValveOpen528;
+  double maxts14ValveOpen529;
+  double maxts14ValveOpen530;
+  outputTree524 -> SetBranchAddress ("MAX_TS14_VALVEOPEN" , &maxts14ValveOpen524);
+  outputTree525 -> SetBranchAddress ("MAX_TS14_VALVEOPEN" , &maxts14ValveOpen525);
+  outputTree526 -> SetBranchAddress ("MAX_TS14_VALVEOPEN" , &maxts14ValveOpen526);
+  outputTree527 -> SetBranchAddress ("MAX_TS14_VALVEOPEN" , &maxts14ValveOpen527);
+  outputTree528 -> SetBranchAddress ("MAX_TS14_VALVEOPEN" , &maxts14ValveOpen528);
+  outputTree529 -> SetBranchAddress ("MAX_TS14_VALVEOPEN" , &maxts14ValveOpen529);
+  outputTree530 -> SetBranchAddress ("MAX_TS14_VALVEOPEN" , &maxts14ValveOpen530);
+
+
+  double maxts16ValveOpen524;
+  double maxts16ValveOpen525;
+  double maxts16ValveOpen526;
+  double maxts16ValveOpen527;
+  double maxts16ValveOpen528;
+  double maxts16ValveOpen529;
+  double maxts16ValveOpen530;
+  outputTree524 -> SetBranchAddress ("MAX_TS16_VALVEOPEN" , &maxts16ValveOpen524);
+  outputTree525 -> SetBranchAddress ("MAX_TS16_VALVEOPEN" , &maxts16ValveOpen525);
+  outputTree526 -> SetBranchAddress ("MAX_TS16_VALVEOPEN" , &maxts16ValveOpen526);
+  outputTree527 -> SetBranchAddress ("MAX_TS16_VALVEOPEN" , &maxts16ValveOpen527);
+  outputTree528 -> SetBranchAddress ("MAX_TS16_VALVEOPEN" , &maxts16ValveOpen528);
+  outputTree529 -> SetBranchAddress ("MAX_TS16_VALVEOPEN" , &maxts16ValveOpen529);
+  outputTree530 -> SetBranchAddress ("MAX_TS16_VALVEOPEN" , &maxts16ValveOpen530);
+
+  
+  // Minimum temperature during irradiation time
+  double mints11Irrad524;
+  double mints11Irrad525;
+  double mints11Irrad526;
+  double mints11Irrad527;
+  double mints11Irrad528;
+  double mints11Irrad529;
+  double mints11Irrad530;
+  outputTree524 -> SetBranchAddress ("MIN_TS11_IRRAD" , &mints11Irrad524);
+  outputTree525 -> SetBranchAddress ("MIN_TS11_IRRAD" , &mints11Irrad525);
+  outputTree526 -> SetBranchAddress ("MIN_TS11_IRRAD" , &mints11Irrad526);
+  outputTree527 -> SetBranchAddress ("MIN_TS11_IRRAD" , &mints11Irrad527);
+  outputTree528 -> SetBranchAddress ("MIN_TS11_IRRAD" , &mints11Irrad528);
+  outputTree529 -> SetBranchAddress ("MIN_TS11_IRRAD" , &mints11Irrad529);
+  outputTree530 -> SetBranchAddress ("MIN_TS11_IRRAD" , &mints11Irrad530);
+
 
   double mints12Irrad524;
   double mints12Irrad525;
@@ -282,14 +514,56 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   outputTree528 -> SetBranchAddress ("MIN_TS12_IRRAD" , &mints12Irrad528);
   outputTree529 -> SetBranchAddress ("MIN_TS12_IRRAD" , &mints12Irrad529);
   outputTree530 -> SetBranchAddress ("MIN_TS12_IRRAD" , &mints12Irrad530);
-  double mints12IrradArray524 [100];
-  double mints12IrradArray525 [100];
-  double mints12IrradArray526 [100];
-  double mints12IrradArray527 [100];
-  double mints12IrradArray528 [100];
-  double mints12IrradArray529 [100];
-  double mints12IrradArray530 [100];
-  
+
+
+  double mints14Irrad524;
+  double mints14Irrad525;
+  double mints14Irrad526;
+  double mints14Irrad527;
+  double mints14Irrad528;
+  double mints14Irrad529;
+  double mints14Irrad530;
+  outputTree524 -> SetBranchAddress ("MIN_TS14_IRRAD" , &mints14Irrad524);
+  outputTree525 -> SetBranchAddress ("MIN_TS14_IRRAD" , &mints14Irrad525);
+  outputTree526 -> SetBranchAddress ("MIN_TS14_IRRAD" , &mints14Irrad526);
+  outputTree527 -> SetBranchAddress ("MIN_TS14_IRRAD" , &mints14Irrad527);
+  outputTree528 -> SetBranchAddress ("MIN_TS14_IRRAD" , &mints14Irrad528);
+  outputTree529 -> SetBranchAddress ("MIN_TS14_IRRAD" , &mints14Irrad529);
+  outputTree530 -> SetBranchAddress ("MIN_TS14_IRRAD" , &mints14Irrad530);
+
+
+  double mints16Irrad524;
+  double mints16Irrad525;
+  double mints16Irrad526;
+  double mints16Irrad527;
+  double mints16Irrad528;
+  double mints16Irrad529;
+  double mints16Irrad530;
+  outputTree524 -> SetBranchAddress ("MIN_TS16_IRRAD" , &mints16Irrad524);
+  outputTree525 -> SetBranchAddress ("MIN_TS16_IRRAD" , &mints16Irrad525);
+  outputTree526 -> SetBranchAddress ("MIN_TS16_IRRAD" , &mints16Irrad526);
+  outputTree527 -> SetBranchAddress ("MIN_TS16_IRRAD" , &mints16Irrad527);
+  outputTree528 -> SetBranchAddress ("MIN_TS16_IRRAD" , &mints16Irrad528);
+  outputTree529 -> SetBranchAddress ("MIN_TS16_IRRAD" , &mints16Irrad529);
+  outputTree530 -> SetBranchAddress ("MIN_TS16_IRRAD" , &mints16Irrad530);
+    
+  // Minimum temperature during valve open time
+  double mints11ValveOpen524;
+  double mints11ValveOpen525;
+  double mints11ValveOpen526;
+  double mints11ValveOpen527;
+  double mints11ValveOpen528;
+  double mints11ValveOpen529;
+  double mints11ValveOpen530;
+  outputTree524 -> SetBranchAddress ("MIN_TS11_VALVEOPEN" , &mints11ValveOpen524);
+  outputTree525 -> SetBranchAddress ("MIN_TS11_VALVEOPEN" , &mints11ValveOpen525);
+  outputTree526 -> SetBranchAddress ("MIN_TS11_VALVEOPEN" , &mints11ValveOpen526);
+  outputTree527 -> SetBranchAddress ("MIN_TS11_VALVEOPEN" , &mints11ValveOpen527);
+  outputTree528 -> SetBranchAddress ("MIN_TS11_VALVEOPEN" , &mints11ValveOpen528);
+  outputTree529 -> SetBranchAddress ("MIN_TS11_VALVEOPEN" , &mints11ValveOpen529);
+  outputTree530 -> SetBranchAddress ("MIN_TS11_VALVEOPEN" , &mints11ValveOpen530);
+
+
   double mints12ValveOpen524;
   double mints12ValveOpen525;
   double mints12ValveOpen526;
@@ -304,15 +578,49 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   outputTree528 -> SetBranchAddress ("MIN_TS12_VALVEOPEN" , &mints12ValveOpen528);
   outputTree529 -> SetBranchAddress ("MIN_TS12_VALVEOPEN" , &mints12ValveOpen529);
   outputTree530 -> SetBranchAddress ("MIN_TS12_VALVEOPEN" , &mints12ValveOpen530);
-  double mints12ValveOpenArray524 [100];
-  double mints12ValveOpenArray525 [100];
-  double mints12ValveOpenArray526 [100];
-  double mints12ValveOpenArray527 [100];
-  double mints12ValveOpenArray528 [100];
-  double mints12ValveOpenArray529 [100];
-  double mints12ValveOpenArray530 [100];
-    
 
+
+  double mints14ValveOpen524;
+  double mints14ValveOpen525;
+  double mints14ValveOpen526;
+  double mints14ValveOpen527;
+  double mints14ValveOpen528;
+  double mints14ValveOpen529;
+  double mints14ValveOpen530;
+  outputTree524 -> SetBranchAddress ("MIN_TS14_VALVEOPEN" , &mints14ValveOpen524);
+  outputTree525 -> SetBranchAddress ("MIN_TS14_VALVEOPEN" , &mints14ValveOpen525);
+  outputTree526 -> SetBranchAddress ("MIN_TS14_VALVEOPEN" , &mints14ValveOpen526);
+  outputTree527 -> SetBranchAddress ("MIN_TS14_VALVEOPEN" , &mints14ValveOpen527);
+  outputTree528 -> SetBranchAddress ("MIN_TS14_VALVEOPEN" , &mints14ValveOpen528);
+  outputTree529 -> SetBranchAddress ("MIN_TS14_VALVEOPEN" , &mints14ValveOpen529);
+  outputTree530 -> SetBranchAddress ("MIN_TS14_VALVEOPEN" , &mints14ValveOpen530);
+
+
+  double mints16ValveOpen524;
+  double mints16ValveOpen525;
+  double mints16ValveOpen526;
+  double mints16ValveOpen527;
+  double mints16ValveOpen528;
+  double mints16ValveOpen529;
+  double mints16ValveOpen530;
+  outputTree524 -> SetBranchAddress ("MIN_TS16_VALVEOPEN" , &mints16ValveOpen524);
+  outputTree525 -> SetBranchAddress ("MIN_TS16_VALVEOPEN" , &mints16ValveOpen525);
+  outputTree526 -> SetBranchAddress ("MIN_TS16_VALVEOPEN" , &mints16ValveOpen526);
+  outputTree527 -> SetBranchAddress ("MIN_TS16_VALVEOPEN" , &mints16ValveOpen527);
+  outputTree528 -> SetBranchAddress ("MIN_TS16_VALVEOPEN" , &mints16ValveOpen528);
+  outputTree529 -> SetBranchAddress ("MIN_TS16_VALVEOPEN" , &mints16ValveOpen529);
+  outputTree530 -> SetBranchAddress ("MIN_TS16_VALVEOPEN" , &mints16ValveOpen530);
+  
+  // Error in the temperature during irradiation
+
+  double ts11IrradErr524 [100];
+  double ts11IrradErr525 [100];
+  double ts11IrradErr526 [100];
+  double ts11IrradErr527 [100];
+  double ts11IrradErr528 [100];
+  double ts11IrradErr529 [100];
+  double ts11IrradErr530 [100];
+  
   double ts12IrradErr524 [100];
   double ts12IrradErr525 [100];
   double ts12IrradErr526 [100];
@@ -320,6 +628,33 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   double ts12IrradErr528 [100];
   double ts12IrradErr529 [100];
   double ts12IrradErr530 [100];
+
+  double ts14IrradErr524 [100];
+  double ts14IrradErr525 [100];
+  double ts14IrradErr526 [100];
+  double ts14IrradErr527 [100];
+  double ts14IrradErr528 [100];
+  double ts14IrradErr529 [100];
+  double ts14IrradErr530 [100];
+
+  double ts16IrradErr524 [100];
+  double ts16IrradErr525 [100];
+  double ts16IrradErr526 [100];
+  double ts16IrradErr527 [100];
+  double ts16IrradErr528 [100];
+  double ts16IrradErr529 [100];
+  double ts16IrradErr530 [100];
+
+  // Error in temperature during the valve open time
+  double ts11ValveOpenErr524 [100];
+  double ts11ValveOpenErr525 [100];
+  double ts11ValveOpenErr526 [100];
+  double ts11ValveOpenErr527 [100];
+  double ts11ValveOpenErr528 [100];
+  double ts11ValveOpenErr529 [100];
+  double ts11ValveOpenErr530 [100];
+
+  
   double ts12ValveOpenErr524 [100];
   double ts12ValveOpenErr525 [100];
   double ts12ValveOpenErr526 [100];
@@ -327,6 +662,25 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   double ts12ValveOpenErr528 [100];
   double ts12ValveOpenErr529 [100];
   double ts12ValveOpenErr530 [100];
+
+
+  double ts14ValveOpenErr524 [100];
+  double ts14ValveOpenErr525 [100];
+  double ts14ValveOpenErr526 [100];
+  double ts14ValveOpenErr527 [100];
+  double ts14ValveOpenErr528 [100];
+  double ts14ValveOpenErr529 [100];
+  double ts14ValveOpenErr530 [100];
+
+  double ts16ValveOpenErr524 [100];
+  double ts16ValveOpenErr525 [100];
+  double ts16ValveOpenErr526 [100];
+  double ts16ValveOpenErr527 [100];
+  double ts16ValveOpenErr528 [100];
+  double ts16ValveOpenErr529 [100];
+  double ts16ValveOpenErr530 [100];
+
+
 
   double avecur524;
   double avecur525;
@@ -364,13 +718,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   outputTree528 -> SetBranchAddress ("MAX_PRDCUR" , &maxcur528);
   outputTree529 -> SetBranchAddress ("MAX_PRDCUR" , &maxcur529);
   outputTree530 -> SetBranchAddress ("MAX_PRDCUR" , &maxcur530);
-  double maxcurArray524 [100];
-  double maxcurArray525 [100];
-  double maxcurArray526 [100];
-  double maxcurArray527 [100];
-  double maxcurArray528 [100];
-  double maxcurArray529 [100];
-  double maxcurArray530 [100];
+
 
   double mincur524;
   double mincur525;
@@ -386,13 +734,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   outputTree528 -> SetBranchAddress ("MIN_PRDCUR" , &mincur528);
   outputTree529 -> SetBranchAddress ("MIN_PRDCUR" , &mincur529);
   outputTree530 -> SetBranchAddress ("MIN_PRDCUR" , &mincur530);
-  double mincurArray524 [100];
-  double mincurArray525 [100];
-  double mincurArray526 [100];
-  double mincurArray527 [100];
-  double mincurArray528 [100];
-  double mincurArray529 [100];
-  double mincurArray530 [100];
+
 
   double ErrcurArray524 [100];
   double ErrcurArray525 [100];
@@ -402,137 +744,22 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   double ErrcurArray529 [100];
   double ErrcurArray530 [100];
 
-  double Baseline524;
-  double Baseline525;
-  double Baseline526;
-  double Baseline527;
-  double Baseline528;
-  double Baseline529;
-  double Baseline530;
-  outputTree524 -> SetBranchAddress ("Baseline" , &Baseline524);
-  outputTree525 -> SetBranchAddress ("Baseline" , &Baseline525);
-  outputTree526 -> SetBranchAddress ("Baseline" , &Baseline526);
-  outputTree527 -> SetBranchAddress ("Baseline" , &Baseline527);
-  outputTree528 -> SetBranchAddress ("Baseline" , &Baseline528);
-  outputTree529 -> SetBranchAddress ("Baseline" , &Baseline529);
-  outputTree530 -> SetBranchAddress ("Baseline" , &Baseline530);
-  double BaselineArray524 [100];
-  double BaselineArray525 [100];
-  double BaselineArray526 [100];
-  double BaselineArray527 [100];
-  double BaselineArray528 [100];
-  double BaselineArray529 [100];
-  double BaselineArray530 [100];
+  double BASELINERATE524;
+  double BASELINERATE525;
+  double BASELINERATE526;
+  double BASELINERATE527;
+  double BASELINERATE528;
+  double BASELINERATE529;
+  double BASELINERATE530;
+  outputTree524 -> SetBranchAddress ("BASELINERATE" , &BASELINERATE524);
+  outputTree525 -> SetBranchAddress ("BASELINERATE" , &BASELINERATE525);
+  outputTree526 -> SetBranchAddress ("BASELINERATE" , &BASELINERATE526);
+  outputTree527 -> SetBranchAddress ("BASELINERATE" , &BASELINERATE527);
+  outputTree528 -> SetBranchAddress ("BASELINERATE" , &BASELINERATE528);
+  outputTree529 -> SetBranchAddress ("BASELINERATE" , &BASELINERATE529);
+  outputTree530 -> SetBranchAddress ("BASELINERATE" , &BASELINERATE530);
 
-  double BaselineErr524;
-  double BaselineErr525;
-  double BaselineErr526;
-  double BaselineErr527;
-  double BaselineErr528;
-  double BaselineErr529;
-  double BaselineErr530;
-  outputTree524 -> SetBranchAddress ("BaselineErr" , &BaselineErr524);
-  outputTree525 -> SetBranchAddress ("BaselineErr" , &BaselineErr525);
-  outputTree526 -> SetBranchAddress ("BaselineErr" , &BaselineErr526);
-  outputTree527 -> SetBranchAddress ("BaselineErr" , &BaselineErr527);
-  outputTree528 -> SetBranchAddress ("BaselineErr" , &BaselineErr528);
-  outputTree529 -> SetBranchAddress ("BaselineErr" , &BaselineErr529);
-  outputTree530 -> SetBranchAddress ("BaselineErr" , &BaselineErr530);
-  double BaselineErrArray524 [100];
-  double BaselineErrArray525 [100];
-  double BaselineErrArray526 [100];
-  double BaselineErrArray527 [100];
-  double BaselineErrArray528 [100];
-  double BaselineErrArray529 [100];
-  double BaselineErrArray530 [100];
   
-  double BaselineIrrad524;
-  double BaselineIrrad525;
-  double BaselineIrrad526;
-  double BaselineIrrad527;
-  double BaselineIrrad528;
-  double BaselineIrrad529;
-  double BaselineIrrad530;
-  outputTree524 -> SetBranchAddress ("BaselineDuringIrrad" , &BaselineIrrad524);
-  outputTree525 -> SetBranchAddress ("BaselineDuringIrrad" , &BaselineIrrad525);
-  outputTree526 -> SetBranchAddress ("BaselineDuringIrrad" , &BaselineIrrad526);
-  outputTree527 -> SetBranchAddress ("BaselineDuringIrrad" , &BaselineIrrad527);
-  outputTree528 -> SetBranchAddress ("BaselineDuringIrrad" , &BaselineIrrad528);
-  outputTree529 -> SetBranchAddress ("BaselineDuringIrrad" , &BaselineIrrad529);
-  outputTree530 -> SetBranchAddress ("BaselineDuringIrrad" , &BaselineIrrad530);
-  double BaselineIrradArray524 [100];
-  double BaselineIrradArray525 [100];
-  double BaselineIrradArray526 [100];
-  double BaselineIrradArray527 [100];
-  double BaselineIrradArray528 [100];
-  double BaselineIrradArray529 [100];
-  double BaselineIrradArray530 [100];
-  
-  double BaselineIrradErr524;
-  double BaselineIrradErr525;
-  double BaselineIrradErr526;
-  double BaselineIrradErr527;
-  double BaselineIrradErr528;
-  double BaselineIrradErr529;
-  double BaselineIrradErr530;
-  outputTree524 -> SetBranchAddress ("BaselineDuringIrradErr" , &BaselineIrradErr524);
-  outputTree525 -> SetBranchAddress ("BaselineDuringIrradErr" , &BaselineIrradErr525);
-  outputTree526 -> SetBranchAddress ("BaselineDuringIrradErr" , &BaselineIrradErr526);
-  outputTree527 -> SetBranchAddress ("BaselineDuringIrradErr" , &BaselineIrradErr527);
-  outputTree528 -> SetBranchAddress ("BaselineDuringIrradErr" , &BaselineIrradErr528);
-  outputTree529 -> SetBranchAddress ("BaselineDuringIrradErr" , &BaselineIrradErr529);
-  outputTree530 -> SetBranchAddress ("BaselineDuringIrradErr" , &BaselineIrradErr530);
-  double BaselineIrradErrArray524 [100];
-  double BaselineIrradErrArray525 [100];
-  double BaselineIrradErrArray526 [100];
-  double BaselineIrradErrArray527 [100];
-  double BaselineIrradErrArray528 [100];
-  double BaselineIrradErrArray529 [100];
-  double BaselineIrradErrArray530 [100];
-
-  double BaselineIntegral524;
-  double BaselineIntegral525;
-  double BaselineIntegral526;
-  double BaselineIntegral527;
-  double BaselineIntegral528;
-  double BaselineIntegral529;
-  double BaselineIntegral530;
-  outputTree524 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral524);
-  outputTree525 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral525);
-  outputTree526 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral526);
-  outputTree527 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral527);
-  outputTree528 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral528);
-  outputTree529 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral529);
-  outputTree530 -> SetBranchAddress ("BaselineIntegral" , &BaselineIntegral530);
-  double BaselineIntegralArray524[100];
-  double BaselineIntegralArray525[100];
-  double BaselineIntegralArray526[100];
-  double BaselineIntegralArray527[100];
-  double BaselineIntegralArray528[100];
-  double BaselineIntegralArray529[100];
-  double BaselineIntegralArray530[100]; 
-
-  double BaselineIrradIntegral524;
-  double BaselineIrradIntegral525;
-  double BaselineIrradIntegral526;
-  double BaselineIrradIntegral527;
-  double BaselineIrradIntegral528;
-  double BaselineIrradIntegral529;
-  double BaselineIrradIntegral530;
-  outputTree524 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral524);
-  outputTree525 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral525);
-  outputTree526 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral526);
-  outputTree527 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral527);
-  outputTree528 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral528);
-  outputTree529 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral529);
-  outputTree530 -> SetBranchAddress ("BaselineIrradIntegral" , &BaselineIrradIntegral530);
-  double BaselineIrradIntegralArray524[100];
-  double BaselineIrradIntegralArray525[100];
-  double BaselineIrradIntegralArray526[100];
-  double BaselineIrradIntegralArray527[100];
-  double BaselineIrradIntegralArray528[100];
-  double BaselineIrradIntegralArray529[100];
-  double BaselineIrradIntegralArray530[100];
 
   double UCNIntegralManualArray524 [100];
   double UCNIntegralManualArray525 [100];
@@ -541,6 +768,8 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   double UCNIntegralManualArray528 [100];
   double UCNIntegralManualArray529 [100];
   double UCNIntegralManualArray530 [100];
+
+  
   double UCNIntegralManualErrArray524[100];
   double UCNIntegralManualErrArray525[100];
   double UCNIntegralManualErrArray526[100];
@@ -558,6 +787,8 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   int counts_529 = 0;
   int counts_530 = 0;
 
+
+  // ********************************************************
   // *****
   // 524
   // *****
@@ -568,32 +799,37 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
 
   for (ULong64_t j = 0 ; j < events524 ; j++){
     outputTree524 -> GetEvent(j);
-    UCNIntegralArray524[counts_524] = UCNIntegral524;
-    UCNIntegralErrArray524[counts_524] = UCNIntegralErr524;
     HistIntegralArray524[counts_524] = HistIntegral524;
     HistIntegralErrArray524[counts_524] = sqrt (HistIntegral524);
+    UCNIntegralManualArray524[counts_524] = HistIntegral524 - BASELINERATE524 * (cycleValveCloseTime524 - cycleValveOpenTime524);
+    UCNIntegralManualErrArray524[counts_524] = sqrt(UCNIntegralManualArray524[counts_524]);
+    
+    avets11IrradArray524[counts_524] = avets11Irrad524;
     avets12IrradArray524[counts_524] = avets12Irrad524;
+    avets14IrradArray524[counts_524] = avets14Irrad524;
+    avets16IrradArray524[counts_524] = avets16Irrad524;
+
+    avets11ValveOpenArray524[counts_524] = avets11ValveOpen524;
     avets12ValveOpenArray524[counts_524] = avets12ValveOpen524;
-    maxts12IrradArray524[counts_524] = maxts12Irrad524;
-    maxts12ValveOpenArray524[counts_524] = maxts12ValveOpen524;
-    mints12IrradArray524[counts_524] = mints12Irrad524; 
-    mints12ValveOpenArray524[counts_524] = mints12ValveOpen524;
+    avets14ValveOpenArray524[counts_524] = avets14ValveOpen524;
+    avets16ValveOpenArray524[counts_524] = avets16ValveOpen524;
+    
+    ts11IrradErr524[counts_524] = (maxts11Irrad524 - mints11Irrad524)/2;
     ts12IrradErr524[counts_524] = (maxts12Irrad524 - mints12Irrad524)/2;
+    ts14IrradErr524[counts_524] = (maxts14Irrad524 - mints14Irrad524)/2;
+    ts16IrradErr524[counts_524] = (maxts16Irrad524 - mints16Irrad524)/2;
+    
+    ts11ValveOpenErr524[counts_524] = (maxts11ValveOpen524 - mints11ValveOpen524)/2;
     ts12ValveOpenErr524[counts_524] = (maxts12ValveOpen524 - mints12ValveOpen524)/2;
+    ts14ValveOpenErr524[counts_524] = (maxts14ValveOpen524 - mints14ValveOpen524)/2;
+    ts16ValveOpenErr524[counts_524] = (maxts16ValveOpen524 - mints16ValveOpen524)/2;
+
+    
     avecurArray524[counts_524] = avecur524;
-    maxcurArray524[counts_524] = maxcur524;
-    mincurArray524[counts_524] = mincur524;
     ErrcurArray524[counts_524] = (maxcur524 - mincur524)/2;
+    
     delaytimeArray524[counts_524] = cycleDelayTime524;
     cycleNumberArray524[counts_524] = cycleNumber524;
-    BaselineArray524[counts_524] = Baseline524;
-    BaselineIrradArray524[counts_524] = BaselineIrrad524;
-    BaselineIrradErrArray524[counts_524] = BaselineIrradErr524;
-    BaselineIntegralArray524[counts_524] = BaselineIntegral524;
-    BaselineIrradIntegralArray524[counts_524] = BaselineIrradIntegral524;
-    UCNIntegralManualArray524[counts_524] = HistIntegral524 - BaselineIntegral524;
-    // cout << UCNIntegralManualArray524[counts_524] << endl;
-    UCNIntegralManualErrArray524[counts_524] = sqrt(HistIntegral524 - BaselineIntegral524);
     cout << " The irradiation time for run 524 for cycle "<< counts_524 << " is "<< cycleStartTimes524 - irradStartTimes524 << endl; 
     counts_524++;
   }
@@ -609,33 +845,38 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
 
   for (ULong64_t j = 0 ; j < events525 ; j++){
     outputTree525 -> GetEvent(j);
-    UCNIntegralArray525[counts_525] = UCNIntegral525;
-    UCNIntegralErrArray525[counts_525] = UCNIntegralErr525;
     HistIntegralArray525[counts_525] = HistIntegral525;
     HistIntegralErrArray525[counts_525] = sqrt (HistIntegral525);
+    UCNIntegralManualArray525[counts_525] = HistIntegral525 - BASELINERATE525 * (cycleValveCloseTime525 - cycleValveOpenTime525);
+    UCNIntegralManualErrArray525[counts_525] = sqrt(UCNIntegralManualArray525[counts_525]);
+    
+    avets11IrradArray525[counts_525] = avets11Irrad525;
     avets12IrradArray525[counts_525] = avets12Irrad525;
+    avets14IrradArray525[counts_525] = avets14Irrad525;
+    avets16IrradArray525[counts_525] = avets16Irrad525;
+
+    avets11ValveOpenArray525[counts_525] = avets11ValveOpen525;
     avets12ValveOpenArray525[counts_525] = avets12ValveOpen525;
-    maxts12IrradArray525[counts_525] = maxts12Irrad525;
-    maxts12ValveOpenArray525[counts_525] = maxts12ValveOpen525;
-    mints12IrradArray525[counts_525] = mints12Irrad525; 
-    mints12ValveOpenArray525[counts_525] = mints12ValveOpen525;
+    avets14ValveOpenArray525[counts_525] = avets14ValveOpen525;
+    avets16ValveOpenArray525[counts_525] = avets16ValveOpen525;
+    
+    ts11IrradErr525[counts_525] = (maxts11Irrad525 - mints11Irrad525)/2;
     ts12IrradErr525[counts_525] = (maxts12Irrad525 - mints12Irrad525)/2;
+    ts14IrradErr525[counts_525] = (maxts14Irrad525 - mints14Irrad525)/2;
+    ts16IrradErr525[counts_525] = (maxts16Irrad525 - mints16Irrad525)/2;
+    
+    ts11ValveOpenErr525[counts_525] = (maxts11ValveOpen525 - mints11ValveOpen525)/2;
     ts12ValveOpenErr525[counts_525] = (maxts12ValveOpen525 - mints12ValveOpen525)/2;
+    ts14ValveOpenErr525[counts_525] = (maxts14ValveOpen525 - mints14ValveOpen525)/2;
+    ts16ValveOpenErr525[counts_525] = (maxts16ValveOpen525 - mints16ValveOpen525)/2;
+
+    
     avecurArray525[counts_525] = avecur525;
-    maxcurArray525[counts_525] = maxcur525;
-    mincurArray525[counts_525] = mincur525;
     ErrcurArray525[counts_525] = (maxcur525 - mincur525)/2;
+    
     delaytimeArray525[counts_525] = cycleDelayTime525;
     cycleNumberArray525[counts_525] = cycleNumber525;
-    BaselineArray525[counts_525] = Baseline525;
-    BaselineIrradArray525[counts_525] = BaselineIrrad525;
-    BaselineIrradErrArray525[counts_525] = BaselineIrradErr525;
-    BaselineIntegralArray525[counts_525] = BaselineIntegral525;
-    BaselineIrradIntegralArray525[counts_525] = BaselineIrradIntegral525;
-    UCNIntegralManualArray525[counts_525] = HistIntegral525 - BaselineIntegral525;
-    // cout << UCNIntegralManualArray525[counts_525] << endl;
-    UCNIntegralManualErrArray525[counts_525] = sqrt(HistIntegral525 - BaselineIntegral525);
-    cout << " The irradiation time for run 525  for cycle "<< counts_525 << " is "<< cycleStartTimes525 - irradStartTimes525 << endl; 
+    cout << " The irradiation time for run 525 for cycle "<< counts_525 << " is "<< cycleStartTimes525 - irradStartTimes525 << endl; 
     counts_525++;
   }
 
@@ -644,39 +885,44 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   // 526
   // *****
   
-  
+    
   ULong64_t events526;
   events526 = (Double_t) outputTree526 -> GetEntries();
 
   for (ULong64_t j = 0 ; j < events526 ; j++){
     outputTree526 -> GetEvent(j);
-    UCNIntegralArray526[counts_526] = UCNIntegral526;
-    UCNIntegralErrArray526[counts_526] = UCNIntegralErr526;
     HistIntegralArray526[counts_526] = HistIntegral526;
     HistIntegralErrArray526[counts_526] = sqrt (HistIntegral526);
+    UCNIntegralManualArray526[counts_526] = HistIntegral526 - BASELINERATE526 * (cycleValveCloseTime526 - cycleValveOpenTime526);
+    UCNIntegralManualErrArray526[counts_526] = sqrt(UCNIntegralManualArray526[counts_526]);
+    
+    avets11IrradArray526[counts_526] = avets11Irrad526;
     avets12IrradArray526[counts_526] = avets12Irrad526;
+    avets14IrradArray526[counts_526] = avets14Irrad526;
+    avets16IrradArray526[counts_526] = avets16Irrad526;
+
+    avets11ValveOpenArray526[counts_526] = avets11ValveOpen526;
     avets12ValveOpenArray526[counts_526] = avets12ValveOpen526;
-    maxts12IrradArray526[counts_526] = maxts12Irrad526;
-    maxts12ValveOpenArray526[counts_526] = maxts12ValveOpen526;
-    mints12IrradArray526[counts_526] = mints12Irrad526; 
-    mints12ValveOpenArray526[counts_526] = mints12ValveOpen526;
+    avets14ValveOpenArray526[counts_526] = avets14ValveOpen526;
+    avets16ValveOpenArray526[counts_526] = avets16ValveOpen526;
+    
+    ts11IrradErr526[counts_526] = (maxts11Irrad526 - mints11Irrad526)/2;
     ts12IrradErr526[counts_526] = (maxts12Irrad526 - mints12Irrad526)/2;
+    ts14IrradErr526[counts_526] = (maxts14Irrad526 - mints14Irrad526)/2;
+    ts16IrradErr526[counts_526] = (maxts16Irrad526 - mints16Irrad526)/2;
+    
+    ts11ValveOpenErr526[counts_526] = (maxts11ValveOpen526 - mints11ValveOpen526)/2;
     ts12ValveOpenErr526[counts_526] = (maxts12ValveOpen526 - mints12ValveOpen526)/2;
+    ts14ValveOpenErr526[counts_526] = (maxts14ValveOpen526 - mints14ValveOpen526)/2;
+    ts16ValveOpenErr526[counts_526] = (maxts16ValveOpen526 - mints16ValveOpen526)/2;
+
+    
     avecurArray526[counts_526] = avecur526;
-    maxcurArray526[counts_526] = maxcur526;
-    mincurArray526[counts_526] = mincur526;
     ErrcurArray526[counts_526] = (maxcur526 - mincur526)/2;
+    
     delaytimeArray526[counts_526] = cycleDelayTime526;
     cycleNumberArray526[counts_526] = cycleNumber526;
-    BaselineArray526[counts_526] = Baseline526;
-    BaselineIrradArray526[counts_526] = BaselineIrrad526;
-    BaselineIrradErrArray526[counts_526] = BaselineIrradErr526;
-    BaselineIntegralArray526[counts_526] = BaselineIntegral526;
-    BaselineIrradIntegralArray526[counts_526] = BaselineIrradIntegral526;
-    UCNIntegralManualArray526[counts_526] = HistIntegral526 - BaselineIntegral526;
-    // cout << UCNIntegralManualArray526[counts_526] << endl;
-    UCNIntegralManualErrArray526[counts_526] = sqrt(HistIntegral526 - BaselineIntegral526);
-    cout << " The irradiation time for run 526 for cycle " << counts_526 << " is "<< cycleStartTimes526 - irradStartTimes526 << endl; 
+    cout << " The irradiation time for run 526 for cycle "<< counts_526 << " is "<< cycleStartTimes526 - irradStartTimes526 << endl; 
     counts_526++;
   }
 
@@ -686,80 +932,93 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   // 527
   // *****
   
-  
+      
   ULong64_t events527;
   events527 = (Double_t) outputTree527 -> GetEntries();
 
   for (ULong64_t j = 0 ; j < events527 ; j++){
     outputTree527 -> GetEvent(j);
-    UCNIntegralArray527[counts_527] = UCNIntegral527;
-    UCNIntegralErrArray527[counts_527] = UCNIntegralErr527;
     HistIntegralArray527[counts_527] = HistIntegral527;
     HistIntegralErrArray527[counts_527] = sqrt (HistIntegral527);
+    UCNIntegralManualArray527[counts_527] = HistIntegral527 - BASELINERATE527 * (cycleValveCloseTime527 - cycleValveOpenTime527);
+    UCNIntegralManualErrArray527[counts_527] = sqrt(UCNIntegralManualArray527[counts_527]);
+    
+    avets11IrradArray527[counts_527] = avets11Irrad527;
     avets12IrradArray527[counts_527] = avets12Irrad527;
+    avets14IrradArray527[counts_527] = avets14Irrad527;
+    avets16IrradArray527[counts_527] = avets16Irrad527;
+
+    avets11ValveOpenArray527[counts_527] = avets11ValveOpen527;
     avets12ValveOpenArray527[counts_527] = avets12ValveOpen527;
-    maxts12IrradArray527[counts_527] = maxts12Irrad527;
-    maxts12ValveOpenArray527[counts_527] = maxts12ValveOpen527;
-    mints12IrradArray527[counts_527] = mints12Irrad527; 
-    mints12ValveOpenArray527[counts_527] = mints12ValveOpen527;
+    avets14ValveOpenArray527[counts_527] = avets14ValveOpen527;
+    avets16ValveOpenArray527[counts_527] = avets16ValveOpen527;
+    
+    ts11IrradErr527[counts_527] = (maxts11Irrad527 - mints11Irrad527)/2;
     ts12IrradErr527[counts_527] = (maxts12Irrad527 - mints12Irrad527)/2;
+    ts14IrradErr527[counts_527] = (maxts14Irrad527 - mints14Irrad527)/2;
+    ts16IrradErr527[counts_527] = (maxts16Irrad527 - mints16Irrad527)/2;
+    
+    ts11ValveOpenErr527[counts_527] = (maxts11ValveOpen527 - mints11ValveOpen527)/2;
     ts12ValveOpenErr527[counts_527] = (maxts12ValveOpen527 - mints12ValveOpen527)/2;
+    ts14ValveOpenErr527[counts_527] = (maxts14ValveOpen527 - mints14ValveOpen527)/2;
+    ts16ValveOpenErr527[counts_527] = (maxts16ValveOpen527 - mints16ValveOpen527)/2;
+
+    
     avecurArray527[counts_527] = avecur527;
-    maxcurArray527[counts_527] = maxcur527;
-    mincurArray527[counts_527] = mincur527;
     ErrcurArray527[counts_527] = (maxcur527 - mincur527)/2;
+    
     delaytimeArray527[counts_527] = cycleDelayTime527;
     cycleNumberArray527[counts_527] = cycleNumber527;
-    BaselineArray527[counts_527] = Baseline527;
-    BaselineIrradArray527[counts_527] = BaselineIrrad527;
-    BaselineIrradErrArray527[counts_527] = BaselineIrradErr527;
-    BaselineIntegralArray527[counts_527] = BaselineIntegral527;
-    BaselineIrradIntegralArray527[counts_527] = BaselineIrradIntegral527;
-    UCNIntegralManualArray527[counts_527] = HistIntegral527 - BaselineIntegral527;
-    // cout << UCNIntegralManualArray527[counts_527] << endl;
-    UCNIntegralManualErrArray527[counts_527] = sqrt(HistIntegral527 - BaselineIntegral527);
-    cout << " The irradiation time for run 527 for cycle "<< counts_527<< " is "<< cycleStartTimes527 - irradStartTimes527 << endl; 
+    cout << " The irradiation time for run 527 for cycle "<< counts_527 << " is "<< cycleStartTimes527 - irradStartTimes527 << endl; 
     counts_527++;
   }
+
+
+ 
 
 
   // *****
   // 528
   // *****
   
-  
+        
   ULong64_t events528;
   events528 = (Double_t) outputTree528 -> GetEntries();
 
   for (ULong64_t j = 0 ; j < events528 ; j++){
     outputTree528 -> GetEvent(j);
-    UCNIntegralArray528[counts_528] = UCNIntegral528;
-    UCNIntegralErrArray528[counts_528] = UCNIntegralErr528;
     HistIntegralArray528[counts_528] = HistIntegral528;
     HistIntegralErrArray528[counts_528] = sqrt (HistIntegral528);
+    UCNIntegralManualArray528[counts_528] = HistIntegral528 - BASELINERATE528 * (cycleValveCloseTime528 - cycleValveOpenTime528);
+    UCNIntegralManualErrArray528[counts_528] = sqrt(UCNIntegralManualArray528[counts_528]);
+    
+    avets11IrradArray528[counts_528] = avets11Irrad528;
     avets12IrradArray528[counts_528] = avets12Irrad528;
+    avets14IrradArray528[counts_528] = avets14Irrad528;
+    avets16IrradArray528[counts_528] = avets16Irrad528;
+
+    avets11ValveOpenArray528[counts_528] = avets11ValveOpen528;
     avets12ValveOpenArray528[counts_528] = avets12ValveOpen528;
-    maxts12IrradArray528[counts_528] = maxts12Irrad528;
-    maxts12ValveOpenArray528[counts_528] = maxts12ValveOpen528;
-    mints12IrradArray528[counts_528] = mints12Irrad528; 
-    mints12ValveOpenArray528[counts_528] = mints12ValveOpen528;
+    avets14ValveOpenArray528[counts_528] = avets14ValveOpen528;
+    avets16ValveOpenArray528[counts_528] = avets16ValveOpen528;
+    
+    ts11IrradErr528[counts_528] = (maxts11Irrad528 - mints11Irrad528)/2;
     ts12IrradErr528[counts_528] = (maxts12Irrad528 - mints12Irrad528)/2;
+    ts14IrradErr528[counts_528] = (maxts14Irrad528 - mints14Irrad528)/2;
+    ts16IrradErr528[counts_528] = (maxts16Irrad528 - mints16Irrad528)/2;
+    
+    ts11ValveOpenErr528[counts_528] = (maxts11ValveOpen528 - mints11ValveOpen528)/2;
     ts12ValveOpenErr528[counts_528] = (maxts12ValveOpen528 - mints12ValveOpen528)/2;
+    ts14ValveOpenErr528[counts_528] = (maxts14ValveOpen528 - mints14ValveOpen528)/2;
+    ts16ValveOpenErr528[counts_528] = (maxts16ValveOpen528 - mints16ValveOpen528)/2;
+
+    
     avecurArray528[counts_528] = avecur528;
-    maxcurArray528[counts_528] = maxcur528;
-    mincurArray528[counts_528] = mincur528;
     ErrcurArray528[counts_528] = (maxcur528 - mincur528)/2;
+    
     delaytimeArray528[counts_528] = cycleDelayTime528;
     cycleNumberArray528[counts_528] = cycleNumber528;
-    BaselineArray528[counts_528] = Baseline528;
-    BaselineIrradArray528[counts_528] = BaselineIrrad528;
-    BaselineIrradErrArray528[counts_528] = BaselineIrradErr528;
-    BaselineIntegralArray528[counts_528] = BaselineIntegral528;
-    BaselineIrradIntegralArray528[counts_528] = BaselineIrradIntegral528;
-    UCNIntegralManualArray528[counts_528] = HistIntegral528 - BaselineIntegral528;
-    // cout << UCNIntegralManualArray528[counts_528] << endl;
-    UCNIntegralManualErrArray528[counts_528] = sqrt(HistIntegral528 - BaselineIntegral528);
-    cout << " The irradiation time for run 528 for cycle "<< counts_528<< " is "<< cycleStartTimes528 - irradStartTimes528 << endl; 
+    cout << " The irradiation time for run 528 for cycle "<< counts_528 << " is "<< cycleStartTimes528 - irradStartTimes528 << endl; 
     counts_528++;
   }
 
@@ -768,39 +1027,43 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   // 529
   // *****
   
-  
   ULong64_t events529;
   events529 = (Double_t) outputTree529 -> GetEntries();
 
   for (ULong64_t j = 0 ; j < events529 ; j++){
     outputTree529 -> GetEvent(j);
-    UCNIntegralArray529[counts_529] = UCNIntegral529;
-    UCNIntegralErrArray529[counts_529] = UCNIntegralErr529;
     HistIntegralArray529[counts_529] = HistIntegral529;
     HistIntegralErrArray529[counts_529] = sqrt (HistIntegral529);
+    UCNIntegralManualArray529[counts_529] = HistIntegral529 - BASELINERATE529 * (cycleValveCloseTime529 - cycleValveOpenTime529);
+    UCNIntegralManualErrArray529[counts_529] = sqrt(UCNIntegralManualArray529[counts_529]);
+    
+    avets11IrradArray529[counts_529] = avets11Irrad529;
     avets12IrradArray529[counts_529] = avets12Irrad529;
+    avets14IrradArray529[counts_529] = avets14Irrad529;
+    avets16IrradArray529[counts_529] = avets16Irrad529;
+
+    avets11ValveOpenArray529[counts_529] = avets11ValveOpen529;
     avets12ValveOpenArray529[counts_529] = avets12ValveOpen529;
-    maxts12IrradArray529[counts_529] = maxts12Irrad529;
-    maxts12ValveOpenArray529[counts_529] = maxts12ValveOpen529;
-    mints12IrradArray529[counts_529] = mints12Irrad529; 
-    mints12ValveOpenArray529[counts_529] = mints12ValveOpen529;
+    avets14ValveOpenArray529[counts_529] = avets14ValveOpen529;
+    avets16ValveOpenArray529[counts_529] = avets16ValveOpen529;
+    
+    ts11IrradErr529[counts_529] = (maxts11Irrad529 - mints11Irrad529)/2;
     ts12IrradErr529[counts_529] = (maxts12Irrad529 - mints12Irrad529)/2;
+    ts14IrradErr529[counts_529] = (maxts14Irrad529 - mints14Irrad529)/2;
+    ts16IrradErr529[counts_529] = (maxts16Irrad529 - mints16Irrad529)/2;
+    
+    ts11ValveOpenErr529[counts_529] = (maxts11ValveOpen529 - mints11ValveOpen529)/2;
     ts12ValveOpenErr529[counts_529] = (maxts12ValveOpen529 - mints12ValveOpen529)/2;
+    ts14ValveOpenErr529[counts_529] = (maxts14ValveOpen529 - mints14ValveOpen529)/2;
+    ts16ValveOpenErr529[counts_529] = (maxts16ValveOpen529 - mints16ValveOpen529)/2;
+
+    
     avecurArray529[counts_529] = avecur529;
-    maxcurArray529[counts_529] = maxcur529;
-    mincurArray529[counts_529] = mincur529;
     ErrcurArray529[counts_529] = (maxcur529 - mincur529)/2;
+    
     delaytimeArray529[counts_529] = cycleDelayTime529;
     cycleNumberArray529[counts_529] = cycleNumber529;
-    BaselineArray529[counts_529] = Baseline529;
-    BaselineIrradArray529[counts_529] = BaselineIrrad529;
-    BaselineIrradErrArray529[counts_529] = BaselineIrradErr529;
-    BaselineIntegralArray529[counts_529] = BaselineIntegral529;
-    BaselineIrradIntegralArray529[counts_529] = BaselineIrradIntegral529;
-    UCNIntegralManualArray529[counts_529] = HistIntegral529 - BaselineIntegral529;
-    // cout << UCNIntegralManualArray529[counts_529] << endl;
-    UCNIntegralManualErrArray529[counts_529] = sqrt(HistIntegral529 - BaselineIntegral529);
-    cout << " The irradiation time for run 529 for cycle "<< counts_529<< " is "<< cycleStartTimes529 - irradStartTimes529 << endl; 
+    cout << " The irradiation time for run 529 for cycle "<< counts_529 << " is "<< cycleStartTimes529 - irradStartTimes529 << endl; 
     counts_529++;
   }
 
@@ -814,33 +1077,38 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
 
   for (ULong64_t j = 0 ; j < events530 ; j++){
     outputTree530 -> GetEvent(j);
-    UCNIntegralArray530[counts_530] = UCNIntegral530;
-    UCNIntegralErrArray530[counts_530] = UCNIntegralErr530;
     HistIntegralArray530[counts_530] = HistIntegral530;
     HistIntegralErrArray530[counts_530] = sqrt (HistIntegral530);
+    UCNIntegralManualArray530[counts_530] = HistIntegral530 - BASELINERATE530 * (cycleValveCloseTime530 - cycleValveOpenTime530);
+    UCNIntegralManualErrArray530[counts_530] = sqrt(UCNIntegralManualArray530[counts_530]);
+    
+    avets11IrradArray530[counts_530] = avets11Irrad530;
     avets12IrradArray530[counts_530] = avets12Irrad530;
+    avets14IrradArray530[counts_530] = avets14Irrad530;
+    avets16IrradArray530[counts_530] = avets16Irrad530;
+
+    avets11ValveOpenArray530[counts_530] = avets11ValveOpen530;
     avets12ValveOpenArray530[counts_530] = avets12ValveOpen530;
-    maxts12IrradArray530[counts_530] = maxts12Irrad530;
-    maxts12ValveOpenArray530[counts_530] = maxts12ValveOpen530;
-    mints12IrradArray530[counts_530] = mints12Irrad530; 
-    mints12ValveOpenArray530[counts_530] = mints12ValveOpen530;
+    avets14ValveOpenArray530[counts_530] = avets14ValveOpen530;
+    avets16ValveOpenArray530[counts_530] = avets16ValveOpen530;
+    
+    ts11IrradErr530[counts_530] = (maxts11Irrad530 - mints11Irrad530)/2;
     ts12IrradErr530[counts_530] = (maxts12Irrad530 - mints12Irrad530)/2;
+    ts14IrradErr530[counts_530] = (maxts14Irrad530 - mints14Irrad530)/2;
+    ts16IrradErr530[counts_530] = (maxts16Irrad530 - mints16Irrad530)/2;
+    
+    ts11ValveOpenErr530[counts_530] = (maxts11ValveOpen530 - mints11ValveOpen530)/2;
     ts12ValveOpenErr530[counts_530] = (maxts12ValveOpen530 - mints12ValveOpen530)/2;
+    ts14ValveOpenErr530[counts_530] = (maxts14ValveOpen530 - mints14ValveOpen530)/2;
+    ts16ValveOpenErr530[counts_530] = (maxts16ValveOpen530 - mints16ValveOpen530)/2;
+
+    
     avecurArray530[counts_530] = avecur530;
-    maxcurArray530[counts_530] = maxcur530;
-    mincurArray530[counts_530] = mincur530;
     ErrcurArray530[counts_530] = (maxcur530 - mincur530)/2;
+    
     delaytimeArray530[counts_530] = cycleDelayTime530;
     cycleNumberArray530[counts_530] = cycleNumber530;
-    BaselineArray530[counts_530] = Baseline530;
-    BaselineIrradArray530[counts_530] = BaselineIrrad530;
-    BaselineIrradErrArray530[counts_530] = BaselineIrradErr530;
-    BaselineIntegralArray530[counts_530] = BaselineIntegral530;
-    BaselineIrradIntegralArray530[counts_530] = BaselineIrradIntegral530;
-    UCNIntegralManualArray530[counts_530] = HistIntegral530 - BaselineIntegral530;
-    // cout << UCNIntegralManualArray530[counts_530] << endl;
-    UCNIntegralManualErrArray530[counts_530] = sqrt(HistIntegral530 - BaselineIntegral530);
-    cout << " The irradiation time for run 530 for cycle "<< counts_530<< " is "<< cycleStartTimes530 - irradStartTimes530 << endl; 
+    cout << " The irradiation time for run 530 for cycle "<< counts_530 << " is "<< cycleStartTimes530 - irradStartTimes530 << endl; 
     counts_530++;
   }
 
@@ -860,19 +1128,6 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
 
   TPad *p524_1 = c524_cycleNum->cd(1);
   p524_1->SetLogy(); 
-  TGraphErrors *gr524_cyclecounts = new TGraphErrors (counts_524 , cycleNumberArray524, UCNIntegralArray524, 0 , UCNIntegralErrArray524);
-  gr524_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
-  gr524_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
-  gr524_cyclecounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr524_cyclecounts -> GetYaxis()-> SetRangeUser(100, 500000);
-  gr524_cyclecounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr524_cyclecounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr524_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr524_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
-  
-  gr524_cyclecounts -> SetMarkerStyle(20);
-  
-  
   TGraphErrors *gr524_cyclehist = new TGraphErrors(counts_524, cycleNumberArray524 , HistIntegralArray524, 0, HistIntegralErrArray524);
   
   gr524_cyclehist -> SetTitle("UCN Counts vs Cycle Delay Time");
@@ -901,13 +1156,12 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   
 
   TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
-  leg2 -> AddEntry(gr524_cyclecounts , "Without Background (fit)" , "p") ;
   leg2 -> AddEntry(gr524_cyclehist , "With Background" , "p") ;
   leg2 -> AddEntry(gr524_cyclecountmanual, "Without Background" , "p"); 
   leg2 -> SetTextSize(0.05);
   
-  gr524_cyclecounts -> Draw("Ap");
-  gr524_cyclehist -> Draw("p");
+
+  gr524_cyclehist -> Draw("Ap");
   gr524_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
@@ -985,19 +1239,6 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   TCanvas *c524_counttemp = new TCanvas ("c524_counttemp" , "c524_counttemp " , 1200, 900);
   c524_counttemp -> SetLogy();
 
-  TGraphErrors *gr524_countIrrad = new TGraphErrors (counts_524, avets12IrradArray524, UCNIntegralArray524, ts12IrradErr524, UCNIntegralErrArray524);
-  gr524_countIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
-  gr524_countIrrad -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr524_countIrrad -> GetYaxis()-> SetTitle("UCN Counts");
-  gr524_countIrrad -> SetMarkerStyle(20);
-  gr524_countIrrad -> GetYaxis() -> SetRangeUser(10,500000);
-  gr524_countIrrad -> GetXaxis()-> SetLimits(0.8, 0.9);
-  gr524_countIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr524_countIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr524_countIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr524_countIrrad -> GetYaxis() -> SetTitleOffset(0.9);
-
-
   TGraphErrors *gr524_HistIrrad = new TGraphErrors (counts_524, avets12IrradArray524, HistIntegralArray524, ts12IrradErr524, HistIntegralErrArray524);
   gr524_HistIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
   gr524_HistIrrad -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
@@ -1010,19 +1251,6 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr524_HistIrrad -> GetYaxis() -> SetTitleSize(0.05); 
   gr524_HistIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
-  
-
-  TGraphErrors *gr524_countValveOpen = new TGraphErrors (counts_524, avets12ValveOpenArray524, UCNIntegralArray524, ts12ValveOpenErr524, UCNIntegralErrArray524);
-  gr524_countValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
-  gr524_countValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr524_countValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
-  gr524_countValveOpen -> SetMarkerStyle(20);
-  gr524_countValveOpen -> GetXaxis()-> SetLimits(0.8, 0.9);
-  gr524_countValveOpen -> GetXaxis() -> SetTitleSize(0.05);
-  gr524_countValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
-  gr524_countValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
-  gr524_countValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
-  gr524_countValveOpen -> SetMarkerColor(2);
 
 
   TGraphErrors *gr524_HistValveOpen = new TGraphErrors (counts_524, avets12ValveOpenArray524, HistIntegralArray524, ts12ValveOpenErr524, HistIntegralErrArray524);
@@ -1038,16 +1266,12 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr524_HistValveOpen -> SetMarkerColor(2);
 
   TLegend *leg3 = new TLegend(0.25,0.7, 0.9, 0.9);
-  leg3 -> AddEntry(gr524_countIrrad , "Irradiation time + delay time, without background" , "p") ;
-  //leg3 -> AddEntry(gr524_countValveOpen , "Valve open, without background" , "p") ;
   leg3 -> AddEntry(gr524_HistIrrad , "Irradiation time + delay time, with background" , "p") ;
-  //leg3 -> AddEntry(gr524_HistValveOpen , "Valve open, with background" , "p") ;
+  leg3 -> AddEntry(gr524_HistValveOpen , "Valve open, with background" , "p") ;
   leg3 -> SetTextSize(0.04);
 
-  gr524_countIrrad -> Draw("AP");
-  //gr524_countValveOpen -> Draw("p");
-   gr524_HistIrrad -> Draw("p");
-  //gr524_HistValveOpen -> Draw("p");
+  gr524_HistIrrad -> Draw("Ap");
+  gr524_HistValveOpen -> Draw("p");
   leg3 -> Draw();
 
 
@@ -1063,18 +1287,6 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
 
   TPad *p525_1 = c525_cycleNum->cd(1);
   p525_1->SetLogy(); 
-  TGraphErrors *gr525_cyclecounts = new TGraphErrors (counts_525 , cycleNumberArray525, UCNIntegralArray525, 0 , UCNIntegralErrArray525);
-  gr525_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
-  gr525_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
-  gr525_cyclecounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr525_cyclecounts -> GetYaxis()-> SetRangeUser(100, 500000);
-  gr525_cyclecounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr525_cyclecounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr525_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr525_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
-  
-  gr525_cyclecounts -> SetMarkerStyle(20);
-  
   
   TGraphErrors *gr525_cyclehist = new TGraphErrors(counts_525, cycleNumberArray525 , HistIntegralArray525, 0, HistIntegralErrArray525);
   
@@ -1103,8 +1315,8 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr525_cyclecountmanual -> SetMarkerStyle(25);
   
   
-  gr525_cyclecounts -> Draw("Ap");
-  gr525_cyclehist -> Draw("p");
+
+  gr525_cyclehist -> Draw("Ap");
   gr525_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
@@ -1130,7 +1342,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr525_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr525_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
   gr525_cycletempIrrad -> SetMarkerStyle(20);
-  gr525_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 2.3);
+  gr525_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 1.2);
   gr525_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr525_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
   gr525_cycletempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
@@ -1178,19 +1390,6 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   TCanvas *c525_counttemp = new TCanvas ("c525_counttemp" , "c525_counttemp " , 1200, 900);
   c525_counttemp -> SetLogy();
 
-  TGraphErrors *gr525_countIrrad = new TGraphErrors (counts_525, avets12IrradArray525, UCNIntegralArray525, ts12IrradErr525, UCNIntegralErrArray525);
-  gr525_countIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
-  gr525_countIrrad -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr525_countIrrad -> GetYaxis()-> SetTitle("UCN Counts");
-  gr525_countIrrad -> SetMarkerStyle(20);
-  gr525_countIrrad -> GetYaxis() -> SetRangeUser(10,500000);
-  gr525_countIrrad -> GetXaxis()-> SetLimits(1.4, 1.8);
-  gr525_countIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr525_countIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr525_countIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr525_countIrrad -> GetYaxis() -> SetTitleOffset(0.9);
-
-
   TGraphErrors *gr525_HistIrrad = new TGraphErrors (counts_525, avets12IrradArray525, HistIntegralArray525, ts12IrradErr525, HistIntegralErrArray525);
   gr525_HistIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
   gr525_HistIrrad -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
@@ -1204,26 +1403,12 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr525_HistIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
   
-
- TGraphErrors *gr525_countValveOpen = new TGraphErrors (counts_525, avets12ValveOpenArray525, UCNIntegralArray525, ts12ValveOpenErr525, UCNIntegralErrArray525);
-  gr525_countValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
-  gr525_countValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr525_countValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
-  gr525_countValveOpen -> SetMarkerStyle(20);
-  gr525_countValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
-  gr525_countValveOpen -> GetXaxis() -> SetTitleSize(0.05);
-  gr525_countValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
-  gr525_countValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
-  gr525_countValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
-  gr525_countValveOpen -> SetMarkerColor(2);
-
-
-   TGraphErrors *gr525_HistValveOpen = new TGraphErrors (counts_525, avets12ValveOpenArray525, HistIntegralArray525, ts12ValveOpenErr525, HistIntegralErrArray525);
+  TGraphErrors *gr525_HistValveOpen = new TGraphErrors (counts_525, avets12ValveOpenArray525, HistIntegralArray525, ts12ValveOpenErr525, HistIntegralErrArray525);
   gr525_HistValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
   gr525_HistValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr525_HistValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
   gr525_HistValveOpen -> SetMarkerStyle(25);
-  gr525_HistValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
+  gr525_HistValveOpen -> GetXaxis()-> SetLimits(0.84, 1.2);
   gr525_HistValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr525_HistValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
   gr525_HistValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
@@ -1231,11 +1416,8 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr525_HistValveOpen -> SetMarkerColor(2);
 
 
-
-  gr525_countIrrad -> Draw("AP");
-  //gr525_countValveOpen -> Draw("p");
-   gr525_HistIrrad -> Draw("p");
-  //gr525_HistValveOpen -> Draw("p");
+  gr525_HistIrrad -> Draw("Ap");
+  gr525_HistValveOpen -> Draw("p");
   leg3 -> Draw();
 
 
@@ -1250,19 +1432,6 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
 
   TPad *p526_1 = c526_cycleNum->cd(1);
   p526_1->SetLogy(); 
-  TGraphErrors *gr526_cyclecounts = new TGraphErrors (counts_526 , cycleNumberArray526, UCNIntegralArray526, 0 , UCNIntegralErrArray526);
-  gr526_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
-  gr526_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
-  gr526_cyclecounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr526_cyclecounts -> GetYaxis()-> SetRangeUser(100, 500000);
-  gr526_cyclecounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr526_cyclecounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr526_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr526_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
-  
-  gr526_cyclecounts -> SetMarkerStyle(20);
-  
-  
   TGraphErrors *gr526_cyclehist = new TGraphErrors(counts_526, cycleNumberArray526 , HistIntegralArray526, 0, HistIntegralErrArray526);
   
   gr526_cyclehist -> SetTitle("UCN Counts vs Cycle Delay Time");
@@ -1290,8 +1459,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr526_cyclecountmanual -> SetMarkerStyle(25);
   
   
-  gr526_cyclecounts -> Draw("Ap");
-  gr526_cyclehist -> Draw("p");
+  gr526_cyclehist -> Draw("Ap");
   gr526_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
@@ -1316,7 +1484,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr526_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr526_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
   gr526_cycletempIrrad -> SetMarkerStyle(20);
-  gr526_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 2.3);
+  gr526_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 1.2);
   gr526_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr526_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
   gr526_cycletempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
@@ -1364,17 +1532,6 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   TCanvas *c526_counttemp = new TCanvas ("c526_counttemp" , "c526_counttemp " , 1200, 900);
   c526_counttemp -> SetLogy();
 
-  TGraphErrors *gr526_countIrrad = new TGraphErrors (counts_526, avets12IrradArray526, UCNIntegralArray526, ts12IrradErr526, UCNIntegralErrArray526);
-  gr526_countIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
-  gr526_countIrrad -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr526_countIrrad -> GetYaxis()-> SetTitle("UCN Counts");
-  gr526_countIrrad -> SetMarkerStyle(20);
-  gr526_countIrrad -> GetYaxis() -> SetRangeUser(10,500000);
-  gr526_countIrrad -> GetXaxis()-> SetLimits(1.4, 1.8);
-  gr526_countIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr526_countIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr526_countIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr526_countIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
 
   TGraphErrors *gr526_HistIrrad = new TGraphErrors (counts_526, avets12IrradArray526, HistIntegralArray526, ts12IrradErr526, HistIntegralErrArray526);
@@ -1389,27 +1546,14 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr526_HistIrrad -> GetYaxis() -> SetTitleSize(0.05); 
   gr526_HistIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
-  
-
- TGraphErrors *gr526_countValveOpen = new TGraphErrors (counts_526, avets12ValveOpenArray526, UCNIntegralArray526, ts12ValveOpenErr526, UCNIntegralErrArray526);
-  gr526_countValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
-  gr526_countValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr526_countValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
-  gr526_countValveOpen -> SetMarkerStyle(20);
-  gr526_countValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
-  gr526_countValveOpen -> GetXaxis() -> SetTitleSize(0.05);
-  gr526_countValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
-  gr526_countValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
-  gr526_countValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
-  gr526_countValveOpen -> SetMarkerColor(2);
 
 
-   TGraphErrors *gr526_HistValveOpen = new TGraphErrors (counts_526, avets12ValveOpenArray526, HistIntegralArray526, ts12ValveOpenErr526, HistIntegralErrArray526);
+  TGraphErrors *gr526_HistValveOpen = new TGraphErrors (counts_526, avets12ValveOpenArray526, HistIntegralArray526, ts12ValveOpenErr526, HistIntegralErrArray526);
   gr526_HistValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
   gr526_HistValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr526_HistValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
   gr526_HistValveOpen -> SetMarkerStyle(25);
-  gr526_HistValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
+  gr526_HistValveOpen -> GetXaxis()-> SetLimits(0.84, 1.2);
   gr526_HistValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr526_HistValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
   gr526_HistValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
@@ -1417,11 +1561,8 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr526_HistValveOpen -> SetMarkerColor(2);
 
 
-
-  gr526_countIrrad -> Draw("AP");
-  //gr526_countValveOpen -> Draw("p");
-   gr526_HistIrrad -> Draw("p");
-  //gr526_HistValveOpen -> Draw("p");
+  gr526_HistIrrad -> Draw("Ap");
+  gr526_HistValveOpen -> Draw("p");
   leg3 -> Draw();
 
 
@@ -1437,19 +1578,6 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
 
   TPad *p527_1 = c527_cycleNum->cd(1);
   p527_1->SetLogy(); 
-  TGraphErrors *gr527_cyclecounts = new TGraphErrors (counts_527 , cycleNumberArray527, UCNIntegralArray527, 0 , UCNIntegralErrArray527);
-  gr527_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
-  gr527_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
-  gr527_cyclecounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr527_cyclecounts -> GetYaxis()-> SetRangeUser(100, 500000);
-  gr527_cyclecounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr527_cyclecounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr527_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr527_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
-  
-  gr527_cyclecounts -> SetMarkerStyle(20);
-  
-  
   TGraphErrors *gr527_cyclehist = new TGraphErrors(counts_527, cycleNumberArray527 , HistIntegralArray527, 0, HistIntegralErrArray527);
   
   gr527_cyclehist -> SetTitle("UCN Counts vs Cycle Delay Time");
@@ -1477,8 +1605,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr527_cyclecountmanual -> SetMarkerStyle(25);
   
   
-  gr527_cyclecounts -> Draw("Ap");
-  gr527_cyclehist -> Draw("p");
+  gr527_cyclehist -> Draw("Ap");
   gr527_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
@@ -1504,7 +1631,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr527_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr527_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
   gr527_cycletempIrrad -> SetMarkerStyle(20);
-  gr527_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 2.3);
+  gr527_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 1.2);
   gr527_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr527_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
   gr527_cycletempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
@@ -1552,17 +1679,6 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   TCanvas *c527_counttemp = new TCanvas ("c527_counttemp" , "c527_counttemp " , 1200, 900);
   c527_counttemp -> SetLogy();
 
-  TGraphErrors *gr527_countIrrad = new TGraphErrors (counts_527, avets12IrradArray527, UCNIntegralArray527, ts12IrradErr527, UCNIntegralErrArray527);
-  gr527_countIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
-  gr527_countIrrad -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr527_countIrrad -> GetYaxis()-> SetTitle("UCN Counts");
-  gr527_countIrrad -> SetMarkerStyle(20);
-  gr527_countIrrad -> GetYaxis() -> SetRangeUser(10,500000);
-  gr527_countIrrad -> GetXaxis()-> SetLimits(0.85, 1.1);
-  gr527_countIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr527_countIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr527_countIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr527_countIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
 
   TGraphErrors *gr527_HistIrrad = new TGraphErrors (counts_527, avets12IrradArray527, HistIntegralArray527, ts12IrradErr527, HistIntegralErrArray527);
@@ -1578,26 +1694,12 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr527_HistIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
   
-
- TGraphErrors *gr527_countValveOpen = new TGraphErrors (counts_527, avets12ValveOpenArray527, UCNIntegralArray527, ts12ValveOpenErr527, UCNIntegralErrArray527);
-  gr527_countValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
-  gr527_countValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr527_countValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
-  gr527_countValveOpen -> SetMarkerStyle(20);
-  gr527_countValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
-  gr527_countValveOpen -> GetXaxis() -> SetTitleSize(0.05);
-  gr527_countValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
-  gr527_countValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
-  gr527_countValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
-  gr527_countValveOpen -> SetMarkerColor(2);
-
-
-   TGraphErrors *gr527_HistValveOpen = new TGraphErrors (counts_527, avets12ValveOpenArray527, HistIntegralArray527, ts12ValveOpenErr527, HistIntegralErrArray527);
+  TGraphErrors *gr527_HistValveOpen = new TGraphErrors (counts_527, avets12ValveOpenArray527, HistIntegralArray527, ts12ValveOpenErr527, HistIntegralErrArray527);
   gr527_HistValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
   gr527_HistValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr527_HistValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
   gr527_HistValveOpen -> SetMarkerStyle(25);
-  gr527_HistValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
+  gr527_HistValveOpen -> GetXaxis()-> SetLimits(0.84, 1.2);
   gr527_HistValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr527_HistValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
   gr527_HistValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
@@ -1605,11 +1707,8 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr527_HistValveOpen -> SetMarkerColor(2);
 
 
-
-  gr527_countIrrad -> Draw("AP");
-  //gr527_countValveOpen -> Draw("p");
-   gr527_HistIrrad -> Draw("p");
-  //gr527_HistValveOpen -> Draw("p");
+   gr527_HistIrrad -> Draw("Ap");
+  gr527_HistValveOpen -> Draw("p");
   leg3 -> Draw();
 
 
@@ -1628,19 +1727,6 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
 
   TPad *p528_1 = c528_cycleNum->cd(1);
   p528_1->SetLogy(); 
-  TGraphErrors *gr528_cyclecounts = new TGraphErrors (counts_528 , cycleNumberArray528, UCNIntegralArray528, 0 , UCNIntegralErrArray528);
-  gr528_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
-  gr528_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
-  gr528_cyclecounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr528_cyclecounts -> GetYaxis()-> SetRangeUser(100, 500000);
-  gr528_cyclecounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr528_cyclecounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr528_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr528_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
-  
-  gr528_cyclecounts -> SetMarkerStyle(20);
-  
-  
   TGraphErrors *gr528_cyclehist = new TGraphErrors(counts_528, cycleNumberArray528 , HistIntegralArray528, 0, HistIntegralErrArray528);
   
   gr528_cyclehist -> SetTitle("UCN Counts vs Cycle Delay Time");
@@ -1668,8 +1754,8 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr528_cyclecountmanual -> SetMarkerStyle(25);
   
   
-  gr528_cyclecounts -> Draw("Ap");
-  gr528_cyclehist -> Draw("p");
+
+  gr528_cyclehist -> Draw("Ap");
   gr528_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
@@ -1695,7 +1781,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr528_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr528_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
   gr528_cycletempIrrad -> SetMarkerStyle(20);
-  gr528_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 2.3);
+  gr528_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 1.2);
   gr528_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr528_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
   gr528_cycletempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
@@ -1743,52 +1829,26 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   TCanvas *c528_counttemp = new TCanvas ("c528_counttemp" , "c528_counttemp " , 1200, 900);
   c528_counttemp -> SetLogy();
 
-  TGraphErrors *gr528_countIrrad = new TGraphErrors (counts_528, avets12IrradArray528, UCNIntegralArray528, ts12IrradErr528, UCNIntegralErrArray528);
-  gr528_countIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
-  gr528_countIrrad -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr528_countIrrad -> GetYaxis()-> SetTitle("UCN Counts");
-  gr528_countIrrad -> SetMarkerStyle(20);
-  gr528_countIrrad -> GetYaxis() -> SetRangeUser(10,500000);
-  gr528_countIrrad -> GetXaxis()-> SetLimits(0.85, 1.1);
-  gr528_countIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr528_countIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr528_countIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr528_countIrrad -> GetYaxis() -> SetTitleOffset(0.9);
-
-
   TGraphErrors *gr528_HistIrrad = new TGraphErrors (counts_528, avets12IrradArray528, HistIntegralArray528, ts12IrradErr528, HistIntegralErrArray528);
   gr528_HistIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
   gr528_HistIrrad -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr528_HistIrrad -> GetYaxis()-> SetTitle("UCN Counts");
   gr528_HistIrrad -> SetMarkerStyle(25);
   gr528_HistIrrad -> GetYaxis() -> SetRangeUser(100,500000);
-  gr528_HistIrrad -> GetXaxis()-> SetLimits(1, 1.4);
+  gr528_HistIrrad -> GetXaxis()-> SetLimits(0.84, 1.2);
   gr528_HistIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr528_HistIrrad -> GetXaxis() -> SetTitleOffset(1.0);
   gr528_HistIrrad -> GetYaxis() -> SetTitleSize(0.05); 
   gr528_HistIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
-  
-
- TGraphErrors *gr528_countValveOpen = new TGraphErrors (counts_528, avets12ValveOpenArray528, UCNIntegralArray528, ts12ValveOpenErr528, UCNIntegralErrArray528);
-  gr528_countValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
-  gr528_countValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr528_countValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
-  gr528_countValveOpen -> SetMarkerStyle(20);
-  gr528_countValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
-  gr528_countValveOpen -> GetXaxis() -> SetTitleSize(0.05);
-  gr528_countValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
-  gr528_countValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
-  gr528_countValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
-  gr528_countValveOpen -> SetMarkerColor(2);
 
 
-   TGraphErrors *gr528_HistValveOpen = new TGraphErrors (counts_528, avets12ValveOpenArray528, HistIntegralArray528, ts12ValveOpenErr528, HistIntegralErrArray528);
+  TGraphErrors *gr528_HistValveOpen = new TGraphErrors (counts_528, avets12ValveOpenArray528, HistIntegralArray528, ts12ValveOpenErr528, HistIntegralErrArray528);
   gr528_HistValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
   gr528_HistValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr528_HistValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
   gr528_HistValveOpen -> SetMarkerStyle(25);
-  gr528_HistValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
+  gr528_HistValveOpen -> GetXaxis()-> SetLimits(0.84, 1.2);
   gr528_HistValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr528_HistValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
   gr528_HistValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
@@ -1796,11 +1856,8 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr528_HistValveOpen -> SetMarkerColor(2);
 
 
-
-  gr528_countIrrad -> Draw("AP");
-  //gr528_countValveOpen -> Draw("p");
-   gr528_HistIrrad -> Draw("p");
-  //gr528_HistValveOpen -> Draw("p");
+   gr528_HistIrrad -> Draw("Ap");
+  gr528_HistValveOpen -> Draw("p");
   leg3 -> Draw();
   
 
@@ -1816,19 +1873,6 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
 
   TPad *p529_1 = c529_cycleNum->cd(1);
   p529_1->SetLogy(); 
-  TGraphErrors *gr529_cyclecounts = new TGraphErrors (counts_529 , cycleNumberArray529, UCNIntegralArray529, 0 , UCNIntegralErrArray529);
-  gr529_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
-  gr529_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
-  gr529_cyclecounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr529_cyclecounts -> GetYaxis()-> SetRangeUser(100, 500000);
-  gr529_cyclecounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr529_cyclecounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr529_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr529_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
-  
-  gr529_cyclecounts -> SetMarkerStyle(20);
-  
-  
   TGraphErrors *gr529_cyclehist = new TGraphErrors(counts_529, cycleNumberArray529 , HistIntegralArray529, 0, HistIntegralErrArray529);
   
   gr529_cyclehist -> SetTitle("UCN Counts vs Cycle Delay Time");
@@ -1856,8 +1900,8 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr529_cyclecountmanual -> SetMarkerStyle(25);
   
   
-  gr529_cyclecounts -> Draw("Ap");
-  gr529_cyclehist -> Draw("p");
+
+  gr529_cyclehist -> Draw("Ap");
   gr529_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
@@ -1883,7 +1927,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr529_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr529_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
   gr529_cycletempIrrad -> SetMarkerStyle(20);
-  gr529_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 2.3);
+  gr529_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 1.2);
   gr529_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr529_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
   gr529_cycletempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
@@ -1931,17 +1975,6 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   TCanvas *c529_counttemp = new TCanvas ("c529_counttemp" , "c529_counttemp " , 1200, 900);
   c529_counttemp -> SetLogy();
 
-  TGraphErrors *gr529_countIrrad = new TGraphErrors (counts_529, avets12IrradArray529, UCNIntegralArray529, ts12IrradErr529, UCNIntegralErrArray529);
-  gr529_countIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
-  gr529_countIrrad -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr529_countIrrad -> GetYaxis()-> SetTitle("UCN Counts");
-  gr529_countIrrad -> SetMarkerStyle(20);
-  gr529_countIrrad -> GetYaxis() -> SetRangeUser(10,500000);
-  gr529_countIrrad -> GetXaxis()-> SetLimits(0.85, 1.1);
-  gr529_countIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr529_countIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr529_countIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr529_countIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
 
   TGraphErrors *gr529_HistIrrad = new TGraphErrors (counts_529, avets12IrradArray529, HistIntegralArray529, ts12IrradErr529, HistIntegralErrArray529);
@@ -1956,39 +1989,21 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr529_HistIrrad -> GetYaxis() -> SetTitleSize(0.05); 
   gr529_HistIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
-  
 
- TGraphErrors *gr529_countValveOpen = new TGraphErrors (counts_529, avets12ValveOpenArray529, UCNIntegralArray529, ts12ValveOpenErr529, UCNIntegralErrArray529);
-  gr529_countValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
-  gr529_countValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr529_countValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
-  gr529_countValveOpen -> SetMarkerStyle(20);
-  gr529_countValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
-  gr529_countValveOpen -> GetXaxis() -> SetTitleSize(0.05);
-  gr529_countValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
-  gr529_countValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
-  gr529_countValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
-  gr529_countValveOpen -> SetMarkerColor(2);
-
-
-   TGraphErrors *gr529_HistValveOpen = new TGraphErrors (counts_529, avets12ValveOpenArray529, HistIntegralArray529, ts12ValveOpenErr529, HistIntegralErrArray529);
+  TGraphErrors *gr529_HistValveOpen = new TGraphErrors (counts_529, avets12ValveOpenArray529, HistIntegralArray529, ts12ValveOpenErr529, HistIntegralErrArray529);
   gr529_HistValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
   gr529_HistValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr529_HistValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
   gr529_HistValveOpen -> SetMarkerStyle(25);
-  gr529_HistValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
+  gr529_HistValveOpen -> GetXaxis()-> SetLimits(0.84, 1.2);
   gr529_HistValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr529_HistValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
   gr529_HistValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
   gr529_HistValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
   gr529_HistValveOpen -> SetMarkerColor(2);
 
-
-
-  gr529_countIrrad -> Draw("AP");
-  //gr529_countValveOpen -> Draw("p");
-   gr529_HistIrrad -> Draw("p");
-  //gr529_HistValveOpen -> Draw("p");
+  gr529_HistIrrad -> Draw("Ap");
+  gr529_HistValveOpen -> Draw("p");
   leg3 -> Draw();
 
 
@@ -2004,19 +2019,6 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
 
   TPad *p530_1 = c530_cycleNum->cd(1);
   p530_1->SetLogy(); 
-  TGraphErrors *gr530_cyclecounts = new TGraphErrors (counts_530 , cycleNumberArray530, UCNIntegralArray530, 0 , UCNIntegralErrArray530);
-  gr530_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
-  gr530_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
-  gr530_cyclecounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr530_cyclecounts -> GetYaxis()-> SetRangeUser(100, 500000);
-  gr530_cyclecounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr530_cyclecounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr530_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr530_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
-  
-  gr530_cyclecounts -> SetMarkerStyle(20);
-  
-  
   TGraphErrors *gr530_cyclehist = new TGraphErrors(counts_530, cycleNumberArray530 , HistIntegralArray530, 0, HistIntegralErrArray530);
   
   gr530_cyclehist -> SetTitle("UCN Counts vs Cycle Delay Time");
@@ -2043,9 +2045,8 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr530_cyclecountmanual -> SetMarkerColor(1);
   gr530_cyclecountmanual -> SetMarkerStyle(25);
   
-  
-  gr530_cyclecounts -> Draw("Ap");
-  gr530_cyclehist -> Draw("p");
+
+  gr530_cyclehist -> Draw("Ap");
   gr530_cyclecountmanual -> Draw("p");
   leg2-> Draw();
   
@@ -2071,7 +2072,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr530_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr530_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
   gr530_cycletempIrrad -> SetMarkerStyle(20);
-  gr530_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 2.3);
+  gr530_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.84, 1.2);
   gr530_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
   gr530_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
   gr530_cycletempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
@@ -2119,19 +2120,6 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   TCanvas *c530_counttemp = new TCanvas ("c530_counttemp" , "c530_counttemp " , 1200, 900);
   c530_counttemp -> SetLogy();
 
-  TGraphErrors *gr530_countIrrad = new TGraphErrors (counts_530, avets12IrradArray530, UCNIntegralArray530, ts12IrradErr530, UCNIntegralErrArray530);
-  gr530_countIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
-  gr530_countIrrad -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr530_countIrrad -> GetYaxis()-> SetTitle("UCN Counts");
-  gr530_countIrrad -> SetMarkerStyle(20);
-  gr530_countIrrad -> GetYaxis() -> SetRangeUser(10,500000);
-  gr530_countIrrad -> GetXaxis()-> SetLimits(0.85, 1.1);
-  gr530_countIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr530_countIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr530_countIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr530_countIrrad -> GetYaxis() -> SetTitleOffset(0.9);
-
-
   TGraphErrors *gr530_HistIrrad = new TGraphErrors (counts_530, avets12IrradArray530, HistIntegralArray530, ts12IrradErr530, HistIntegralErrArray530);
   gr530_HistIrrad -> SetTitle( "UCN Counts vs Average Isopure Temperature");
   gr530_HistIrrad -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
@@ -2144,27 +2132,12 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr530_HistIrrad -> GetYaxis() -> SetTitleSize(0.05); 
   gr530_HistIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
-  
-
- TGraphErrors *gr530_countValveOpen = new TGraphErrors (counts_530, avets12ValveOpenArray530, UCNIntegralArray530, ts12ValveOpenErr530, UCNIntegralErrArray530);
-  gr530_countValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
-  gr530_countValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr530_countValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
-  gr530_countValveOpen -> SetMarkerStyle(20);
-  gr530_countValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
-  gr530_countValveOpen -> GetXaxis() -> SetTitleSize(0.05);
-  gr530_countValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
-  gr530_countValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
-  gr530_countValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
-  gr530_countValveOpen -> SetMarkerColor(2);
-
-
-   TGraphErrors *gr530_HistValveOpen = new TGraphErrors (counts_530, avets12ValveOpenArray530, HistIntegralArray530, ts12ValveOpenErr530, HistIntegralErrArray530);
+  TGraphErrors *gr530_HistValveOpen = new TGraphErrors (counts_530, avets12ValveOpenArray530, HistIntegralArray530, ts12ValveOpenErr530, HistIntegralErrArray530);
   gr530_HistValveOpen -> SetTitle( "UCN Counts vs Average Isopure Temperature");
   gr530_HistValveOpen -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr530_HistValveOpen -> GetYaxis()-> SetTitle("UCN Counts");
   gr530_HistValveOpen -> SetMarkerStyle(25);
-  gr530_HistValveOpen -> GetXaxis()-> SetLimits(0.84, 2.3);
+  gr530_HistValveOpen -> GetXaxis()-> SetLimits(0.84, 1.2);
   gr530_HistValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr530_HistValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
   gr530_HistValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
@@ -2173,10 +2146,8 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
 
 
 
-  gr530_countIrrad -> Draw("AP");
-  //gr530_countValveOpen -> Draw("p");
-   gr530_HistIrrad -> Draw("p");
-  //gr530_HistValveOpen -> Draw("p");
+  gr530_HistIrrad -> Draw("Ap");
+  gr530_HistValveOpen -> Draw("p");
   leg3 -> Draw();
 
   
@@ -2187,43 +2158,43 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   TCanvas *cAll = new TCanvas ("cAll" , "cAll" , 1200, 900);
   cAll -> SetLogy();
 
-  gr524_countIrrad -> SetTitle("UCN Count vs Average Isopure Temperature and Beam Current");
-  gr524_countIrrad -> GetYaxis()-> SetRangeUser(100, 1600000);
-  gr524_countIrrad -> GetXaxis() -> SetLimits(0.8, 0.92);
-  gr524_countIrrad -> SetMarkerStyle(20);
+  // gr524_countIrrad -> SetTitle("UCN Count vs Average Isopure Temperature and Beam Current");
+  //gr524_countIrrad -> GetYaxis()-> SetRangeUser(100, 1600000);
+  //gr524_countIrrad -> GetXaxis() -> SetLimits(0.8, 0.92);
+  // gr524_countIrrad -> SetMarkerStyle(20);
   gr524_HistIrrad -> SetMarkerStyle(25);
-  gr525_countIrrad -> SetMarkerColor(2);
+  //gr525_countIrrad -> SetMarkerColor(2);
   gr525_HistIrrad -> SetMarkerColor(2);
-  gr527_countIrrad -> SetMarkerColor(9);
+  //gr527_countIrrad -> SetMarkerColor(9);
   gr527_HistIrrad -> SetMarkerColor(9);
-  gr528_countIrrad -> SetMarkerColor(8);
+  //gr528_countIrrad -> SetMarkerColor(8);
   gr528_HistIrrad -> SetMarkerColor(8);
-  gr529_countIrrad -> SetMarkerColor(6);
+  //gr529_countIrrad -> SetMarkerColor(6);
   gr529_HistIrrad -> SetMarkerColor(6);
 
   TLegend *legAll = new TLegend (0.2, 0.7, 0.9, 0.9);
   legAll -> SetTextSize(0.02);
-  legAll -> AddEntry(gr524_countIrrad , "Counts without backgroun (fit) , 0.05 #muA", "p");
+  //legAll -> AddEntry(gr524_countIrrad , "Counts without backgroun (fit) , 0.05 #muA", "p");
   legAll -> AddEntry(gr524_HistIrrad , "Counts with backgroun ,  0.05 #muA", "p");
-  legAll -> AddEntry(gr525_countIrrad , "Counts without backgroun (fit) ,0.5 #muA", "p");
+  //legAll -> AddEntry(gr525_countIrrad , "Counts without backgroun (fit) ,0.5 #muA", "p");
   legAll -> AddEntry(gr525_HistIrrad , "Counts with backgroun , 0.5 #muA", "p");
-  legAll -> AddEntry(gr527_countIrrad , "Counts without backgroun (fit) , 0.25 #muA", "p");
+  //legAll -> AddEntry(gr527_countIrrad , "Counts without backgroun (fit) , 0.25 #muA", "p");
   legAll -> AddEntry(gr527_HistIrrad , "Counts with backgroun , 0.25 #muA", "p");
-  legAll -> AddEntry(gr528_countIrrad , "Counts without backgroun (fit) , 0.75 #muA", "p");
+  //legAll -> AddEntry(gr528_countIrrad , "Counts without backgroun (fit) , 0.75 #muA", "p");
   legAll -> AddEntry(gr528_HistIrrad , "Counts with backgroun , 0.75 #muA", "p");
-  legAll -> AddEntry(gr529_countIrrad , "Counts without backgroun (fit) , 1 #muA", "p");
+  //legAll -> AddEntry(gr529_countIrrad , "Counts without backgroun (fit) , 1 #muA", "p");
   legAll -> AddEntry(gr529_HistIrrad , "Counts with backgroun , 1 #muA", "p");
   
 
-  gr524_countIrrad -> Draw("ap");
-  gr524_HistIrrad -> Draw("p");
-  gr525_countIrrad -> Draw("p");
+  //gr524_countIrrad -> Draw("ap");
+  gr524_HistIrrad -> Draw("Ap");
+  //gr525_countIrrad -> Draw("p");
   gr525_HistIrrad -> Draw("p");
-  gr527_countIrrad -> Draw("p");
+  //gr527_countIrrad -> Draw("p");
   gr527_HistIrrad -> Draw("p");
-  gr528_countIrrad -> Draw("p");
+  //gr528_countIrrad -> Draw("p");
   gr528_HistIrrad -> Draw("p");
-  gr529_countIrrad -> Draw("p");
+  //gr529_countIrrad -> Draw("p");
   gr529_HistIrrad -> Draw("p");
   legAll -> Draw();
 
@@ -2239,7 +2210,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   TCanvas *c_countcur = new TCanvas("c_countcur" , "c_countcur" , 1200, 900);
   // c_countcur -> SetLogy();
 
-  TGraphErrors *gr524_countcur = new TGraphErrors (counts_524, avecurArray524, UCNIntegralArray524, 0,  UCNIntegralErrArray524);
+  TGraphErrors *gr524_countcur = new TGraphErrors (counts_524, avecurArray524, UCNIntegralManualArray524, 0,   UCNIntegralManualErrArray524);
   gr524_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr524_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
   gr524_countcur -> GetYaxis()-> SetTitle("UCN Counts");
@@ -2267,7 +2238,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr524_histcur -> GetYaxis() -> SetTitleOffset(0.9);
   gr524_histcur -> SetMarkerColor(1);
 
-  TGraphErrors *gr525_countcur = new TGraphErrors (counts_525,  avecurArray525, UCNIntegralArray525,0 , UCNIntegralErrArray525);
+  TGraphErrors *gr525_countcur = new TGraphErrors (counts_525,  avecurArray525, UCNIntegralManualArray525,0 ,  UCNIntegralManualErrArray525);
   gr525_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr525_countcur -> GetXaxis() -> SetTitle("Average Predicted Beam Current" );
   gr525_countcur -> GetYaxis() -> SetTitle("UCN Counts");
@@ -2293,7 +2264,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr525_histcur -> GetYaxis() -> SetTitleOffset(0.9);
   gr525_histcur -> SetMarkerColor(2);
 
-  TGraphErrors *gr527_countcur = new TGraphErrors (counts_527, avecurArray527,  UCNIntegralArray527, 0 , UCNIntegralErrArray527);
+  TGraphErrors *gr527_countcur = new TGraphErrors (counts_527, avecurArray527,  UCNIntegralManualArray527, 0 ,  UCNIntegralManualErrArray527);
   gr527_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr527_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
   gr527_countcur -> GetYaxis()-> SetTitle("UCN Counts");
@@ -2319,7 +2290,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr527_histcur -> GetYaxis() -> SetTitleOffset(0.9);
   gr527_histcur -> SetMarkerColor(4);
   
-  TGraphErrors *gr528_countcur = new TGraphErrors (counts_528,  avecurArray528, UCNIntegralArray528,0 ,UCNIntegralErrArray528);
+  TGraphErrors *gr528_countcur = new TGraphErrors (counts_528,  avecurArray528, UCNIntegralManualArray528,0 , UCNIntegralManualErrArray528);
   gr528_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr528_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
   gr528_countcur -> GetYaxis()-> SetTitle("UCN Counts");
@@ -2345,7 +2316,7 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr528_histcur -> GetYaxis() -> SetTitleOffset(0.9);
   gr528_histcur -> SetMarkerColor(8);
 
-  TGraphErrors *gr529_countcur = new TGraphErrors (counts_529 , avecurArray529 ,  UCNIntegralArray529, 0, UCNIntegralErrArray529);
+  TGraphErrors *gr529_countcur = new TGraphErrors (counts_529 , avecurArray529 , UCNIntegralManualArray529, 0,  UCNIntegralManualErrArray529);
   gr529_countcur -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr529_countcur -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
   gr529_countcur -> GetYaxis()-> SetTitle("UCN Counts");
@@ -2388,15 +2359,15 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
 
   TLegend *legcur = new TLegend (0.7, 0.5, 0.9, 0.9);
 
-  legcur -> AddEntry (gr524_countcur , "Without background (fit), 0.05 #muA", "p");
+  legcur -> AddEntry (gr524_countcur , "Without background , 0.05 #muA", "p");
   legcur -> AddEntry (gr524_histcur , "With background , 0.05 #muA" , "p");
-  legcur -> AddEntry (gr525_countcur , "Without background (fit), 0.5 #muA", "p");
+  legcur -> AddEntry (gr525_countcur , "Without background , 0.5 #muA", "p");
   legcur -> AddEntry (gr525_histcur , "With background , 0.5 #muA" , "p");
-  legcur -> AddEntry (gr527_countcur , "Without background (fit), 0.25 #muA", "p");
+  legcur -> AddEntry (gr527_countcur , "Without background , 0.25 #muA", "p");
   legcur -> AddEntry (gr527_histcur , "With background , 0.25 #muA" , "p");
-  legcur -> AddEntry (gr528_countcur , "Without background (fit), 0.75 #muA", "p");
+  legcur -> AddEntry (gr528_countcur , "Without background , 0.75 #muA", "p");
   legcur -> AddEntry (gr528_histcur , "With background , 0.75 #muA" , "p");
-  legcur -> AddEntry (gr529_countcur , "Without background (fit), 1 #muA", "p");
+  legcur -> AddEntry (gr529_countcur , "Without background, 1 #muA", "p");
   legcur -> AddEntry (gr529_histcur , "With background , 1 #muA" , "p");
   legcur -> AddEntry (gr_online , "Online Analysis" , "p");
   
@@ -2413,5 +2384,23 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr529_histcur -> Draw("p");
   gr_online -> Draw("p");
   legcur -> Draw();
+
+  // Average predicted current vs different temperatures
+
+  TCanvas *c1 = new TCanvas ("c1" , "c1" , 1200, 900);
+
+  TGraphErrors *gr524_ts11 = new TGraphErrors( counts_524, avecurArray524 ,  avets11IrradArray524  , ErrcurArray524 , ts11IrradErr524);
+  gr524_ts11 -> SetTitle( "Average TS11 Temperature vs ");
+  gr524_ts11 -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
+  gr524_ts11 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr524_ts11 -> SetMarkerStyle(3);
+  gr524_ts11 -> GetYaxis() -> SetRangeUser(10,500000);
+  gr524_ts11 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr524_ts11 -> GetXaxis() -> SetTitleSize(0.05);
+  gr524_ts11 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr524_ts11 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr524_ts11 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr524_ts11 -> SetMarkerColor(1);
+
   
 }
