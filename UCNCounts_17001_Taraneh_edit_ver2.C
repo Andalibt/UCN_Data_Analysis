@@ -788,6 +788,13 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   int counts_530 = 0;
 
 
+  // Write to a file
+
+  ofstream myfile;
+  myfile.open ("./2ndpass/TCN17001_Data.csv");
+  
+
+
   // ********************************************************
   // *****
   // 524
@@ -830,7 +837,9 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
     
     delaytimeArray524[counts_524] = cycleDelayTime524;
     cycleNumberArray524[counts_524] = cycleNumber524;
-    cout << " The irradiation time for run 524 for cycle "<< counts_524 << " is "<< cycleStartTimes524 - irradStartTimes524 << endl; 
+    cout << " The irradiation time for run 524 for cycle "<< counts_524 << " is "<< cycleStartTimes524 - irradStartTimes524 << endl;
+    
+    myfile << HistIntegralArray524[counts_524] << " " << HistIntegralErrArray524[counts_524] << " " << UCNIntegralManualArray524[counts_524] << " " << UCNIntegralManualErrArray524[counts_524] << " " << avecurArray524[counts_524] << " " <<  ErrcurArray524[counts_524] << " " <<  avets11IrradArray524[counts_524] << " " << ts11IrradErr524[counts_524] << " " << avets12IrradArray524[counts_524] << " " << ts12IrradErr524[counts_524] << " " << avets14IrradArray524[counts_524] << " " << ts14IrradErr524[counts_524] << " " << avets16IrradArray524[counts_524] << " " << ts16IrradErr524[counts_524] << " " << avets11ValveOpenArray524[counts_524] << " " <<  ts11ValveOpenErr524[counts_524] << " " << avets12ValveOpenArray524[counts_524] << " " << ts12ValveOpenErr524[counts_524] << " " << avets14ValveOpenArray524[counts_524] << " " << ts14ValveOpenErr524[counts_524] << " " << avets16ValveOpenArray524[counts_524] << " " << ts16ValveOpenErr524[counts_524] << endl;
     counts_524++;
   }
 
@@ -876,7 +885,10 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
     
     delaytimeArray525[counts_525] = cycleDelayTime525;
     cycleNumberArray525[counts_525] = cycleNumber525;
-    cout << " The irradiation time for run 525 for cycle "<< counts_525 << " is "<< cycleStartTimes525 - irradStartTimes525 << endl; 
+    cout << " The irradiation time for run 525 for cycle "<< counts_525 << " is "<< cycleStartTimes525 - irradStartTimes525 << endl;
+
+    myfile << HistIntegralArray525[counts_525] << " " << HistIntegralErrArray525[counts_525] << " " << UCNIntegralManualArray525[counts_525] << " " << UCNIntegralManualErrArray525[counts_525] << " " << avecurArray525[counts_525] << " " <<  ErrcurArray525[counts_525] << " " <<  avets11IrradArray525[counts_525] << " " << ts11IrradErr525[counts_525] << " " << avets12IrradArray525[counts_525] << " " << ts12IrradErr525[counts_525] << " " << avets14IrradArray525[counts_525] << " " << ts14IrradErr525[counts_525] << " " << avets16IrradArray525[counts_525] << " " << ts16IrradErr525[counts_525] << " " << avets11ValveOpenArray525[counts_525] << " " <<  ts11ValveOpenErr525[counts_525] << " " << avets12ValveOpenArray525[counts_525] << " " << ts12ValveOpenErr525[counts_525] << " " << avets14ValveOpenArray525[counts_525] << " " << ts14ValveOpenErr525[counts_525] << " " << avets16ValveOpenArray525[counts_525] << " " << ts16ValveOpenErr525[counts_525] << endl;
+    
     counts_525++;
   }
 
@@ -922,7 +934,10 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
     
     delaytimeArray526[counts_526] = cycleDelayTime526;
     cycleNumberArray526[counts_526] = cycleNumber526;
-    cout << " The irradiation time for run 526 for cycle "<< counts_526 << " is "<< cycleStartTimes526 - irradStartTimes526 << endl; 
+    cout << " The irradiation time for run 526 for cycle "<< counts_526 << " is "<< cycleStartTimes526 - irradStartTimes526 << endl;
+
+    myfile << HistIntegralArray526[counts_526] << " " << HistIntegralErrArray526[counts_526] << " " << UCNIntegralManualArray526[counts_526] << " " << UCNIntegralManualErrArray526[counts_526] << " " << avecurArray526[counts_526] << " " <<  ErrcurArray526[counts_526] << " " <<  avets11IrradArray526[counts_526] << " " << ts11IrradErr526[counts_526] << " " << avets12IrradArray526[counts_526] << " " << ts12IrradErr526[counts_526] << " " << avets14IrradArray526[counts_526] << " " << ts14IrradErr526[counts_526] << " " << avets16IrradArray526[counts_526] << " " << ts16IrradErr526[counts_526] << " " << avets11ValveOpenArray526[counts_526] << " " <<  ts11ValveOpenErr526[counts_526] << " " << avets12ValveOpenArray526[counts_526] << " " << ts12ValveOpenErr526[counts_526] << " " << avets14ValveOpenArray526[counts_526] << " " << ts14ValveOpenErr526[counts_526] << " " << avets16ValveOpenArray526[counts_526] << " " << ts16ValveOpenErr526[counts_526] << endl;
+    
     counts_526++;
   }
 
@@ -969,7 +984,10 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
     
     delaytimeArray527[counts_527] = cycleDelayTime527;
     cycleNumberArray527[counts_527] = cycleNumber527;
-    cout << " The irradiation time for run 527 for cycle "<< counts_527 << " is "<< cycleStartTimes527 - irradStartTimes527 << endl; 
+    cout << " The irradiation time for run 527 for cycle "<< counts_527 << " is "<< cycleStartTimes527 - irradStartTimes527 << endl;
+
+    myfile << HistIntegralArray527[counts_527] << " " << HistIntegralErrArray527[counts_527] << " " << UCNIntegralManualArray527[counts_527] << " " << UCNIntegralManualErrArray527[counts_527] << " " << avecurArray527[counts_527] << " " <<  ErrcurArray527[counts_527] << " " <<  avets11IrradArray527[counts_527] << " " << ts11IrradErr527[counts_527] << " " << avets12IrradArray527[counts_527] << " " << ts12IrradErr527[counts_527] << " " << avets14IrradArray527[counts_527] << " " << ts14IrradErr527[counts_527] << " " << avets16IrradArray527[counts_527] << " " << ts16IrradErr527[counts_527] << " " << avets11ValveOpenArray527[counts_527] << " " <<  ts11ValveOpenErr527[counts_527] << " " << avets12ValveOpenArray527[counts_527] << " " << ts12ValveOpenErr527[counts_527] << " " << avets14ValveOpenArray527[counts_527] << " " << ts14ValveOpenErr527[counts_527] << " " << avets16ValveOpenArray527[counts_527] << " " << ts16ValveOpenErr527[counts_527] << endl;
+    
     counts_527++;
   }
 
@@ -1018,7 +1036,10 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
     
     delaytimeArray528[counts_528] = cycleDelayTime528;
     cycleNumberArray528[counts_528] = cycleNumber528;
-    cout << " The irradiation time for run 528 for cycle "<< counts_528 << " is "<< cycleStartTimes528 - irradStartTimes528 << endl; 
+    cout << " The irradiation time for run 528 for cycle "<< counts_528 << " is "<< cycleStartTimes528 - irradStartTimes528 << endl;
+
+    myfile << HistIntegralArray528[counts_528] << " " << HistIntegralErrArray528[counts_528] << " " << UCNIntegralManualArray528[counts_528] << " " << UCNIntegralManualErrArray528[counts_528] << " " << avecurArray528[counts_528] << " " <<  ErrcurArray528[counts_528] << " " <<  avets11IrradArray528[counts_528] << " " << ts11IrradErr528[counts_528] << " " << avets12IrradArray528[counts_528] << " " << ts12IrradErr528[counts_528] << " " << avets14IrradArray528[counts_528] << " " << ts14IrradErr528[counts_528] << " " << avets16IrradArray528[counts_528] << " " << ts16IrradErr528[counts_528] << " " << avets11ValveOpenArray528[counts_528] << " " <<  ts11ValveOpenErr528[counts_528] << " " << avets12ValveOpenArray528[counts_528] << " " << ts12ValveOpenErr528[counts_528] << " " << avets14ValveOpenArray528[counts_528] << " " << ts14ValveOpenErr528[counts_528] << " " << avets16ValveOpenArray528[counts_528] << " " << ts16ValveOpenErr528[counts_528] << endl;
+    
     counts_528++;
   }
 
@@ -1063,7 +1084,10 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
     
     delaytimeArray529[counts_529] = cycleDelayTime529;
     cycleNumberArray529[counts_529] = cycleNumber529;
-    cout << " The irradiation time for run 529 for cycle "<< counts_529 << " is "<< cycleStartTimes529 - irradStartTimes529 << endl; 
+    cout << " The irradiation time for run 529 for cycle "<< counts_529 << " is "<< cycleStartTimes529 - irradStartTimes529 << endl;
+
+    myfile << HistIntegralArray529[counts_529] << " " << HistIntegralErrArray529[counts_529] << " " << UCNIntegralManualArray529[counts_529] << " " << UCNIntegralManualErrArray529[counts_529] << " " << avecurArray529[counts_529] << " " <<  ErrcurArray529[counts_529] << " " <<  avets11IrradArray529[counts_529] << " " << ts11IrradErr529[counts_529] << " " << avets12IrradArray529[counts_529] << " " << ts12IrradErr529[counts_529] << " " << avets14IrradArray529[counts_529] << " " << ts14IrradErr529[counts_529] << " " << avets16IrradArray529[counts_529] << " " << ts16IrradErr529[counts_529] << " " << avets11ValveOpenArray529[counts_529] << " " <<  ts11ValveOpenErr529[counts_529] << " " << avets12ValveOpenArray529[counts_529] << " " << ts12ValveOpenErr529[counts_529] << " " << avets14ValveOpenArray529[counts_529] << " " << ts14ValveOpenErr529[counts_529] << " " << avets16ValveOpenArray529[counts_529] << " " << ts16ValveOpenErr529[counts_529] << endl;
+    
     counts_529++;
   }
 
@@ -2390,11 +2414,11 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   TCanvas *c1 = new TCanvas ("c1" , "c1" , 1200, 900);
 
   TGraphErrors *gr524_ts11 = new TGraphErrors( counts_524, avecurArray524 ,  avets11IrradArray524  , ErrcurArray524 , ts11IrradErr524);
-  gr524_ts11 -> SetTitle( "Average TS11 Temperature vs ");
-  gr524_ts11 -> GetXaxis()-> SetTitle("Average Predicted Beam Current" );
+  gr524_ts11 -> SetTitle( "Average TS11 Temperature vs Average Predicted Beam Current");
+  gr524_ts11 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
   gr524_ts11 -> GetYaxis()-> SetTitle("UCN Counts");
-  gr524_ts11 -> SetMarkerStyle(3);
-  gr524_ts11 -> GetYaxis() -> SetRangeUser(10,500000);
+  gr524_ts11 -> SetMarkerStyle(20);
+  gr524_ts11 -> GetYaxis() -> SetRangeUser(0.8 , 1.2);
   gr524_ts11 -> GetXaxis()-> SetLimits(0., 1.2);
   gr524_ts11 -> GetXaxis() -> SetTitleSize(0.05);
   gr524_ts11 -> GetXaxis() -> SetTitleOffset(1.0);
@@ -2402,5 +2426,349 @@ void UCNCounts_17001_Taraneh_edit_ver2(){
   gr524_ts11 -> GetYaxis() -> SetTitleOffset(0.9);
   gr524_ts11 -> SetMarkerColor(1);
 
+  TGraphErrors *gr524_ts12 = new TGraphErrors( counts_524, avecurArray524 ,  avets12IrradArray524  , ErrcurArray524 , ts12IrradErr524);
+  gr524_ts12 -> SetTitle( "Average TS12 Temperature vs Average Predicted Beam Current");
+  gr524_ts12 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr524_ts12 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr524_ts12 -> SetMarkerStyle(21);
+  gr524_ts12 -> GetYaxis() -> SetRangeUser(0.8 , 2.3);
+  gr524_ts12 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr524_ts12 -> GetXaxis() -> SetTitleSize(0.05);
+  gr524_ts12 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr524_ts12 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr524_ts12 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr524_ts12 -> SetMarkerColor(1);
+
+  TGraphErrors *gr524_ts14 = new TGraphErrors( counts_524, avecurArray524 ,  avets14IrradArray524  , ErrcurArray524 , ts14IrradErr524);
+  gr524_ts14 -> SetTitle( "Average TS14 Temperature vs Average Predicted Beam Current");
+  gr524_ts14 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr524_ts14 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr524_ts14 -> SetMarkerStyle(24);
+  gr524_ts14 -> GetYaxis() -> SetRangeUser(0.8 , 2.3);
+  gr524_ts14 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr524_ts14 -> GetXaxis() -> SetTitleSize(0.05);
+  gr524_ts14 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr524_ts14 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr524_ts14 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr524_ts14 -> SetMarkerColor(1);
+
+
+  TGraphErrors *gr524_ts16 = new TGraphErrors( counts_524, avecurArray524 ,  avets16IrradArray524  , ErrcurArray524 , ts16IrradErr524);
+  gr524_ts16 -> SetTitle( "Average TS16 Temperature vs Average Predicted Beam Current");
+  gr524_ts16 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr524_ts16 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr524_ts16 -> SetMarkerStyle(25);
+  gr524_ts16 -> GetYaxis() -> SetRangeUser(0.8, 2.3);
+  gr524_ts16 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr524_ts16 -> GetXaxis() -> SetTitleSize(0.05);
+  gr524_ts16 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr524_ts16 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr524_ts16 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr524_ts16 -> SetMarkerColor(1);
+
+  TLegend *legtemp = new TLegend (0.7, 0.7, 0.9, 0.9);
+  legtemp -> AddEntry (gr524_ts11 , "TS11" , "p");
+  legtemp -> AddEntry (gr524_ts12 , "TS12" , "p");
+  legtemp -> AddEntry (gr524_ts14 , "TS14" , "p");
+  legtemp -> AddEntry (gr524_ts16 , "TS16" , "p");
+
+  // 525
+  TGraphErrors *gr525_ts11 = new TGraphErrors( counts_525, avecurArray525 ,  avets11IrradArray525  , ErrcurArray525 , ts11IrradErr525);
+  gr525_ts11 -> SetTitle( "Average TS11 Temperature vs Average Predicted Beam Current");
+  gr525_ts11 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr525_ts11 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr525_ts11 -> SetMarkerStyle(20);
+  gr525_ts11 -> GetYaxis() -> SetRangeUser(0.8 , 1.2);
+  gr525_ts11 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr525_ts11 -> GetXaxis() -> SetTitleSize(0.05);
+  gr525_ts11 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr525_ts11 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr525_ts11 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr525_ts11 -> SetMarkerColor(1);
+
+  TGraphErrors *gr525_ts12 = new TGraphErrors( counts_525, avecurArray525 ,  avets12IrradArray525  , ErrcurArray525 , ts12IrradErr525);
+  gr525_ts12 -> SetTitle( "Average TS12 Temperature vs Average Predicted Beam Current");
+  gr525_ts12 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr525_ts12 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr525_ts12 -> SetMarkerStyle(21);
+  gr525_ts12 -> GetYaxis() -> SetRangeUser(0.8 , 2.3);
+  gr525_ts12 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr525_ts12 -> GetXaxis() -> SetTitleSize(0.05);
+  gr525_ts12 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr525_ts12 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr525_ts12 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr525_ts12 -> SetMarkerColor(1);
+
+  TGraphErrors *gr525_ts14 = new TGraphErrors( counts_525, avecurArray525 ,  avets14IrradArray525  , ErrcurArray525 , ts14IrradErr525);
+  gr525_ts14 -> SetTitle( "Average TS14 Temperature vs Average Predicted Beam Current");
+  gr525_ts14 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr525_ts14 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr525_ts14 -> SetMarkerStyle(24);
+  gr525_ts14 -> GetYaxis() -> SetRangeUser(0.8 , 2.3);
+  gr525_ts14 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr525_ts14 -> GetXaxis() -> SetTitleSize(0.05);
+  gr525_ts14 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr525_ts14 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr525_ts14 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr525_ts14 -> SetMarkerColor(1);
+
+
+  TGraphErrors *gr525_ts16 = new TGraphErrors( counts_525, avecurArray525 ,  avets16IrradArray525  , ErrcurArray525 , ts16IrradErr525);
+  gr525_ts16 -> SetTitle( "Average TS16 Temperature vs Average Predicted Beam Current");
+  gr525_ts16 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr525_ts16 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr525_ts16 -> SetMarkerStyle(25);
+  gr525_ts16 -> GetYaxis() -> SetRangeUser(0.8, 2.3);
+  gr525_ts16 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr525_ts16 -> GetXaxis() -> SetTitleSize(0.05);
+  gr525_ts16 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr525_ts16 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr525_ts16 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr525_ts16 -> SetMarkerColor(1);
+
+  //526
+  TGraphErrors *gr526_ts11 = new TGraphErrors( counts_526, avecurArray526 ,  avets11IrradArray526  , ErrcurArray526 , ts11IrradErr526);
+  gr526_ts11 -> SetTitle( "Average TS11 Temperature vs Average Predicted Beam Current");
+  gr526_ts11 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr526_ts11 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr526_ts11 -> SetMarkerStyle(20);
+  gr526_ts11 -> GetYaxis() -> SetRangeUser(0.8 , 1.2);
+  gr526_ts11 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr526_ts11 -> GetXaxis() -> SetTitleSize(0.05);
+  gr526_ts11 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr526_ts11 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr526_ts11 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr526_ts11 -> SetMarkerColor(1);
+
+  TGraphErrors *gr526_ts12 = new TGraphErrors( counts_526, avecurArray526 ,  avets12IrradArray526  , ErrcurArray526 , ts12IrradErr526);
+  gr526_ts12 -> SetTitle( "Average TS12 Temperature vs Average Predicted Beam Current");
+  gr526_ts12 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr526_ts12 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr526_ts12 -> SetMarkerStyle(21);
+  gr526_ts12 -> GetYaxis() -> SetRangeUser(0.8 , 2.3);
+  gr526_ts12 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr526_ts12 -> GetXaxis() -> SetTitleSize(0.05);
+  gr526_ts12 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr526_ts12 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr526_ts12 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr526_ts12 -> SetMarkerColor(1);
+
+  TGraphErrors *gr526_ts14 = new TGraphErrors( counts_526, avecurArray526 ,  avets14IrradArray526  , ErrcurArray526 , ts14IrradErr526);
+  gr526_ts14 -> SetTitle( "Average TS14 Temperature vs Average Predicted Beam Current");
+  gr526_ts14 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr526_ts14 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr526_ts14 -> SetMarkerStyle(24);
+  gr526_ts14 -> GetYaxis() -> SetRangeUser(0.8 , 2.3);
+  gr526_ts14 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr526_ts14 -> GetXaxis() -> SetTitleSize(0.05);
+  gr526_ts14 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr526_ts14 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr526_ts14 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr526_ts14 -> SetMarkerColor(1);
+
+
+  TGraphErrors *gr526_ts16 = new TGraphErrors( counts_526, avecurArray526 ,  avets16IrradArray526  , ErrcurArray526 , ts16IrradErr526);
+  gr526_ts16 -> SetTitle( "Average TS16 Temperature vs Average Predicted Beam Current");
+  gr526_ts16 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr526_ts16 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr526_ts16 -> SetMarkerStyle(25);
+  gr526_ts16 -> GetYaxis() -> SetRangeUser(0.8, 2.3);
+  gr526_ts16 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr526_ts16 -> GetXaxis() -> SetTitleSize(0.05);
+  gr526_ts16 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr526_ts16 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr526_ts16 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr526_ts16 -> SetMarkerColor(1);
+
+  //527
+  TGraphErrors *gr527_ts11 = new TGraphErrors( counts_527, avecurArray527 ,  avets11IrradArray527  , ErrcurArray527 , ts11IrradErr527);
+  gr527_ts11 -> SetTitle( "Average TS11 Temperature vs Average Predicted Beam Current");
+  gr527_ts11 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr527_ts11 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr527_ts11 -> SetMarkerStyle(20);
+  gr527_ts11 -> GetYaxis() -> SetRangeUser(0.8 , 1.2);
+  gr527_ts11 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr527_ts11 -> GetXaxis() -> SetTitleSize(0.05);
+  gr527_ts11 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr527_ts11 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr527_ts11 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr527_ts11 -> SetMarkerColor(1);
+
+  TGraphErrors *gr527_ts12 = new TGraphErrors( counts_527, avecurArray527 ,  avets12IrradArray527  , ErrcurArray527 , ts12IrradErr527);
+  gr527_ts12 -> SetTitle( "Average TS12 Temperature vs Average Predicted Beam Current");
+  gr527_ts12 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr527_ts12 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr527_ts12 -> SetMarkerStyle(21);
+  gr527_ts12 -> GetYaxis() -> SetRangeUser(0.8 , 2.3);
+  gr527_ts12 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr527_ts12 -> GetXaxis() -> SetTitleSize(0.05);
+  gr527_ts12 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr527_ts12 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr527_ts12 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr527_ts12 -> SetMarkerColor(1);
+
+  TGraphErrors *gr527_ts14 = new TGraphErrors( counts_527, avecurArray527 ,  avets14IrradArray527  , ErrcurArray527 , ts14IrradErr527);
+  gr527_ts14 -> SetTitle( "Average TS14 Temperature vs Average Predicted Beam Current");
+  gr527_ts14 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr527_ts14 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr527_ts14 -> SetMarkerStyle(24);
+  gr527_ts14 -> GetYaxis() -> SetRangeUser(0.8 , 2.3);
+  gr527_ts14 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr527_ts14 -> GetXaxis() -> SetTitleSize(0.05);
+  gr527_ts14 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr527_ts14 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr527_ts14 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr527_ts14 -> SetMarkerColor(1);
+
+
+  TGraphErrors *gr527_ts16 = new TGraphErrors( counts_527, avecurArray527 ,  avets16IrradArray527  , ErrcurArray527 , ts16IrradErr527);
+  gr527_ts16 -> SetTitle( "Average TS16 Temperature vs Average Predicted Beam Current");
+  gr527_ts16 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr527_ts16 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr527_ts16 -> SetMarkerStyle(25);
+  gr527_ts16 -> GetYaxis() -> SetRangeUser(0.8, 2.3);
+  gr527_ts16 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr527_ts16 -> GetXaxis() -> SetTitleSize(0.05);
+  gr527_ts16 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr527_ts16 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr527_ts16 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr527_ts16 -> SetMarkerColor(1);
+
+  //528
+  TGraphErrors *gr528_ts11 = new TGraphErrors( counts_528, avecurArray528 ,  avets11IrradArray528  , ErrcurArray528 , ts11IrradErr528);
+  gr528_ts11 -> SetTitle( "Average TS11 Temperature vs Average Predicted Beam Current");
+  gr528_ts11 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr528_ts11 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr528_ts11 -> SetMarkerStyle(20);
+  gr528_ts11 -> GetYaxis() -> SetRangeUser(0.8 , 1.2);
+  gr528_ts11 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr528_ts11 -> GetXaxis() -> SetTitleSize(0.05);
+  gr528_ts11 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr528_ts11 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr528_ts11 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr528_ts11 -> SetMarkerColor(1);
+
+  TGraphErrors *gr528_ts12 = new TGraphErrors( counts_528, avecurArray528 ,  avets12IrradArray528  , ErrcurArray528 , ts12IrradErr528);
+  gr528_ts12 -> SetTitle( "Average TS12 Temperature vs Average Predicted Beam Current");
+  gr528_ts12 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr528_ts12 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr528_ts12 -> SetMarkerStyle(21);
+  gr528_ts12 -> GetYaxis() -> SetRangeUser(0.8 , 2.3);
+  gr528_ts12 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr528_ts12 -> GetXaxis() -> SetTitleSize(0.05);
+  gr528_ts12 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr528_ts12 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr528_ts12 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr528_ts12 -> SetMarkerColor(1);
+
+  TGraphErrors *gr528_ts14 = new TGraphErrors( counts_528, avecurArray528 ,  avets14IrradArray528  , ErrcurArray528 , ts14IrradErr528);
+  gr528_ts14 -> SetTitle( "Average TS14 Temperature vs Average Predicted Beam Current");
+  gr528_ts14 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr528_ts14 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr528_ts14 -> SetMarkerStyle(24);
+  gr528_ts14 -> GetYaxis() -> SetRangeUser(0.8 , 2.3);
+  gr528_ts14 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr528_ts14 -> GetXaxis() -> SetTitleSize(0.05);
+  gr528_ts14 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr528_ts14 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr528_ts14 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr528_ts14 -> SetMarkerColor(1);
+
+
+  TGraphErrors *gr528_ts16 = new TGraphErrors( counts_528, avecurArray528 ,  avets16IrradArray528  , ErrcurArray528 , ts16IrradErr528);
+  gr528_ts16 -> SetTitle( "Average TS16 Temperature vs Average Predicted Beam Current");
+  gr528_ts16 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr528_ts16 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr528_ts16 -> SetMarkerStyle(25);
+  gr528_ts16 -> GetYaxis() -> SetRangeUser(0.8, 2.3);
+  gr528_ts16 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr528_ts16 -> GetXaxis() -> SetTitleSize(0.05);
+  gr528_ts16 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr528_ts16 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr528_ts16 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr528_ts16 -> SetMarkerColor(1);
+
+
+  //529
+  TGraphErrors *gr529_ts11 = new TGraphErrors( counts_529, avecurArray529 ,  avets11IrradArray529  , ErrcurArray529 , ts11IrradErr529);
+  gr529_ts11 -> SetTitle( "Average TS11 Temperature vs Average Predicted Beam Current");
+  gr529_ts11 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr529_ts11 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr529_ts11 -> SetMarkerStyle(20);
+  gr529_ts11 -> GetYaxis() -> SetRangeUser(0.8 , 1.2);
+  gr529_ts11 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr529_ts11 -> GetXaxis() -> SetTitleSize(0.05);
+  gr529_ts11 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr529_ts11 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr529_ts11 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr529_ts11 -> SetMarkerColor(1);
+
+  TGraphErrors *gr529_ts12 = new TGraphErrors( counts_529, avecurArray529 ,  avets12IrradArray529  , ErrcurArray529 , ts12IrradErr529);
+  gr529_ts12 -> SetTitle( "Average TS12 Temperature vs Average Predicted Beam Current");
+  gr529_ts12 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr529_ts12 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr529_ts12 -> SetMarkerStyle(21);
+  gr529_ts12 -> GetYaxis() -> SetRangeUser(0.8 , 2.3);
+  gr529_ts12 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr529_ts12 -> GetXaxis() -> SetTitleSize(0.05);
+  gr529_ts12 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr529_ts12 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr529_ts12 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr529_ts12 -> SetMarkerColor(1);
+
+  TGraphErrors *gr529_ts14 = new TGraphErrors( counts_529, avecurArray529 ,  avets14IrradArray529  , ErrcurArray529 , ts14IrradErr529);
+  gr529_ts14 -> SetTitle( "Average TS14 Temperature vs Average Predicted Beam Current");
+  gr529_ts14 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr529_ts14 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr529_ts14 -> SetMarkerStyle(24);
+  gr529_ts14 -> GetYaxis() -> SetRangeUser(0.8 , 2.3);
+  gr529_ts14 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr529_ts14 -> GetXaxis() -> SetTitleSize(0.05);
+  gr529_ts14 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr529_ts14 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr529_ts14 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr529_ts14 -> SetMarkerColor(1);
+
+
+  TGraphErrors *gr529_ts16 = new TGraphErrors( counts_529, avecurArray529 ,  avets16IrradArray529  , ErrcurArray529 , ts16IrradErr529);
+  gr529_ts16 -> SetTitle( "Average TS16 Temperature vs Average Predicted Beam Current");
+  gr529_ts16 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
+  gr529_ts16 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr529_ts16 -> SetMarkerStyle(25);
+  gr529_ts16 -> GetYaxis() -> SetRangeUser(0.8, 2.3);
+  gr529_ts16 -> GetXaxis()-> SetLimits(0., 1.2);
+  gr529_ts16 -> GetXaxis() -> SetTitleSize(0.05);
+  gr529_ts16 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr529_ts16 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr529_ts16 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr529_ts16 -> SetMarkerColor(1);
   
+
+  gr524_ts11 -> Draw("AP");
+  gr524_ts12 -> Draw("p");
+  gr524_ts14 -> Draw("p");
+  gr524_ts16 -> Draw("p");
+  gr525_ts11 -> Draw("P");
+  gr525_ts12 -> Draw("p");
+  gr525_ts14 -> Draw("p");
+  gr525_ts16 -> Draw("p");
+  //gr526_ts11 -> Draw("P");
+  //gr526_ts12 -> Draw("p");
+  //gr526_ts14 -> Draw("p");
+  //gr526_ts16 -> Draw("p");
+  gr527_ts11 -> Draw("P");
+  gr527_ts12 -> Draw("p");
+  gr527_ts14 -> Draw("p");
+  gr527_ts16 -> Draw("p");
+  gr528_ts11 -> Draw("P");
+  gr528_ts12 -> Draw("p");
+  gr528_ts14 -> Draw("p");
+  gr528_ts16 -> Draw("p");
+  gr529_ts11 -> Draw("P");
+  gr529_ts12 -> Draw("p");
+  gr529_ts14 -> Draw("p");
+  gr529_ts16 -> Draw("p");
+  legtemp -> Draw();
+
+  myfile.close();
 }
