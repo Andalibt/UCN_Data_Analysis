@@ -122,6 +122,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   double UCNIntegralManualArray [100];
   double UCNIntegralManualErrArray[100];
   int counts = 0;
+  int oldcounts;
 
   double UCNIntegralArray_1muA[100];
   double UCNIntegralErrArray_1muA[100];
@@ -169,6 +170,8 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   int counts_10muA = 0;
   // to 662
   for (midasrun = 614; midasrun < 662 ; midasrun++){
+    cout << midasrun << endl;
+    // cout << counts << " " << oldcounts << endl;
     if (midasrun == 637 || midasrun == 654 || midasrun == 659 )
       continue;
     sprintf (filename , "./2ndpass/outputTree_%d.root",midasrun);
@@ -343,13 +346,17 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
     double avets14VOErrArray_10muA[100];
     double avets16VOErrArray_10muA[100];
     
+    // write to file
 
+    ofstream myfile;
+    myfile.open("./2ndpass/TCN17007_Data.csv" , std::ios::app);
   
     ULong64_t events;
     events = (Double_t) outputTree -> GetEntries();
     
     for (ULong64_t j = 0 ; j < events ; j++){
       outputTree -> GetEvent(j);
+      //cout << counts << endl;
       //if (UCNIntegral < 10)
       //continue;
       if (midasrun == 614 && j == 1 )
@@ -412,6 +419,9 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
       // cout << UCNIntegralManualArray[counts] << endl;
       UCNIntegralManualErrArray[counts] = sqrt(UCNIntegralManualArray[counts]);
       //cout << " The irradiation time for run " <<midasrun << " for cycle "<< counts << " is "<< cycleStartTimes - irradStartTimes << endl;
+
+
+      
       
       // *******************
       // FOR THE FINAL GRAPH
@@ -447,6 +457,7 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
 	avets16VOArray_1muA[counts_1muA] = avets16ValveOpen;
 	avets16VOErrArray_1muA[counts_1muA] = (maxts16ValveOpen - mints16ValveOpen)/2;
 	//cout << "Current " << avecur << " Counts " << UCNIntegralManualArray_1muA[counts_1muA] << endl;
+
 	counts_1muA++;
       }
       
@@ -584,18 +595,21 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
 	avets16VOErrArray_10muA[counts_10muA] = (maxts16ValveOpen - mints16ValveOpen)/2;
 	counts_10muA++;
       }
+
+      myfile << HistIntegralArray[counts] << " "<< HistIntegralErrArray[counts] << " " << UCNIntegralManualArray[counts] << " " << UCNIntegralManualErrArray[counts] << " " << avecurArray[counts] << " " << ErrcurArray[counts] << " " << avets11ValveOpenArray[counts] << " " << ts11ValveOpenErr[counts] << " " << avets12ValveOpenArray[counts] << " " <<ts12ValveOpenErr[counts] << " " << avets14ValveOpenArray[counts] << " " << ts14ValveOpenErr[counts] << " " << avets16ValveOpenArray[counts] << " " << ts16ValveOpenErr[counts] << endl;
+
+      
       counts++;
       //cout << counts << endl;
     }
     
     
     
-    
+    /*
     // *******************
     //     GRAPHS
     // ******************
     
-#if 0
     
     TCanvas *c_cylceNum =  new TCanvas("c_cycleNum" , "c_cycleNum " , 1200, 900);
     c_cycleNum-> Divide(2,2);
@@ -837,11 +851,16 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
     //gr_HistIrrad -> Draw("p");
     //gr_HistValveOpen -> Draw("p");
     leg3 -> Draw();
-    
-#endif
+    */
+
+
+    oldcounts = counts;
+
     fin -> Close();
+    myfile.close();
   }
   
+  /*
   TF1 *f1 = new TF1("f1" , "[0]*[1]*(1 - exp(-x/[1]))" , 0 , 150);
   f1 -> SetParName(0, "P");
   f1 -> SetParName(1, "#tau");
@@ -1945,6 +1964,642 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
   gr10muA_VOtemp16 -> Draw("P");
   legtemp_10muA -> Draw();
 
+  // temperature vs irradiation time at different beam current
+
+  TCanvas *ctemp_irrad = new TCanvas("ctemp_irrad" , "ctemp_irrad", 1200, 900);
+  ctemp_irrad -> Divide(2,3);
 
   
+  //1.5 muA
+
+
+  ctemp_irrad -> cd(1);
+  TGraphErrors *grtemp11irrad_1muA = new TGraphErrors(counts_1muA, irradtimeArray_1muA, avets11IrradArray_1muA , 0 , avets11IrradErrArray_1muA);
+  grtemp11irrad_1muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp11irrad_1muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp11irrad_1muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp11irrad_1muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp11irrad_1muA -> SetMarkerStyle(20);
+  grtemp11irrad_1muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp11irrad_1muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp11irrad_1muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp11irrad_1muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp11irrad_1muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp11irrad_1muA -> SetMarkerColor(1);
+
+
+  TGraphErrors *grtemp11VO_1muA = new TGraphErrors(counts_1muA, irradtimeArray_1muA, avets11VOArray_1muA , 0 , avets11VOErrArray_1muA);
+  grtemp11VO_1muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp11VO_1muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp11VO_1muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp11VO_1muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp11VO_1muA -> SetMarkerStyle(24);
+  grtemp11VO_1muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp11VO_1muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp11VO_1muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp11VO_1muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp11VO_1muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp11VO_1muA -> SetMarkerColor(1);
+
+
+
+  TGraphErrors *grtemp12irrad_1muA = new TGraphErrors(counts_1muA, irradtimeArray_1muA, avets12IrradArray_1muA , 0 , avets12IrradErrArray_1muA);
+  grtemp12irrad_1muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp12irrad_1muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp12irrad_1muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp12irrad_1muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp12irrad_1muA -> SetMarkerStyle(20);
+  grtemp12irrad_1muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp12irrad_1muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp12irrad_1muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp12irrad_1muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp12irrad_1muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp12irrad_1muA -> SetMarkerColor(2);
+
+
+  TGraphErrors *grtemp12VO_1muA = new TGraphErrors(counts_1muA, irradtimeArray_1muA, avets12VOArray_1muA , 0 , avets12VOErrArray_1muA);
+  grtemp12VO_1muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp12VO_1muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp12VO_1muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp12VO_1muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp12VO_1muA -> SetMarkerStyle(24);
+  grtemp12VO_1muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp12VO_1muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp12VO_1muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp12VO_1muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp12VO_1muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp12VO_1muA -> SetMarkerColor(2);
+
+
+
+  TGraphErrors *grtemp14irrad_1muA = new TGraphErrors(counts_1muA, irradtimeArray_1muA, avets14IrradArray_1muA , 0 , avets14IrradErrArray_1muA);
+  grtemp14irrad_1muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp14irrad_1muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp14irrad_1muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp14irrad_1muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp14irrad_1muA -> SetMarkerStyle(20);
+  grtemp14irrad_1muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp14irrad_1muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp14irrad_1muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp14irrad_1muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp14irrad_1muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp14irrad_1muA -> SetMarkerColor(4);
+
+
+  TGraphErrors *grtemp14VO_1muA = new TGraphErrors(counts_1muA, irradtimeArray_1muA, avets14VOArray_1muA , 0 , avets14VOErrArray_1muA);
+  grtemp14VO_1muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp14VO_1muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp14VO_1muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp14VO_1muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp14VO_1muA -> SetMarkerStyle(24);
+  grtemp14VO_1muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp14VO_1muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp14VO_1muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp14VO_1muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp14VO_1muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp14VO_1muA -> SetMarkerColor(4);
+
+
+  TGraphErrors *grtemp16irrad_1muA = new TGraphErrors(counts_1muA, irradtimeArray_1muA, avets16IrradArray_1muA , 0 , avets16IrradErrArray_1muA);
+  grtemp16irrad_1muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp16irrad_1muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp16irrad_1muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp16irrad_1muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp16irrad_1muA -> SetMarkerStyle(20);
+  grtemp16irrad_1muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp16irrad_1muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp16irrad_1muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp16irrad_1muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp16irrad_1muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp16irrad_1muA -> SetMarkerColor(8);
+
+
+  TGraphErrors *grtemp16VO_1muA = new TGraphErrors(counts_1muA, irradtimeArray_1muA, avets16VOArray_1muA , 0 , avets16VOErrArray_1muA);
+  grtemp16VO_1muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp16VO_1muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp16VO_1muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp16VO_1muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp16VO_1muA -> SetMarkerStyle(24);
+  grtemp16VO_1muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp16VO_1muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp16VO_1muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp16VO_1muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp16VO_1muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp16VO_1muA -> SetMarkerColor(8);
+  
+
+  grtemp12irrad_1muA -> Draw("Ap");
+  grtemp12VO_1muA -> Draw("P");
+  //grtemp11irrad_1muA -> Draw("p");
+  //grtemp11VO_1muA -> Draw("P");
+  //grtemp14irrad_1muA -> Draw("p");
+  //grtemp14VO_1muA -> Draw("P");
+  //grtemp16irrad_1muA -> Draw("p");
+  //grtemp16VO_1muA -> Draw("P");
+  //legtemp_1muA -> Draw();
+
+  // 3muA
+  ctemp_irrad -> cd(2);
+  TGraphErrors *grtemp11irrad_3muA = new TGraphErrors(counts_3muA, irradtimeArray_3muA, avets11IrradArray_3muA , 0 , avets11IrradErrArray_3muA);
+  grtemp11irrad_3muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp11irrad_3muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp11irrad_3muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp11irrad_3muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp11irrad_3muA -> SetMarkerStyle(20);
+  grtemp11irrad_3muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp11irrad_3muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp11irrad_3muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp11irrad_3muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp11irrad_3muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp11irrad_3muA -> SetMarkerColor(1);
+
+
+  TGraphErrors *grtemp11VO_3muA = new TGraphErrors(counts_3muA, irradtimeArray_3muA, avets11VOArray_3muA , 0 , avets11VOErrArray_3muA);
+  grtemp11VO_3muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp11VO_3muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp11VO_3muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp11VO_3muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp11VO_3muA -> SetMarkerStyle(24);
+  grtemp11VO_3muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp11VO_3muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp11VO_3muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp11VO_3muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp11VO_3muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp11VO_3muA -> SetMarkerColor(1);
+
+
+
+  TGraphErrors *grtemp12irrad_3muA = new TGraphErrors(counts_3muA, irradtimeArray_3muA, avets12IrradArray_3muA , 0 , avets12IrradErrArray_3muA);
+  grtemp12irrad_3muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp12irrad_3muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp12irrad_3muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp12irrad_3muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp12irrad_3muA -> SetMarkerStyle(20);
+  grtemp12irrad_3muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp12irrad_3muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp12irrad_3muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp12irrad_3muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp12irrad_3muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp12irrad_3muA -> SetMarkerColor(2);
+
+
+  TGraphErrors *grtemp12VO_3muA = new TGraphErrors(counts_3muA, irradtimeArray_3muA, avets12VOArray_3muA , 0 , avets12VOErrArray_3muA);
+  grtemp12VO_3muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp12VO_3muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp12VO_3muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp12VO_3muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp12VO_3muA -> SetMarkerStyle(24);
+  grtemp12VO_3muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp12VO_3muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp12VO_3muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp12VO_3muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp12VO_3muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp12VO_3muA -> SetMarkerColor(2);
+
+
+
+  TGraphErrors *grtemp14irrad_3muA = new TGraphErrors(counts_3muA, irradtimeArray_3muA, avets14IrradArray_3muA , 0 , avets14IrradErrArray_3muA);
+  grtemp14irrad_3muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp14irrad_3muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp14irrad_3muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp14irrad_3muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp14irrad_3muA -> SetMarkerStyle(20);
+  grtemp14irrad_3muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp14irrad_3muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp14irrad_3muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp14irrad_3muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp14irrad_3muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp14irrad_3muA -> SetMarkerColor(4);
+
+
+  TGraphErrors *grtemp14VO_3muA = new TGraphErrors(counts_3muA, irradtimeArray_3muA, avets14VOArray_3muA , 0 , avets14VOErrArray_3muA);
+  grtemp14VO_3muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp14VO_3muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp14VO_3muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp14VO_3muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp14VO_3muA -> SetMarkerStyle(24);
+  grtemp14VO_3muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp14VO_3muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp14VO_3muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp14VO_3muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp14VO_3muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp14VO_3muA -> SetMarkerColor(4);
+
+
+  TGraphErrors *grtemp16irrad_3muA = new TGraphErrors(counts_3muA, irradtimeArray_3muA, avets16IrradArray_3muA , 0 , avets16IrradErrArray_3muA);
+  grtemp16irrad_3muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp16irrad_3muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp16irrad_3muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp16irrad_3muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp16irrad_3muA -> SetMarkerStyle(20);
+  grtemp16irrad_3muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp16irrad_3muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp16irrad_3muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp16irrad_3muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp16irrad_3muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp16irrad_3muA -> SetMarkerColor(8);
+
+
+  TGraphErrors *grtemp16VO_3muA = new TGraphErrors(counts_3muA, irradtimeArray_3muA, avets16VOArray_3muA , 0 , avets16VOErrArray_3muA);
+  grtemp16VO_3muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp16VO_3muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp16VO_3muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp16VO_3muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp16VO_3muA -> SetMarkerStyle(24);
+  grtemp16VO_3muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp16VO_3muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp16VO_3muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp16VO_3muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp16VO_3muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp16VO_3muA -> SetMarkerColor(8);
+  
+
+  grtemp12irrad_3muA -> Draw("Ap");
+  grtemp12VO_3muA -> Draw("P");
+  //grtemp11irrad_3muA -> Draw("p");
+  //grtemp11VO_3muA -> Draw("P");
+  //grtemp14irrad_3muA -> Draw("p");
+  //grtemp14VO_3muA -> Draw("P");
+  //grtemp16irrad_3muA -> Draw("p");
+  //grtemp16VO_3muA -> Draw("P");
+  //legtemp_3muA -> Draw();
+
+  // 5muA
+  ctemp_irrad -> cd(3);
+  TGraphErrors *grtemp11irrad_5muA = new TGraphErrors(counts_5muA, irradtimeArray_5muA, avets11IrradArray_5muA , 0 , avets11IrradErrArray_5muA);
+  grtemp11irrad_5muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp11irrad_5muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp11irrad_5muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp11irrad_5muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp11irrad_5muA -> SetMarkerStyle(20);
+  grtemp11irrad_5muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp11irrad_5muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp11irrad_5muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp11irrad_5muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp11irrad_5muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp11irrad_5muA -> SetMarkerColor(1);
+
+
+  TGraphErrors *grtemp11VO_5muA = new TGraphErrors(counts_5muA, irradtimeArray_5muA, avets11VOArray_5muA , 0 , avets11VOErrArray_5muA);
+  grtemp11VO_5muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp11VO_5muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp11VO_5muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp11VO_5muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp11VO_5muA -> SetMarkerStyle(24);
+  grtemp11VO_5muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp11VO_5muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp11VO_5muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp11VO_5muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp11VO_5muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp11VO_5muA -> SetMarkerColor(1);
+
+
+
+  TGraphErrors *grtemp12irrad_5muA = new TGraphErrors(counts_5muA, irradtimeArray_5muA, avets12IrradArray_5muA , 0 , avets12IrradErrArray_5muA);
+  grtemp12irrad_5muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp12irrad_5muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp12irrad_5muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp12irrad_5muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp12irrad_5muA -> SetMarkerStyle(20);
+  grtemp12irrad_5muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp12irrad_5muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp12irrad_5muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp12irrad_5muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp12irrad_5muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp12irrad_5muA -> SetMarkerColor(2);
+
+
+  TGraphErrors *grtemp12VO_5muA = new TGraphErrors(counts_5muA, irradtimeArray_5muA, avets12VOArray_5muA , 0 , avets12VOErrArray_5muA);
+  grtemp12VO_5muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp12VO_5muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp12VO_5muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp12VO_5muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp12VO_5muA -> SetMarkerStyle(24);
+  grtemp12VO_5muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp12VO_5muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp12VO_5muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp12VO_5muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp12VO_5muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp12VO_5muA -> SetMarkerColor(2);
+
+
+
+  TGraphErrors *grtemp14irrad_5muA = new TGraphErrors(counts_5muA, irradtimeArray_5muA, avets14IrradArray_5muA , 0 , avets14IrradErrArray_5muA);
+  grtemp14irrad_5muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp14irrad_5muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp14irrad_5muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp14irrad_5muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp14irrad_5muA -> SetMarkerStyle(20);
+  grtemp14irrad_5muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp14irrad_5muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp14irrad_5muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp14irrad_5muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp14irrad_5muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp14irrad_5muA -> SetMarkerColor(4);
+
+
+  TGraphErrors *grtemp14VO_5muA = new TGraphErrors(counts_5muA, irradtimeArray_5muA, avets14VOArray_5muA , 0 , avets14VOErrArray_5muA);
+  grtemp14VO_5muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp14VO_5muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp14VO_5muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp14VO_5muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp14VO_5muA -> SetMarkerStyle(24);
+  grtemp14VO_5muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp14VO_5muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp14VO_5muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp14VO_5muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp14VO_5muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp14VO_5muA -> SetMarkerColor(4);
+
+
+  TGraphErrors *grtemp16irrad_5muA = new TGraphErrors(counts_5muA, irradtimeArray_5muA, avets16IrradArray_5muA , 0 , avets16IrradErrArray_5muA);
+  grtemp16irrad_5muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp16irrad_5muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp16irrad_5muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp16irrad_5muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp16irrad_5muA -> SetMarkerStyle(20);
+  grtemp16irrad_5muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp16irrad_5muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp16irrad_5muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp16irrad_5muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp16irrad_5muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp16irrad_5muA -> SetMarkerColor(8);
+
+
+  TGraphErrors *grtemp16VO_5muA = new TGraphErrors(counts_5muA, irradtimeArray_5muA, avets16VOArray_5muA , 0 , avets16VOErrArray_5muA);
+  grtemp16VO_5muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp16VO_5muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp16VO_5muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp16VO_5muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp16VO_5muA -> SetMarkerStyle(24);
+  grtemp16VO_5muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp16VO_5muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp16VO_5muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp16VO_5muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp16VO_5muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp16VO_5muA -> SetMarkerColor(8);
+  
+
+  grtemp12irrad_5muA -> Draw("Ap");
+  grtemp12VO_5muA -> Draw("P");
+  //grtemp11irrad_5muA -> Draw("p");
+  //grtemp11VO_5muA -> Draw("P");
+  //grtemp14irrad_5muA -> Draw("p");
+  //grtemp14VO_5muA -> Draw("P");
+  //grtemp16irrad_5muA -> Draw("p");
+  //grtemp16VO_5muA -> Draw("P");
+  //legtemp_5muA -> Draw();
+
+  //7.1 muA
+  ctemp_irrad -> cd(4);
+  TGraphErrors *grtemp11irrad_7muA = new TGraphErrors(counts_7muA, irradtimeArray_7muA, avets11IrradArray_7muA , 0 , avets11IrradErrArray_7muA);
+  grtemp11irrad_7muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp11irrad_7muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp11irrad_7muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp11irrad_7muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp11irrad_7muA -> SetMarkerStyle(20);
+  grtemp11irrad_7muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp11irrad_7muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp11irrad_7muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp11irrad_7muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp11irrad_7muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp11irrad_7muA -> SetMarkerColor(1);
+
+
+  TGraphErrors *grtemp11VO_7muA = new TGraphErrors(counts_7muA, irradtimeArray_7muA, avets11VOArray_7muA , 0 , avets11VOErrArray_7muA);
+  grtemp11VO_7muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp11VO_7muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp11VO_7muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp11VO_7muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp11VO_7muA -> SetMarkerStyle(24);
+  grtemp11VO_7muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp11VO_7muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp11VO_7muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp11VO_7muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp11VO_7muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp11VO_7muA -> SetMarkerColor(1);
+
+
+
+  TGraphErrors *grtemp12irrad_7muA = new TGraphErrors(counts_7muA, irradtimeArray_7muA, avets12IrradArray_7muA , 0 , avets12IrradErrArray_7muA);
+  grtemp12irrad_7muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp12irrad_7muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp12irrad_7muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp12irrad_7muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp12irrad_7muA -> SetMarkerStyle(20);
+  grtemp12irrad_7muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp12irrad_7muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp12irrad_7muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp12irrad_7muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp12irrad_7muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp12irrad_7muA -> SetMarkerColor(2);
+
+
+  TGraphErrors *grtemp12VO_7muA = new TGraphErrors(counts_7muA, irradtimeArray_7muA, avets12VOArray_7muA , 0 , avets12VOErrArray_7muA);
+  grtemp12VO_7muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp12VO_7muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp12VO_7muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp12VO_7muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp12VO_7muA -> SetMarkerStyle(24);
+  grtemp12VO_7muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp12VO_7muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp12VO_7muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp12VO_7muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp12VO_7muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp12VO_7muA -> SetMarkerColor(2);
+
+
+
+  TGraphErrors *grtemp14irrad_7muA = new TGraphErrors(counts_7muA, irradtimeArray_7muA, avets14IrradArray_7muA , 0 , avets14IrradErrArray_7muA);
+  grtemp14irrad_7muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp14irrad_7muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp14irrad_7muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp14irrad_7muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp14irrad_7muA -> SetMarkerStyle(20);
+  grtemp14irrad_7muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp14irrad_7muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp14irrad_7muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp14irrad_7muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp14irrad_7muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp14irrad_7muA -> SetMarkerColor(4);
+
+
+  TGraphErrors *grtemp14VO_7muA = new TGraphErrors(counts_7muA, irradtimeArray_7muA, avets14VOArray_7muA , 0 , avets14VOErrArray_7muA);
+  grtemp14VO_7muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp14VO_7muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp14VO_7muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp14VO_7muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp14VO_7muA -> SetMarkerStyle(24);
+  grtemp14VO_7muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp14VO_7muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp14VO_7muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp14VO_7muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp14VO_7muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp14VO_7muA -> SetMarkerColor(4);
+
+
+  TGraphErrors *grtemp16irrad_7muA = new TGraphErrors(counts_7muA, irradtimeArray_7muA, avets16IrradArray_7muA , 0 , avets16IrradErrArray_7muA);
+  grtemp16irrad_7muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp16irrad_7muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp16irrad_7muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp16irrad_7muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp16irrad_7muA -> SetMarkerStyle(20);
+  grtemp16irrad_7muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp16irrad_7muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp16irrad_7muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp16irrad_7muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp16irrad_7muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp16irrad_7muA -> SetMarkerColor(8);
+
+
+  TGraphErrors *grtemp16VO_7muA = new TGraphErrors(counts_7muA, irradtimeArray_7muA, avets16VOArray_7muA , 0 , avets16VOErrArray_7muA);
+  grtemp16VO_7muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp16VO_7muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp16VO_7muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp16VO_7muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp16VO_7muA -> SetMarkerStyle(24);
+  grtemp16VO_7muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp16VO_7muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp16VO_7muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp16VO_7muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp16VO_7muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp16VO_7muA -> SetMarkerColor(8);
+  
+
+  grtemp12irrad_7muA -> Draw("Ap");
+  grtemp12VO_7muA -> Draw("P");
+  //grtemp11irrad_7muA -> Draw("p");
+  //grtemp11VO_7muA -> Draw("P");
+  //grtemp14irrad_7muA -> Draw("p");
+  //grtemp14VO_7muA -> Draw("P");
+  //grtemp16irrad_7muA -> Draw("p");
+  //grtemp16VO_7muA -> Draw("P");
+  //legtemp_7muA -> Draw();
+
+  //10 muA
+  ctemp_irrad -> cd(5);
+  TGraphErrors *grtemp11irrad_10muA = new TGraphErrors(counts_10muA, irradtimeArray_10muA, avets11IrradArray_10muA , 0 , avets11IrradErrArray_10muA);
+  grtemp11irrad_10muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp11irrad_10muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp11irrad_10muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp11irrad_10muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp11irrad_10muA -> SetMarkerStyle(20);
+  grtemp11irrad_10muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp11irrad_10muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp11irrad_10muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp11irrad_10muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp11irrad_10muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp11irrad_10muA -> SetMarkerColor(1);
+
+
+  TGraphErrors *grtemp11VO_10muA = new TGraphErrors(counts_10muA, irradtimeArray_10muA, avets11VOArray_10muA , 0 , avets11VOErrArray_10muA);
+  grtemp11VO_10muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp11VO_10muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp11VO_10muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp11VO_10muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp11VO_10muA -> SetMarkerStyle(24);
+  grtemp11VO_10muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp11VO_10muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp11VO_10muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp11VO_10muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp11VO_10muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp11VO_10muA -> SetMarkerColor(1);
+
+
+
+  TGraphErrors *grtemp12irrad_10muA = new TGraphErrors(counts_10muA, irradtimeArray_10muA, avets12IrradArray_10muA , 0 , avets12IrradErrArray_10muA);
+  grtemp12irrad_10muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp12irrad_10muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp12irrad_10muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp12irrad_10muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp12irrad_10muA -> SetMarkerStyle(20);
+  grtemp12irrad_10muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp12irrad_10muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp12irrad_10muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp12irrad_10muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp12irrad_10muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp12irrad_10muA -> SetMarkerColor(2);
+
+
+  TGraphErrors *grtemp12VO_10muA = new TGraphErrors(counts_10muA, irradtimeArray_10muA, avets12VOArray_10muA , 0 , avets12VOErrArray_10muA);
+  grtemp12VO_10muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp12VO_10muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp12VO_10muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp12VO_10muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp12VO_10muA -> SetMarkerStyle(24);
+  grtemp12VO_10muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp12VO_10muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp12VO_10muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp12VO_10muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp12VO_10muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp12VO_10muA -> SetMarkerColor(2);
+
+
+
+  TGraphErrors *grtemp14irrad_10muA = new TGraphErrors(counts_10muA, irradtimeArray_10muA, avets14IrradArray_10muA , 0 , avets14IrradErrArray_10muA);
+  grtemp14irrad_10muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp14irrad_10muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp14irrad_10muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp14irrad_10muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp14irrad_10muA -> SetMarkerStyle(20);
+  grtemp14irrad_10muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp14irrad_10muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp14irrad_10muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp14irrad_10muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp14irrad_10muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp14irrad_10muA -> SetMarkerColor(4);
+
+
+  TGraphErrors *grtemp14VO_10muA = new TGraphErrors(counts_10muA, irradtimeArray_10muA, avets14VOArray_10muA , 0 , avets14VOErrArray_10muA);
+  grtemp14VO_10muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp14VO_10muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp14VO_10muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp14VO_10muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp14VO_10muA -> SetMarkerStyle(24);
+  grtemp14VO_10muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp14VO_10muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp14VO_10muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp14VO_10muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp14VO_10muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp14VO_10muA -> SetMarkerColor(4);
+
+
+  TGraphErrors *grtemp16irrad_10muA = new TGraphErrors(counts_10muA, irradtimeArray_10muA, avets16IrradArray_10muA , 0 , avets16IrradErrArray_10muA);
+  grtemp16irrad_10muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp16irrad_10muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp16irrad_10muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp16irrad_10muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp16irrad_10muA -> SetMarkerStyle(20);
+  grtemp16irrad_10muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp16irrad_10muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp16irrad_10muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp16irrad_10muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp16irrad_10muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp16irrad_10muA -> SetMarkerColor(8);
+
+
+  TGraphErrors *grtemp16VO_10muA = new TGraphErrors(counts_10muA, irradtimeArray_10muA, avets16VOArray_10muA , 0 , avets16VOErrArray_10muA);
+  grtemp16VO_10muA -> SetTitle( "Average Isopure Temperature vs Irradiation Time");
+  grtemp16VO_10muA -> GetYaxis()-> SetTitle("Isopure Helium Temperature (K)" );
+  grtemp16VO_10muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  grtemp16VO_10muA -> GetYaxis() -> SetRangeUser (0.8, 1.4);
+  grtemp16VO_10muA -> SetMarkerStyle(24);
+  grtemp16VO_10muA -> GetXaxis()-> SetLimits(0, 150);
+  grtemp16VO_10muA -> GetXaxis() -> SetTitleSize(0.05);
+  grtemp16VO_10muA -> GetXaxis() -> SetTitleOffset(1.0);
+  grtemp16VO_10muA -> GetYaxis() -> SetTitleSize(0.05); 
+  grtemp16VO_10muA -> GetYaxis() -> SetTitleOffset(0.9);
+  grtemp16VO_10muA -> SetMarkerColor(8);
+  
+
+  grtemp12irrad_10muA -> Draw("Ap");
+  grtemp12VO_10muA -> Draw("P");
+  //grtemp11irrad_10muA -> Draw("p");
+  //grtemp11VO_10muA -> Draw("P");
+  //grtemp14irrad_10muA -> Draw("p");
+  //grtemp14VO_10muA -> Draw("P");
+  //grtemp16irrad_10muA -> Draw("p");
+  //grtemp16VO_10muA -> Draw("P");
+  //legtemp_10muA -> Draw();
+  */ 
 }
