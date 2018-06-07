@@ -595,10 +595,10 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
 	avets16VOErrArray_10muA[counts_10muA] = (maxts16ValveOpen - mints16ValveOpen)/2;
 	counts_10muA++;
       }
+      if (cycleStartTimes - irradStartTimes > 59. && cycleStartTimes - irradStartTimes < 61. ){
+	myfile << HistIntegralArray[counts] << " "<< HistIntegralErrArray[counts] << " " << UCNIntegralManualArray[counts] << " " << UCNIntegralManualErrArray[counts] << " " << avecurArray[counts] << " " << ErrcurArray[counts] << " " << avets11ValveOpenArray[counts] << " " << ts11ValveOpenErr[counts] << " " << avets12ValveOpenArray[counts] << " " <<ts12ValveOpenErr[counts] << " " << avets14ValveOpenArray[counts] << " " << ts14ValveOpenErr[counts] << " " << avets16ValveOpenArray[counts] << " " << ts16ValveOpenErr[counts] << " " << maxts12ValveOpen << " " << mints12ValveOpen << endl;
 
-      myfile << HistIntegralArray[counts] << " "<< HistIntegralErrArray[counts] << " " << UCNIntegralManualArray[counts] << " " << UCNIntegralManualErrArray[counts] << " " << avecurArray[counts] << " " << ErrcurArray[counts] << " " << avets11ValveOpenArray[counts] << " " << ts11ValveOpenErr[counts] << " " << avets12ValveOpenArray[counts] << " " <<ts12ValveOpenErr[counts] << " " << avets14ValveOpenArray[counts] << " " << ts14ValveOpenErr[counts] << " " << avets16ValveOpenArray[counts] << " " << ts16ValveOpenErr[counts] << endl;
-
-      
+      }
       counts++;
       //cout << counts << endl;
     }
