@@ -448,7 +448,7 @@ void UCNCounts_17003B_Taraneh_edit_ver2(){
     UCNIntegralManualErrArray549[counts_549] = sqrt(UCNIntegralManualArray549[counts_549]);
     cout << " The irradiation time for run 549 for cycle "<< counts_549 << " is "<< cycleStartTimes549 - irradStartTimes549 << endl;
 
-    myfile << HistIntegralArray549[counts_549] << " " << HistIntegralErrArray549[counts_549] << " " << UCNIntegralManualArray549[counts_549] << " " << UCNIntegralManualErrArray549[counts_549] << " " << avets12ValveOpen549 << " " <<   ts12ValveOpenErr549[counts_549] << " " << avets11VO549 << " " << Errts11VO549[counts_549] << " " << avets14VO549 << " " <<
+    myfile << HistIntegralArray549[counts_549] << " " << HistIntegralErrArray549[counts_549] << " " << UCNIntegralManualArray549[counts_549] << " " << UCNIntegralManualErrArray549[counts_549] << " " << avets12ValveOpen549 << " " <<   ts12ValveOpenErr549[counts_549] << " " << avets11VO549 << " " << Errts11VO549[counts_549] << " " << avets14VO549 << " " << Errts14VO549[counts_549] << " " << avets16VO549 << " " << Errts16VO549[counts_549] << " 549"  << endl;
 
     
     counts_549++;
@@ -464,8 +464,8 @@ void UCNCounts_17003B_Taraneh_edit_ver2(){
   events550 = (Double_t) outputTree550 -> GetEntries();
 
   for (ULong64_t j = 0 ; j < events550 ; j++){
-
-
+    outputTree550 -> GetEvent(j);
+    
     HistIntegralArray550[counts_550] = HistIntegral550;
     HistIntegralErrArray550[counts_550] = sqrt (HistIntegral550);
     avets12IrradArray550[counts_550] = avets12Irrad550;
@@ -494,7 +494,10 @@ void UCNCounts_17003B_Taraneh_edit_ver2(){
     UCNIntegralManualArray550[counts_550] = HistIntegral550 - BASELINERATE550*(cycleValveCloseTime550 - cycleValveOpenTime550);
     // cout << UCNIntegralManualArray550[counts_550] << endl;
     UCNIntegralManualErrArray550[counts_550] = sqrt(UCNIntegralManualArray550);
-    cout << " The irradiation time for run 550  for cycle "<< counts_550 << " is "<< cycleStartTimes550 - irradStartTimes550 << endl; 
+    cout << " The irradiation time for run 550  for cycle "<< counts_550 << " is "<< cycleStartTimes550 - irradStartTimes550 << endl;
+    cout << HistIntegral550  << endl;
+    myfile << HistIntegralArray550[counts_550] << " " << HistIntegralErrArray550[counts_550] << " " << UCNIntegralManualArray550[counts_550] << " " << UCNIntegralManualErrArray550[counts_550] << " " << avets12ValveOpen550 << " " <<   ts12ValveOpenErr550[counts_550] << " " << avets11VO550 << " " << Errts11VO550[counts_550] << " " << avets14VO550 << " " << Errts14VO550[counts_550] << " " << avets16VO550 << " " << Errts16VO550[counts_550] << " 550" <<endl;
+    
     counts_550++;
   }
 
@@ -537,7 +540,10 @@ void UCNCounts_17003B_Taraneh_edit_ver2(){
     UCNIntegralManualArray551[counts_551] = HistIntegral551 - BASELINERATE551*(cycleValveCloseTime551 - cycleValveOpenTime551);
     // cout << UCNIntegralManualArray551[counts_551] << endl;
     UCNIntegralManualErrArray551[counts_551] = sqrt(UCNIntegralManualArray551[counts_551]);
-    cout << " The irradiation time for run 551 for cycle " << counts_551 << " is "<< cycleStartTimes551 - irradStartTimes551 << endl; 
+    cout << " The irradiation time for run 551 for cycle " << counts_551 << " is "<< cycleStartTimes551 - irradStartTimes551 << endl;
+
+    myfile << HistIntegralArray551[counts_551] << " " << HistIntegralErrArray551[counts_551] << " " << UCNIntegralManualArray551[counts_551] << " " << UCNIntegralManualErrArray551[counts_551] << " " << avets12ValveOpen551 << " " <<   ts12ValveOpenErr551[counts_551] << " " << avets11VO551 << " " << Errts11VO551[counts_551] << " " << avets14VO551 << " " << Errts14VO551[counts_551] << " " << avets16VO551 << " " << Errts16VO551[counts_551] << " 551" << endl;
+    
     counts_551++;
   }
 
@@ -583,7 +589,10 @@ void UCNCounts_17003B_Taraneh_edit_ver2(){
     UCNIntegralManualArray552[counts_552] = HistIntegral552 - BASELINERATE552*(cycleValveCloseTime552 - cycleValveOpenTime552);
     // cout << UCNIntegralManualArray552[counts_552] << endl;
     UCNIntegralManualErrArray552[counts_552] = sqrt(UCNIntegralManualArray552[counts_552]);
-    cout << " The irradiation time for run 552 for cycle "<< counts_552<< " is "<< cycleStartTimes552 - irradStartTimes552 << endl; 
+    cout << " The irradiation time for run 552 for cycle "<< counts_552<< " is "<< cycleStartTimes552 - irradStartTimes552 << endl;
+
+    myfile << HistIntegralArray552[counts_552] << " " << HistIntegralErrArray552[counts_552] << " " << UCNIntegralManualArray552[counts_552] << " " << UCNIntegralManualErrArray552[counts_552] << " " << avets12ValveOpen552 << " " <<   ts12ValveOpenErr552[counts_552] << " " << avets11VO552 << " " << Errts11VO552[counts_552] << " " << avets14VO552 << " " << Errts14VO552[counts_552] << " " << avets16VO552 << " " << Errts16VO552[counts_552] << " 552" << endl;
+    
     counts_552++;
   }
 
@@ -1246,7 +1255,7 @@ void UCNCounts_17003B_Taraneh_edit_ver2(){
 
 
 
-
+  myfile.close();
 
 
 
