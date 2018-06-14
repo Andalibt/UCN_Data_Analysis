@@ -74,14 +74,14 @@ void UCNCounts_vs_Beam(){
   double maxts12VO2[max];
   double mints12VO2[max];
 
-
+  int midasrun2[max];
   int i1;
   int i2;
 
   while (fin1 >> countsWB1[i1] >> countsWBErr1[i1] >> countsWOB1[i1] >> countsWOBErr1[i1] >> avecur1[i1] >> avecurErr1[i1] >> avets11Irrad1[i1] >> avets11IrradErr1[i1] >> avets12Irrad1[i1] >> avets12IrradErr1[i1] >> avets14Irrad1[i1] >> avets14IrradErr1[i1] >> avets16Irrad1[i1] >> avets16IrradErr1[i1] >> avets11VO1[i1] >> avets11VOErr1[i1] >> avets12VO1[i1] >> avets12VOErr1[i1] >> avets14VO1[i1] >> avets14VOErr1[i1] >> avets16VO1[i1] >>  avets16VOErr1[i1] >> maxts12VO1[i1] >> mints12VO1[i1])
     i1++;
 
-  while (fin2 >> countsWB2[i2] >> countsWBErr2[i2] >> countsWOB2[i2] >> countsWOBErr2[i2] >> avecur2[i2] >> avecurErr2[i2] >> avets11VO2[i2] >> avets11VOErr2[i2] >> avets12VO2[i2] >> avets12VOErr2[i2] >> avets14VO2[i2] >> avets14VOErr2[i2] >> avets16VO2[i2] >> avets16VOErr2[i2] >> maxts12VO2[i2] >> mints12VO2[i2])
+  while (fin2 >> countsWB2[i2] >> countsWBErr2[i2] >> countsWOB2[i2] >> countsWOBErr2[i2] >> avecur2[i2] >> avecurErr2[i2] >> avets11VO2[i2] >> avets11VOErr2[i2] >> avets12VO2[i2] >> avets12VOErr2[i2] >> avets14VO2[i2] >> avets14VOErr2[i2] >> avets16VO2[i2] >> avets16VOErr2[i2] >> maxts12VO2[i2] >> mints12VO2[i2]>>midasrun2[i2])
     i2++;
 
 
@@ -92,27 +92,29 @@ void UCNCounts_vs_Beam(){
   TF1 *f2 = new TF1 ("f2" , "[0]*x" , 2, 10);
   f2 -> SetParameter(0, 30000);
 
-  gStyle -> SetOptFit (1111);
+  gStyle -> SetOptFit (0000);
   TCanvas *c1 = new TCanvas ("c1" , "c1" , 1200, 900);
   //c1 -> SetLogy();
   TGraphErrors *gr1 = new TGraphErrors(i1, avecur1 , countsWOB1 , avecurErr1 , countsWOBErr1);
 
-  gr1 -> GetYaxis() -> SetRangeUser (-50, 400000);
+  gr1 -> GetYaxis() -> SetRangeUser (1, 400000);
   gr1 -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr1 -> GetXaxis()-> SetTitle("Average Predicted Current (#muA)" );
   gr1 -> GetYaxis()-> SetTitle("UCN Counts");
   gr1 -> SetMarkerStyle(20);
-  gr1 -> GetXaxis()-> SetLimits(0, 14);
-  gr1 -> GetXaxis() -> SetTitleSize(0.05);
+  gr1 -> GetXaxis()-> SetLimits(0, 17);
+  gr1 -> GetXaxis() -> SetTitleSize(0.07);
   gr1 -> GetXaxis() -> SetTitleOffset(1.0);
-  gr1 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr1 -> GetYaxis() -> SetTitleSize(0.07); 
   gr1 -> GetYaxis() -> SetTitleOffset(0.9);
+  gr1 -> GetXaxis() -> SetLabelSize(0.07);
+  gr1 -> GetYaxis() -> SetLabelSize(0.07);
   gr1 -> SetMarkerColor(1);
   f1 -> SetLineColor(8);
 
   TGraphErrors *gr2 = new TGraphErrors(i2, avecur2 , countsWOB2 , avecurErr2 , countsWOBErr2);
 
-  gr2 -> GetYaxis() -> SetRangeUser (1, 400000);
+  gr2 -> GetYaxis() -> SetRangeUser (1, 500000);
   gr2 -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
   gr2 -> GetXaxis()-> SetTitle("Average Predicted Current (#muA)" );
   gr2 -> GetYaxis()-> SetTitle("UCN Counts");
@@ -127,10 +129,10 @@ void UCNCounts_vs_Beam(){
   
 
   gr1 -> Draw("Ap");
-  gr1 -> Fit("f1");
+  //gr1 -> Fit("f1");
   f1 -> SetLineColor(2);
   gr2 -> Draw("p");
-  //gr2 -> Fit("f2");
+  // gr2 -> Fit("f2");
 
   cout << "i2 is " << i2 << endl;
   
@@ -163,7 +165,7 @@ void UCNCounts_vs_Beam(){
   
   
   for (int i = 0; i < i2; i++){
-    cout << avecur2[i] << " " << countsWOB2[i] << " " <<  avets12VO2[i] << endl;
+    cout << avecur2[i] << " " << countsWOB2[i] << " " <<  avets12VO2[i] << " " << midasrun2[i]<< endl;
 
     // for 1.5 muA
     if (avecur2[i] > 1.4 && avecur2[i] < 1.6){
@@ -343,25 +345,26 @@ void UCNCounts_vs_Beam(){
  
   
   TLatex l2;
-  l2.SetTextSize(0.02);
+  l2.SetTextSize(0.05);
   //l2.SetTextFont(15);
 
   
-  l2.DrawLatex(0.05 + 0.3, 2409.11 ,Form("%4.2f K #pm %4.2f K " , avets12_005, Errts12_005));
-  l2.DrawLatex(0.2+0.3, 11973.5 ,Form("%4.2f K #pm %4.2f K " , avets12_02, Errts12_02));
-  l2.DrawLatex(0.5 + 0.3, 23588.2 ,Form("%4.2f K #pm %4.2f K" , avets12_05, Errts12_05));
-  l2.DrawLatex(0.7+0.3, 35908.1, Form("%4.2f K #pm %4.2f K" , avets12_07, Errts12_07));
-  l2.DrawLatex(1.0+0.3, 45773.5, Form("%4.2f K #pm %4.2f K" , avets12_1, Errts12_1));
-  l2.DrawLatex(1.5+0.3, 60582+3000 , Form("%4.2f K #pm %4.2f K" , avets12_15, Errts12_15) );
+  // l2.DrawLatex(0.05 + 0.2, 2409.11 ,Form("%4.2f K #pm %4.2f K " , avets12_005, Errts12_005));
+  //l2.DrawLatex(0.2+0.2, 11973.5 ,Form("%4.2f K #pm %4.2f K " , avets12_02, Errts12_02));
+  //l2.DrawLatex(0.5 + 0.2, 23588.2 ,Form("%4.2f K #pm %4.2f K" , avets12_05, Errts12_05));
+  l2.DrawLatex(0.5 + 0.5, 22000 ,Form("%4.2f K #pm %4.2f K" , 0.85 , 0.01));
+  //l2.DrawLatex(0.7+0.2, 35908.1, Form("%4.2f K #pm %4.2f K" , avets12_07, Errts12_07));
+  //l2.DrawLatex(1.0+0.2, 45600.5, Form("%4.2f K #pm %4.2f K" , avets12_1, Errts12_1));
+  l2.DrawLatex(1.5+0.3, 60582+1000 , Form("%4.2f K #pm %4.2f K" , avets12_15, Errts12_15) );
   l2.DrawLatex(3.+0.3 , 116397+3000, Form("%4.2f K #pm %4.2f K" , avets12_3 , Errts12_3));
-  l2.DrawLatex(5.+0.3 , 180314+3000 , Form("%4.2f K #pm %4.2f K" , avets12_5 , Errts12_5));
+  l2.DrawLatex(5.-3.3 , 180000+15000 , Form("%4.2f K #pm %4.2f K" , avets12_5 , Errts12_5));
   l2.DrawLatex(7.+0.3 ,236279+3000, Form("%4.2f K #pm %4.2f K" , avets12_7 , Errts12_7));
   l2.DrawLatex(10.+0.3 ,325218+3000, Form("%4.2f K #pm %4.2f K" , avets12_10 , Errts12_10));
   //l2.Paint();
 
   
-  
-
+  cout << "average temperature for low currents: " << (avets12_005 + avets12_02 + avets12_05 + avets12_07 + avets12_1)/5 << endl;
+  cout << "The error is " << sqrt(Errts12_005*Errts12_005 + Errts12_02*Errts12_02 + Errts12_05*Errts12_05 + Errts12_07*Errts12_07 + Errts12_1*Errts12_1) << endl;
 
 
 
