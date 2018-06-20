@@ -637,6 +637,113 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   int counts_786 = 0;
 
 
+  double avets11All780;
+  double maxts11All780 = 0;
+  double mints11All780 = 20;
+  double avets12All780;
+  double maxts12All780 = 0;
+  double mints12All780 = 20;
+  double avets14All780;
+  double maxts14All780 = 0;
+  double mints14All780 = 20;
+  double avets16All780;
+  double maxts16All780 = 0;
+  double mints16All780 = 20;
+  double ts11ErrAll780;
+  double ts12ErrAll780;
+  double ts14ErrAll780;
+  double ts16ErrAll780;
+
+  double avets11All781;
+  double maxts11All781 = 0;
+  double mints11All781 = 20;
+  double avets12All781;
+  double maxts12All781 = 0;
+  double mints12All781 = 20;
+  double avets14All781;
+  double maxts14All781 = 0;
+  double mints14All781 = 20;
+  double avets16All781;
+  double maxts16All781 = 0;
+  double mints16All781 = 20;
+  double ts11ErrAll781;
+  double ts12ErrAll781;
+  double ts14ErrAll781;
+  double ts16ErrAll781;
+
+
+  double avets11All782;
+  double maxts11All782 = 0;
+  double mints11All782 = 20;
+  double avets12All782;
+  double maxts12All782 = 0;
+  double mints12All782 = 20;
+  double avets14All782;
+  double maxts14All782 = 0;
+  double mints14All782 = 20;
+  double avets16All782;
+  double maxts16All782 = 0;
+  double mints16All782 = 20;
+  double ts11ErrAll782;
+  double ts12ErrAll782;
+  double ts14ErrAll782;
+  double ts16ErrAll782;
+
+
+  double avets11All784;
+  double maxts11All784 = 0;
+  double mints11All784 = 20;
+  double avets12All784;
+  double maxts12All784 = 0;
+  double mints12All784 = 20;
+  double avets14All784;
+  double maxts14All784 = 0;
+  double mints14All784 = 20;
+  double avets16All784;
+  double maxts16All784 = 0;
+  double mints16All784 = 20;
+  double ts11ErrAll784;
+  double ts12ErrAll784;
+  double ts14ErrAll784;
+  double ts16ErrAll784;
+
+
+  double avets11All785;
+  double maxts11All785 = 0;
+  double mints11All785 = 20;
+  double avets12All785;
+  double maxts12All785 = 0;
+  double mints12All785 = 20;
+  double avets14All785;
+  double maxts14All785 = 0;
+  double mints14All785 = 20;
+  double avets16All785;
+  double maxts16All785 = 0;
+  double mints16All785 = 20;
+  double ts11ErrAll785;
+  double ts12ErrAll785;
+  double ts14ErrAll785;
+  double ts16ErrAll785;
+  
+
+  double avets11All786;
+  double maxts11All786 = 0;
+  double mints11All786 = 20;
+  double avets12All786;
+  double maxts12All786 = 0;
+  double mints12All786 = 20;
+  double avets14All786;
+  double maxts14All786 = 0;
+  double mints14All786 = 20;
+  double avets16All786;
+  double maxts16All786 = 0;
+  double mints16All786 = 20;
+  double ts11ErrAll786;
+  double ts12ErrAll786;
+  double ts14ErrAll786;
+  double ts16ErrAll786;
+
+
   
   // BECAUSE THE ERROR BARS FOR TGRAPHERRORS ARE DOUBLED I HAVE TO DIVIDE THE ERRORS IN HALF
   
@@ -667,9 +774,39 @@ void StorageTime_17014_Taraneh_edit_ver3(){
     
     delaytimeArray780[counts_780] = cycleDelayTime780;
     cycleNumberArray780[counts_780] = cycleNumber780;
+
+    avets11All780 += avets11ValveOpen780;
+    if (maxts11All780 < maxts11ValveOpen780)
+      maxts11All780 = maxts11ValveOpen780;
+    if (mints11All780 > mints11ValveOpen780)
+      mints11All780 = mints11ValveOpen780;
+    avets12All780 += avets12ValveOpen780;
+    if (maxts12All780 < maxts12ValveOpen780)
+      maxts12All780 = maxts12ValveOpen780;
+    if (mints12All780 > mints12ValveOpen780)
+      mints12All780 = mints12ValveOpen780;
+    avets14All780 += avets14ValveOpen780;
+    if (maxts14All780 < maxts14ValveOpen780)
+      maxts14All780 = maxts14ValveOpen780;
+    if (mints14All780 > mints14ValveOpen780)
+      mints14All780 = mints14ValveOpen780;
+    avets16All780 += avets16ValveOpen780;
+    if (maxts16All780 < maxts16ValveOpen780)
+      maxts16All780 = maxts16ValveOpen780;
+    if (mints16All780 > mints16ValveOpen780)
+      mints16All780 = mints16ValveOpen780;
+    
     counts_780++;
   }
-  
+
+  avets11All780 = avets11All780/counts_780;
+  avets12All780 = avets12All780/counts_780;
+  avets14All780 = avets14All780/counts_780;
+  avets16All780 = avets16All780/counts_780;
+  ts11ErrAll780 = (maxts11All780 - mints11All780);
+  ts12ErrAll780 = (maxts12All780 - mints12All780);
+  ts14ErrAll780 = (maxts14All780 - mints14All780);
+  ts16ErrAll780 = (maxts16All780 - mints16All780);
 
   ULong64_t events781;
   events781 = (Double_t)outputTree781 -> GetEntries();
@@ -697,10 +834,39 @@ void StorageTime_17014_Taraneh_edit_ver3(){
     
     delaytimeArray781[counts_781] = cycleDelayTime781;
     cycleNumberArray781[counts_781] = cycleNumber781;
+
+    avets11All781 += avets11ValveOpen781;
+    if (maxts11All781 < maxts11ValveOpen781)
+      maxts11All781 = maxts11ValveOpen781;
+    if (mints11All781 > mints11ValveOpen781)
+      mints11All781 = mints11ValveOpen781;
+    avets12All781 += avets12ValveOpen781;
+    if (maxts12All781 < maxts12ValveOpen781)
+      maxts12All781 = maxts12ValveOpen781;
+    if (mints12All781 > mints12ValveOpen781)
+      mints12All781 = mints12ValveOpen781;
+    avets14All781 += avets14ValveOpen781;
+    if (maxts14All781 < maxts14ValveOpen781)
+      maxts14All781 = maxts14ValveOpen781;
+    if (mints14All781 > mints14ValveOpen781)
+      mints14All781 = mints14ValveOpen781;
+    avets16All781 += avets16ValveOpen781;
+    if (maxts16All781 < maxts16ValveOpen781)
+      maxts16All781 = maxts16ValveOpen781;
+    if (mints16All781 > mints16ValveOpen781)
+      mints16All781 = mints16ValveOpen781;
+    
     counts_781++;
   }
 
-
+  avets11All781 = avets11All781/counts_781;
+  avets12All781 = avets12All781/counts_781;
+  avets14All781 = avets14All781/counts_781;
+  avets16All781 = avets16All781/counts_781;
+  ts11ErrAll781 = (maxts11All781 - mints11All781);
+  ts12ErrAll781 = (maxts12All781 - mints12All781);
+  ts14ErrAll781 = (maxts14All781 - mints14All781);
+  ts16ErrAll781 = (maxts16All781 - mints16All781);
 
 
   ULong64_t events782;
@@ -708,6 +874,8 @@ void StorageTime_17014_Taraneh_edit_ver3(){
 
   for (ULong64_t j = 0 ; j < events782 ; j++){
     outputTree782 -> GetEvent(j);
+    if (j==4)
+      continue;
 
     UCNCountsArray782[counts_782] = HistIntegral782 - BASELINERATE782*(cycleValveCloseTime782 - cycleValveOpenTime782);
     UCNCountsErrArray782[counts_782] = sqrt(UCNCountsArray782[counts_782]);
@@ -728,10 +896,42 @@ void StorageTime_17014_Taraneh_edit_ver3(){
     
     delaytimeArray782[counts_782] = cycleDelayTime782;
     cycleNumberArray782[counts_782] = cycleNumber782;
+
+    avets11All782 += avets11ValveOpen782;
+    if (maxts11All782 < maxts11ValveOpen782)
+      maxts11All782 = maxts11ValveOpen782;
+    if (mints11All782 > mints11ValveOpen782)
+      mints11All782 = mints11ValveOpen782;
+    avets12All782 += avets12ValveOpen782;
+    if (maxts12All782 < maxts12ValveOpen782)
+      maxts12All782 = maxts12ValveOpen782;
+    if (mints12All782 > mints12ValveOpen782)
+      mints12All782 = mints12ValveOpen782;
+    avets14All782 += avets14ValveOpen782;
+    if (maxts14All782 < maxts14ValveOpen782)
+      maxts14All782 = maxts14ValveOpen782;
+    if (mints14All782 > mints14ValveOpen782)
+      mints14All782 = mints14ValveOpen782;
+    avets16All782 += avets16ValveOpen782;
+    if (maxts16All782 < maxts16ValveOpen782)
+      maxts16All782 = maxts16ValveOpen782;
+    if (mints16All782 > mints16ValveOpen782)
+      mints16All782 = mints16ValveOpen782;
+    
     counts_782++;
   }
 
+  avets11All782 = avets11All782/counts_782;
+  avets12All782 = avets12All782/counts_782;
+  avets14All782 = avets14All782/counts_782;
+  avets16All782 = avets16All782/counts_782;
+  ts11ErrAll782 = (maxts11All782 - mints11All782);
+  ts12ErrAll782 = (maxts12All782 - mints12All782);
+  ts14ErrAll782 = (maxts14All782 - mints14All782);
+  ts16ErrAll782 = (maxts16All782 - mints16All782);
 
+
+  
   ULong64_t events783;
   events783 = (Double_t)outputTree783 -> GetEntries();
 
@@ -767,7 +967,9 @@ void StorageTime_17014_Taraneh_edit_ver3(){
 
   for (ULong64_t j = 0 ; j < events784 ; j++){
     outputTree784 -> GetEvent(j);
-
+    if (j==1)
+      continue;
+    
     UCNCountsArray784[counts_784] = HistIntegral784 - BASELINERATE784*(cycleValveCloseTime784 - cycleValveOpenTime784);
     UCNCountsErrArray784[counts_784] = sqrt(UCNCountsArray784[counts_784]);
     HistIntegralArray784[counts_784] = HistIntegral784;
@@ -787,10 +989,41 @@ void StorageTime_17014_Taraneh_edit_ver3(){
     
     delaytimeArray784[counts_784] = cycleDelayTime784;
     cycleNumberArray784[counts_784] = cycleNumber784;
+
+    avets11All784 += avets11ValveOpen784;
+    if (maxts11All784 < maxts11ValveOpen784)
+      maxts11All784 = maxts11ValveOpen784;
+    if (mints11All784 > mints11ValveOpen784)
+      mints11All784 = mints11ValveOpen784;
+    avets12All784 += avets12ValveOpen784;
+    if (maxts12All784 < maxts12ValveOpen784)
+      maxts12All784 = maxts12ValveOpen784;
+    if (mints12All784 > mints12ValveOpen784)
+      mints12All784 = mints12ValveOpen784;
+    avets14All784 += avets14ValveOpen784;
+    if (maxts14All784 < maxts14ValveOpen784)
+      maxts14All784 = maxts14ValveOpen784;
+    if (mints14All784 > mints14ValveOpen784)
+      mints14All784 = mints14ValveOpen784;
+    avets16All784 += avets16ValveOpen784;
+    if (maxts16All784 < maxts16ValveOpen784)
+      maxts16All784 = maxts16ValveOpen784;
+    if (mints16All784 > mints16ValveOpen784)
+      mints16All784 = mints16ValveOpen784;
+    
     counts_784++;
   }
 
+  avets11All784 = avets11All784/counts_784;
+  avets12All784 = avets12All784/counts_784;
+  avets14All784 = avets14All784/counts_784;
+  avets16All784 = avets16All784/counts_784;
+  ts11ErrAll784 = (maxts11All784 - mints11All784);
+  ts12ErrAll784 = (maxts12All784 - mints12All784);
+  ts14ErrAll784 = (maxts14All784 - mints14All784);
+  ts16ErrAll784 = (maxts16All784 - mints16All784);
 
+  
   ULong64_t events785;
   events785 = (Double_t)outputTree785 -> GetEntries();
 
@@ -817,15 +1050,47 @@ void StorageTime_17014_Taraneh_edit_ver3(){
     
     delaytimeArray785[counts_785] = cycleDelayTime785;
     cycleNumberArray785[counts_785] = cycleNumber785;
+
+    avets11All785 += avets11ValveOpen785;
+    if (maxts11All785 < maxts11ValveOpen785)
+      maxts11All785 = maxts11ValveOpen785;
+    if (mints11All785 > mints11ValveOpen785)
+      mints11All785 = mints11ValveOpen785;
+    avets12All785 += avets12ValveOpen785;
+    if (maxts12All785 < maxts12ValveOpen785)
+      maxts12All785 = maxts12ValveOpen785;
+    if (mints12All785 > mints12ValveOpen785)
+      mints12All785 = mints12ValveOpen785;
+    avets14All785 += avets14ValveOpen785;
+    if (maxts14All785 < maxts14ValveOpen785)
+      maxts14All785 = maxts14ValveOpen785;
+    if (mints14All785 > mints14ValveOpen785)
+      mints14All785 = mints14ValveOpen785;
+    avets16All785 += avets16ValveOpen785;
+    if (maxts16All785 < maxts16ValveOpen785)
+      maxts16All785 = maxts16ValveOpen785;
+    if (mints16All785 > mints16ValveOpen785)
+      mints16All785 = mints16ValveOpen785;
+    
     counts_785++;
   }
 
+  avets11All785 = avets11All785/counts_785;
+  avets12All785 = avets12All785/counts_785;
+  avets14All785 = avets14All785/counts_785;
+  avets16All785 = avets16All785/counts_785;
+  ts11ErrAll785 = (maxts11All785 - mints11All785);
+  ts12ErrAll785 = (maxts12All785 - mints12All785);
+  ts14ErrAll785 = (maxts14All785 - mints14All785);
+  ts16ErrAll785 = (maxts16All785 - mints16All785);
+  
 
   ULong64_t events786;
   events786 = (Double_t)outputTree786 -> GetEntries();
 
   for (ULong64_t j = 0 ; j < events786 ; j++){
     outputTree786 -> GetEvent(j);
+ 
 
     UCNCountsArray786[counts_786] = HistIntegral786 - BASELINERATE786*(cycleValveCloseTime786 - cycleValveOpenTime786);
     UCNCountsErrArray786[counts_786] = sqrt(UCNCountsArray786[counts_786]);
@@ -846,9 +1111,40 @@ void StorageTime_17014_Taraneh_edit_ver3(){
     
     delaytimeArray786[counts_786] = cycleDelayTime786;
     cycleNumberArray786[counts_786] = cycleNumber786;
+
+    avets11All786 += avets11ValveOpen786;
+    if (maxts11All786 < maxts11ValveOpen786)
+      maxts11All786 = maxts11ValveOpen786;
+    if (mints11All786 > mints11ValveOpen786)
+      mints11All786 = mints11ValveOpen786;
+    avets12All786 += avets12ValveOpen786;
+    if (maxts12All786 < maxts12ValveOpen786)
+      maxts12All786 = maxts12ValveOpen786;
+    if (mints12All786 > mints12ValveOpen786)
+      mints12All786 = mints12ValveOpen786;
+    avets14All786 += avets14ValveOpen786;
+    if (maxts14All786 < maxts14ValveOpen786)
+      maxts14All786 = maxts14ValveOpen786;
+    if (mints14All786 > mints14ValveOpen786)
+      mints14All786 = mints14ValveOpen786;
+    avets16All786 += avets16ValveOpen786;
+    if (maxts16All786 < maxts16ValveOpen786)
+      maxts16All786 = maxts16ValveOpen786;
+    if (mints16All786 > mints16ValveOpen786)
+      mints16All786 = mints16ValveOpen786;
+    
     counts_786++;
   }
 
+  avets11All786 = avets11All786/counts_786;
+  avets12All786 = avets12All786/counts_786;
+  avets14All786 = avets14All786/counts_786;
+  avets16All786 = avets16All786/counts_786;
+  ts11ErrAll786 = (maxts11All786 - mints11All786);
+  ts12ErrAll786 = (maxts12All786 - mints12All786);
+  ts14ErrAll786 = (maxts14All786 - mints14All786);
+  ts16ErrAll786 = (maxts16All786 - mints16All786);
+  
 
   // ONE EXPONENTIAL FIT
   TF1 *fit = new TF1 ("fit" , "[0]*exp(-x/[1]) ", 0, 120);
@@ -893,8 +1189,8 @@ void StorageTime_17014_Taraneh_edit_ver3(){
 
   TCanvas *c780_cycleNum = new TCanvas("c780_cycleNum" , "c780_cycleNum" , 1200, 800);
   c780_cycleNum -> Divide(2,2);
-  TPad *p5 = c780_cycleNum->cd(1);
-  p5->SetLogy(); 
+  TPad *p780 = c780_cycleNum->cd(1);
+  p780->SetLogy(); 
   TGraphErrors *gr780_cyclecounts = new TGraphErrors (counts_780 , cycleNumberArray780, UCNCountsArray780, 0 , UCNCountsErrArray780);
   gr780_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
   gr780_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
@@ -1031,18 +1327,15 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr780_cyclecur -> Draw("Ap");
 
 
-  break;
 
   //*********************************
   //*********************************
   //              781
   //*********************************
   //*********************************
+ 
   TCanvas *c781 = new TCanvas("c781" , "c781" , 1200, 800);
-  c781 -> Divide(2,2);
-  //c781 -> cd(1);
-  TPad *p781_1 = c781->cd(1);
-  p781_1->SetLogy(); 
+  c781 ->SetLogy(); 
   TGraphErrors *gr781_delaycounts = new TGraphErrors(counts_781, delaytimeArray781 , UCNCountsArray781, 0, UCNCountsErrArray781);
 
   gr781_delaycounts -> SetTitle("UCN Counts vs Cycle Delay Time");
@@ -1054,130 +1347,21 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr781_delaycounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr781_delaycounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr781_delaycounts -> SetMarkerStyle(7);
+  gr781_delaycounts -> SetMarkerStyle(20);
   gr781_delaycounts -> Fit(fit);
   storage781 = fit -> GetParameter(1);
   storageErr781 = fit -> GetParError(1);
-  
-  TGraphErrors *gr781_delayhist = new TGraphErrors(counts_781, delaytimeArray781 , HistIntegralArray781, 0, HistIntegralErrArray781);
 
-  gr781_delayhist -> SetTitle("UCN Counts vs Cycle Delay Time");
-  gr781_delayhist -> GetXaxis()-> SetTitle("Cycle Delay Time (s)" );
-  gr781_delayhist -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr781_delayhist -> GetYaxis()-> SetRangeUser(1, 500000);
-  gr781_delayhist -> GetXaxis() -> SetTitleSize(0.05);
-  gr781_delayhist -> GetXaxis() -> SetTitleOffset(1.0);
-  gr781_delayhist -> GetYaxis() -> SetTitleSize(0.05); 
-  gr781_delayhist -> GetYaxis() -> SetTitleOffset(0.9);
-  gr781_delayhist -> SetMarkerColor(2);
-  gr781_delayhist -> SetMarkerStyle(7);
 
-  TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
-  leg2 -> AddEntry(gr781_delaycounts , "Without Background" , "p") ;
-  leg2 -> AddEntry(gr781_delayhist , "With Background" , "p") ;
-  leg2 -> SetTextSize(0.05);
 
 
   gr781_delaycounts -> Draw("Ap");
-  gr781_delayhist -> Draw("p");
-  leg2 -> Draw();
 
-  //c781 -> cd(2);
-  TPad *p781_2 = c781->cd(2);
-  p781_2->SetLogy(); 
-  TGraphErrors *gr781_tempIrradcounts = new TGraphErrors (counts_781 , avets12IrradArray781, UCNCountsArray781 , ts12IrradErr781 , UCNCountsErrArray781);
-  gr781_tempIrradcounts -> SetTitle("UCN Counts vs Average Isopure Temperature");
-  gr781_tempIrradcounts -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr781_tempIrradcounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr781_tempIrradcounts -> GetYaxis()-> SetRangeUser(1, 500000);
-  gr781_tempIrradcounts -> GetXaxis()-> SetLimits(0.9 ,1.10);
-  gr781_tempIrradcounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr781_tempIrradcounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr781_tempIrradcounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr781_tempIrradcounts -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr781_tempIrradcounts -> SetMarkerStyle(7);
-
-  TGraphErrors *gr781_tempValveOpencounts = new TGraphErrors (counts_781 , avets12ValveOpenArray781, UCNCountsArray781 , ts12ValveOpenErr781 , UCNCountsErrArray781);
-  gr781_tempValveOpencounts -> SetMarkerStyle(7);
-  gr781_tempValveOpencounts -> SetMarkerColor(2);
-
-  TLegend *leg = new TLegend(0.4,0.7, 0.9, 0.9);
-  leg -> AddEntry(gr781_tempIrradcounts , "Irradiation time + delay time" , "p") ;
-  leg -> AddEntry(gr781_tempValveOpencounts , "Valve open" , "p") ;
-  leg -> SetTextSize(0.05);
-  gr781_tempIrradcounts -> Draw("Ap");
-  gr781_tempValveOpencounts -> Draw("p");
-  leg -> Draw();
-
-  c781 -> cd(3);
-  TGraphErrors *gr781_delaytempIrrad = new TGraphErrors (counts_781 , delaytimeArray781, avets12IrradArray781, 0 , ts12IrradErr781);
-
-  gr781_delaytempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
-  gr781_delaytempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr781_delaytempIrrad -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr781_delaytempIrrad -> SetMarkerStyle(7);
-  gr781_delaytempIrrad -> GetYaxis() -> SetRangeUser(0.9, 1.1);
-  gr781_delaytempIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr781_delaytempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr781_delaytempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr781_delaytempIrrad -> GetYaxis() -> SetTitleOffset(0.9);
-
-
-  TGraphErrors *gr781_delaytempValveOpen = new TGraphErrors (counts_781 , delaytimeArray781, avets12ValveOpenArray781, 0 , ts12ValveOpenErr781);
-
-  gr781_delaytempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
-  gr781_delaytempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr781_delaytempValveOpen -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr781_delaytempValveOpen -> SetMarkerStyle(7);
-  gr781_delaytempValveOpen -> SetMarkerColor(2);
-  gr781_delaytempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
-  gr781_delaytempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
-  gr781_delaytempValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
-  gr781_delaytempValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
-
-
-  gr781_delaytempIrrad -> Draw("AP");
-  gr781_delaytempValveOpen -> Draw("p");
-  leg -> Draw();
-
-
-  TPad *p781_3 = c781->cd(4);
-  p781_3->SetLogy(); 
-  TGraphErrors *gr781_curcounts = new TGraphErrors (counts_781 , avecurArray781, UCNCountsArray781 , ErrcurArray781 , UCNCountsErrArray781);
-  gr781_curcounts -> SetTitle("UCN Counts vs Average Beam Current");
-  gr781_curcounts -> GetXaxis()-> SetTitle("Average Beam Current (#muA)" );
-  gr781_curcounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr781_curcounts -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr781_curcounts -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr781_curcounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr781_curcounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr781_curcounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr781_curcounts -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr781_curcounts -> SetMarkerStyle(7);
-
-  TGraphErrors *gr781_curhist = new TGraphErrors (counts_781 , avecurArray781, UCNCountsArray781 , ErrcurArray781 , UCNCountsErrArray781);
-  gr781_curhist -> SetTitle("UCN Counts vs Average Beam Current");
-  gr781_curhist -> GetXaxis()-> SetTitle("Average Beam Current (#muA)" );
-  gr781_curhist -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr781_curhist -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr781_curhist -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr781_curhist -> GetXaxis() -> SetTitleSize(0.05);
-  gr781_curhist -> GetXaxis() -> SetTitleOffset(1.0);
-  gr781_curhist -> GetYaxis() -> SetTitleSize(0.05); 
-  gr781_curhist -> GetYaxis() -> SetTitleOffset(0.9);
-  gr781_curhist -> SetMarkerColor(2);
-  gr781_curhist -> SetMarkerStyle(7);
-
-  gr781_curcounts -> Draw("Ap");
-  gr781_curhist -> Draw("p");
-  leg2 -> Draw();
 
   TCanvas *c781_cycleNum = new TCanvas("c781_cycleNum" , "c781_cycleNum" , 1200, 800);
   c781_cycleNum -> Divide(2,2);
-  TPad *p781_4 = c781_cycleNum->cd(1);
-  p781_4->SetLogy(); 
+  TPad *p781 = c781_cycleNum->cd(1);
+  p781->SetLogy(); 
   TGraphErrors *gr781_cyclecounts = new TGraphErrors (counts_781 , cycleNumberArray781, UCNCountsArray781, 0 , UCNCountsErrArray781);
   gr781_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
   gr781_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
@@ -1187,8 +1371,8 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr781_cyclecounts -> GetXaxis() -> SetTitleOffset(1.0);
   gr781_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr781_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr781_cyclecounts -> SetMarkerStyle(7);
+  gr781_cyclecounts -> SetMarkerColor(2);
+  gr781_cyclecounts -> SetMarkerStyle(20);
 
 
   TGraphErrors *gr781_cyclehist = new TGraphErrors(counts_781, cycleNumberArray781 , HistIntegralArray781, 0, HistIntegralErrArray781);
@@ -1201,9 +1385,10 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr781_cyclehist -> GetXaxis() -> SetTitleOffset(1.0);
   gr781_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
   gr781_cyclehist -> GetYaxis() -> SetTitleOffset(0.9);
-  gr781_cyclehist -> SetMarkerColor(2);
-  gr781_cyclehist -> SetMarkerStyle(7);
+  gr781_cyclehist -> SetMarkerColor(1);
+  gr781_cyclehist -> SetMarkerStyle(25);
 
+  
   gr781_cyclecounts -> Draw("Ap");
   gr781_cyclehist -> Draw("p");
 
@@ -1219,40 +1404,73 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr781_cycledelay -> GetYaxis() -> SetTitleSize(0.05); 
   gr781_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr781_cycledelay -> SetMarkerStyle(7);
+  gr781_cycledelay -> SetMarkerStyle(20);
 
   gr781_cycledelay -> Draw("Ap");
 
 
   c781_cycleNum -> cd(3);
-  TGraphErrors *gr781_cycletempIrrad = new TGraphErrors (counts_781 , cycleNumberArray781, avets12IrradArray781, 0 , ts12IrradErr781);
-
-  gr781_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
-  gr781_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr781_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
-  gr781_cycletempIrrad -> SetMarkerStyle(7);
-  gr781_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.9, 1.1);
-  gr781_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr781_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr781_cycletempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr781_cycletempIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
   TGraphErrors *gr781_cycletempValveOpen = new TGraphErrors (counts_781 , cycleNumberArray781, avets12ValveOpenArray781, 0 , ts12ValveOpenErr781);
 
   gr781_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr781_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr781_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Number");
-  gr781_cycletempValveOpen -> SetMarkerStyle(7);
-  gr781_cycletempValveOpen -> SetMarkerColor(2);
+  gr781_cycletempValveOpen -> SetMarkerStyle(20);
+  gr781_cycletempValveOpen -> SetMarkerColor(1);
+  gr781_cycletempValveOpen -> GetYaxis() -> SetRangeUser(0.8 , 1.2);
   gr781_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr781_cycletempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
   gr781_cycletempValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
   gr781_cycletempValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
 
+  TGraphErrors *gr781_cycletempValveOpen11 = new TGraphErrors (counts_781 , cycleNumberArray781, avets11ValveOpenArray781, 0 , ts11ValveOpenErr781);
 
-  gr781_cycletempIrrad -> Draw("AP");
-  gr781_cycletempValveOpen -> Draw("p");
-  leg -> Draw();
+  gr781_cycletempValveOpen11 -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr781_cycletempValveOpen11 -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr781_cycletempValveOpen11 -> GetXaxis()-> SetTitle("Cycle Number");
+  gr781_cycletempValveOpen11 -> SetMarkerStyle(20);
+  gr781_cycletempValveOpen11 -> SetMarkerColor(4);
+  gr781_cycletempValveOpen11 -> GetXaxis() -> SetTitleSize(0.05);
+  gr781_cycletempValveOpen11 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr781_cycletempValveOpen11 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr781_cycletempValveOpen11 -> GetYaxis() -> SetTitleOffset(0.9);
+  
+
+  TGraphErrors *gr781_cycletempValveOpen14 = new TGraphErrors (counts_781 , cycleNumberArray781, avets14ValveOpenArray781, 0 , ts14ValveOpenErr781);
+
+  gr781_cycletempValveOpen14 -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr781_cycletempValveOpen14 -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr781_cycletempValveOpen14 -> GetXaxis()-> SetTitle("Cycle Number");
+  gr781_cycletempValveOpen14 -> SetMarkerStyle(20);
+  gr781_cycletempValveOpen14 -> SetMarkerColor(3);
+  gr781_cycletempValveOpen14 -> GetXaxis() -> SetTitleSize(0.05);
+  gr781_cycletempValveOpen14 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr781_cycletempValveOpen14 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr781_cycletempValveOpen14 -> GetYaxis() -> SetTitleOffset(0.9);
+
+
+  TGraphErrors *gr781_cycletempValveOpen16 = new TGraphErrors (counts_781 , cycleNumberArray781, avets16ValveOpenArray781, 0 , ts16ValveOpenErr781);
+
+  gr781_cycletempValveOpen16 -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr781_cycletempValveOpen16 -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr781_cycletempValveOpen16 -> GetXaxis()-> SetTitle("Cycle Number");
+  gr781_cycletempValveOpen16 -> SetMarkerStyle(20);
+  gr781_cycletempValveOpen16 -> SetMarkerColor(2);
+  gr781_cycletempValveOpen16 -> GetXaxis() -> SetTitleSize(0.05);
+  gr781_cycletempValveOpen16 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr781_cycletempValveOpen16 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr781_cycletempValveOpen16 -> GetYaxis() -> SetTitleOffset(0.9);
+  
+  
+
+  
+  gr781_cycletempValveOpen -> Draw("Ap");
+  gr781_cycletempValveOpen11 -> Draw("p");
+  gr781_cycletempValveOpen14 -> Draw("p");
+  gr781_cycletempValveOpen16 -> Draw("p");
+  temps -> Draw();
+  
 
   c781_cycleNum -> cd(4);
   TGraphErrors *gr781_cyclecur = new TGraphErrors (counts_781 , cycleNumberArray781 , avecurArray781, 0, ErrcurArray781 );
@@ -1266,90 +1484,19 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr781_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
   gr781_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr781_cyclecur -> SetMarkerStyle(7);
+  gr781_cyclecur -> SetMarkerStyle(20);
   gr781_cyclecur -> Draw("Ap");
 
 
-  TCanvas *c781_cycleNumFit = new TCanvas("c781_cycleNumFit" , "c781_cycleNumFit" , 1200, 800);
-  c781_cycleNumFit -> Divide(2,2);
-
-  c781_cycleNumFit -> cd(1);
-  TGraphErrors *gr781_cyclefall = new TGraphErrors (counts_781, cycleNumberArray781, FallTimeArray781 , 0, FallTimeErrArray781);
-
-  gr781_cyclefall -> SetTitle(" Fall Time vs Cycle Number");
-  gr781_cyclefall -> GetYaxis()-> SetTitle("Fall Time (s)" );
-  gr781_cyclefall -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr781_cyclefall -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr781_cyclefall -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr781_cyclefall -> GetXaxis() -> SetTitleSize(0.05);
-  gr781_cyclefall -> GetXaxis() -> SetTitleOffset(1.0);
-  gr781_cyclefall -> GetYaxis() -> SetTitleSize(0.05); 
-  gr781_cyclefall -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr781_cyclefall -> SetMarkerStyle(7);
-  gr781_cyclefall -> Draw("Ap");
-
-
-  c781_cycleNumFit -> cd(2);
-  TGraphErrors *gr781_cyclebaseline = new TGraphErrors (counts_781, cycleNumberArray781, BaselineArray781 , 0, BaselineErrArray781);
-
-  gr781_cyclebaseline -> SetTitle(" Baseline Before Irradiation vs Cycle Number");
-  gr781_cyclebaseline -> GetYaxis()-> SetTitle("Baseline (1/s)" );
-  gr781_cyclebaseline -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr781_cyclebaseline -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr781_cyclebaseline -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr781_cyclebaseline -> GetXaxis() -> SetTitleSize(0.05);
-  gr781_cyclebaseline -> GetXaxis() -> SetTitleOffset(1.0);
-  gr781_cyclebaseline -> GetYaxis() -> SetTitleSize(0.05); 
-  gr781_cyclebaseline -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr781_cyclebaseline -> SetMarkerStyle(7);
-  gr781_cyclebaseline -> Draw("Ap");
-
-  c781_cycleNumFit -> cd(3);
-  TGraphErrors *gr781_cyclebaselineirrad = new TGraphErrors (counts_781, cycleNumberArray781, BaselineIrradArray781 , 0, BaselineIrradErrArray781);
-
-  gr781_cyclebaselineirrad -> SetTitle(" Baseline During Irradiation vs Cycle Number");
-  gr781_cyclebaselineirrad -> GetYaxis()-> SetTitle("Baseline (1/(s#muA))" );
-  gr781_cyclebaselineirrad -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr781_cyclebaselineirrad -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr781_cyclebaselineirrad -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr781_cyclebaselineirrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr781_cyclebaselineirrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr781_cyclebaselineirrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr781_cyclebaselineirrad -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr781_cyclebaselineirrad -> SetMarkerStyle(7);
-  gr781_cyclebaselineirrad -> Draw("Ap");
-
-  c781_cycleNumFit -> cd(4);
-  TGraphErrors *gr781_cyclerise = new TGraphErrors (counts_781, cycleNumberArray781, RiseTimeArray781 , 0, RiseTimeErrArray781);
-
-  gr781_cyclerise -> SetTitle(" Rise Time vs Cycle Number");
-  gr781_cyclerise -> GetYaxis()-> SetTitle("Rise Time (s)" );
-  gr781_cyclerise -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr781_cyclerise -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr781_cyclerise -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr781_cyclerise -> GetXaxis() -> SetTitleSize(0.05);
-  gr781_cyclerise -> GetXaxis() -> SetTitleOffset(1.0);
-  gr781_cyclerise -> GetYaxis() -> SetTitleSize(0.05); 
-  gr781_cyclerise -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr781_cyclerise -> SetMarkerStyle(7);
-  gr781_cyclerise -> Draw("Ap");
-
-
-
+ 
+  
   //*********************************
   //*********************************
   //              782
   //*********************************
   //*********************************
   TCanvas *c782 = new TCanvas("c782" , "c782" , 1200, 800);
-  c782 -> Divide(2,2);
-  //c782 -> cd(1);
-  TPad *p782_1 = c782->cd(1);
-  p782_1->SetLogy(); 
+  c782 ->SetLogy(); 
   TGraphErrors *gr782_delaycounts = new TGraphErrors(counts_782, delaytimeArray782 , UCNCountsArray782, 0, UCNCountsErrArray782);
 
   gr782_delaycounts -> SetTitle("UCN Counts vs Cycle Delay Time");
@@ -1361,130 +1508,21 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr782_delaycounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr782_delaycounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr782_delaycounts -> SetMarkerStyle(7);
+  gr782_delaycounts -> SetMarkerStyle(20);
   gr782_delaycounts -> Fit(fit);
   storage782 = fit -> GetParameter(1);
   storageErr782 = fit -> GetParError(1);
-  
-  TGraphErrors *gr782_delayhist = new TGraphErrors(counts_782, delaytimeArray782 , HistIntegralArray782, 0, HistIntegralErrArray782);
 
-  gr782_delayhist -> SetTitle("UCN Counts vs Cycle Delay Time");
-  gr782_delayhist -> GetXaxis()-> SetTitle("Cycle Delay Time (s)" );
-  gr782_delayhist -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr782_delayhist -> GetYaxis()-> SetRangeUser(1, 500000);
-  gr782_delayhist -> GetXaxis() -> SetTitleSize(0.05);
-  gr782_delayhist -> GetXaxis() -> SetTitleOffset(1.0);
-  gr782_delayhist -> GetYaxis() -> SetTitleSize(0.05); 
-  gr782_delayhist -> GetYaxis() -> SetTitleOffset(0.9);
-  gr782_delayhist -> SetMarkerColor(2);
-  gr782_delayhist -> SetMarkerStyle(7);
 
-  TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
-  leg2 -> AddEntry(gr782_delaycounts , "Without Background" , "p") ;
-  leg2 -> AddEntry(gr782_delayhist , "With Background" , "p") ;
-  leg2 -> SetTextSize(0.05);
 
 
   gr782_delaycounts -> Draw("Ap");
-  gr782_delayhist -> Draw("p");
-  leg2 -> Draw();
 
-  //c782 -> cd(2);
-  TPad *p782_2 = c782->cd(2);
-  p782_2->SetLogy(); 
-  TGraphErrors *gr782_tempIrradcounts = new TGraphErrors (counts_782 , avets12IrradArray782, UCNCountsArray782 , ts12IrradErr782 , UCNCountsErrArray782);
-  gr782_tempIrradcounts -> SetTitle("UCN Counts vs Average Isopure Temperature");
-  gr782_tempIrradcounts -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr782_tempIrradcounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr782_tempIrradcounts -> GetYaxis()-> SetRangeUser(1, 500000);
-  gr782_tempIrradcounts -> GetXaxis()-> SetLimits(0.9 ,1.10);
-  gr782_tempIrradcounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr782_tempIrradcounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr782_tempIrradcounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr782_tempIrradcounts -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr782_tempIrradcounts -> SetMarkerStyle(7);
-
-  TGraphErrors *gr782_tempValveOpencounts = new TGraphErrors (counts_782 , avets12ValveOpenArray782, UCNCountsArray782 , ts12ValveOpenErr782 , UCNCountsErrArray782);
-  gr782_tempValveOpencounts -> SetMarkerStyle(7);
-  gr782_tempValveOpencounts -> SetMarkerColor(2);
-
-  TLegend *leg = new TLegend(0.4,0.7, 0.9, 0.9);
-  leg -> AddEntry(gr782_tempIrradcounts , "Irradiation time + delay time" , "p") ;
-  leg -> AddEntry(gr782_tempValveOpencounts , "Valve open" , "p") ;
-  leg -> SetTextSize(0.05);
-  gr782_tempIrradcounts -> Draw("Ap");
-  gr782_tempValveOpencounts -> Draw("p");
-  leg -> Draw();
-
-  c782 -> cd(3);
-  TGraphErrors *gr782_delaytempIrrad = new TGraphErrors (counts_782 , delaytimeArray782, avets12IrradArray782, 0 , ts12IrradErr782);
-
-  gr782_delaytempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
-  gr782_delaytempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr782_delaytempIrrad -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr782_delaytempIrrad -> SetMarkerStyle(7);
-  gr782_delaytempIrrad -> GetYaxis() -> SetRangeUser(0.9, 1.1);
-  gr782_delaytempIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr782_delaytempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr782_delaytempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr782_delaytempIrrad -> GetYaxis() -> SetTitleOffset(0.9);
-
-
-  TGraphErrors *gr782_delaytempValveOpen = new TGraphErrors (counts_782 , delaytimeArray782, avets12ValveOpenArray782, 0 , ts12ValveOpenErr782);
-
-  gr782_delaytempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
-  gr782_delaytempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr782_delaytempValveOpen -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr782_delaytempValveOpen -> SetMarkerStyle(7);
-  gr782_delaytempValveOpen -> SetMarkerColor(2);
-  gr782_delaytempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
-  gr782_delaytempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
-  gr782_delaytempValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
-  gr782_delaytempValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
-
-
-  gr782_delaytempIrrad -> Draw("AP");
-  gr782_delaytempValveOpen -> Draw("p");
-  leg -> Draw();
-
-
-  TPad *p782_3 = c782->cd(4);
-  p782_3->SetLogy(); 
-  TGraphErrors *gr782_curcounts = new TGraphErrors (counts_782 , avecurArray782, UCNCountsArray782 , ErrcurArray782 , UCNCountsErrArray782);
-  gr782_curcounts -> SetTitle("UCN Counts vs Average Beam Current");
-  gr782_curcounts -> GetXaxis()-> SetTitle("Average Beam Current (#muA)" );
-  gr782_curcounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr782_curcounts -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr782_curcounts -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr782_curcounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr782_curcounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr782_curcounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr782_curcounts -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr782_curcounts -> SetMarkerStyle(7);
-
-  TGraphErrors *gr782_curhist = new TGraphErrors (counts_782 , avecurArray782, UCNCountsArray782 , ErrcurArray782 , UCNCountsErrArray782);
-  gr782_curhist -> SetTitle("UCN Counts vs Average Beam Current");
-  gr782_curhist -> GetXaxis()-> SetTitle("Average Beam Current (#muA)" );
-  gr782_curhist -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr782_curhist -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr782_curhist -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr782_curhist -> GetXaxis() -> SetTitleSize(0.05);
-  gr782_curhist -> GetXaxis() -> SetTitleOffset(1.0);
-  gr782_curhist -> GetYaxis() -> SetTitleSize(0.05); 
-  gr782_curhist -> GetYaxis() -> SetTitleOffset(0.9);
-  gr782_curhist -> SetMarkerColor(2);
-  gr782_curhist -> SetMarkerStyle(7);
-
-  gr782_curcounts -> Draw("Ap");
-  gr782_curhist -> Draw("p");
-  leg2 -> Draw();
 
   TCanvas *c782_cycleNum = new TCanvas("c782_cycleNum" , "c782_cycleNum" , 1200, 800);
   c782_cycleNum -> Divide(2,2);
-  TPad *p782_4 = c782_cycleNum->cd(1);
-  p782_4->SetLogy(); 
+  TPad *p782 = c782_cycleNum->cd(1);
+  p782->SetLogy(); 
   TGraphErrors *gr782_cyclecounts = new TGraphErrors (counts_782 , cycleNumberArray782, UCNCountsArray782, 0 , UCNCountsErrArray782);
   gr782_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
   gr782_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
@@ -1494,8 +1532,8 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr782_cyclecounts -> GetXaxis() -> SetTitleOffset(1.0);
   gr782_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr782_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr782_cyclecounts -> SetMarkerStyle(7);
+  gr782_cyclecounts -> SetMarkerColor(2);
+  gr782_cyclecounts -> SetMarkerStyle(20);
 
 
   TGraphErrors *gr782_cyclehist = new TGraphErrors(counts_782, cycleNumberArray782 , HistIntegralArray782, 0, HistIntegralErrArray782);
@@ -1508,9 +1546,10 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr782_cyclehist -> GetXaxis() -> SetTitleOffset(1.0);
   gr782_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
   gr782_cyclehist -> GetYaxis() -> SetTitleOffset(0.9);
-  gr782_cyclehist -> SetMarkerColor(2);
-  gr782_cyclehist -> SetMarkerStyle(7);
+  gr782_cyclehist -> SetMarkerColor(1);
+  gr782_cyclehist -> SetMarkerStyle(25);
 
+  
   gr782_cyclecounts -> Draw("Ap");
   gr782_cyclehist -> Draw("p");
 
@@ -1526,40 +1565,73 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr782_cycledelay -> GetYaxis() -> SetTitleSize(0.05); 
   gr782_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr782_cycledelay -> SetMarkerStyle(7);
+  gr782_cycledelay -> SetMarkerStyle(20);
 
   gr782_cycledelay -> Draw("Ap");
 
 
   c782_cycleNum -> cd(3);
-  TGraphErrors *gr782_cycletempIrrad = new TGraphErrors (counts_782 , cycleNumberArray782, avets12IrradArray782, 0 , ts12IrradErr782);
-
-  gr782_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
-  gr782_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr782_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
-  gr782_cycletempIrrad -> SetMarkerStyle(7);
-  gr782_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.9, 1.1);
-  gr782_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr782_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr782_cycletempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr782_cycletempIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
   TGraphErrors *gr782_cycletempValveOpen = new TGraphErrors (counts_782 , cycleNumberArray782, avets12ValveOpenArray782, 0 , ts12ValveOpenErr782);
 
   gr782_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr782_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr782_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Number");
-  gr782_cycletempValveOpen -> SetMarkerStyle(7);
-  gr782_cycletempValveOpen -> SetMarkerColor(2);
+  gr782_cycletempValveOpen -> SetMarkerStyle(20);
+  gr782_cycletempValveOpen -> SetMarkerColor(1);
+  gr782_cycletempValveOpen -> GetYaxis() -> SetRangeUser(0.8 , 1.2);
   gr782_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr782_cycletempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
   gr782_cycletempValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
   gr782_cycletempValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
 
+  TGraphErrors *gr782_cycletempValveOpen11 = new TGraphErrors (counts_782 , cycleNumberArray782, avets11ValveOpenArray782, 0 , ts11ValveOpenErr782);
 
-  gr782_cycletempIrrad -> Draw("AP");
-  gr782_cycletempValveOpen -> Draw("p");
-  leg -> Draw();
+  gr782_cycletempValveOpen11 -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr782_cycletempValveOpen11 -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr782_cycletempValveOpen11 -> GetXaxis()-> SetTitle("Cycle Number");
+  gr782_cycletempValveOpen11 -> SetMarkerStyle(20);
+  gr782_cycletempValveOpen11 -> SetMarkerColor(4);
+  gr782_cycletempValveOpen11 -> GetXaxis() -> SetTitleSize(0.05);
+  gr782_cycletempValveOpen11 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr782_cycletempValveOpen11 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr782_cycletempValveOpen11 -> GetYaxis() -> SetTitleOffset(0.9);
+  
+
+  TGraphErrors *gr782_cycletempValveOpen14 = new TGraphErrors (counts_782 , cycleNumberArray782, avets14ValveOpenArray782, 0 , ts14ValveOpenErr782);
+
+  gr782_cycletempValveOpen14 -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr782_cycletempValveOpen14 -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr782_cycletempValveOpen14 -> GetXaxis()-> SetTitle("Cycle Number");
+  gr782_cycletempValveOpen14 -> SetMarkerStyle(20);
+  gr782_cycletempValveOpen14 -> SetMarkerColor(3);
+  gr782_cycletempValveOpen14 -> GetXaxis() -> SetTitleSize(0.05);
+  gr782_cycletempValveOpen14 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr782_cycletempValveOpen14 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr782_cycletempValveOpen14 -> GetYaxis() -> SetTitleOffset(0.9);
+
+
+  TGraphErrors *gr782_cycletempValveOpen16 = new TGraphErrors (counts_782 , cycleNumberArray782, avets16ValveOpenArray782, 0 , ts16ValveOpenErr782);
+
+  gr782_cycletempValveOpen16 -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr782_cycletempValveOpen16 -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr782_cycletempValveOpen16 -> GetXaxis()-> SetTitle("Cycle Number");
+  gr782_cycletempValveOpen16 -> SetMarkerStyle(20);
+  gr782_cycletempValveOpen16 -> SetMarkerColor(2);
+  gr782_cycletempValveOpen16 -> GetXaxis() -> SetTitleSize(0.05);
+  gr782_cycletempValveOpen16 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr782_cycletempValveOpen16 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr782_cycletempValveOpen16 -> GetYaxis() -> SetTitleOffset(0.9);
+  
+  
+
+  
+  gr782_cycletempValveOpen -> Draw("Ap");
+  gr782_cycletempValveOpen11 -> Draw("p");
+  gr782_cycletempValveOpen14 -> Draw("p");
+  gr782_cycletempValveOpen16 -> Draw("p");
+  temps -> Draw();
+  
 
   c782_cycleNum -> cd(4);
   TGraphErrors *gr782_cyclecur = new TGraphErrors (counts_782 , cycleNumberArray782 , avecurArray782, 0, ErrcurArray782 );
@@ -1573,78 +1645,8 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr782_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
   gr782_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr782_cyclecur -> SetMarkerStyle(7);
+  gr782_cyclecur -> SetMarkerStyle(20);
   gr782_cyclecur -> Draw("Ap");
-
-
-  TCanvas *c782_cycleNumFit = new TCanvas("c782_cycleNumFit" , "c782_cycleNumFit" , 1200, 800);
-  c782_cycleNumFit -> Divide(2,2);
-
-  c782_cycleNumFit -> cd(1);
-  TGraphErrors *gr782_cyclefall = new TGraphErrors (counts_782, cycleNumberArray782, FallTimeArray782 , 0, FallTimeErrArray782);
-
-  gr782_cyclefall -> SetTitle(" Fall Time vs Cycle Number");
-  gr782_cyclefall -> GetYaxis()-> SetTitle("Fall Time (s)" );
-  gr782_cyclefall -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr782_cyclefall -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr782_cyclefall -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr782_cyclefall -> GetXaxis() -> SetTitleSize(0.05);
-  gr782_cyclefall -> GetXaxis() -> SetTitleOffset(1.0);
-  gr782_cyclefall -> GetYaxis() -> SetTitleSize(0.05); 
-  gr782_cyclefall -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr782_cyclefall -> SetMarkerStyle(7);
-  gr782_cyclefall -> Draw("Ap");
-
-
-  c782_cycleNumFit -> cd(2);
-  TGraphErrors *gr782_cyclebaseline = new TGraphErrors (counts_782, cycleNumberArray782, BaselineArray782 , 0, BaselineErrArray782);
-
-  gr782_cyclebaseline -> SetTitle(" Baseline Before Irradiation vs Cycle Number");
-  gr782_cyclebaseline -> GetYaxis()-> SetTitle("Baseline (1/s)" );
-  gr782_cyclebaseline -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr782_cyclebaseline -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr782_cyclebaseline -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr782_cyclebaseline -> GetXaxis() -> SetTitleSize(0.05);
-  gr782_cyclebaseline -> GetXaxis() -> SetTitleOffset(1.0);
-  gr782_cyclebaseline -> GetYaxis() -> SetTitleSize(0.05); 
-  gr782_cyclebaseline -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr782_cyclebaseline -> SetMarkerStyle(7);
-  gr782_cyclebaseline -> Draw("Ap");
-
-  c782_cycleNumFit -> cd(3);
-  TGraphErrors *gr782_cyclebaselineirrad = new TGraphErrors (counts_782, cycleNumberArray782, BaselineIrradArray782 , 0, BaselineIrradErrArray782);
-
-  gr782_cyclebaselineirrad -> SetTitle(" Baseline During Irradiation vs Cycle Number");
-  gr782_cyclebaselineirrad -> GetYaxis()-> SetTitle("Baseline (1/(s#muA))" );
-  gr782_cyclebaselineirrad -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr782_cyclebaselineirrad -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr782_cyclebaselineirrad -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr782_cyclebaselineirrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr782_cyclebaselineirrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr782_cyclebaselineirrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr782_cyclebaselineirrad -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr782_cyclebaselineirrad -> SetMarkerStyle(7);
-  gr782_cyclebaselineirrad -> Draw("Ap");
-
-  c782_cycleNumFit -> cd(4);
-  TGraphErrors *gr782_cyclerise = new TGraphErrors (counts_782, cycleNumberArray782, RiseTimeArray782 , 0, RiseTimeErrArray782);
-
-  gr782_cyclerise -> SetTitle(" Rise Time vs Cycle Number");
-  gr782_cyclerise -> GetYaxis()-> SetTitle("Rise Time (s)" );
-  gr782_cyclerise -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr782_cyclerise -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr782_cyclerise -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr782_cyclerise -> GetXaxis() -> SetTitleSize(0.05);
-  gr782_cyclerise -> GetXaxis() -> SetTitleOffset(1.0);
-  gr782_cyclerise -> GetYaxis() -> SetTitleSize(0.05); 
-  gr782_cyclerise -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr782_cyclerise -> SetMarkerStyle(7);
-  gr782_cyclerise -> Draw("Ap");
-
 
 
   //*********************************
@@ -1653,10 +1655,7 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   //*********************************
   //*********************************
   TCanvas *c784 = new TCanvas("c784" , "c784" , 1200, 800);
-  c784 -> Divide(2,2);
-  //c784 -> cd(1);
-  TPad *p784_1 = c784->cd(1);
-  p784_1->SetLogy(); 
+  c784 ->SetLogy(); 
   TGraphErrors *gr784_delaycounts = new TGraphErrors(counts_784, delaytimeArray784 , UCNCountsArray784, 0, UCNCountsErrArray784);
 
   gr784_delaycounts -> SetTitle("UCN Counts vs Cycle Delay Time");
@@ -1668,130 +1667,21 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr784_delaycounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr784_delaycounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr784_delaycounts -> SetMarkerStyle(7);
+  gr784_delaycounts -> SetMarkerStyle(20);
   gr784_delaycounts -> Fit(fit);
   storage784 = fit -> GetParameter(1);
   storageErr784 = fit -> GetParError(1);
-  
-  TGraphErrors *gr784_delayhist = new TGraphErrors(counts_784, delaytimeArray784 , HistIntegralArray784, 0, HistIntegralErrArray784);
 
-  gr784_delayhist -> SetTitle("UCN Counts vs Cycle Delay Time");
-  gr784_delayhist -> GetXaxis()-> SetTitle("Cycle Delay Time (s)" );
-  gr784_delayhist -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr784_delayhist -> GetYaxis()-> SetRangeUser(1, 500000);
-  gr784_delayhist -> GetXaxis() -> SetTitleSize(0.05);
-  gr784_delayhist -> GetXaxis() -> SetTitleOffset(1.0);
-  gr784_delayhist -> GetYaxis() -> SetTitleSize(0.05); 
-  gr784_delayhist -> GetYaxis() -> SetTitleOffset(0.9);
-  gr784_delayhist -> SetMarkerColor(2);
-  gr784_delayhist -> SetMarkerStyle(7);
 
-  TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
-  leg2 -> AddEntry(gr784_delaycounts , "Without Background" , "p") ;
-  leg2 -> AddEntry(gr784_delayhist , "With Background" , "p") ;
-  leg2 -> SetTextSize(0.05);
 
 
   gr784_delaycounts -> Draw("Ap");
-  gr784_delayhist -> Draw("p");
-  leg2 -> Draw();
 
-  //c784 -> cd(2);
-  TPad *p784_2 = c784->cd(2);
-  p784_2->SetLogy(); 
-  TGraphErrors *gr784_tempIrradcounts = new TGraphErrors (counts_784 , avets12IrradArray784, UCNCountsArray784 , ts12IrradErr784 , UCNCountsErrArray784);
-  gr784_tempIrradcounts -> SetTitle("UCN Counts vs Average Isopure Temperature");
-  gr784_tempIrradcounts -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr784_tempIrradcounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr784_tempIrradcounts -> GetYaxis()-> SetRangeUser(1, 500000);
-  gr784_tempIrradcounts -> GetXaxis()-> SetLimits(1.1 ,1.5);
-  gr784_tempIrradcounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr784_tempIrradcounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr784_tempIrradcounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr784_tempIrradcounts -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr784_tempIrradcounts -> SetMarkerStyle(7);
-
-  TGraphErrors *gr784_tempValveOpencounts = new TGraphErrors (counts_784 , avets12ValveOpenArray784, UCNCountsArray784 , ts12ValveOpenErr784 , UCNCountsErrArray784);
-  gr784_tempValveOpencounts -> SetMarkerStyle(7);
-  gr784_tempValveOpencounts -> SetMarkerColor(2);
-
-  TLegend *leg = new TLegend(0.4,0.7, 0.9, 0.9);
-  leg -> AddEntry(gr784_tempIrradcounts , "Irradiation time + delay time" , "p") ;
-  leg -> AddEntry(gr784_tempValveOpencounts , "Valve open" , "p") ;
-  leg -> SetTextSize(0.05);
-  gr784_tempIrradcounts -> Draw("Ap");
-  gr784_tempValveOpencounts -> Draw("p");
-  leg -> Draw();
-
-  c784 -> cd(3);
-  TGraphErrors *gr784_delaytempIrrad = new TGraphErrors (counts_784 , delaytimeArray784, avets12IrradArray784, 0 , ts12IrradErr784);
-
-  gr784_delaytempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
-  gr784_delaytempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr784_delaytempIrrad -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr784_delaytempIrrad -> SetMarkerStyle(7);
-  gr784_delaytempIrrad -> GetYaxis() -> SetRangeUser(1.1, 1.5);
-  gr784_delaytempIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr784_delaytempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr784_delaytempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr784_delaytempIrrad -> GetYaxis() -> SetTitleOffset(0.9);
-
-
-  TGraphErrors *gr784_delaytempValveOpen = new TGraphErrors (counts_784 , delaytimeArray784, avets12ValveOpenArray784, 0 , ts12ValveOpenErr784);
-
-  gr784_delaytempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
-  gr784_delaytempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr784_delaytempValveOpen -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr784_delaytempValveOpen -> SetMarkerStyle(7);
-  gr784_delaytempValveOpen -> SetMarkerColor(2);
-  gr784_delaytempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
-  gr784_delaytempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
-  gr784_delaytempValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
-  gr784_delaytempValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
-
-
-  gr784_delaytempIrrad -> Draw("AP");
-  gr784_delaytempValveOpen -> Draw("p");
-  leg -> Draw();
-
-
-  TPad *p784_3 = c784->cd(4);
-  p784_3->SetLogy(); 
-  TGraphErrors *gr784_curcounts = new TGraphErrors (counts_784 , avecurArray784, UCNCountsArray784 , ErrcurArray784 , UCNCountsErrArray784);
-  gr784_curcounts -> SetTitle("UCN Counts vs Average Beam Current");
-  gr784_curcounts -> GetXaxis()-> SetTitle("Average Beam Current (#muA)" );
-  gr784_curcounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr784_curcounts -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr784_curcounts -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr784_curcounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr784_curcounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr784_curcounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr784_curcounts -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr784_curcounts -> SetMarkerStyle(7);
-
-  TGraphErrors *gr784_curhist = new TGraphErrors (counts_784 , avecurArray784, UCNCountsArray784 , ErrcurArray784 , UCNCountsErrArray784);
-  gr784_curhist -> SetTitle("UCN Counts vs Average Beam Current");
-  gr784_curhist -> GetXaxis()-> SetTitle("Average Beam Current (#muA)" );
-  gr784_curhist -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr784_curhist -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr784_curhist -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr784_curhist -> GetXaxis() -> SetTitleSize(0.05);
-  gr784_curhist -> GetXaxis() -> SetTitleOffset(1.0);
-  gr784_curhist -> GetYaxis() -> SetTitleSize(0.05); 
-  gr784_curhist -> GetYaxis() -> SetTitleOffset(0.9);
-  gr784_curhist -> SetMarkerColor(2);
-  gr784_curhist -> SetMarkerStyle(7);
-
-  gr784_curcounts -> Draw("Ap");
-  gr784_curhist -> Draw("p");
-  leg2 -> Draw();
 
   TCanvas *c784_cycleNum = new TCanvas("c784_cycleNum" , "c784_cycleNum" , 1200, 800);
   c784_cycleNum -> Divide(2,2);
-  TPad *p784_4 = c784_cycleNum->cd(1);
-  p784_4->SetLogy(); 
+  TPad *p784 = c784_cycleNum->cd(1);
+  p784->SetLogy(); 
   TGraphErrors *gr784_cyclecounts = new TGraphErrors (counts_784 , cycleNumberArray784, UCNCountsArray784, 0 , UCNCountsErrArray784);
   gr784_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
   gr784_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
@@ -1801,8 +1691,8 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr784_cyclecounts -> GetXaxis() -> SetTitleOffset(1.0);
   gr784_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr784_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr784_cyclecounts -> SetMarkerStyle(7);
+  gr784_cyclecounts -> SetMarkerColor(2);
+  gr784_cyclecounts -> SetMarkerStyle(20);
 
 
   TGraphErrors *gr784_cyclehist = new TGraphErrors(counts_784, cycleNumberArray784 , HistIntegralArray784, 0, HistIntegralErrArray784);
@@ -1815,9 +1705,10 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr784_cyclehist -> GetXaxis() -> SetTitleOffset(1.0);
   gr784_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
   gr784_cyclehist -> GetYaxis() -> SetTitleOffset(0.9);
-  gr784_cyclehist -> SetMarkerColor(2);
-  gr784_cyclehist -> SetMarkerStyle(7);
+  gr784_cyclehist -> SetMarkerColor(1);
+  gr784_cyclehist -> SetMarkerStyle(25);
 
+  
   gr784_cyclecounts -> Draw("Ap");
   gr784_cyclehist -> Draw("p");
 
@@ -1833,40 +1724,73 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr784_cycledelay -> GetYaxis() -> SetTitleSize(0.05); 
   gr784_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr784_cycledelay -> SetMarkerStyle(7);
+  gr784_cycledelay -> SetMarkerStyle(20);
 
   gr784_cycledelay -> Draw("Ap");
 
 
   c784_cycleNum -> cd(3);
-  TGraphErrors *gr784_cycletempIrrad = new TGraphErrors (counts_784 , cycleNumberArray784, avets12IrradArray784, 0 , ts12IrradErr784);
-
-  gr784_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
-  gr784_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr784_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
-  gr784_cycletempIrrad -> SetMarkerStyle(7);
-  gr784_cycletempIrrad -> GetYaxis()-> SetRangeUser(1.1, 1.5);
-  gr784_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr784_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr784_cycletempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr784_cycletempIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
   TGraphErrors *gr784_cycletempValveOpen = new TGraphErrors (counts_784 , cycleNumberArray784, avets12ValveOpenArray784, 0 , ts12ValveOpenErr784);
 
   gr784_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr784_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr784_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Number");
-  gr784_cycletempValveOpen -> SetMarkerStyle(7);
-  gr784_cycletempValveOpen -> SetMarkerColor(2);
+  gr784_cycletempValveOpen -> SetMarkerStyle(20);
+  gr784_cycletempValveOpen -> SetMarkerColor(1);
+  gr784_cycletempValveOpen -> GetYaxis() -> SetRangeUser(0.8 , 1.5);
   gr784_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr784_cycletempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
   gr784_cycletempValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
   gr784_cycletempValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
 
+  TGraphErrors *gr784_cycletempValveOpen11 = new TGraphErrors (counts_784 , cycleNumberArray784, avets11ValveOpenArray784, 0 , ts11ValveOpenErr784);
 
-  gr784_cycletempIrrad -> Draw("AP");
-  gr784_cycletempValveOpen -> Draw("p");
-  leg -> Draw();
+  gr784_cycletempValveOpen11 -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr784_cycletempValveOpen11 -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr784_cycletempValveOpen11 -> GetXaxis()-> SetTitle("Cycle Number");
+  gr784_cycletempValveOpen11 -> SetMarkerStyle(20);
+  gr784_cycletempValveOpen11 -> SetMarkerColor(4);
+  gr784_cycletempValveOpen11 -> GetXaxis() -> SetTitleSize(0.05);
+  gr784_cycletempValveOpen11 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr784_cycletempValveOpen11 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr784_cycletempValveOpen11 -> GetYaxis() -> SetTitleOffset(0.9);
+  
+
+  TGraphErrors *gr784_cycletempValveOpen14 = new TGraphErrors (counts_784 , cycleNumberArray784, avets14ValveOpenArray784, 0 , ts14ValveOpenErr784);
+
+  gr784_cycletempValveOpen14 -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr784_cycletempValveOpen14 -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr784_cycletempValveOpen14 -> GetXaxis()-> SetTitle("Cycle Number");
+  gr784_cycletempValveOpen14 -> SetMarkerStyle(20);
+  gr784_cycletempValveOpen14 -> SetMarkerColor(3);
+  gr784_cycletempValveOpen14 -> GetXaxis() -> SetTitleSize(0.05);
+  gr784_cycletempValveOpen14 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr784_cycletempValveOpen14 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr784_cycletempValveOpen14 -> GetYaxis() -> SetTitleOffset(0.9);
+
+
+  TGraphErrors *gr784_cycletempValveOpen16 = new TGraphErrors (counts_784 , cycleNumberArray784, avets16ValveOpenArray784, 0 , ts16ValveOpenErr784);
+
+  gr784_cycletempValveOpen16 -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr784_cycletempValveOpen16 -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr784_cycletempValveOpen16 -> GetXaxis()-> SetTitle("Cycle Number");
+  gr784_cycletempValveOpen16 -> SetMarkerStyle(20);
+  gr784_cycletempValveOpen16 -> SetMarkerColor(2);
+  gr784_cycletempValveOpen16 -> GetXaxis() -> SetTitleSize(0.05);
+  gr784_cycletempValveOpen16 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr784_cycletempValveOpen16 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr784_cycletempValveOpen16 -> GetYaxis() -> SetTitleOffset(0.9);
+  
+  
+
+  
+  gr784_cycletempValveOpen -> Draw("Ap");
+  gr784_cycletempValveOpen11 -> Draw("p");
+  gr784_cycletempValveOpen14 -> Draw("p");
+  gr784_cycletempValveOpen16 -> Draw("p");
+  temps -> Draw();
+  
 
   c784_cycleNum -> cd(4);
   TGraphErrors *gr784_cyclecur = new TGraphErrors (counts_784 , cycleNumberArray784 , avecurArray784, 0, ErrcurArray784 );
@@ -1880,79 +1804,8 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr784_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
   gr784_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr784_cyclecur -> SetMarkerStyle(7);
+  gr784_cyclecur -> SetMarkerStyle(20);
   gr784_cyclecur -> Draw("Ap");
-
-
-  TCanvas *c784_cycleNumFit = new TCanvas("c784_cycleNumFit" , "c784_cycleNumFit" , 1200, 800);
-  c784_cycleNumFit -> Divide(2,2);
-
-  c784_cycleNumFit -> cd(1);
-  TGraphErrors *gr784_cyclefall = new TGraphErrors (counts_784, cycleNumberArray784, FallTimeArray784 , 0, FallTimeErrArray784);
-
-  gr784_cyclefall -> SetTitle(" Fall Time vs Cycle Number");
-  gr784_cyclefall -> GetYaxis()-> SetTitle("Fall Time (s)" );
-  gr784_cyclefall -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr784_cyclefall -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr784_cyclefall -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr784_cyclefall -> GetXaxis() -> SetTitleSize(0.05);
-  gr784_cyclefall -> GetXaxis() -> SetTitleOffset(1.0);
-  gr784_cyclefall -> GetYaxis() -> SetTitleSize(0.05); 
-  gr784_cyclefall -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr784_cyclefall -> SetMarkerStyle(7);
-  gr784_cyclefall -> Draw("Ap");
-
-
-  c784_cycleNumFit -> cd(2);
-  TGraphErrors *gr784_cyclebaseline = new TGraphErrors (counts_784, cycleNumberArray784, BaselineArray784 , 0, BaselineErrArray784);
-
-  gr784_cyclebaseline -> SetTitle(" Baseline Before Irradiation vs Cycle Number");
-  gr784_cyclebaseline -> GetYaxis()-> SetTitle("Baseline (1/s)" );
-  gr784_cyclebaseline -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr784_cyclebaseline -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr784_cyclebaseline -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr784_cyclebaseline -> GetXaxis() -> SetTitleSize(0.05);
-  gr784_cyclebaseline -> GetXaxis() -> SetTitleOffset(1.0);
-  gr784_cyclebaseline -> GetYaxis() -> SetTitleSize(0.05); 
-  gr784_cyclebaseline -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr784_cyclebaseline -> SetMarkerStyle(7);
-  gr784_cyclebaseline -> Draw("Ap");
-
-  c784_cycleNumFit -> cd(3);
-  TGraphErrors *gr784_cyclebaselineirrad = new TGraphErrors (counts_784, cycleNumberArray784, BaselineIrradArray784 , 0, BaselineIrradErrArray784);
-
-  gr784_cyclebaselineirrad -> SetTitle(" Baseline During Irradiation vs Cycle Number");
-  gr784_cyclebaselineirrad -> GetYaxis()-> SetTitle("Baseline (1/(s#muA))" );
-  gr784_cyclebaselineirrad -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr784_cyclebaselineirrad -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr784_cyclebaselineirrad -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr784_cyclebaselineirrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr784_cyclebaselineirrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr784_cyclebaselineirrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr784_cyclebaselineirrad -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr784_cyclebaselineirrad -> SetMarkerStyle(7);
-  gr784_cyclebaselineirrad -> Draw("Ap");
-
-  c784_cycleNumFit -> cd(4);
-  TGraphErrors *gr784_cyclerise = new TGraphErrors (counts_784, cycleNumberArray784, RiseTimeArray784 , 0, RiseTimeErrArray784);
-
-  gr784_cyclerise -> SetTitle(" Rise Time vs Cycle Number");
-  gr784_cyclerise -> GetYaxis()-> SetTitle("Rise Time (s)" );
-  gr784_cyclerise -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr784_cyclerise -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr784_cyclerise -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr784_cyclerise -> GetXaxis() -> SetTitleSize(0.05);
-  gr784_cyclerise -> GetXaxis() -> SetTitleOffset(1.0);
-  gr784_cyclerise -> GetYaxis() -> SetTitleSize(0.05); 
-  gr784_cyclerise -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr784_cyclerise -> SetMarkerStyle(7);
-  gr784_cyclerise -> Draw("Ap");
-
-
 
 
 
@@ -1962,10 +1815,7 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   //*********************************
   //*********************************
   TCanvas *c785 = new TCanvas("c785" , "c785" , 1200, 800);
-  c785 -> Divide(2,2);
-  //c785 -> cd(1);
-  TPad *p785_1 = c785->cd(1);
-  p785_1->SetLogy(); 
+  c785 ->SetLogy(); 
   TGraphErrors *gr785_delaycounts = new TGraphErrors(counts_785, delaytimeArray785 , UCNCountsArray785, 0, UCNCountsErrArray785);
 
   gr785_delaycounts -> SetTitle("UCN Counts vs Cycle Delay Time");
@@ -1977,130 +1827,21 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr785_delaycounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr785_delaycounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr785_delaycounts -> SetMarkerStyle(7);
+  gr785_delaycounts -> SetMarkerStyle(20);
   gr785_delaycounts -> Fit(fit);
   storage785 = fit -> GetParameter(1);
   storageErr785 = fit -> GetParError(1);
-  
-  TGraphErrors *gr785_delayhist = new TGraphErrors(counts_785, delaytimeArray785 , HistIntegralArray785, 0, HistIntegralErrArray785);
 
-  gr785_delayhist -> SetTitle("UCN Counts vs Cycle Delay Time");
-  gr785_delayhist -> GetXaxis()-> SetTitle("Cycle Delay Time (s)" );
-  gr785_delayhist -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr785_delayhist -> GetYaxis()-> SetRangeUser(1, 500000);
-  gr785_delayhist -> GetXaxis() -> SetTitleSize(0.05);
-  gr785_delayhist -> GetXaxis() -> SetTitleOffset(1.0);
-  gr785_delayhist -> GetYaxis() -> SetTitleSize(0.05); 
-  gr785_delayhist -> GetYaxis() -> SetTitleOffset(0.9);
-  gr785_delayhist -> SetMarkerColor(2);
-  gr785_delayhist -> SetMarkerStyle(7);
 
-  TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
-  leg2 -> AddEntry(gr785_delaycounts , "Without Background" , "p") ;
-  leg2 -> AddEntry(gr785_delayhist , "With Background" , "p") ;
-  leg2 -> SetTextSize(0.05);
 
 
   gr785_delaycounts -> Draw("Ap");
-  gr785_delayhist -> Draw("p");
-  leg2 -> Draw();
 
-  //c785 -> cd(2);
-  TPad *p785_2 = c785->cd(2);
-  p785_2->SetLogy(); 
-  TGraphErrors *gr785_tempIrradcounts = new TGraphErrors (counts_785 , avets12IrradArray785, UCNCountsArray785 , ts12IrradErr785 , UCNCountsErrArray785);
-  gr785_tempIrradcounts -> SetTitle("UCN Counts vs Average Isopure Temperature");
-  gr785_tempIrradcounts -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr785_tempIrradcounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr785_tempIrradcounts -> GetYaxis()-> SetRangeUser(1, 500000);
-  gr785_tempIrradcounts -> GetXaxis()-> SetLimits(0.9 ,1.3);
-  gr785_tempIrradcounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr785_tempIrradcounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr785_tempIrradcounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr785_tempIrradcounts -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr785_tempIrradcounts -> SetMarkerStyle(7);
-
-  TGraphErrors *gr785_tempValveOpencounts = new TGraphErrors (counts_785 , avets12ValveOpenArray785, UCNCountsArray785 , ts12ValveOpenErr785 , UCNCountsErrArray785);
-  gr785_tempValveOpencounts -> SetMarkerStyle(7);
-  gr785_tempValveOpencounts -> SetMarkerColor(2);
-
-  TLegend *leg = new TLegend(0.4,0.7, 0.9, 0.9);
-  leg -> AddEntry(gr785_tempIrradcounts , "Irradiation time + delay time" , "p") ;
-  leg -> AddEntry(gr785_tempValveOpencounts , "Valve open" , "p") ;
-  leg -> SetTextSize(0.05);
-  gr785_tempIrradcounts -> Draw("Ap");
-  gr785_tempValveOpencounts -> Draw("p");
-  leg -> Draw();
-
-  c785 -> cd(3);
-  TGraphErrors *gr785_delaytempIrrad = new TGraphErrors (counts_785 , delaytimeArray785, avets12IrradArray785, 0 , ts12IrradErr785);
-
-  gr785_delaytempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
-  gr785_delaytempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr785_delaytempIrrad -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr785_delaytempIrrad -> SetMarkerStyle(7);
-  gr785_delaytempIrrad -> GetYaxis() -> SetRangeUser(0.9, 1.3);
-  gr785_delaytempIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr785_delaytempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr785_delaytempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr785_delaytempIrrad -> GetYaxis() -> SetTitleOffset(0.9);
-
-
-  TGraphErrors *gr785_delaytempValveOpen = new TGraphErrors (counts_785 , delaytimeArray785, avets12ValveOpenArray785, 0 , ts12ValveOpenErr785);
-
-  gr785_delaytempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
-  gr785_delaytempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr785_delaytempValveOpen -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr785_delaytempValveOpen -> SetMarkerStyle(7);
-  gr785_delaytempValveOpen -> SetMarkerColor(2);
-  gr785_delaytempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
-  gr785_delaytempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
-  gr785_delaytempValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
-  gr785_delaytempValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
-
-
-  gr785_delaytempIrrad -> Draw("AP");
-  gr785_delaytempValveOpen -> Draw("p");
-  leg -> Draw();
-
-
-  TPad *p785_3 = c785->cd(4);
-  p785_3->SetLogy(); 
-  TGraphErrors *gr785_curcounts = new TGraphErrors (counts_785 , avecurArray785, UCNCountsArray785 , ErrcurArray785 , UCNCountsErrArray785);
-  gr785_curcounts -> SetTitle("UCN Counts vs Average Beam Current");
-  gr785_curcounts -> GetXaxis()-> SetTitle("Average Beam Current (#muA)" );
-  gr785_curcounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr785_curcounts -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr785_curcounts -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr785_curcounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr785_curcounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr785_curcounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr785_curcounts -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr785_curcounts -> SetMarkerStyle(7);
-
-  TGraphErrors *gr785_curhist = new TGraphErrors (counts_785 , avecurArray785, UCNCountsArray785 , ErrcurArray785 , UCNCountsErrArray785);
-  gr785_curhist -> SetTitle("UCN Counts vs Average Beam Current");
-  gr785_curhist -> GetXaxis()-> SetTitle("Average Beam Current (#muA)" );
-  gr785_curhist -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr785_curhist -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr785_curhist -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr785_curhist -> GetXaxis() -> SetTitleSize(0.05);
-  gr785_curhist -> GetXaxis() -> SetTitleOffset(1.0);
-  gr785_curhist -> GetYaxis() -> SetTitleSize(0.05); 
-  gr785_curhist -> GetYaxis() -> SetTitleOffset(0.9);
-  gr785_curhist -> SetMarkerColor(2);
-  gr785_curhist -> SetMarkerStyle(7);
-
-  gr785_curcounts -> Draw("Ap");
-  gr785_curhist -> Draw("p");
-  leg2 -> Draw();
 
   TCanvas *c785_cycleNum = new TCanvas("c785_cycleNum" , "c785_cycleNum" , 1200, 800);
   c785_cycleNum -> Divide(2,2);
-  TPad *p785_4 = c785_cycleNum->cd(1);
-  p785_4->SetLogy(); 
+  TPad *p785 = c785_cycleNum->cd(1);
+  p785->SetLogy(); 
   TGraphErrors *gr785_cyclecounts = new TGraphErrors (counts_785 , cycleNumberArray785, UCNCountsArray785, 0 , UCNCountsErrArray785);
   gr785_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
   gr785_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
@@ -2110,8 +1851,8 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr785_cyclecounts -> GetXaxis() -> SetTitleOffset(1.0);
   gr785_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr785_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr785_cyclecounts -> SetMarkerStyle(7);
+  gr785_cyclecounts -> SetMarkerColor(2);
+  gr785_cyclecounts -> SetMarkerStyle(20);
 
 
   TGraphErrors *gr785_cyclehist = new TGraphErrors(counts_785, cycleNumberArray785 , HistIntegralArray785, 0, HistIntegralErrArray785);
@@ -2124,9 +1865,10 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr785_cyclehist -> GetXaxis() -> SetTitleOffset(1.0);
   gr785_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
   gr785_cyclehist -> GetYaxis() -> SetTitleOffset(0.9);
-  gr785_cyclehist -> SetMarkerColor(2);
-  gr785_cyclehist -> SetMarkerStyle(7);
+  gr785_cyclehist -> SetMarkerColor(1);
+  gr785_cyclehist -> SetMarkerStyle(25);
 
+  
   gr785_cyclecounts -> Draw("Ap");
   gr785_cyclehist -> Draw("p");
 
@@ -2142,40 +1884,73 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr785_cycledelay -> GetYaxis() -> SetTitleSize(0.05); 
   gr785_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr785_cycledelay -> SetMarkerStyle(7);
+  gr785_cycledelay -> SetMarkerStyle(20);
 
   gr785_cycledelay -> Draw("Ap");
 
 
   c785_cycleNum -> cd(3);
-  TGraphErrors *gr785_cycletempIrrad = new TGraphErrors (counts_785 , cycleNumberArray785, avets12IrradArray785, 0 , ts12IrradErr785);
-
-  gr785_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
-  gr785_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr785_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
-  gr785_cycletempIrrad -> SetMarkerStyle(7);
-  gr785_cycletempIrrad -> GetYaxis()-> SetRangeUser(0.9, 1.3);
-  gr785_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr785_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr785_cycletempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr785_cycletempIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
   TGraphErrors *gr785_cycletempValveOpen = new TGraphErrors (counts_785 , cycleNumberArray785, avets12ValveOpenArray785, 0 , ts12ValveOpenErr785);
 
   gr785_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr785_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr785_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Number");
-  gr785_cycletempValveOpen -> SetMarkerStyle(7);
-  gr785_cycletempValveOpen -> SetMarkerColor(2);
+  gr785_cycletempValveOpen -> SetMarkerStyle(20);
+  gr785_cycletempValveOpen -> SetMarkerColor(1);
+  gr785_cycletempValveOpen -> GetYaxis() -> SetRangeUser(0.8 , 1.5);
   gr785_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr785_cycletempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
   gr785_cycletempValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
   gr785_cycletempValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
 
+  TGraphErrors *gr785_cycletempValveOpen11 = new TGraphErrors (counts_785 , cycleNumberArray785, avets11ValveOpenArray785, 0 , ts11ValveOpenErr785);
 
-  gr785_cycletempIrrad -> Draw("AP");
-  gr785_cycletempValveOpen -> Draw("p");
-  leg -> Draw();
+  gr785_cycletempValveOpen11 -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr785_cycletempValveOpen11 -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr785_cycletempValveOpen11 -> GetXaxis()-> SetTitle("Cycle Number");
+  gr785_cycletempValveOpen11 -> SetMarkerStyle(20);
+  gr785_cycletempValveOpen11 -> SetMarkerColor(4);
+  gr785_cycletempValveOpen11 -> GetXaxis() -> SetTitleSize(0.05);
+  gr785_cycletempValveOpen11 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr785_cycletempValveOpen11 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr785_cycletempValveOpen11 -> GetYaxis() -> SetTitleOffset(0.9);
+  
+
+  TGraphErrors *gr785_cycletempValveOpen14 = new TGraphErrors (counts_785 , cycleNumberArray785, avets14ValveOpenArray785, 0 , ts14ValveOpenErr785);
+
+  gr785_cycletempValveOpen14 -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr785_cycletempValveOpen14 -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr785_cycletempValveOpen14 -> GetXaxis()-> SetTitle("Cycle Number");
+  gr785_cycletempValveOpen14 -> SetMarkerStyle(20);
+  gr785_cycletempValveOpen14 -> SetMarkerColor(3);
+  gr785_cycletempValveOpen14 -> GetXaxis() -> SetTitleSize(0.05);
+  gr785_cycletempValveOpen14 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr785_cycletempValveOpen14 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr785_cycletempValveOpen14 -> GetYaxis() -> SetTitleOffset(0.9);
+
+
+  TGraphErrors *gr785_cycletempValveOpen16 = new TGraphErrors (counts_785 , cycleNumberArray785, avets16ValveOpenArray785, 0 , ts16ValveOpenErr785);
+
+  gr785_cycletempValveOpen16 -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr785_cycletempValveOpen16 -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr785_cycletempValveOpen16 -> GetXaxis()-> SetTitle("Cycle Number");
+  gr785_cycletempValveOpen16 -> SetMarkerStyle(20);
+  gr785_cycletempValveOpen16 -> SetMarkerColor(2);
+  gr785_cycletempValveOpen16 -> GetXaxis() -> SetTitleSize(0.05);
+  gr785_cycletempValveOpen16 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr785_cycletempValveOpen16 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr785_cycletempValveOpen16 -> GetYaxis() -> SetTitleOffset(0.9);
+  
+  
+
+  
+  gr785_cycletempValveOpen -> Draw("Ap");
+  gr785_cycletempValveOpen11 -> Draw("p");
+  gr785_cycletempValveOpen14 -> Draw("p");
+  gr785_cycletempValveOpen16 -> Draw("p");
+  temps -> Draw();
+  
 
   c785_cycleNum -> cd(4);
   TGraphErrors *gr785_cyclecur = new TGraphErrors (counts_785 , cycleNumberArray785 , avecurArray785, 0, ErrcurArray785 );
@@ -2189,79 +1964,8 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr785_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
   gr785_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr785_cyclecur -> SetMarkerStyle(7);
+  gr785_cyclecur -> SetMarkerStyle(20);
   gr785_cyclecur -> Draw("Ap");
-
-
-  TCanvas *c785_cycleNumFit = new TCanvas("c785_cycleNumFit" , "c785_cycleNumFit" , 1200, 800);
-  c785_cycleNumFit -> Divide(2,2);
-
-  c785_cycleNumFit -> cd(1);
-  TGraphErrors *gr785_cyclefall = new TGraphErrors (counts_785, cycleNumberArray785, FallTimeArray785 , 0, FallTimeErrArray785);
-
-  gr785_cyclefall -> SetTitle(" Fall Time vs Cycle Number");
-  gr785_cyclefall -> GetYaxis()-> SetTitle("Fall Time (s)" );
-  gr785_cyclefall -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr785_cyclefall -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr785_cyclefall -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr785_cyclefall -> GetXaxis() -> SetTitleSize(0.05);
-  gr785_cyclefall -> GetXaxis() -> SetTitleOffset(1.0);
-  gr785_cyclefall -> GetYaxis() -> SetTitleSize(0.05); 
-  gr785_cyclefall -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr785_cyclefall -> SetMarkerStyle(7);
-  gr785_cyclefall -> Draw("Ap");
-
-
-  c785_cycleNumFit -> cd(2);
-  TGraphErrors *gr785_cyclebaseline = new TGraphErrors (counts_785, cycleNumberArray785, BaselineArray785 , 0, BaselineErrArray785);
-
-  gr785_cyclebaseline -> SetTitle(" Baseline Before Irradiation vs Cycle Number");
-  gr785_cyclebaseline -> GetYaxis()-> SetTitle("Baseline (1/s)" );
-  gr785_cyclebaseline -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr785_cyclebaseline -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr785_cyclebaseline -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr785_cyclebaseline -> GetXaxis() -> SetTitleSize(0.05);
-  gr785_cyclebaseline -> GetXaxis() -> SetTitleOffset(1.0);
-  gr785_cyclebaseline -> GetYaxis() -> SetTitleSize(0.05); 
-  gr785_cyclebaseline -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr785_cyclebaseline -> SetMarkerStyle(7);
-  gr785_cyclebaseline -> Draw("Ap");
-
-  c785_cycleNumFit -> cd(3);
-  TGraphErrors *gr785_cyclebaselineirrad = new TGraphErrors (counts_785, cycleNumberArray785, BaselineIrradArray785 , 0, BaselineIrradErrArray785);
-
-  gr785_cyclebaselineirrad -> SetTitle(" Baseline During Irradiation vs Cycle Number");
-  gr785_cyclebaselineirrad -> GetYaxis()-> SetTitle("Baseline (1/(s#muA))" );
-  gr785_cyclebaselineirrad -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr785_cyclebaselineirrad -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr785_cyclebaselineirrad -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr785_cyclebaselineirrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr785_cyclebaselineirrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr785_cyclebaselineirrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr785_cyclebaselineirrad -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr785_cyclebaselineirrad -> SetMarkerStyle(7);
-  gr785_cyclebaselineirrad -> Draw("Ap");
-
-  c785_cycleNumFit -> cd(4);
-  TGraphErrors *gr785_cyclerise = new TGraphErrors (counts_785, cycleNumberArray785, RiseTimeArray785 , 0, RiseTimeErrArray785);
-
-  gr785_cyclerise -> SetTitle(" Rise Time vs Cycle Number");
-  gr785_cyclerise -> GetYaxis()-> SetTitle("Rise Time (s)" );
-  gr785_cyclerise -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr785_cyclerise -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr785_cyclerise -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr785_cyclerise -> GetXaxis() -> SetTitleSize(0.05);
-  gr785_cyclerise -> GetXaxis() -> SetTitleOffset(1.0);
-  gr785_cyclerise -> GetYaxis() -> SetTitleSize(0.05); 
-  gr785_cyclerise -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr785_cyclerise -> SetMarkerStyle(7);
-  gr785_cyclerise -> Draw("Ap");
-
-
 
 
   //*********************************
@@ -2270,10 +1974,7 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   //*********************************
   //*********************************
   TCanvas *c786 = new TCanvas("c786" , "c786" , 1200, 800);
-  c786 -> Divide(2,2);
-  //c786 -> cd(1);
-  TPad *p786_1 = c786->cd(1);
-  p786_1->SetLogy(); 
+  c786 ->SetLogy(); 
   TGraphErrors *gr786_delaycounts = new TGraphErrors(counts_786, delaytimeArray786 , UCNCountsArray786, 0, UCNCountsErrArray786);
 
   gr786_delaycounts -> SetTitle("UCN Counts vs Cycle Delay Time");
@@ -2285,130 +1986,21 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr786_delaycounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr786_delaycounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr786_delaycounts -> SetMarkerStyle(7);
+  gr786_delaycounts -> SetMarkerStyle(20);
   gr786_delaycounts -> Fit(fit);
   storage786 = fit -> GetParameter(1);
   storageErr786 = fit -> GetParError(1);
-  
-  TGraphErrors *gr786_delayhist = new TGraphErrors(counts_786, delaytimeArray786 , HistIntegralArray786, 0, HistIntegralErrArray786);
 
-  gr786_delayhist -> SetTitle("UCN Counts vs Cycle Delay Time");
-  gr786_delayhist -> GetXaxis()-> SetTitle("Cycle Delay Time (s)" );
-  gr786_delayhist -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr786_delayhist -> GetYaxis()-> SetRangeUser(1, 500000);
-  gr786_delayhist -> GetXaxis() -> SetTitleSize(0.05);
-  gr786_delayhist -> GetXaxis() -> SetTitleOffset(1.0);
-  gr786_delayhist -> GetYaxis() -> SetTitleSize(0.05); 
-  gr786_delayhist -> GetYaxis() -> SetTitleOffset(0.9);
-  gr786_delayhist -> SetMarkerColor(2);
-  gr786_delayhist -> SetMarkerStyle(7);
 
-  TLegend *leg2 = new TLegend(0.4,0.7, 0.9, 0.9);
-  leg2 -> AddEntry(gr786_delaycounts , "Without Background" , "p") ;
-  leg2 -> AddEntry(gr786_delayhist , "With Background" , "p") ;
-  leg2 -> SetTextSize(0.05);
 
 
   gr786_delaycounts -> Draw("Ap");
-  gr786_delayhist -> Draw("p");
-  leg2 -> Draw();
 
-  //c786 -> cd(2);
-  TPad *p786_2 = c786->cd(2);
-  p786_2->SetLogy(); 
-  TGraphErrors *gr786_tempIrradcounts = new TGraphErrors (counts_786 , avets12IrradArray786, UCNCountsArray786 , ts12IrradErr786 , UCNCountsErrArray786);
-  gr786_tempIrradcounts -> SetTitle("UCN Counts vs Average Isopure Temperature");
-  gr786_tempIrradcounts -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr786_tempIrradcounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr786_tempIrradcounts -> GetYaxis()-> SetRangeUser(1, 500000);
-  gr786_tempIrradcounts -> GetXaxis()-> SetLimits(1.1 ,1.4);
-  gr786_tempIrradcounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr786_tempIrradcounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr786_tempIrradcounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr786_tempIrradcounts -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr786_tempIrradcounts -> SetMarkerStyle(7);
-
-  TGraphErrors *gr786_tempValveOpencounts = new TGraphErrors (counts_786 , avets12ValveOpenArray786, UCNCountsArray786 , ts12ValveOpenErr786 , UCNCountsErrArray786);
-  gr786_tempValveOpencounts -> SetMarkerStyle(7);
-  gr786_tempValveOpencounts -> SetMarkerColor(2);
-
-  TLegend *leg = new TLegend(0.4,0.7, 0.9, 0.9);
-  leg -> AddEntry(gr786_tempIrradcounts , "Irradiation time + delay time" , "p") ;
-  leg -> AddEntry(gr786_tempValveOpencounts , "Valve open" , "p") ;
-  leg -> SetTextSize(0.05);
-  gr786_tempIrradcounts -> Draw("Ap");
-  gr786_tempValveOpencounts -> Draw("p");
-  leg -> Draw();
-
-  c786 -> cd(3);
-  TGraphErrors *gr786_delaytempIrrad = new TGraphErrors (counts_786 , delaytimeArray786, avets12IrradArray786, 0 , ts12IrradErr786);
-
-  gr786_delaytempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
-  gr786_delaytempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr786_delaytempIrrad -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr786_delaytempIrrad -> SetMarkerStyle(7);
-  gr786_delaytempIrrad -> GetYaxis() -> SetRangeUser(1.1, 1.4);
-  gr786_delaytempIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr786_delaytempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr786_delaytempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr786_delaytempIrrad -> GetYaxis() -> SetTitleOffset(0.9);
-
-
-  TGraphErrors *gr786_delaytempValveOpen = new TGraphErrors (counts_786 , delaytimeArray786, avets12ValveOpenArray786, 0 , ts12ValveOpenErr786);
-
-  gr786_delaytempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Delay Time");
-  gr786_delaytempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr786_delaytempValveOpen -> GetXaxis()-> SetTitle("Cycle Delay Time (s)");
-  gr786_delaytempValveOpen -> SetMarkerStyle(7);
-  gr786_delaytempValveOpen -> SetMarkerColor(2);
-  gr786_delaytempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
-  gr786_delaytempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
-  gr786_delaytempValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
-  gr786_delaytempValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
-
-
-  gr786_delaytempIrrad -> Draw("AP");
-  gr786_delaytempValveOpen -> Draw("p");
-  leg -> Draw();
-
-
-  TPad *p786_3 = c786->cd(4);
-  p786_3->SetLogy(); 
-  TGraphErrors *gr786_curcounts = new TGraphErrors (counts_786 , avecurArray786, UCNCountsArray786 , ErrcurArray786 , UCNCountsErrArray786);
-  gr786_curcounts -> SetTitle("UCN Counts vs Average Beam Current");
-  gr786_curcounts -> GetXaxis()-> SetTitle("Average Beam Current (#muA)" );
-  gr786_curcounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr786_curcounts -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr786_curcounts -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr786_curcounts -> GetXaxis() -> SetTitleSize(0.05);
-  gr786_curcounts -> GetXaxis() -> SetTitleOffset(1.0);
-  gr786_curcounts -> GetYaxis() -> SetTitleSize(0.05); 
-  gr786_curcounts -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr786_curcounts -> SetMarkerStyle(7);
-
-  TGraphErrors *gr786_curhist = new TGraphErrors (counts_786 , avecurArray786, UCNCountsArray786 , ErrcurArray786 , UCNCountsErrArray786);
-  gr786_curhist -> SetTitle("UCN Counts vs Average Beam Current");
-  gr786_curhist -> GetXaxis()-> SetTitle("Average Beam Current (#muA)" );
-  gr786_curhist -> GetYaxis()-> SetTitle("Cycle UCN Counts");
-  gr786_curhist -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr786_curhist -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr786_curhist -> GetXaxis() -> SetTitleSize(0.05);
-  gr786_curhist -> GetXaxis() -> SetTitleOffset(1.0);
-  gr786_curhist -> GetYaxis() -> SetTitleSize(0.05); 
-  gr786_curhist -> GetYaxis() -> SetTitleOffset(0.9);
-  gr786_curhist -> SetMarkerColor(2);
-  gr786_curhist -> SetMarkerStyle(7);
-
-  gr786_curcounts -> Draw("Ap");
-  gr786_curhist -> Draw("p");
-  leg2 -> Draw();
 
   TCanvas *c786_cycleNum = new TCanvas("c786_cycleNum" , "c786_cycleNum" , 1200, 800);
   c786_cycleNum -> Divide(2,2);
-  TPad *p786_4 = c786_cycleNum->cd(1);
-  p786_4->SetLogy(); 
+  TPad *p786 = c786_cycleNum->cd(1);
+  p786->SetLogy(); 
   TGraphErrors *gr786_cyclecounts = new TGraphErrors (counts_786 , cycleNumberArray786, UCNCountsArray786, 0 , UCNCountsErrArray786);
   gr786_cyclecounts -> SetTitle("UCN Counts vs Cycle Number");
   gr786_cyclecounts -> GetXaxis()-> SetTitle("Cycle Number" );
@@ -2418,8 +2010,8 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr786_cyclecounts -> GetXaxis() -> SetTitleOffset(1.0);
   gr786_cyclecounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr786_cyclecounts -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr786_cyclecounts -> SetMarkerStyle(7);
+  gr786_cyclecounts -> SetMarkerColor(2);
+  gr786_cyclecounts -> SetMarkerStyle(20);
 
 
   TGraphErrors *gr786_cyclehist = new TGraphErrors(counts_786, cycleNumberArray786 , HistIntegralArray786, 0, HistIntegralErrArray786);
@@ -2432,9 +2024,10 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr786_cyclehist -> GetXaxis() -> SetTitleOffset(1.0);
   gr786_cyclehist -> GetYaxis() -> SetTitleSize(0.05); 
   gr786_cyclehist -> GetYaxis() -> SetTitleOffset(0.9);
-  gr786_cyclehist -> SetMarkerColor(2);
-  gr786_cyclehist -> SetMarkerStyle(7);
+  gr786_cyclehist -> SetMarkerColor(1);
+  gr786_cyclehist -> SetMarkerStyle(25);
 
+  
   gr786_cyclecounts -> Draw("Ap");
   gr786_cyclehist -> Draw("p");
 
@@ -2450,40 +2043,73 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr786_cycledelay -> GetYaxis() -> SetTitleSize(0.05); 
   gr786_cycledelay -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr786_cycledelay -> SetMarkerStyle(7);
+  gr786_cycledelay -> SetMarkerStyle(20);
 
   gr786_cycledelay -> Draw("Ap");
 
 
   c786_cycleNum -> cd(3);
-  TGraphErrors *gr786_cycletempIrrad = new TGraphErrors (counts_786 , cycleNumberArray786, avets12IrradArray786, 0 , ts12IrradErr786);
-
-  gr786_cycletempIrrad -> SetTitle( "Average Isopure Temperature vs Cycle Number");
-  gr786_cycletempIrrad -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
-  gr786_cycletempIrrad -> GetXaxis()-> SetTitle("Cycle Number");
-  gr786_cycletempIrrad -> SetMarkerStyle(7);
-  gr786_cycletempIrrad -> GetYaxis()-> SetRangeUser(1.1, 1.4);
-  gr786_cycletempIrrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr786_cycletempIrrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr786_cycletempIrrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr786_cycletempIrrad -> GetYaxis() -> SetTitleOffset(0.9);
 
   TGraphErrors *gr786_cycletempValveOpen = new TGraphErrors (counts_786 , cycleNumberArray786, avets12ValveOpenArray786, 0 , ts12ValveOpenErr786);
 
   gr786_cycletempValveOpen -> SetTitle( "Average Isopure Temperature vs Cycle Number");
   gr786_cycletempValveOpen -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr786_cycletempValveOpen -> GetXaxis()-> SetTitle("Cycle Number");
-  gr786_cycletempValveOpen -> SetMarkerStyle(7);
-  gr786_cycletempValveOpen -> SetMarkerColor(2);
+  gr786_cycletempValveOpen -> SetMarkerStyle(20);
+  gr786_cycletempValveOpen -> SetMarkerColor(1);
+  gr786_cycletempValveOpen -> GetYaxis() -> SetRangeUser(0.8 , 1.5);
   gr786_cycletempValveOpen -> GetXaxis() -> SetTitleSize(0.05);
   gr786_cycletempValveOpen -> GetXaxis() -> SetTitleOffset(1.0);
   gr786_cycletempValveOpen -> GetYaxis() -> SetTitleSize(0.05); 
   gr786_cycletempValveOpen -> GetYaxis() -> SetTitleOffset(0.9);
 
+  TGraphErrors *gr786_cycletempValveOpen11 = new TGraphErrors (counts_786 , cycleNumberArray786, avets11ValveOpenArray786, 0 , ts11ValveOpenErr786);
 
-  gr786_cycletempIrrad -> Draw("AP");
-  gr786_cycletempValveOpen -> Draw("p");
-  leg -> Draw();
+  gr786_cycletempValveOpen11 -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr786_cycletempValveOpen11 -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr786_cycletempValveOpen11 -> GetXaxis()-> SetTitle("Cycle Number");
+  gr786_cycletempValveOpen11 -> SetMarkerStyle(20);
+  gr786_cycletempValveOpen11 -> SetMarkerColor(4);
+  gr786_cycletempValveOpen11 -> GetXaxis() -> SetTitleSize(0.05);
+  gr786_cycletempValveOpen11 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr786_cycletempValveOpen11 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr786_cycletempValveOpen11 -> GetYaxis() -> SetTitleOffset(0.9);
+  
+
+  TGraphErrors *gr786_cycletempValveOpen14 = new TGraphErrors (counts_786 , cycleNumberArray786, avets14ValveOpenArray786, 0 , ts14ValveOpenErr786);
+
+  gr786_cycletempValveOpen14 -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr786_cycletempValveOpen14 -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr786_cycletempValveOpen14 -> GetXaxis()-> SetTitle("Cycle Number");
+  gr786_cycletempValveOpen14 -> SetMarkerStyle(20);
+  gr786_cycletempValveOpen14 -> SetMarkerColor(3);
+  gr786_cycletempValveOpen14 -> GetXaxis() -> SetTitleSize(0.05);
+  gr786_cycletempValveOpen14 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr786_cycletempValveOpen14 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr786_cycletempValveOpen14 -> GetYaxis() -> SetTitleOffset(0.9);
+
+
+  TGraphErrors *gr786_cycletempValveOpen16 = new TGraphErrors (counts_786 , cycleNumberArray786, avets16ValveOpenArray786, 0 , ts16ValveOpenErr786);
+
+  gr786_cycletempValveOpen16 -> SetTitle( "Average Isopure Temperature vs Cycle Number");
+  gr786_cycletempValveOpen16 -> GetYaxis()-> SetTitle("Average Isopure Temperature (K)" );
+  gr786_cycletempValveOpen16 -> GetXaxis()-> SetTitle("Cycle Number");
+  gr786_cycletempValveOpen16 -> SetMarkerStyle(20);
+  gr786_cycletempValveOpen16 -> SetMarkerColor(2);
+  gr786_cycletempValveOpen16 -> GetXaxis() -> SetTitleSize(0.05);
+  gr786_cycletempValveOpen16 -> GetXaxis() -> SetTitleOffset(1.0);
+  gr786_cycletempValveOpen16 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr786_cycletempValveOpen16 -> GetYaxis() -> SetTitleOffset(0.9);
+  
+  
+
+  
+  gr786_cycletempValveOpen -> Draw("Ap");
+  gr786_cycletempValveOpen11 -> Draw("p");
+  gr786_cycletempValveOpen14 -> Draw("p");
+  gr786_cycletempValveOpen16 -> Draw("p");
+  temps -> Draw();
+  
 
   c786_cycleNum -> cd(4);
   TGraphErrors *gr786_cyclecur = new TGraphErrors (counts_786 , cycleNumberArray786 , avecurArray786, 0, ErrcurArray786 );
@@ -2497,115 +2123,54 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   gr786_cyclecur -> GetYaxis() -> SetTitleSize(0.05); 
   gr786_cyclecur -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr786_cyclecur -> SetMarkerStyle(7);
+  gr786_cyclecur -> SetMarkerStyle(20);
   gr786_cyclecur -> Draw("Ap");
 
 
-  TCanvas *c786_cycleNumFit = new TCanvas("c786_cycleNumFit" , "c786_cycleNumFit" , 1200, 800);
-  c786_cycleNumFit -> Divide(2,2);
 
-  c786_cycleNumFit -> cd(1);
-  TGraphErrors *gr786_cyclefall = new TGraphErrors (counts_786, cycleNumberArray786, FallTimeArray786 , 0, FallTimeErrArray786);
-
-  gr786_cyclefall -> SetTitle(" Fall Time vs Cycle Number");
-  gr786_cyclefall -> GetYaxis()-> SetTitle("Fall Time (s)" );
-  gr786_cyclefall -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr786_cyclefall -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr786_cyclefall -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr786_cyclefall -> GetXaxis() -> SetTitleSize(0.05);
-  gr786_cyclefall -> GetXaxis() -> SetTitleOffset(1.0);
-  gr786_cyclefall -> GetYaxis() -> SetTitleSize(0.05); 
-  gr786_cyclefall -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr786_cyclefall -> SetMarkerStyle(7);
-  gr786_cyclefall -> Draw("Ap");
-
-
-  c786_cycleNumFit -> cd(2);
-  TGraphErrors *gr786_cyclebaseline = new TGraphErrors (counts_786, cycleNumberArray786, BaselineArray786 , 0, BaselineErrArray786);
-
-  gr786_cyclebaseline -> SetTitle(" Baseline Before Irradiation vs Cycle Number");
-  gr786_cyclebaseline -> GetYaxis()-> SetTitle("Baseline (1/s)" );
-  gr786_cyclebaseline -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr786_cyclebaseline -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr786_cyclebaseline -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr786_cyclebaseline -> GetXaxis() -> SetTitleSize(0.05);
-  gr786_cyclebaseline -> GetXaxis() -> SetTitleOffset(1.0);
-  gr786_cyclebaseline -> GetYaxis() -> SetTitleSize(0.05); 
-  gr786_cyclebaseline -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr786_cyclebaseline -> SetMarkerStyle(7);
-  gr786_cyclebaseline -> Draw("Ap");
-
-  c786_cycleNumFit -> cd(3);
-  TGraphErrors *gr786_cyclebaselineirrad = new TGraphErrors (counts_786, cycleNumberArray786, BaselineIrradArray786 , 0, BaselineIrradErrArray786);
-
-  gr786_cyclebaselineirrad -> SetTitle(" Baseline During Irradiation vs Cycle Number");
-  gr786_cyclebaselineirrad -> GetYaxis()-> SetTitle("Baseline (1/(s#muA))" );
-  gr786_cyclebaselineirrad -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr786_cyclebaselineirrad -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr786_cyclebaselineirrad -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr786_cyclebaselineirrad -> GetXaxis() -> SetTitleSize(0.05);
-  gr786_cyclebaselineirrad -> GetXaxis() -> SetTitleOffset(1.0);
-  gr786_cyclebaselineirrad -> GetYaxis() -> SetTitleSize(0.05); 
-  gr786_cyclebaselineirrad -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr786_cyclebaselineirrad -> SetMarkerStyle(7);
-  gr786_cyclebaselineirrad -> Draw("Ap");
-
-  c786_cycleNumFit -> cd(4);
-  TGraphErrors *gr786_cyclerise = new TGraphErrors (counts_786, cycleNumberArray786, RiseTimeArray786 , 0, RiseTimeErrArray786);
-
-  gr786_cyclerise -> SetTitle(" Rise Time vs Cycle Number");
-  gr786_cyclerise -> GetYaxis()-> SetTitle("Rise Time (s)" );
-  gr786_cyclerise -> GetXaxis()-> SetTitle("Cycle Number");
-  //gr786_cyclerise -> GetYaxis()-> SetRangeUser(1, 500000);
-  //  gr786_cyclerise -> GetXaxis()-> SetLimits(0.82 ,0.90);
-  gr786_cyclerise -> GetXaxis() -> SetTitleSize(0.05);
-  gr786_cyclerise -> GetXaxis() -> SetTitleOffset(1.0);
-  gr786_cyclerise -> GetYaxis() -> SetTitleSize(0.05); 
-  gr786_cyclerise -> GetYaxis() -> SetTitleOffset(0.9);
-
-  gr786_cyclerise -> SetMarkerStyle(7);
-  gr786_cyclerise -> Draw("Ap");
-
+  //*********************************************************
+  // overall
+  // ********************************************************
+  
   double StorageAll [100] = {storage780, storage781, storage782, storage784, storage785, storage786};
-  double StorageErrAll[100] = {storageErr780, storageErr781, storageErr782, storageErr783, storageErr784, storageErr785, storageErr786};
-  double runNum[100] = {780, 781, 782, 784, 785, 786};
-  double tempIrradAll[100] = {aveAllts12Irrad780, aveAllts12Irrad781, aveAllts12Irrad782, aveAllts12Irrad784, aveAllts12Irrad785, aveAllts12Irrad786};
-  double tempErrIrradAll[100] = {aveAllErrts12Irrad780,  aveAllErrts12Irrad781,  aveAllErrts12Irrad782,  aveAllErrts12Irrad784,  aveAllErrts12Irrad785,  aveAllErrts12Irrad786};
-  double StorageOnline[100] = {35.8, 32.4, 28.2, 16.1, 22.7, 18.5};
-  double tempOnline[100] = {0.85 , 0.98, 1.03, 1.27, 1.1, 1.21};
+  double StorageErrAll[100] = {storageErr780, storageErr781, storageErr782,  storageErr784, storageErr785, storageErr786};
+  double TS11All[100] = {avets11All780 , avets11All781 , avets11All782 , avets11All784 , avets11All785 , avets11All786 };
+  double TS11ErrAll [100] = {ts11ErrAll780 , ts11ErrAll781 , ts11ErrAll782 , ts11ErrAll784 , ts11ErrAll785 , ts11ErrAll786}; 
+  double TS12All[100] = {avets12All780 , avets12All781 , avets12All782 , avets12All784 , avets12All785 , avets12All786 };
+  double TS12ErrAll [100] = {ts12ErrAll780 , ts12ErrAll781 , ts12ErrAll782 , ts12ErrAll784 , ts12ErrAll785 , ts12ErrAll786}; 		     
+  double TS14All[100] = {avets14All780 , avets14All781 , avets14All782 , avets14All784 , avets14All785 , avets14All786 };
+  double TS14ErrAll [100] = {ts14ErrAll780 , ts14ErrAll781 , ts14ErrAll782 , ts14ErrAll784 , ts14ErrAll785 , ts14ErrAll786};
+  double TS16All[100] = {avets16All780 , avets16All781 , avets16All782 , avets16All784 , avets16All785 , avets16All786 };
+  double TS16ErrAll [100] = {ts16ErrAll780 , ts16ErrAll781 , ts16ErrAll782 , ts16ErrAll784 , ts16ErrAll785 , ts16ErrAll786}; 
+
+
+  TCanvas *cAll = new TCanvas ("cAll" , "cAll" , 1200, 900);
+
+  TGraphErrors *grTS11 = new TGraphErrors (6 , TS11All, StorageAll, TS11ErrAll, StorageErrAll);
+  grTS11 -> SetTitle("Storage Lifetime vs Isopure He-II Temperature");
+  grTS11 -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
+  grTS11 -> GetXaxis()-> SetTitle("Isopure Helium Temperature (K)");
+  grTS11 -> GetYaxis()-> SetRangeUser(0, 40);
+  grTS11 -> GetXaxis()-> SetLimits(0.8 ,1.5);
+  grTS11 -> GetXaxis() -> SetTitleSize(0.05);
+  grTS11 -> GetXaxis() -> SetTitleOffset(1.0);
+  grTS11 -> GetYaxis() -> SetTitleSize(0.05); 
+  grTS11 -> GetYaxis() -> SetTitleOffset(0.9);
+  grTS11 -> SetMarkerStyle(20);
+
+  TGraphErrors *grTS12 = new TGraphErrors (6 , TS12All, StorageAll, TS12ErrAll, StorageErrAll);
+  grTS12 -> SetMarkerStyle(20);
+
+  TGraphErrors *grTS14 = new TGraphErrors (6 , TS14All, StorageAll, TS14ErrAll, StorageErrAll);
+  grTS14 -> SetMarkerStyle(20);
+
+  TGraphErrors *grTS16 = new TGraphErrors (6 , TS16All, StorageAll, TS16ErrAll, StorageErrAll);
+  grTS16 -> SetMarkerStyle(20);
+
+
+  grTS11 -> Draw("Ap");
+  grTS12 -> Draw("p");
+  grTS14 -> Draw("p");
+  grTS16 -> Draw("p");
   
-  TCanvas *cStorage = new TCanvas ("cStorage" , "cStorage" , 800, 400);
-
-  TGraphErrors *grAll = new TGraphErrors (7, tempIrradAll, StorageAll , tempErrIrradAll, StorageErrAll);
-  
-  grAll -> SetTitle("Storage Lifetime vs Average Isopure Temperature ");
-  grAll -> GetYaxis()-> SetTitle("Storage Time (s)" );
-  grAll -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)");
-  //grAll -> GetYaxis()-> SetRangeUser(1, 500000);
-  grAll -> GetXaxis()-> SetLimits(0.8 ,1.3);
-  grAll -> GetXaxis() -> SetTitleSize(0.05);
-  grAll -> GetXaxis() -> SetTitleOffset(1.0);
-  grAll -> GetYaxis() -> SetTitleSize(0.05); 
-  grAll -> GetYaxis() -> SetTitleOffset(0.9);
-  grAll -> SetMarkerStyle(20);
-
-  TGraphErrors *grAllOnline = new TGraphErrors (7, tempOnline, StorageOnline , 0, 0);
-  grAllOnline -> SetMarkerStyle(7);
-  grAllOnline -> SetMarkerColor(2);
-  
-  TLegend *leg3 = new TLegend(0.4,0.7, 0.9, 0.9);
-  leg3 -> AddEntry(grAll , "Taraneh's Analysis" , "p") ;
-  leg3 -> AddEntry(grAllOnline , "Online Analysis" , "p") ;
-  leg3 -> SetTextSize(0.05);
-
-  grAll -> Draw("Ap");
-  //grAllOnline -> Draw("p");
-  //leg3 -> Draw();
-
-
-
-
 }
