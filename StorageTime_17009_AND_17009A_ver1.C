@@ -904,6 +904,9 @@ void StorageTime_17009_AND_17009A_ver1(){
   outputTree5_30 -> SetBranchAddress ("AVE_PRDCUR" , &avecur5_30);
   outputTree5_60 -> SetBranchAddress ("AVE_PRDCUR" , &avecur5_60);
   outputTree5_120 -> SetBranchAddress ("AVE_PRDCUR" , &avecur5_120);
+  outputTree7_10 -> SetBranchAddress ("AVE_PRDCUR" , &avecur7_10);
+  outputTree7_30 -> SetBranchAddress ("AVE_PRDCUR" , &avecur7_30);
+  outputTree7_60 -> SetBranchAddress ("AVE_PRDCUR" , &avecur7_60); 
   outputTree10_10 -> SetBranchAddress ("AVE_PRDCUR" , &avecur10_10);
   outputTree10_30 -> SetBranchAddress ("AVE_PRDCUR" , &avecur10_30);
 
@@ -1261,6 +1264,8 @@ void StorageTime_17009_AND_17009A_ver1(){
 
   for (ULong64_t j = 0 ; j < events5_10 ; j++){
     outputTree5_10 -> GetEvent(j);
+    if (j==7)
+      continue;
     
     UCNCountsArray5_10[counts_5_10] = HistIntegral5_10 - BASELINERATE5_10*(cycleValveCloseTime5_10 - cycleValveOpenTime5_10);
     UCNCountsErrArray5_10[counts_5_10] = sqrt(UCNCountsArray5_10[counts_5_10]);
@@ -1293,6 +1298,8 @@ void StorageTime_17009_AND_17009A_ver1(){
 
   for (ULong64_t j = 0 ; j < events5_30 ; j++){
     outputTree5_30 -> GetEvent(j);
+    if (j==1)
+      continue;
     
     UCNCountsArray5_30[counts_5_30] = HistIntegral5_30 - BASELINERATE5_30*(cycleValveCloseTime5_30 - cycleValveOpenTime5_30);
     UCNCountsErrArray5_30[counts_5_30] = sqrt(UCNCountsArray5_30[counts_5_30]);
@@ -1485,7 +1492,9 @@ void StorageTime_17009_AND_17009A_ver1(){
 
   for (ULong64_t j = 0 ; j < events10_10 ; j++){
     outputTree10_10 -> GetEvent(j);
-
+    if (j==1 || j ==2|| j == 5)
+      continue;
+    
     UCNCountsArray10_10[counts_10_10] = HistIntegral10_10 - BASELINERATE10_10*(cycleValveCloseTime10_10 - cycleValveOpenTime10_10);
     UCNCountsErrArray10_10[counts_10_10] = sqrt(UCNCountsArray10_10[counts_10_10]);
     HistIntegralArray10_10[counts_10_10] = HistIntegral10_10;
@@ -3804,7 +3813,194 @@ void StorageTime_17009_AND_17009A_ver1(){
   // overall resutl
   // ****************************************
 
+  double StorageArray_1muA[max] = {storage1_60};
+  double StorageErrArray_1muA[max] = {storageErr1_60};
+  double IrradArray_1muA[max] = {60};
+
+  double StorageArray_2muA[max] = {storage2_10, storage2_30, storage2_60, storage2_120};
+  double StorageErrArray_2muA[max] = {storageErr2_10, storageErr2_30, storageErr2_60, storageErr2_120};
+  double IrradArray_2muA[max] = {10, 30, 60, 120};
+
+
+  double StorageArray_5muA[max] = {storage5_10, storage5_30, storage5_60, storage5_120};
+  double StorageErrArray_5muA[max] = { storageErr5_10, storageErr5_30, storageErr5_60, storageErr5_120};
+  double IrradArray_5muA [max] = {10, 30, 60, 120};
+
+
+  double StorageArray_7muA[max] = {storage7_10, storage7_30, storage7_60};
+  double StorageErrArray_7muA[max] = {storageErr7_10, storageErr7_30, storageErr7_60};
+  double IrradArray_7muA[max] = {10, 30 , 60};
+
+
+  double StorageArray_10muA[max] = {storage10_10, storage10_30};
+  double StorageErrArray_10muA[max] = {storageErr10_10, storageErr10_30};
+  double IrradArray_10muA[max] = {10, 30};
 
   
 
+  TCanvas *cAll = new TCanvas ("cAll" , "cAll", 1200, 900);
+
+  TGraphErrors *Storage_1muA = new TGraphErrors (1, IrradArray_1muA, StorageArray_1muA, 0 , StorageErrArray_1muA);
+  Storage_1muA -> SetTitle("Storage Lifetime vs Irradiation Time");
+  Storage_1muA -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
+  Storage_1muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  Storage_1muA -> GetYaxis()-> SetRangeUser(0, 40);
+  Storage_1muA -> GetXaxis()-> SetLimits(0 ,150);
+  Storage_1muA -> GetXaxis() -> SetTitleSize(0.05);
+  Storage_1muA -> GetXaxis() -> SetTitleOffset(1.0);
+  Storage_1muA -> GetYaxis() -> SetTitleSize(0.05); 
+  Storage_1muA -> GetYaxis() -> SetTitleOffset(0.9);
+  Storage_1muA -> SetMarkerStyle(20);
+
+  TGraphErrors *Storage_2muA = new TGraphErrors (4, IrradArray_2muA, StorageArray_2muA, 0 , StorageErrArray_2muA);
+  Storage_2muA -> SetTitle("Storage Lifetime vs Irradiation Time");
+  Storage_2muA -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
+  Storage_2muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  //Storage_2muA -> GetYaxis()-> SetRangeUser(1, 500000);
+  //  Storage_2muA -> GetXaxis()-> SetLimits(0.82 ,0.90);
+  Storage_2muA -> GetXaxis() -> SetTitleSize(0.05);
+  Storage_2muA -> GetXaxis() -> SetTitleOffset(1.0);
+  Storage_2muA -> GetYaxis() -> SetTitleSize(0.05); 
+  Storage_2muA -> GetYaxis() -> SetTitleOffset(0.9);
+  Storage_2muA -> SetMarkerStyle(21);
+
+
+  TGraphErrors *Storage_5muA = new TGraphErrors (4, IrradArray_5muA, StorageArray_5muA, 0 , StorageErrArray_5muA);
+  Storage_5muA -> SetTitle("Storage Lifetime vs Irradiation Time");
+  Storage_5muA -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
+  Storage_5muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  //Storage_5muA -> GetYaxis()-> SetRangeUser(1, 500000);
+  //  Storage_5muA -> GetXaxis()-> SetLimits(0.82 ,0.90);
+  Storage_5muA -> GetXaxis() -> SetTitleSize(0.05);
+  Storage_5muA -> GetXaxis() -> SetTitleOffset(1.0);
+  Storage_5muA -> GetYaxis() -> SetTitleSize(0.05); 
+  Storage_5muA -> GetYaxis() -> SetTitleOffset(0.9);
+  Storage_5muA -> SetMarkerStyle(23);
+
+  TGraphErrors *Storage_7muA = new TGraphErrors (3, IrradArray_7muA, StorageArray_7muA, 0 , StorageErrArray_7muA);
+  Storage_7muA -> SetTitle("Storage Lifetime vs Irradiation Time");
+  Storage_7muA -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
+  Storage_7muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  //Storage_7muA -> GetYaxis()-> SetRangeUser(1, 500000);
+  //  Storage_7muA -> GetXaxis()-> SetLimits(0.82 ,0.90);
+  Storage_7muA -> GetXaxis() -> SetTitleSize(0.05);
+  Storage_7muA -> GetXaxis() -> SetTitleOffset(1.0);
+  Storage_7muA -> GetYaxis() -> SetTitleSize(0.05); 
+  Storage_7muA -> GetYaxis() -> SetTitleOffset(0.9);
+  Storage_7muA -> SetMarkerStyle(24);
+  
+  TGraphErrors *Storage_10muA = new TGraphErrors (2, IrradArray_10muA, StorageArray_10muA, 0 , StorageErrArray_10muA);
+  Storage_10muA -> SetTitle("Storage Lifetime vs Irradiation Time");
+  Storage_10muA -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
+  Storage_10muA -> GetXaxis()-> SetTitle("Irradiation Time (s)");
+  //Storage_10muA -> GetYaxis()-> SetRangeUser(1, 500000);
+  //  Storage_10muA -> GetXaxis()-> SetLimits(0.82 ,0.90);
+  Storage_10muA -> GetXaxis() -> SetTitleSize(0.05);
+  Storage_10muA -> GetXaxis() -> SetTitleOffset(1.0);
+  Storage_10muA -> GetYaxis() -> SetTitleSize(0.05); 
+  Storage_10muA -> GetYaxis() -> SetTitleOffset(0.9);
+  Storage_10muA -> SetMarkerStyle(25);
+
+  TLegend *currents = new TLegend (0.7 , 0.7, 0.9, 0.9);
+  currents -> AddEntry(Storage_1muA , "1 #muA" , "p");
+  currents -> AddEntry(Storage_2muA , "2.5 #muA" , "p");
+  currents -> AddEntry(Storage_5muA , "5 #muA" , "p");
+  currents -> AddEntry(Storage_7muA , "7.1 #muA" , "p");
+  currents -> AddEntry(Storage_10muA , "10 #muA" , "p");
+  
+  Storage_1muA -> Draw("Ap");
+  Storage_2muA -> Draw("p");
+  Storage_5muA -> Draw("p");
+  Storage_7muA -> Draw("p");
+  Storage_10muA -> Draw("p");
+  currents -> Draw();
+
+  //*************************************************
+  // Storage lifetime vs beam current
+  //*************************************************
+  
+  double StorageArray_10s [max] = {storage2_10, storage5_10, storage7_10, storage10_10};
+  double StorageErrArray_10s[max] = {storageErr2_10, storageErr5_10, storageErr7_10, storageErr10_10};
+  double BeamArray_10s[max] = {2., 5., 7.1, 10.};
+
+
+  double StorageArray_30s [max] = {storage2_30, storage5_30, storage7_30, storage10_30};
+  double StorageErrArray_30s [max] = {storageErr2_30 , storageErr5_30, storageErr7_30, storageErr10_30};
+  double BeamArray_30s[max] = {2., 5., 7.1, 10. };
+
+
+  double StorageArray_60s [max]  = {storage1_60, storage2_60, storage5_60, storage7_60};
+  double StorageErrArray_60s[max] = {storageErr1_60, storageErr2_60, storageErr5_60, storageErr5_60, storageErr7_60};
+  double BeamArray_60s[max] = {1., 2. , 5., 7.1};
+
+  double StorageArray_120s[max] = {storage2_120, storage5_120};
+  double StorageErrArray_120s[max] = {storageErr2_120, storageErr5_120};
+  double BeamArray_120s [max] = {2., 5. };
+
+  TCanvas *cAll_2 = new TCanvas ("cAll_2" , "cAll_2" , 1200,  900);
+
+   TGraphErrors *Storage_10s = new TGraphErrors (4, BeamArray_10s, StorageArray_10s, 0 , StorageErrArray_10s);
+  Storage_10s -> SetTitle("Storage Lifetime vs Beam Current");
+  Storage_10s -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
+  Storage_10s -> GetXaxis()-> SetTitle("Beam Current (#muA)");
+  Storage_10s -> GetYaxis()-> SetRangeUser(0, 50);
+  Storage_10s -> GetXaxis()-> SetLimits(0 ,11);
+  Storage_10s -> GetXaxis() -> SetTitleSize(0.05);
+  Storage_10s -> GetXaxis() -> SetTitleOffset(1.0);
+  Storage_10s -> GetYaxis() -> SetTitleSize(0.05); 
+  Storage_10s -> GetYaxis() -> SetTitleOffset(0.9);
+  Storage_10s -> SetMarkerStyle(20);
+
+
+  TGraphErrors *Storage_30s = new TGraphErrors (4, BeamArray_30s, StorageArray_30s, 0 , StorageErrArray_30s);
+  Storage_30s -> SetTitle("Storage Lifetime vs Beam Current");
+  Storage_30s -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
+  Storage_30s -> GetXaxis()-> SetTitle("Beam Current (#muA)");
+  Storage_30s -> GetYaxis()-> SetRangeUser(0, 40);
+  Storage_30s -> GetXaxis()-> SetLimits(0 ,150);
+  Storage_30s -> GetXaxis() -> SetTitleSize(0.05);
+  Storage_30s -> GetXaxis() -> SetTitleOffset(1.0);
+  Storage_30s -> GetYaxis() -> SetTitleSize(0.05); 
+  Storage_30s -> GetYaxis() -> SetTitleOffset(0.9);
+  Storage_30s -> SetMarkerStyle(21);
+
+  
+  TGraphErrors *Storage_60s = new TGraphErrors (4, BeamArray_60s, StorageArray_60s, 0 , StorageErrArray_60s);
+  Storage_60s -> SetTitle("Storage Lifetime vs Beam Current");
+  Storage_60s -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
+  Storage_60s -> GetXaxis()-> SetTitle("Beam Current (#muA)");
+  Storage_60s -> GetYaxis()-> SetRangeUser(0, 40);
+  Storage_60s -> GetXaxis()-> SetLimits(0 ,150);
+  Storage_60s -> GetXaxis() -> SetTitleSize(0.05);
+  Storage_60s -> GetXaxis() -> SetTitleOffset(1.0);
+  Storage_60s -> GetYaxis() -> SetTitleSize(0.05); 
+  Storage_60s -> GetYaxis() -> SetTitleOffset(0.9);
+  Storage_60s -> SetMarkerStyle(23);
+
+
+  TGraphErrors *Storage_120s = new TGraphErrors (2, BeamArray_120s, StorageArray_120s, 0 , StorageErrArray_120s);
+  Storage_120s -> SetTitle("Storage Lifetime vs Beam Current");
+  Storage_120s -> GetYaxis()-> SetTitle("Storage Lifetime (s)" );
+  Storage_120s -> GetXaxis()-> SetTitle("Beam Current (#muA)");
+  Storage_120s -> GetYaxis()-> SetRangeUser(0, 40);
+  Storage_120s -> GetXaxis()-> SetLimits(0 ,150);
+  Storage_120s -> GetXaxis() -> SetTitleSize(0.05);
+  Storage_120s -> GetXaxis() -> SetTitleOffset(1.0);
+  Storage_120s -> GetYaxis() -> SetTitleSize(0.05); 
+  Storage_120s -> GetYaxis() -> SetTitleOffset(0.9);
+  Storage_120s -> SetMarkerStyle(24);
+
+  TLegend *irrad = new TLegend (0.7, 0.7 , 0.9, 0.9);
+  irrad -> AddEntry(Storage_10s , "10 s Irradiation time" , "p");
+  irrad -> AddEntry(Storage_30s , "30 s Irradiation time" , "p");
+  irrad -> AddEntry(Storage_60s , "60 s Irradiation time" , "p");
+  irrad -> AddEntry(Storage_120s , "120 s Irradiation time" , "p");
+	
+
+
+  Storage_10s -> Draw("ap");
+  Storage_30s -> Draw("p");
+  Storage_60s -> Draw("p");
+  Storage_120s -> Draw("p");
+  irrad -> Draw();
 }
