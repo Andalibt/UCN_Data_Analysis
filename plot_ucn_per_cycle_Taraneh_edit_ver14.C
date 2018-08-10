@@ -74,7 +74,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   // Create a root tree
   
   //TFile hfile ("outputTree_StorageTime_17014.root", "RECREATE");
-  TFile hfile ("./2ndpass/outputTree_614.root", "RECREATE");
+  TFile hfile ("./2ndpass/outputTree_17009_10muA_30sIrrad.root", "RECREATE");
   TTree *outputTree = new TTree ("cycle_info", "output tree");
 
 
@@ -413,7 +413,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
   // *************************************************************
   
 
-  Int_t InputFiles[17] ={614};
+  Int_t InputFiles[70] ={759, 760, 761, 762, 763, 764} ;
 
   Int_t total_counter = 0 ;
   Int_t fit_counter = 0;
@@ -1678,9 +1678,9 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	Li6_Fit_Func -> FixParameter(10, cyclevalveclose[i]);
 	Li6_Fit_Func -> FixParameter(11,delayTimeArray[i]);
 	Li6_Fit_Func -> SetNpx(10000);
-	TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
+	//TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
 	cout << "***********************************************************" << endl;
-	Int_t fitStatus = status;
+	/*Int_t fitStatus = status;
 	cout << fitStatus << endl;
 	if (fitStatus == 4) {
 	  failfit_cycle++;
@@ -1705,7 +1705,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver14(){
 	//cout << BaselineInt[i] << endl;
 	//cout << baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]) << endl;
 	//cout << ( baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]))/BaselineInt[i] << endl;
-	
+	*/
 	hfile.cd();
       }
       

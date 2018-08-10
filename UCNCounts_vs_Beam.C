@@ -99,7 +99,7 @@ void UCNCounts_vs_Beam(){
 
   gr1 -> GetYaxis() -> SetRangeUser (1, 400000);
   gr1 -> SetTitle( "UCN Counts vs Average Predicted Beam Current");
-  gr1 -> GetXaxis()-> SetTitle("Average Predicted Current (#muA)" );
+  gr1 -> GetXaxis()-> SetTitle("Average Predicted Beam Current (#muA)" );
   gr1 -> GetYaxis()-> SetTitle("UCN Counts");
   gr1 -> SetMarkerStyle(20);
   gr1 -> GetXaxis()-> SetLimits(0, 17);
@@ -110,7 +110,8 @@ void UCNCounts_vs_Beam(){
   gr1 -> GetXaxis() -> SetLabelSize(0.07);
   gr1 -> GetYaxis() -> SetLabelSize(0.07);
   gr1 -> SetMarkerColor(1);
-  f1 -> SetLineColor(8);
+  f1 -> SetLineColor(1);
+  f1 -> SetLineStyle(2);
 
   TGraphErrors *gr2 = new TGraphErrors(i2, avecur2 , countsWOB2 , avecurErr2 , countsWOBErr2);
 
@@ -129,7 +130,7 @@ void UCNCounts_vs_Beam(){
   
 
   gr1 -> Draw("Ap");
-  //gr1 -> Fit("f1");
+  gr1 -> Fit("f1");
   f1 -> SetLineColor(2);
   gr2 -> Draw("p");
   // gr2 -> Fit("f2");
@@ -357,7 +358,7 @@ void UCNCounts_vs_Beam(){
   //l2.DrawLatex(1.0+0.2, 45600.5, Form("%4.2f K #pm %4.2f K" , avets12_1, Errts12_1));
   l2.DrawLatex(1.5+0.3, 60582+1000 , Form("%4.2f K #pm %4.2f K" , avets12_15, Errts12_15) );
   l2.DrawLatex(3.+0.3 , 116397+3000, Form("%4.2f K #pm %4.2f K" , avets12_3 , Errts12_3));
-  l2.DrawLatex(5.-3.3 , 180000+15000 , Form("%4.2f K #pm %4.2f K" , avets12_5 , Errts12_5));
+  l2.DrawLatex(5.+0.3 , 180000+1000 , Form("%4.2f K #pm %4.2f K" , avets12_5 , Errts12_5));
   l2.DrawLatex(7.+0.3 ,236279+3000, Form("%4.2f K #pm %4.2f K" , avets12_7 , Errts12_7));
   l2.DrawLatex(10.+0.3 ,325218+3000, Form("%4.2f K #pm %4.2f K" , avets12_10 , Errts12_10));
   //l2.Paint();

@@ -1363,7 +1363,13 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   NBins593 = max593 - min593;
 
   TH1* UCNrate_li6593 = new TH1F ("UCNrate_li6593" , "UCN_rate Histogram" , NBins593, min593, max593);
-  
+  UCNrate_li6593 -> GetYaxis() -> SetTitle("UCN Counts/s");
+  UCNrate_li6593 -> GetXaxis() -> SetTimeDisplay(1);
+  UCNrate_li6593 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  UCNrate_li6593 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  UCNrate_li6593 -> GetXaxis() -> SetTitleSize(0.05);
+  UCNrate_li6593 -> GetXaxis() -> SetLabelOffset(.03);
+  UCNrate_li6593 -> GetXaxis() -> SetLabelSize(.04);
   int points593;
   int rate1593;
 
@@ -1442,9 +1448,15 @@ void UCNRate_analysis_TCN17005A_Taraneh_edit_ver1(){
   TCanvas *c3593 = new TCanvas ("c3593" , "c3593" , 1200, 900);
 
   TGraph *gr_s593 = new TGraph (SEcounts593 , TSArrayse593, tempArray593);
-  gr_s593 -> SetTitle(" Isopure Temperature vs Unix Time ");
-  gr_s593 -> GetXaxis() -> SetTitle("Unix Time" );
+  gr_s593 -> SetTitle(" Isopure Temperature vs Time ");
+  //gr_s593 -> GetXaxis() -> SetTitle("Unix Time" );
   gr_s593 -> GetYaxis() -> SetTitle("Isopure Temperature (K)");
+  gr_s593 -> GetXaxis() -> SetTimeDisplay(1);
+  gr_s593 -> GetXaxis() -> SetTimeFormat(" #splitline{%H:%M}{%b\ %d}");
+  gr_s593 -> GetXaxis() -> SetTimeOffset(0, "pdt");
+  gr_s593 -> GetXaxis() -> SetTitleSize(0.05);
+  gr_s593 -> GetXaxis() -> SetLabelOffset(.03);
+  gr_s593 -> GetXaxis() -> SetLabelSize(.04);
   //gr_s593 -> GetYaxis() -> SetRangeUser (0, 200);
   gr_s593 -> SetMarkerStyle(20);
   

@@ -13,10 +13,6 @@ void StorageTime_17021_Taraneh_edit_ver2(){
   gStyle->SetLabelSize(.05, "XY");
   
   TFile *fin803 = new TFile("outputTree_StorageTime_803.root","READ");
-
-
-
-  
   TTree *outputTree803 = (TTree*) fin803 -> Get("cycle_info");
 
   
@@ -413,7 +409,7 @@ void StorageTime_17021_Taraneh_edit_ver2(){
   p1->SetLogy(); 
   TGraphErrors *gr803_delaycounts = new TGraphErrors(counts_803, delaytimeArray803 , UCNIntegralArray803, 0, UCNIntegralErrArray803);
 
-  gr803_delaycounts -> SetTitle("UCN Counts vs Cycle Delay Time");
+  //gr803_delaycounts -> SetTitle("UCN Counts vs Cycle Delay Time");
   gr803_delaycounts -> GetXaxis()-> SetTitle("Cycle Delay Time (s)" );
   gr803_delaycounts -> GetYaxis()-> SetTitle("Cycle UCN Counts");
   gr803_delaycounts -> GetYaxis()-> SetRangeUser(1000, 500000);
@@ -422,7 +418,9 @@ void StorageTime_17021_Taraneh_edit_ver2(){
   gr803_delaycounts -> GetYaxis() -> SetTitleSize(0.05); 
   gr803_delaycounts -> GetYaxis() -> SetTitleOffset(0.9);
 
-  gr803_delaycounts -> SetMarkerStyle(7);
+  gr803_delaycounts -> SetMarkerStyle(20);
+  fit -> SetLineStyle(9);
+  fit -> SetLineColor(1);
   gr803_delaycounts -> Fit(fit);
   storage803 = fit -> GetParameter(1);
   storageErr803 = fit -> GetParError(1);
@@ -447,8 +445,8 @@ void StorageTime_17021_Taraneh_edit_ver2(){
 
 
   gr803_delaycounts -> Draw("Ap");
-  gr803_delayhist -> Draw("p");
-  leg2 -> Draw();
+  // gr803_delayhist -> Draw("p");
+  //leg2 -> Draw();
 
   //c803 -> cd(2);
   TPad *p2 = c803->cd(2);

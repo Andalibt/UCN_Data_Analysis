@@ -350,6 +350,9 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
 
     ofstream myfile;
     myfile.open("./2ndpass/TCN17007_Data.csv" , std::ios::app);
+
+    ofstream fout1;
+    fout1.open("./2ndpass/TCN17007_Data_all.csv" ,  std::ios::app);
   
     ULong64_t events;
     events = (Double_t) outputTree -> GetEntries();
@@ -596,9 +599,9 @@ void UCNCounts_17007_Taraneh_edit_ver3(){
 	counts_10muA++;
       }
       if (cycleStartTimes - irradStartTimes > 59. && cycleStartTimes - irradStartTimes < 61. ){
-	myfile << HistIntegralArray[counts] << " "<< HistIntegralErrArray[counts] << " " << UCNIntegralManualArray[counts] << " " << UCNIntegralManualErrArray[counts] << " " << avecurArray[counts] << " " << ErrcurArray[counts] << " " << avets11ValveOpenArray[counts] << " " << ts11ValveOpenErr[counts] << " " << avets12ValveOpenArray[counts] << " " <<ts12ValveOpenErr[counts] << " " << avets14ValveOpenArray[counts] << " " << ts14ValveOpenErr[counts] << " " << avets16ValveOpenArray[counts] << " " << ts16ValveOpenErr[counts] << " " << maxts12ValveOpen << " " << mints12ValveOpen << endl;
-
+	myfile << HistIntegralArray[counts] << " "<< HistIntegralErrArray[counts] << " " << UCNIntegralManualArray[counts] << " " << UCNIntegralManualErrArray[counts] << " " << avecurArray[counts] << " " << ErrcurArray[counts] << " " << avets11ValveOpenArray[counts] << " " << ts11ValveOpenErr[counts] << " " << avets12ValveOpenArray[counts] << " " <<ts12ValveOpenErr[counts] << " " << avets14ValveOpenArray[counts] << " " << ts14ValveOpenErr[counts] << " " << avets16ValveOpenArray[counts] << " " << ts16ValveOpenErr[counts] << " " << maxts12ValveOpen << " " << mints12ValveOpen << " " << midasrun << endl;
       }
+      fout1 << HistIntegralArray[counts] << " " << HistIntegralErrArray[counts] << " " << UCNIntegralManualArray[counts] << " " << UCNIntegralManualErrArray[counts] << " " << avecurArray[counts] << " "<< ErrcurArray[counts] << " " << avets12ValveOpenArray[counts] << " " << ts12ValveOpenErr[counts] << " " << cycleStartTimes - irradStartTimes << " " << midasrun << endl;
       counts++;
       //cout << counts << endl;
     }

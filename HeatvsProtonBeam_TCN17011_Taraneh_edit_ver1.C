@@ -8,6 +8,7 @@
 #define max 1000000
 
 void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
+  gStyle -> SetOptFit(0000);
 
   // LOADING THE MIDAS ROOT FILES ...
   TFile *fin765 = new TFile ("~/raw_Data/ucn_tree_00000765.root", "READ");
@@ -4143,5 +4144,21 @@ void HeatvsProtonBeam_TCN17011_Taraneh_edit_ver1(){
   grFtotB -> SetMarkerStyle(20);
   grFtotB -> Fit(ftotB);
   grFtotB -> Draw("AP");
-  
+
+
+  // ***************************************************************
+  // For my thesis
+
+  // run 771 to show that the irradiation time was not long enough
+  TCanvas *c771Final = new TCanvas ("c771Final" , "c771Final" , 1200 , 900);
+  c771Final -> Divide (1,3);
+
+  c771Final -> cd(1);
+  UCNRate771 -> Draw();
+
+  c771Final -> cd(2);
+  grtemp771 -> Draw("Ap");
+
+  c771Final -> cd(3);
+  grFM1771 -> Draw("ap");
 }

@@ -146,7 +146,7 @@ void UCNCounts_17003A_Taraneh_edit_ver2(){
     ts14Err = (maxts14VO - mints14VO)/2;
     ts16Err = (maxts16VO - mints16VO)/2;
     UCNIntegralManualErrArray548[counts_548] = sqrt(UCNIntegralManualArray548[counts_548]);
-    myfile << HistIntegralArray548[counts_548] << " " << HistIntegralErrArray548[counts_548] << " " << UCNIntegralManualArray548[counts_548] << " " << UCNIntegralManualErrArray548[counts_548] << " " << avecurArray548[counts_548] << " " << ErrcurArray548[counts_548] << " " <<avets11VO << " " << ts11Err << " " << avets12ValveOpenArray548[counts_548] << " " << ts12ValveOpenErr548[counts_548] << avets14VO << " " << ts14Err << " " << avets16VO << " " << ts16Err << endl;
+    myfile << HistIntegralArray548[counts_548] << " " << HistIntegralErrArray548[counts_548] << " " << UCNIntegralManualArray548[counts_548] << " " << UCNIntegralManualErrArray548[counts_548] << " " << avecurArray548[counts_548] << " " << ErrcurArray548[counts_548] << " " <<avets11VO << " " << ts11Err << " " << avets12ValveOpenArray548[counts_548] << " " << ts12ValveOpenErr548[counts_548] << avets14VO << " " << ts14Err << " " << avets16VO << " " << ts16Err << " 548" << endl;
     counts_548++;
   }
 

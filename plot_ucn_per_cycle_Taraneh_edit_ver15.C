@@ -62,7 +62,8 @@ Double_t Li6FitFunc (Double_t *x, Double_t *par){
 
 // HERE THE MAIN FUNCTION STARTS
 // TO RUN THIS CODE YOU JUST OPEN ROOT AND TYPE .X plot_ucn_per_cycle_Taraneh_edit_ver8.C
-void plot_ucn_per_cycle_Taraneh_edit_ver15(int midasrun){  
+void plot_ucn_per_cycle_Taraneh_edit_ver15(int midasrun){
+  gStyle -> SetOptStat(0000);
   // Get the file
   char *filename[200];
   ofstream badruns_file("badruns_list.txt"); //List of all the bad runs.
@@ -456,7 +457,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver15(int midasrun){
 
 
       //**************************************************************************
-      //TCNxxxxx number that the cycle belongs to
+      //  TCNxxxxx number that the cycle belongs to
       //  This information is in the "headerTree;1" in the "experimetNumber" branch.
       //  The other run information such as the shifter and the run comments are 
       //  also added here.
@@ -960,6 +961,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver15(int midasrun){
 	  BeamlineEpicsTree -> GetEvent(j);
 	  beamlineReadTimes.push_back(timestamp_beamline);
 	  if (timestamp_beamline > irradiationStartTime[i]+3 && timestamp_beamline < cycleStartTimes[i]) {
+	    //cout << cycleStartTimes[i] << " " << B1V_KSM_PREDCUR << endl;
 	    b1_ave[i]+=B1_FOIL_ADJCUR;
 	    if (B1V_KSM_PREDCUR >0 ){
 	      prdcur_ave[i]+=B1V_KSM_PREDCUR;
@@ -987,6 +989,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver15(int midasrun){
 	      prdcur_max[i]=B1V_KSM_PREDCUR;
 	    }
 	    if (B1V_KSM_PREDCUR <= prdcur_min[i]){
+	      // cout << cycleStartTime[i] << " " << B1V_KSM_PREDCUR << endl;
 	      prdcur_min[i]=B1V_KSM_PREDCUR;
 	    }
 	    if (B1U_TNIM2_RAW >= tnim_max[i]){
@@ -1395,7 +1398,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver15(int midasrun){
       
       for(ULong64_t j=0;j<eventTot;j++) {
 	uinli6->GetEvent(j);
-	if( j==35) {
+	if( j==0) {
 	  firstTS = tUnixTimePrecise_li6;
 	}
 	for ( int i = 0; i < cycleStartTimes.size(); i++){
@@ -1414,7 +1417,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver15(int midasrun){
 	  bin3[i] = UCN_rate_li6 -> GetXaxis() -> FindBin(cycleStartTimes[i]);
 	}
       }
- 
+
       for ( int i = 0; i < cycleStartTimes.size(); i++){
 	UCN_rate_li6 -> GetXaxis()-> SetRange(min_range[i] , max_range[i]);
 
@@ -1454,14 +1457,15 @@ void plot_ucn_per_cycle_Taraneh_edit_ver15(int midasrun){
 	double BaselineIrradRate[1000000];
 
 	for ( int i = 0; i < cycleStartTimes.size(); i++){
+
 	  BaselineRate[i] = BaselineInt[i]/(irradiationStartTime[i] - minmin_range[i] );
 	  //cout << "baseline rate: " << BaselineRate[i] << endl;
 	  //cout << "cycle " << i <<  " valve open time:" << cyclevalveopen[i] << " ,valve close time" << cyclevalveclose[i] << endl;
 	  BaselineIrradRate[i] = BaselineIrradInt[i]/(cycleStartTimes[i] - irradiationStartTime[i] );
-	  
-	  cout << BaselineIrradRate[i]<< " " << irradiationStartTime[i] << " " << minmin_range[i] << endl;
+	  cout << BaselineRate[i]<< " " << irradiationStartTime[i] << " " << minmin_range[i] << endl;
 	}
-	
+
+	BaselineRate[0] = BaselineRate[1];
 
       //***********************************************
       // He3 detector stuff
@@ -1681,9 +1685,9 @@ void plot_ucn_per_cycle_Taraneh_edit_ver15(int midasrun){
 	Li6_Fit_Func -> FixParameter(10, cyclevalveclose[i]);
 	Li6_Fit_Func -> FixParameter(11,delayTimeArray[i]);
 	Li6_Fit_Func -> SetNpx(10000);
-	TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
+	//TFitResultPtr status = UCN_rate_li6->Fit(Li6_Fit_Func,"R+MQ");
 	cout << "***********************************************************" << endl;
-	Int_t fitStatus = status;
+	/*Int_t fitStatus = status;
 	cout << fitStatus << endl;
 	if (fitStatus == 4) {
 	  failfit_cycle++;
@@ -1708,7 +1712,7 @@ void plot_ucn_per_cycle_Taraneh_edit_ver15(int midasrun){
 	//cout << BaselineInt[i] << endl;
 	//cout << baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]) << endl;
 	//cout << ( baseline[i]/BinWidth * (irradiationStartTime[i] - minmin_range[i]))/BaselineInt[i] << endl;
-	
+	*/
 	hfile.cd();
       }
       

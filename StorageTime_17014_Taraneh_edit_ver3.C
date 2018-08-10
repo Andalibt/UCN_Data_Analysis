@@ -803,10 +803,10 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   avets12All780 = avets12All780/counts_780;
   avets14All780 = avets14All780/counts_780;
   avets16All780 = avets16All780/counts_780;
-  ts11ErrAll780 = (maxts11All780 - mints11All780);
-  ts12ErrAll780 = (maxts12All780 - mints12All780);
-  ts14ErrAll780 = (maxts14All780 - mints14All780);
-  ts16ErrAll780 = (maxts16All780 - mints16All780);
+  ts11ErrAll780 = (maxts11All780 - mints11All780)/2;
+  ts12ErrAll780 = (maxts12All780 - mints12All780)/2;
+  ts14ErrAll780 = (maxts14All780 - mints14All780)/2;
+  ts16ErrAll780 = (maxts16All780 - mints16All780)/2;
 
   ULong64_t events781;
   events781 = (Double_t)outputTree781 -> GetEntries();
@@ -863,10 +863,10 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   avets12All781 = avets12All781/counts_781;
   avets14All781 = avets14All781/counts_781;
   avets16All781 = avets16All781/counts_781;
-  ts11ErrAll781 = (maxts11All781 - mints11All781);
-  ts12ErrAll781 = (maxts12All781 - mints12All781);
-  ts14ErrAll781 = (maxts14All781 - mints14All781);
-  ts16ErrAll781 = (maxts16All781 - mints16All781);
+  ts11ErrAll781 = (maxts11All781 - mints11All781)/2;
+  ts12ErrAll781 = (maxts12All781 - mints12All781)/2;
+  ts14ErrAll781 = (maxts14All781 - mints14All781)/2;
+  ts16ErrAll781 = (maxts16All781 - mints16All781)/2;
 
 
   ULong64_t events782;
@@ -925,10 +925,10 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   avets12All782 = avets12All782/counts_782;
   avets14All782 = avets14All782/counts_782;
   avets16All782 = avets16All782/counts_782;
-  ts11ErrAll782 = (maxts11All782 - mints11All782);
-  ts12ErrAll782 = (maxts12All782 - mints12All782);
-  ts14ErrAll782 = (maxts14All782 - mints14All782);
-  ts16ErrAll782 = (maxts16All782 - mints16All782);
+  ts11ErrAll782 = (maxts11All782 - mints11All782)/2;
+  ts12ErrAll782 = (maxts12All782 - mints12All782)/2;
+  ts14ErrAll782 = (maxts14All782 - mints14All782)/2;
+  ts16ErrAll782 = (maxts16All782 - mints16All782)/2;
 
 
   
@@ -1018,10 +1018,10 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   avets12All784 = avets12All784/counts_784;
   avets14All784 = avets14All784/counts_784;
   avets16All784 = avets16All784/counts_784;
-  ts11ErrAll784 = (maxts11All784 - mints11All784);
-  ts12ErrAll784 = (maxts12All784 - mints12All784);
-  ts14ErrAll784 = (maxts14All784 - mints14All784);
-  ts16ErrAll784 = (maxts16All784 - mints16All784);
+  ts11ErrAll784 = (maxts11All784 - mints11All784)/2;
+  ts12ErrAll784 = (maxts12All784 - mints12All784)/2;
+  ts14ErrAll784 = (maxts14All784 - mints14All784)/2;
+  ts16ErrAll784 = (maxts16All784 - mints16All784)/2;
 
   
   ULong64_t events785;
@@ -1079,10 +1079,10 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   avets12All785 = avets12All785/counts_785;
   avets14All785 = avets14All785/counts_785;
   avets16All785 = avets16All785/counts_785;
-  ts11ErrAll785 = (maxts11All785 - mints11All785);
-  ts12ErrAll785 = (maxts12All785 - mints12All785);
-  ts14ErrAll785 = (maxts14All785 - mints14All785);
-  ts16ErrAll785 = (maxts16All785 - mints16All785);
+  ts11ErrAll785 = (maxts11All785 - mints11All785)/2;
+  ts12ErrAll785 = (maxts12All785 - mints12All785)/2;
+  ts14ErrAll785 = (maxts14All785 - mints14All785)/2;
+  ts16ErrAll785 = (maxts16All785 - mints16All785)/2;
   
 
   ULong64_t events786;
@@ -1140,10 +1140,10 @@ void StorageTime_17014_Taraneh_edit_ver3(){
   avets12All786 = avets12All786/counts_786;
   avets14All786 = avets14All786/counts_786;
   avets16All786 = avets16All786/counts_786;
-  ts11ErrAll786 = (maxts11All786 - mints11All786);
-  ts12ErrAll786 = (maxts12All786 - mints12All786);
-  ts14ErrAll786 = (maxts14All786 - mints14All786);
-  ts16ErrAll786 = (maxts16All786 - mints16All786);
+  ts11ErrAll786 = (maxts11All786 - mints11All786)/2;
+  ts12ErrAll786 = (maxts12All786 - mints12All786)/2;
+  ts14ErrAll786 = (maxts14All786 - mints14All786)/2;
+  ts16ErrAll786 = (maxts16All786 - mints16All786)/2;
   
 
   // ONE EXPONENTIAL FIT

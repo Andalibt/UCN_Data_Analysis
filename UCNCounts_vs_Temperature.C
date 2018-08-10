@@ -106,7 +106,7 @@ void UCNCounts_vs_Temperature(){
   //TS12
   TGraphErrors *gr1WB_ts12 = new TGraphErrors (k, ts12All, HistIntAll, ts12ErrAll , HistErrAll );
   gr1WB_ts12 -> GetYaxis() -> SetRangeUser (0, 50000);
-  gr1WB_ts12 -> SetTitle( "UCN Counts vs Average Isopure Temperature");
+  gr1WB_ts12 -> SetTitle( "UCN Counts vs Average Isopure Helium Temperature");
   gr1WB_ts12 -> GetXaxis()-> SetTitle("Average Isopure Temperature (K)" );
   gr1WB_ts12 -> GetYaxis()-> SetTitle("UCN Counts");
   gr1WB_ts12 -> SetMarkerStyle(20);
@@ -119,11 +119,15 @@ void UCNCounts_vs_Temperature(){
 
 
   TGraphErrors *gr1WOB_ts12 = new TGraphErrors (k, ts12All , CountsAll , ts12ErrAll, CountsErrAll);
-  gr1WOB_ts12 -> SetMarkerStyle(25);
-  gr1WOB_ts12 -> GetXaxis()-> SetLimits(0.8, 2.4);
+  gr1WOB_ts12 -> GetYaxis() -> SetRangeUser (0, 50000);
+  gr1WOB_ts12 -> SetTitle( "UCN Counts vs Average Isopure Helium Temperature");
+  gr1WOB_ts12 -> GetXaxis()-> SetTitle("Average Isopure Helium Temperature (K)" );
+  gr1WOB_ts12 -> GetYaxis()-> SetTitle("UCN Counts");
+  gr1WOB_ts12 -> SetMarkerStyle(20);
+  gr1WOB_ts12 -> GetXaxis()-> SetLimits(0.8, 1.9);
   gr1WOB_ts12 -> GetXaxis() -> SetTitleSize(0.05);
   gr1WOB_ts12 -> GetXaxis() -> SetTitleOffset(1.0);
-  gr1WOB_ts12 -> GetYaxis() -> SetTitleSize(0.05); 
+  gr1WOB_ts12 -> GetYaxis() -> SetTitleSize(0.06); 
   gr1WOB_ts12 -> GetYaxis() -> SetTitleOffset(0.9);
   gr1WOB_ts12 -> SetMarkerColor(1);
 
@@ -143,7 +147,7 @@ void UCNCounts_vs_Temperature(){
 
 
   TGraphErrors *gr2WOB_ts12 = new TGraphErrors (i2, avets12VO2 , UCNCounts2 , ts12VOErr2, UCNCountsErr2);
-  gr2WOB_ts12 -> SetMarkerStyle(25);
+  gr2WOB_ts12 -> SetMarkerStyle(20);
   gr2WOB_ts12 -> GetXaxis()-> SetLimits(0.8, 2.4);
   gr2WOB_ts12 -> GetXaxis() -> SetTitleSize(0.05);
   gr2WOB_ts12 -> GetXaxis() -> SetTitleOffset(1.0);
@@ -168,13 +172,13 @@ void UCNCounts_vs_Temperature(){
 
 
   TGraphErrors *gr1WOB_ts11 = new TGraphErrors (i1, avets11VO1 , UCNCounts1 , ts11VOErr1, UCNCountsErr1);
-  gr1WOB_ts11 -> SetMarkerStyle(25);
+  gr1WOB_ts11 -> SetMarkerStyle(20);
   gr1WOB_ts11 -> GetXaxis()-> SetLimits(0.8, 2.4);
   gr1WOB_ts11 -> GetXaxis() -> SetTitleSize(0.05);
   gr1WOB_ts11 -> GetXaxis() -> SetTitleOffset(1.0);
   gr1WOB_ts11 -> GetYaxis() -> SetTitleSize(0.05); 
   gr1WOB_ts11 -> GetYaxis() -> SetTitleOffset(0.9);
-  gr1WOB_ts11 -> SetMarkerColor(2);
+  //gr1WOB_ts11 -> SetMarkerColor(2);
 
   
   TGraphErrors *gr2WB_ts11 = new TGraphErrors (i2, avets11VO2, HistIntegral2, ts11VOErr2 , HistIntegralErr2 );
@@ -188,17 +192,17 @@ void UCNCounts_vs_Temperature(){
   gr2WB_ts11 -> GetXaxis() -> SetTitleOffset(1.0);
   gr2WB_ts11 -> GetYaxis() -> SetTitleSize(0.05); 
   gr2WB_ts11 -> GetYaxis() -> SetTitleOffset(0.9);
-  gr2WB_ts11 -> SetMarkerColor(2);
+  //gr2WB_ts11 -> SetMarkerColor(2);
 
 
   TGraphErrors *gr2WOB_ts11 = new TGraphErrors (i2, avets11VO2 , UCNCounts2 , ts11VOErr2, UCNCountsErr2);
-  gr2WOB_ts11 -> SetMarkerStyle(25);
+  gr2WOB_ts11 -> SetMarkerStyle(20);
   gr2WOB_ts11 -> GetXaxis()-> SetLimits(0.8, 2.4);
   gr2WOB_ts11 -> GetXaxis() -> SetTitleSize(0.05);
   gr2WOB_ts11 -> GetXaxis() -> SetTitleOffset(1.0);
   gr2WOB_ts11 -> GetYaxis() -> SetTitleSize(0.05); 
   gr2WOB_ts11 -> GetYaxis() -> SetTitleOffset(0.9);
-  gr2WOB_ts11 -> SetMarkerColor(2);
+  //gr2WOB_ts11 -> SetMarkerColor(2);
 
 
   //TS14
@@ -217,13 +221,13 @@ void UCNCounts_vs_Temperature(){
 
 
   TGraphErrors *gr1WOB_ts14 = new TGraphErrors (i1, avets14VO1 , UCNCounts1 , ts14VOErr1, UCNCountsErr1);
-  gr1WOB_ts14 -> SetMarkerStyle(25);
+  gr1WOB_ts14 -> SetMarkerStyle(20);
   gr1WOB_ts14 -> GetXaxis()-> SetLimits(0.8, 2.4);
   gr1WOB_ts14 -> GetXaxis() -> SetTitleSize(0.05);
   gr1WOB_ts14 -> GetXaxis() -> SetTitleOffset(1.0);
   gr1WOB_ts14 -> GetYaxis() -> SetTitleSize(0.05); 
   gr1WOB_ts14 -> GetYaxis() -> SetTitleOffset(0.9);
-  gr1WOB_ts14 -> SetMarkerColor(3);
+  //gr1WOB_ts14 -> SetMarkerColor(3);
 
   
   TGraphErrors *gr2WB_ts14 = new TGraphErrors (i2, avets14VO2, HistIntegral2, ts14VOErr2 , HistIntegralErr2 );
@@ -241,13 +245,13 @@ void UCNCounts_vs_Temperature(){
 
 
   TGraphErrors *gr2WOB_ts14 = new TGraphErrors (i2, avets14VO2 , UCNCounts2 , ts14VOErr2, UCNCountsErr2);
-  gr2WOB_ts14 -> SetMarkerStyle(25);
+  gr2WOB_ts14 -> SetMarkerStyle(20);
   gr2WOB_ts14 -> GetXaxis()-> SetLimits(0.8, 2.4);
   gr2WOB_ts14 -> GetXaxis() -> SetTitleSize(0.05);
   gr2WOB_ts14 -> GetXaxis() -> SetTitleOffset(1.0);
   gr2WOB_ts14 -> GetYaxis() -> SetTitleSize(0.05); 
   gr2WOB_ts14 -> GetYaxis() -> SetTitleOffset(0.9);
-  gr2WOB_ts14 -> SetMarkerColor(3);
+  //gr2WOB_ts14 -> SetMarkerColor(3);
 
 
   //TS16
@@ -266,13 +270,13 @@ void UCNCounts_vs_Temperature(){
 
 
   TGraphErrors *gr1WOB_ts16 = new TGraphErrors (i1, avets16VO1 , UCNCounts1 , ts16VOErr1, UCNCountsErr1);
-  gr1WOB_ts16 -> SetMarkerStyle(25);
+  gr1WOB_ts16 -> SetMarkerStyle(20);
   gr1WOB_ts16 -> GetXaxis()-> SetLimits(0.8, 2.4);
   gr1WOB_ts16 -> GetXaxis() -> SetTitleSize(0.05);
   gr1WOB_ts16 -> GetXaxis() -> SetTitleOffset(1.0);
   gr1WOB_ts16 -> GetYaxis() -> SetTitleSize(0.05); 
   gr1WOB_ts16 -> GetYaxis() -> SetTitleOffset(0.9);
-  gr1WOB_ts16 -> SetMarkerColor(4);
+  //gr1WOB_ts16 -> SetMarkerColor(4);
 
   
   TGraphErrors *gr2WB_ts16 = new TGraphErrors (i2, avets16VO2, HistIntegral2, ts16VOErr2 , HistIntegralErr2 );
@@ -290,13 +294,13 @@ void UCNCounts_vs_Temperature(){
 
 
   TGraphErrors *gr2WOB_ts16 = new TGraphErrors (i2, avets16VO2 , UCNCounts2 , ts16VOErr2, UCNCountsErr2);
-  gr2WOB_ts16 -> SetMarkerStyle(25);
+  gr2WOB_ts16 -> SetMarkerStyle(20);
   gr2WOB_ts16 -> GetXaxis()-> SetLimits(0.8, 2.4);
   gr2WOB_ts16 -> GetXaxis() -> SetTitleSize(0.05);
   gr2WOB_ts16 -> GetXaxis() -> SetTitleOffset(1.0);
   gr2WOB_ts16 -> GetYaxis() -> SetTitleSize(0.05); 
   gr2WOB_ts16 -> GetYaxis() -> SetTitleOffset(0.9);
-  gr2WOB_ts16 -> SetMarkerColor(4);
+  // gr2WOB_ts16 -> SetMarkerColor(4);
 
 
   TLegend *leg = new TLegend (0.6, 0.7 , 0.9, 0.9);
@@ -309,23 +313,23 @@ void UCNCounts_vs_Temperature(){
   //leg -> AddEntry(gr1WB_ts16, "Counts With Background, TS16" , "p");
   //leg -> AddEntry(gr1WOB_ts16 , "counts Without Background, TS16" , "p");
 
-   gr1WB_ts12 -> Draw("Ap");
-   gr1WOB_ts12 -> Draw("p");
+  //gr1WB_ts12 -> Draw("Ap");
+   gr1WOB_ts12 -> Draw("Ap");
    //gr1WB_ts12 -> Fit(f1);
    //gr2WB_ts12 -> Draw("p");
-   //gr2WOB_ts12-> Draw("p");
+   gr2WOB_ts12-> Draw("p");
    //gr1WB_ts11 -> Draw("p");
-   //gr1WOB_ts11 -> Draw("p");
+   gr1WOB_ts11 -> Draw("p");
    //gr2WB_ts11 -> Draw("p");
-   // gr2WOB_ts11-> Draw("p");
+    gr2WOB_ts11-> Draw("p");
    //gr1WB_ts14 -> Draw("p");
-   //gr1WOB_ts14 -> Draw("p");
+   gr1WOB_ts14 -> Draw("p");
    //gr2WB_ts14 -> Draw("p");
-   // gr2WOB_ts14-> Draw("p");
+    gr2WOB_ts14-> Draw("p");
    //gr1WB_ts16 -> Draw("p");
-   //gr1WOB_ts16 -> Draw("p");
+   gr1WOB_ts16 -> Draw("p");
    //gr2WB_ts16 -> Draw("p");
-   ///gr2WOB_ts16-> Draw("p");
-   leg -> Draw();
+   gr2WOB_ts16-> Draw("p");
+   //leg -> Draw();
    
 }

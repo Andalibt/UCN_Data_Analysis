@@ -175,11 +175,6 @@ void UCNCounts_vs_irradTime(){
 
   }
 
-
-
-
-  
-  
   double HistIntegral2[max];
   double HistIntegralErr2[max];
   double UCNCounts2[max];

@@ -493,10 +493,10 @@ void UCNCounts_17003B_Taraneh_edit_ver2(){
 
     UCNIntegralManualArray550[counts_550] = HistIntegral550 - BASELINERATE550*(cycleValveCloseTime550 - cycleValveOpenTime550);
     // cout << UCNIntegralManualArray550[counts_550] << endl;
-    UCNIntegralManualErrArray550[counts_550] = sqrt(UCNIntegralManualArray550);
+    UCNIntegralManualErrArray550[counts_550] = sqrt(UCNIntegralManualArray550[counts_550]);
     cout << " The irradiation time for run 550  for cycle "<< counts_550 << " is "<< cycleStartTimes550 - irradStartTimes550 << endl;
     cout << HistIntegral550  << endl;
-    myfile << HistIntegralArray550[counts_550] << " " << HistIntegralErrArray550[counts_550] << " " << UCNIntegralManualArray550[counts_550] << " " << UCNIntegralManualErrArray550[counts_550] << " " << avets12ValveOpen550 << " " <<   ts12ValveOpenErr550[counts_550] << " " << avets11VO550 << " " << Errts11VO550[counts_550] << " " << avets14VO550 << " " << Errts14VO550[counts_550] << " " << avets16VO550 << " " << Errts16VO550[counts_550] << " 550" <<endl;
+    //myfile << HistIntegralArray550[counts_550] << " " << HistIntegralErrArray550[counts_550] << " " << UCNIntegralManualArray550[counts_550] << " " << UCNIntegralManualErrArray550[counts_550] << " " << avets12ValveOpen550 << " " <<   ts12ValveOpenErr550[counts_550] << " " << avets11VO550 << " " << Errts11VO550[counts_550] << " " << avets14VO550 << " " << Errts14VO550[counts_550] << " " << avets16VO550 << " " << Errts16VO550[counts_550] << " 550" <<endl;
     
     counts_550++;
   }
@@ -542,7 +542,7 @@ void UCNCounts_17003B_Taraneh_edit_ver2(){
     UCNIntegralManualErrArray551[counts_551] = sqrt(UCNIntegralManualArray551[counts_551]);
     cout << " The irradiation time for run 551 for cycle " << counts_551 << " is "<< cycleStartTimes551 - irradStartTimes551 << endl;
 
-    myfile << HistIntegralArray551[counts_551] << " " << HistIntegralErrArray551[counts_551] << " " << UCNIntegralManualArray551[counts_551] << " " << UCNIntegralManualErrArray551[counts_551] << " " << avets12ValveOpen551 << " " <<   ts12ValveOpenErr551[counts_551] << " " << avets11VO551 << " " << Errts11VO551[counts_551] << " " << avets14VO551 << " " << Errts14VO551[counts_551] << " " << avets16VO551 << " " << Errts16VO551[counts_551] << " 551" << endl;
+    //myfile << HistIntegralArray551[counts_551] << " " << HistIntegralErrArray551[counts_551] << " " << UCNIntegralManualArray551[counts_551] << " " << UCNIntegralManualErrArray551[counts_551] << " " << avets12ValveOpen551 << " " <<   ts12ValveOpenErr551[counts_551] << " " << avets11VO551 << " " << Errts11VO551[counts_551] << " " << avets14VO551 << " " << Errts14VO551[counts_551] << " " << avets16VO551 << " " << Errts16VO551[counts_551] << " 551" << endl;
     
     counts_551++;
   }
